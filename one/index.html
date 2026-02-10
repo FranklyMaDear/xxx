@@ -2,49 +2,97 @@
 <html lang="el">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Stream: New Zealand vs UAE</title>
     <style>
-        body { background-color: #111; color: white; font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
-        .ad-box { margin: 20px auto; max-width: 900px; background: #222; padding: 10px; border-radius: 8px; }
-        .stream-container { width: 95%; max-width: 1000px; margin: 20px auto; border: 2px solid #444; background: #000; height: 600px; position: relative; }
-        iframe { width: 100%; height: 100%; border: none; }
-        
-        /* Κουμπί για την περίπτωση που το iframe μπλοκάρεται */
-        .overlay-button {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            padding: 15px 30px; background: #ff0000; color: white; text-decoration: none;
-            font-weight: bold; border-radius: 5px; box-shadow: 0 0 15px rgba(255,0,0,0.5);
-            z-index: 10;
+        body {
+            background-color: #0b0b0b;
+            color: #eeeeee;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background: #222;
+            width: 100%;
+            padding: 15px 0;
+            text-align: center;
+            border-bottom: 3px solid #ff0000;
+        }
+        .ad-section {
+            width: 100%;
+            max-width: 900px;
+            margin: 15px 0;
+            text-align: center;
+            background: #1a1a1a;
+            padding: 10px;
+            border: 1px dashed #444;
+        }
+        .main-wrapper {
+            width: 95%;
+            max-width: 1100px;
+            background: #111;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 650px; /* Ύψος του player */
+            background: #000;
+            border: 2px solid #333;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .footer-text {
+            font-size: 12px;
+            color: #666;
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
 
-    <h1>New Zealand vs United Arab Emirates - LIVE</h1>
+    <header>
+        <h2 style="margin:0; color:#ffcc00;">LIVE: New Zealand vs United Arab Emirates</h2>
+    </header>
 
-    <div class="ad-box">
+    <div class="ad-section">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3186700611266549" crossorigin="anonymous"></script>
-        <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-3186700611266549" data-ad-slot="9660744817"></ins>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-format="autorelaxed"
+             data-ad-client="ca-pub-3186700611266549"
+             data-ad-slot="9660744817"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <div class="stream-container">
-        <iframe src="http://www.fawanews.sc/New%20Zealand%20vs%20United%20Arab%20Emirates.html" title="Live Stream"></iframe>
-        
-        <p style="margin-top: 10px; font-size: 14px; color: #aaa;">
-            Αν δεν βλέπετε την εικόνα, πατήστε το κουμπί: 
-            <a href="http://www.fawanews.sc/New%20Zealand%20vs%20United%20Arab%20Emirates.html" 
-               target="_blank" 
-               class="overlay-button"
-               onclick="window.open(this.href,'stream','width=1024,height=768'); return false;">
-               ΑΝΟΙΓΜΑ PLAYER
-            </a>
-        </p>
+    <div class="main-wrapper">
+        <div class="iframe-container">
+            <iframe 
+                src="http://www.fawanews.sc/New%20Zealand%20vs%20United%20Arab%20Emirates.html" 
+                allowfullscreen>
+            </iframe>
+        </div>
     </div>
 
-    <div class="ad-box">
-        <ins class="adsbygoogle" style="display:block" data-ad-format="autorelaxed" data-ad-client="ca-pub-3186700611266549" data-ad-slot="9660744817"></ins>
+    <div class="ad-section">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-format="autorelaxed"
+             data-ad-client="ca-pub-3186700611266549"
+             data-ad-slot="9660744817"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="footer-text">
+        &copy; 2026 Frankly Made Ar TV - Όλα τα δικαιώματα ανήκουν στους δημιουργούς του stream.
     </div>
 
 </body>
