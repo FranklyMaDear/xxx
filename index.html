@@ -3,190 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FranklyMaDear Blog</title>
-
-    <link rel="icon" type="image/png" href="index.png">
-    <link rel="apple-touch-icon" href="index.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Video Feed</title>
 
     <style>
-        /* Support Card */
-        .support-card {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #050505;
+            color: #fff;
+            margin: 0;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .support-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255,255,255,0.05) 0%, transparent 50%);
-            z-index: 1;
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
         }
 
-        .support-card > * {
-            position: relative;
-            z-index: 2;
-            color: white !important;
+        .video-wrapper {
+            background: #111;
+            padding: 15px;
+            border-radius: 20px;
+            border: 2px solid #00ffcc;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+            text-align: center;
+            width: 510px;
         }
 
-        .support-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(37, 117, 252, 0.3);
+        iframe {
+            border-radius: 10px;
+            max-width: 100%;
         }
 
-        .support-card .card-icon {
-            font-size: 2.5rem;
-        }
-
-        /* Computer Card */
-        .computer-card {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .computer-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at 20% 80%, rgba(52,152,219,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(41,128,185,0.1) 0%, transparent 50%);
-            z-index: 1;
-        }
-
-        .computer-card > * {
-            position: relative;
-            z-index: 2;
-            color: white !important;
-        }
-
-        .computer-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
-        }
-
-        .computer-card .card-icon {
-            font-size: 2.5rem;
-        }
-
-        /* Common hover */
-        .category-card:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-            cursor: pointer;
+        @media (max-width: 550px) {
+            .video-wrapper {
+                width: 95%;
+            }
         }
     </style>
 </head>
-
 <body>
-<div class="container">
 
-    <header class="header">
-        <div class="logo">
-            <h1>🎨 FranklyMaDear Blog</h1>
-            <div class="animated-emoji">✨</div>
-        </div>
-        <p class="tagline">Ανακαλύψτε Ψηφιακά Βιβλία & Digital Products Δωρεάν!</p>
-    </header>
+    <div class="container">
 
-    <main class="main-content">
-
-        <div class="category-grid">
-
-            <a href="digital-products.html" class="category-card digital-card">
-                <div class="card-icon">📚</div>
-                <h3>Digital Books</h3>
-                <p>Ηλεκτρονικά βιβλία</p>
-                <div class="card-badge">Νέο Activity Book!</div>
-            </a>
-
-            <a href="support.html" class="category-card support-card">
-                <div class="card-icon">⭐</div>
-                <h3>Στηρίξτε μας</h3>
-                <p>Βοηθήστε μας να συνεχίσουμε να προσφέρουμε δωρεάν περιεχόμενο</p>
-                <div class="card-badge">Νέο!</div>
-            </a>
-
-            <a href="https://franklymadear.com/cafedium/index.html" class="category-card coffee-card">
-                <div class="card-icon">☕</div>
-                <h3>Coffeetime</h3>
-                <p>Ανακαλύψτε το Coffeetime και απολαύστε μια μοναδική εμπειρία</p>
-                <div class="card-badge">Νέο!</div>
-            </a>
-
-            <a href="http://franklymadear.com/calculator/index.html" class="category-card computer-card">
-                <div class="card-icon">💻</div>
-                <h3>Υπολογιστής</h3>
-                <p>Χρησιμοποιήστε τον υπολογιστή μας για γρήγορους υπολογισμούς</p>
-                <div class="card-badge">Νέο!</div>
-            </a>
-
-            <a href="facebook/stories.html" class="category-card article-card">
-                <div class="card-icon">📖</div>
-                <h3>Stories</h3>
-                <p>Δείτε τα καλύτερα Stories</p>
-                <div class="card-badge">2 νέα</div>
-            </a>
-
-            <a href="fmd/video.html" class="category-card video-card">
-                <div class="card-icon">🎬</div>
-                <h3>Βίντεο</h3>
-                <p>Εκπαιδευτικά βίντεο & tutorials</p>
-                <div class="card-badge">8 νέα</div>
-            </a>
-
-            <a href="digital-products.html" class="category-card digital-card">
-                <div class="card-icon">🛒</div>
-                <h3>Digital Products</h3>
-                <p>Templates & resources για developers</p>
-                <div class="card-badge">7 νέα</div>
-            </a>
-
+        <div class="video-wrapper">
+            <iframe src="https://www.xvideos.com/embedframe/okcufdk9065" frameborder="0" width="510" height="400" scrolling="no" allowfullscreen></iframe>
         </div>
 
-        <div class="featured-section">
-            <h2>🌟 Δημοφιλές Απόσπασμα</h2>
-            <div class="featured-card">
-                <p>
-                    «Ο καλύτερος τρόπος για να μάθεις προγραμματισμό είναι
-                    η πρακτική και η δημιουργία.»
-                </p>
-            </div>
+        <div class="video-wrapper">
+            <iframe src="https://www.xvideos.com/embedframe/ouiohbbbf8e" frameborder="0" width="510" height="400" scrolling="no" allowfullscreen></iframe>
         </div>
 
-    </main>
+        <div class="video-wrapper">
+            <iframe src="https://www.xvideos.com/embedframe/ouhidomcbc7" frameborder="0" width="510" height="400" scrolling="no" allowfullscreen></iframe>
+        </div>
 
-    <footer class="footer">
-        <p>Made with ❤️ by FranklyMaDear</p>
-    </footer>
+        <div class="video-wrapper">
+            <iframe src="https://www.xvideos.com/embedframe/ouuhchc3a2f" frameborder="0" width="510" height="400" scrolling="no" allowfullscreen></iframe>
+        </div>
 
-</div>
+        <div class="video-wrapper">
+            <iframe src="https://www.xvideos.com/embedframe/uidtauobe0c" frameborder="0" width="510" height="400" scrolling="no" allowfullscreen></iframe>
+        </div>
 
-<!-- Buy Me a Coffee Widget -->
-<script
-    data-name="BMC-Widget"
-    data-cfasync="false"
-    src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-    data-id="franklymadear"
-    data-description="Support me on Buy me a coffee!"
-    data-message=""
-    data-color="#5F7FFF"
-    data-position="Right"
-    data-x_margin="18"
-    data-y_margin="18">
-</script>
+        <div class="video-wrapper">
+            <iframe src="https://www.xvideos.com/embedframe/vvfhmm86ae" frameborder="0" width="510" height="400" scrolling="no" allowfullscreen></iframe>
+        </div>
 
-<script src="script.js"></script>
+        <div class="video-wrapper">
+            <iframe src="https://www.xvideos.com/embedframe/vovoove6b9" frameborder="0" width="510" height="400" scrolling="no" allowfullscreen></iframe>
+        </div>
+
+        <div class="video-wrapper">
+            <iframe src="https://www.xvideos.com/embedframe/ikcpmvd36ed" frameborder="0" width="510" height="400" scrolling="no" allowfullscreen></iframe>
+        </div>
+
+    </div>
+
 </body>
 </html>
