@@ -2,12 +2,13 @@
 <html lang="el">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- ΣΩΣΤΟ VIEWPORT ΓΙΑ ΚΙΝΗΤΑ -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   
   <!-- META TAG ΠΙΣΤΟΠΟΙΗΣΗΣ -->
   <meta name="c21fc2d2a14660859540306fb7e22cd9034e2d52" content="c21fc2d2a14660859540306fb7e22cd9034e2d52">
   
-  <!-- OPEN GRAPH - X CARD -->
+  <!-- OPEN GRAPH - X CARD (ΓΙΑ ΚΟΙΝΟΠΟΙΗΣΗ) -->
   <meta property="og:type" content="video.other">
   <meta property="og:title" content=" ">
   <meta property="og:description" content=" ">
@@ -18,7 +19,12 @@
   <title>‌</title>
   
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* ΕΛΑΧΙΣΤΟ, ΓΡΗΓΟΡΟ, MOBILE-FIRST */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
       background: #000;
       display: flex;
@@ -27,21 +33,37 @@
       justify-content: center;
       min-height: 100vh;
       font-size: 0;
-      padding: 20px;
+      line-height: 0;
+      padding: 12px; /* μικρό περιθώριο για κινητά */
     }
     .container {
       width: 100%;
       max-width: 1000px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px; /* απόσταση μεταξύ βίντεο και διαφήμισης */
     }
+    /* ΤΟ IFRAME ΝΑ ΠΑΙΡΝΕΙ ΟΛΟ ΤΟ ΠΛΑΤΟΣ */
     iframe {
       width: 100%;
-      aspect-ratio: 16/9;
+      aspect-ratio: 16 / 9;
       border: 0;
       display: block;
+      background: #0a0a0a;
+      border-radius: 0; /* χωρίς στρογγυλοποίηση - καθαρό */
     }
-    .ad {
+    /* Η ΔΙΑΦΗΜΙΣΗ ΝΑ ΕΙΝΑΙ ΠΑΝΤΑ VISIBLE ΣΕ MOBILE */
+    .ad-space {
       width: 100%;
-      margin-top: 20px;
+      display: block;
+      background: transparent;
+      /* κανένα επιπλέον στυλ, μόνο ο κώδικας */
+    }
+    /* ΒΕΛΤΙΣΤΟΠΟΙΗΣΗ ΓΙΑ ΠΟΛΥ ΜΙΚΡΕΣ ΟΘΟΝΕΣ */
+    @media (max-width: 480px) {
+      body {
+        padding: 8px;
+      }
     }
   </style>
 </head>
@@ -52,21 +74,25 @@
     <!-- 👇 ΒΑΛΕ ΤΟ ΔΙΚΟ ΣΟΥ IFRAME VIDEO ΕΔΩ 👇 -->
     <!-- ======================================== -->
     
-    <iframe src="https://www.xnxx.com/embedframe/umkacem6309" frameborder=0 width=510 height=400 scrolling=no allowfullscreen=allowfullscreen></iframe>
+    <iframe 
+      src="https://το-link-του-video-σου.com/το-αρχείο-σου.mp4?autoplay=1&muted=1"
+      allow="autoplay; fullscreen"
+      allowfullscreen>
+    </iframe>
     
     <!-- ======================================== -->
     <!-- 👆 ΜΕΧΡΙ ΕΔΩ 👆 -->
     <!-- ======================================== -->
     
-    <!-- Η ΔΙΑΦΗΜΙΣΗ ΣΟΥ -->
-    <div class="ad">
+    <!-- ΝΕΟ ΔΙΑΦΗΜΙΣΤΙΚΟ SCRIPT (ΑΝΤΙΚΑΤΑΣΤΑΘΗΚΕ) -->
+    <div class="ad-space">
       <script>
-      (function(yqnhfq){
+      (function(zibw){
         var d = document,
             s = d.createElement('script'),
             l = d.scripts[d.scripts.length - 1];
-        s.settings = yqnhfq || {};
-        s.src = "\/\/joint-club.com\/ciD\/9s6.bS2_5kl\/SGWMQV9lN\/jrc\/5vNOzgckyVMMSP0Y2ANfzgkI3nNXzRIx1O";
+        s.settings = zibw || {};
+        s.src = "\/\/forcefulbeginning.com\/bpXYV.sbdOGGl\/0_Y\/W\/cl\/vePm\/9CupZoUmlnkhPQTGYd3KOWTIcf1WMRDcEVtJNZj_cn5FNCzWUAwTN\/QN";
         s.async = true;
         s.referrerPolicy = 'no-referrer-when-downgrade';
         l.parentNode.insertBefore(s, l);
