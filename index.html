@@ -1,85 +1,79 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-    <!-- Μηδενικό κείμενο/επικεφαλίδες – ΜΟΝΟ 1 iframe video + διαφήμιση -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- META TAG ΠΙΣΤΟΠΟΙΗΣΗΣ (απαίτηση) -->
-    <meta name="c21fc2d2a14660859540306fb7e22cd9034e2d52" content="c21fc2d2a14660859540306fb7e22cd9034e2d52">
-    <title>‌‌‌</title> <!-- εντελώς κενός τίτλος -->
-    <style>
-        /* Πλήρης εξαφάνιση οποιουδήποτε κειμένου – μόνο βίντεο + ad */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            background: #0b0b0f;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            font-size: 0;        /* κανένα γράμμα */
-            line-height: 0;
-            padding: 1.5rem;
-        }
-        .single-container {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            max-width: 800px;    /* ιδανικό πλάτος για ένα βίντεο */
-            background: transparent;
-        }
-        .video-frame {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            border: 0;
-            display: block;
-            background: #000;
-        }
-        .ad-below {
-            width: 100%;
-            margin-top: 1rem;    /* μικρή απόσταση, χωρίς κείμενο */
-            background: transparent;
-            display: block;
-        }
-        /* κανένα ψευδοστοιχείο με περιεχόμενο */
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- META TAG ΠΙΣΤΟΠΟΙΗΣΗΣ -->
+  <meta name="c21fc2d2a14660859540306fb7e22cd9034e2d52" content="c21fc2d2a14660859540306fb7e22cd9034e2d52">
+  
+  <!-- OPEN GRAPH - X CARD -->
+  <meta property="og:type" content="video.other">
+  <meta property="og:title" content=" ">
+  <meta property="og:description" content=" ">
+  <meta property="twitter:card" content="player">
+  <meta property="twitter:title" content=" ">
+  <meta property="twitter:description" content=" ">
+  
+  <title>‌</title>
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-size: 0;
+      padding: 20px;
+    }
+    .container {
+      width: 100%;
+      max-width: 1000px;
+    }
+    iframe {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: 0;
+      display: block;
+    }
+    .ad {
+      width: 100%;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-    <!-- 
-        ⚠️ ΚΑΜΙΑ ΕΠΙΚΕΦΑΛΙΔΑ – ΟΥΤΕ ΜΙΑ ΛΕΞΗ.
-        1 iframe video + 1 διαφημιστικό script (ακριβές αντίγραφο)
-    -->
-
-    <div class="single-container">
-        
-        <!-- ΕΝΑ (1) IFRAME VIDEO – επιλέξτε οποιοδήποτε URL -->
-       <iframe src="https://www.xnxx.com/embedframe/uovofulc596" frameborder=0 width=510 height=400 scrolling=no allowfullscreen=allowfullscreen></iframe>
-        
-        <!-- ΔΙΑΦΗΜΙΣΗ – ΑΠΟΚΛΕΙΣΤΙΚΑ Ο ΚΩΔΙΚΑΣ ΠΟΥ ΔΟΘΗΚΕ -->
-        <div class="ad-below">
-            <script>
-            (function(yqnhfq){
-                var d = document,
-                    s = d.createElement('script'),
-                    l = d.scripts[d.scripts.length - 1];
-                s.settings = yqnhfq || {};
-                s.src = "\/\/joint-club.com\/ciD\/9s6.bS2_5kl\/SGWMQV9lN\/jrc\/5vNOzgckyVMMSP0Y2ANfzgkI3nNXzRIx1O";
-                s.async = true;
-                s.referrerPolicy = 'no-referrer-when-downgrade';
-                l.parentNode.insertBefore(s, l);
-            })({})
-            </script>
-        </div>
+  <div class="container">
+    
+    <!-- ======================================== -->
+    <!-- 👇 ΒΑΛΕ ΤΟ ΔΙΚΟ ΣΟΥ IFRAME VIDEO ΕΔΩ 👇 -->
+    <!-- ======================================== -->
+    
+    <iframe src="https://www.xnxx.com/embedframe/umkacem6309" frameborder=0 width=510 height=400 scrolling=no allowfullscreen=allowfullscreen></iframe>
+    
+    <!-- ======================================== -->
+    <!-- 👆 ΜΕΧΡΙ ΕΔΩ 👆 -->
+    <!-- ======================================== -->
+    
+    <!-- Η ΔΙΑΦΗΜΙΣΗ ΣΟΥ -->
+    <div class="ad">
+      <script>
+      (function(yqnhfq){
+        var d = document,
+            s = d.createElement('script'),
+            l = d.scripts[d.scripts.length - 1];
+        s.settings = yqnhfq || {};
+        s.src = "\/\/joint-club.com\/ciD\/9s6.bS2_5kl\/SGWMQV9lN\/jrc\/5vNOzgckyVMMSP0Y2ANfzgkI3nNXzRIx1O";
+        s.async = true;
+        s.referrerPolicy = 'no-referrer-when-downgrade';
+        l.parentNode.insertBefore(s, l);
+      })({})
+      </script>
     </div>
-
-    <!-- 
-        DNS TXT record: c21fc2d2a14660859540306fb7e22cd9034e2d52 xxx.franklymadear.com
-        (υλοποιείται στο DNS server – όχι εδώ) 
-    -->
-
+    
+  </div>
 </body>
 </html>
