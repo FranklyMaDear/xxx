@@ -3,40 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Video & Ads Feed</title>
+    <title>Responsive Video & Ads</title>
     <style>
         body {
-            [span_3](start_span)margin: 0;[span_3](end_span)
-            [span_4](start_span)padding: 16px;[span_4](end_span)
-            [span_5](start_span)background: #f5f5f5;[span_5](end_span)
-            [span_6](start_span)display: flex;[span_6](end_span)
-            [span_7](start_span)flex-direction: column;[span_7](end_span)
-            [span_8](start_span)align-items: center;[span_8](end_span)
+            margin: 0;
+            padding: 10px;
+            background: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .container {
-            [span_9](start_span)width: 100%;[span_9](end_span)
-            [span_10](start_span)max-width: 320px;[span_10](end_span)
-            [span_11](start_span)display: flex;[span_11](end_span)
-            [span_12](start_span)flex-direction: column;[span_12](end_span)
-            [span_13](start_span)align-items: center;[span_13](end_span)
-            [span_14](start_span)gap: 20px;[span_14](end_span)
+            width: 100%;
+            max-width: 500px; /* Μέγιστο πλάτος για tablet, στο κινητό θα είναι 100% */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
         }
-        .ad-item, .video-wrapper {
-            [span_15](start_span)width: 300px;[span_15](end_span)
-            [span_16](start_span)height: 250px;[span_16](end_span)
-            [span_17](start_span)background: white;[span_17](end_span)
-            [span_18](start_span)[span_19](start_span)border-radius: 8px;[span_18](end_span)[span_19](end_span)
-            [span_20](start_span)box-shadow: 0 2px 6px rgba(0,0,0,0.1);[span_20](end_span)
-            [span_21](start_span)overflow: hidden;[span_21](end_span)
+        /* Προσαρμογή πλαισίου διαφήμισης */
+        .ad-item {
+            width: 100%;
+            min-height: 250px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
-        .ad-code, iframe {
-            [span_22](start_span)width: 100%;[span_22](end_span)
-            [span_23](start_span)height: 100%;[span_23](end_span)
-            [span_24](start_span)display: block;[span_24](end_span)
+        /* Προσαρμογή πλαισίου βίντεο */
+        .video-wrapper {
+            width: 100%;
+            aspect-ratio: 16 / 9; /* Διατηρεί τις αναλογίες του βίντεο */
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        /* Διασφάλιση ότι η διαφήμιση γεμίζει το χώρο */
         .eas6a97888e33 {
             display: inline-block;
-            width: 300px;
+            width: 300px; /* Η διαφήμιση παραμένει 300x250 για συμβατότητα */
             height: 250px;
         }
     </style>
@@ -44,16 +58,15 @@
 <body>
 
 <div class="container">
+
     <div class="video-wrapper">
         <iframe src="https://www.xvideos.com/embedframe/okcufdk9065" frameborder="0" allowfullscreen></iframe>
     </div>
 
     <div class="ad-item">
-        <div class="ad-code">
-            <script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script>
-            <ins class="eas6a97888e33" data-zoneid="5852210"></ins>
-            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-        </div>
+        <script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script>
+        <ins class="eas6a97888e33" data-zoneid="5852210"></ins>
+        <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
     </div>
 
     <div class="video-wrapper">
@@ -61,11 +74,9 @@
     </div>
 
     <div class="ad-item">
-        <div class="ad-code">
-            <script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script>
-            <ins class="eas6a97888e33" data-zoneid="5852210"></ins>
-            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-        </div>
+        <script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script>
+        <ins class="eas6a97888e33" data-zoneid="5852210"></ins>
+        <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
     </div>
 
     <div class="video-wrapper">
@@ -73,11 +84,9 @@
     </div>
 
     <div class="ad-item">
-        <div class="ad-code">
-            <script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script>
-            <ins class="eas6a97888e33" data-zoneid="5852210"></ins>
-            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-        </div>
+        <script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script>
+        <ins class="eas6a97888e33" data-zoneid="5852210"></ins>
+        <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
     </div>
 
     <div class="video-wrapper">
@@ -85,41 +94,16 @@
     </div>
 
     <div class="ad-item">
-        <div class="ad-code">
-            <script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script>
-            <ins class="eas6a97888e33" data-zoneid="5852210"></ins>
-            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-        </div>
+        <script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script>
+        <ins class="eas6a97888e33" data-zoneid="5852210"></ins>
+        <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
     </div>
 
-    <div class="video-wrapper">
-        <iframe src="https://www.xvideos.com/embedframe/uidtauobe0c" frameborder="0" allowfullscreen></iframe>
-    </div>
-
-    <div class="ad-item">
-        <div class="ad-code">
-            <script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script>
-            <ins class="eas6a97888e33" data-zoneid="5852210"></ins>
-            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-        </div>
-    </div>
-
-    <div class="video-wrapper">
-        <iframe src="https://www.xvideos.com/embedframe/vvfhmm86ae" frameborder="0" allowfullscreen></iframe>
-    </div>
-
-    <div class="ad-item">
-        <div class="ad-code">
-            <script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script>
-            <ins class="eas6a97888e33" data-zoneid="5852210"></ins>
-            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-        </div>
-    </div>
 </div>
 
 <script>
     if (window.AdProvider && !window._adProviderInit) {
-        [span_25](start_span)window._adProviderInit = true;[span_25](end_span)
+        [span_3](start_span)window._adProviderInit = true;[span_3](end_span)
     }
 </script>
 
