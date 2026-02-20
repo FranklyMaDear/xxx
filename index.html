@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     
-    <title>Chaturbate - Video Grid</title>
+    <title>Chaturbate - Video Gallery</title>
     
-    <meta property="og:title" content="Chaturbate - Video Grid">
+    <meta property="og:title" content="Chaturbate - Video Gallery">
     <meta property="og:description" content="Watch live cams">
     <meta property="og:image" content="thumbnail.png">
     <meta property="og:image:width" content="1200">
@@ -16,7 +16,7 @@
     <meta property="og:site_name" content="Chaturbate">
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Chaturbate - Video Grid">
+    <meta name="twitter:title" content="Chaturbate - Video Gallery">
     <meta name="twitter:description" content="Watch live cams">
     <meta name="twitter:image" content="thumbnail.png">
     
@@ -67,12 +67,12 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 800px;
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
             position: relative;
             z-index: 5;
         }
@@ -98,7 +98,7 @@
         }
 
         .site-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 900;
             color: white;
             text-shadow: 0 0 8px #ff99cc, 0 0 15px #ff4da6, 0 0 25px #ff00bf, 2px 2px 0 #000;
@@ -114,67 +114,62 @@
             text-transform: uppercase;
         }
 
-        /* ROW STYLES */
-        .row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            width: 100%;
-        }
-
-        /* VIDEO CARD */
+        /* VIDEO CARD - ένα κάτω από το άλλο */
         .video-card {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
             background: rgba(20, 5, 30, 0.5);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            border-radius: 20px;
-            padding: 8px;
-            box-shadow: 0 15px 25px -10px #000, 0 0 0 2px #fff9f0, 0 0 0 5px rgba(255, 80, 150, 0.4);
+            border-radius: 24px;
+            padding: 15px;
+            box-shadow: 0 20px 30px -12px #000, 0 0 0 2px #fff9f0, 0 0 0 5px rgba(255, 80, 150, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.6);
-            transition: all 0.15s;
-            width: calc(50% - 6px); /* 2 στη σειρά */
-            max-width: 220px; /* για μεγάλες οθόνες */
-            flex: 1 1 auto;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .video-card:hover {
-            box-shadow: 0 20px 30px -8px #b30086, 0 0 0 3px #ffb3ff;
+            box-shadow: 0 25px 35px -10px #b30086, 0 0 0 3px #ffb3ff;
             transform: scale(1.02);
         }
 
-        /* IFRAME WRAPPER */
-        .video-wrap {
-            position: relative;
-            width: 100%;
-            border-radius: 16px;
+        /* THUMBNAIL STYLE - η φωτογραφία που ανοίγει το βίντεο */
+        .video-thumbnail {
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
             overflow: hidden;
-            background: #0a0518;
-            box-shadow: 0 10px 15px -5px #000;
+            cursor: pointer;
+            box-shadow: 0 15px 25px -8px #000;
+            border: 3px solid rgba(255, 255, 255, 0.7);
+            transition: all 0.2s;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-bottom: 10px;
         }
 
-        .video-wrap iframe {
-            display: block;
-            width: 100%;
-            height: auto;
-            aspect-ratio: 1 / 1; /* 200x200 */
-            border: none;
+        .video-thumbnail:hover {
+            transform: scale(1.03);
+            border-color: #ff4da6;
+            box-shadow: 0 0 20px #ff4da6;
         }
 
-        /* ΓΡΑΜΜΗ ΔΙΑΧΩΡΙΣΜΟΥ */
-        .section-break {
-            width: 100%;
-            margin: 10px 0 5px;
-            text-align: center;
-        }
-
-        .glow-line {
-            width: 180px;
-            height: 4px;
-            background: linear-gradient(90deg, #ff1a4c, #b300e6, #ff0066);
-            border-radius: 4px;
-            margin: 0 auto;
-            filter: drop-shadow(0 0 6px #ff4da6);
+        /* ΤΙΤΛΟΣ ΒΙΝΤΕΟ */
+        .video-title {
+            font-size: 1rem;
+            color: white;
+            text-shadow: 1px 1px 2px #000;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 15px;
+            border-radius: 30px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            width: fit-content;
         }
 
         /* FOOTER */
@@ -187,22 +182,14 @@
             filter: drop-shadow(0 0 12px #ff4da6);
         }
 
-        /* responsive για μικρές οθόνες (π.χ. κινητά) */
+        /* responsive για κινητά */
         @media (max-width: 500px) {
-            .video-card {
-                width: calc(50% - 6px);
-                max-width: 180px;
+            .video-thumbnail {
+                width: 280px;
+                height: 280px;
             }
             .site-title {
-                font-size: 1.6rem;
-                white-space: normal; /* αν χρειαστεί να σπάσει */
-            }
-        }
-
-        /* Για ταμπλέτες και μεσαίες οθόνες */
-        @media (min-width: 768px) {
-            .video-card {
-                max-width: 200px; /* σταθερό 200px */
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -214,138 +201,124 @@
             <div class="site-title">CHATURBATE</div>
         </div>
 
-        <!-- ROW 1: 2 ΒΙΝΤΕΟ -->
-        <div class="row">
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src='https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed' loading="lazy" title="Chaturbate video"></iframe>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src='https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed' loading="lazy" title="Chaturbate video"></iframe>
-                </div>
-            </div>
+        <!-- VIDEO 1 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=1')"></div>
+            <div class="video-title">Hot Cam #1</div>
         </div>
 
-        <!-- ROW 2: 2 ΒΙΝΤΕΟ -->
-        <div class="row">
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src='https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed' loading="lazy" title="Chaturbate video"></iframe>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src='https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed' loading="lazy" title="Chaturbate video"></iframe>
-                </div>
-            </div>
+        <!-- VIDEO 2 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=SHBY&campaign=hrmwy&track=embed&room=franklymadear', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=2')"></div>
+            <div class="video-title">Hot Cam #2</div>
         </div>
 
-        <!-- ROW 3: 2 ΒΙΝΤΕΟ -->
-        <div class="row">
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src='https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed' loading="lazy" title="Chaturbate video"></iframe>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src='https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed' loading="lazy" title="Chaturbate video"></iframe>
-                </div>
-            </div>
+        <!-- VIDEO 3 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=3')"></div>
+            <div class="video-title">Hot Cam #3</div>
         </div>
 
-        <!-- ROW 4: 2 ΒΙΝΤΕΟ -->
-        <div class="row">
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src='https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed' loading="lazy" title="Chaturbate video"></iframe>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src='https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed' loading="lazy" title="Chaturbate video"></iframe>
-                </div>
-            </div>
+        <!-- VIDEO 4 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=SHBY&campaign=hrmwy&track=embed&room=franklymadear', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=4')"></div>
+            <div class="video-title">Hot Cam #4</div>
         </div>
 
-        <!-- ROW 5: 2 ΒΙΝΤΕΟ (10 ΣΥΝΟΛΟ ΣΤΗ ΣΕΙΡΑ ΑΠΟ 2 = 10 γραμμές? Θα βάλω 10 rows για 20 βίντεο) 
-             Εδώ έχουμε 5 rows ήδη, θέλουμε 10 rows για 20 βίντεο. Συνεχίζω: -->
-
-        <!-- ROW 6 -->
-        <div class="row">
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src='https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed' loading="lazy" title="Chaturbate video"></iframe>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src='https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed' loading="lazy" title="Chaturbate video"></iframe>
-                </div>
-            </div>
+        <!-- VIDEO 5 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=5')"></div>
+            <div class="video-title">Hot Cam #5</div>
         </div>
 
-        <!-- ROW 7 -->
-        <div class="row">
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src='https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed' loading="lazy" title="Chaturbate video"></iframe>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src='https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed' loading="lazy" title="Chaturbate video"></iframe>
-                </div>
-            </div>
+        <!-- VIDEO 6 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=SHBY&campaign=hrmwy&track=embed&room=franklymadear', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=6')"></div>
+            <div class="video-title">Hot Cam #6</div>
         </div>
 
-        <!-- ROW 8 -->
-        <div class="row">
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src='https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed' loading="lazy" title="Chaturbate video"></iframe>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src='https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed' loading="lazy" title="Chaturbate video"></iframe>
-                </div>
-            </div>
+        <!-- VIDEO 7 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=7')"></div>
+            <div class="video-title">Hot Cam #7</div>
         </div>
 
-        <!-- ROW 9 -->
-        <div class="row">
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src='https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed' loading="lazy" title="Chaturbate video"></iframe>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src='https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed' loading="lazy" title="Chaturbate video"></iframe>
-                </div>
-            </div>
+        <!-- VIDEO 8 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=SHBY&campaign=hrmwy&track=embed&room=franklymadear', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=8')"></div>
+            <div class="video-title">Hot Cam #8</div>
         </div>
 
-        <!-- ROW 10 -->
-        <div class="row">
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src='https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed' loading="lazy" title="Chaturbate video"></iframe>
-                </div>
-            </div>
-            <div class="video-card">
-                <div class="video-wrap">
-                    <iframe src='https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed' loading="lazy" title="Chaturbate video"></iframe>
-                </div>
-            </div>
+        <!-- VIDEO 9 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=9')"></div>
+            <div class="video-title">Hot Cam #9</div>
         </div>
 
-        <!-- ΓΡΑΜΜΗ ΔΙΑΚΟΣΜΗΣΗΣ (optional) -->
-        <div class="section-break">
-            <div class="glow-line"></div>
+        <!-- VIDEO 10 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=SHBY&campaign=hrmwy&track=embed&room=franklymadear', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=10')"></div>
+            <div class="video-title">Hot Cam #10</div>
+        </div>
+
+        <!-- VIDEO 11 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=11')"></div>
+            <div class="video-title">Hot Cam #11</div>
+        </div>
+
+        <!-- VIDEO 12 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=SHBY&campaign=hrmwy&track=embed&room=franklymadear', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=12')"></div>
+            <div class="video-title">Hot Cam #12</div>
+        </div>
+
+        <!-- VIDEO 13 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=13')"></div>
+            <div class="video-title">Hot Cam #13</div>
+        </div>
+
+        <!-- VIDEO 14 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=SHBY&campaign=hrmwy&track=embed&room=franklymadear', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=14')"></div>
+            <div class="video-title">Hot Cam #14</div>
+        </div>
+
+        <!-- VIDEO 15 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=15')"></div>
+            <div class="video-title">Hot Cam #15</div>
+        </div>
+
+        <!-- VIDEO 16 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=SHBY&campaign=hrmwy&track=embed&room=franklymadear', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=16')"></div>
+            <div class="video-title">Hot Cam #16</div>
+        </div>
+
+        <!-- VIDEO 17 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=17')"></div>
+            <div class="video-title">Hot Cam #17</div>
+        </div>
+
+        <!-- VIDEO 18 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=SHBY&campaign=hrmwy&track=embed&room=franklymadear', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=18')"></div>
+            <div class="video-title">Hot Cam #18</div>
+        </div>
+
+        <!-- VIDEO 19 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=nvfS&campaign=hrmwy&track=embed', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=19')"></div>
+            <div class="video-title">Hot Cam #19</div>
+        </div>
+
+        <!-- VIDEO 20 -->
+        <div class="video-card">
+            <div class="video-thumbnail" onclick="window.open('https://cbxyz.com/in/?tour=SHBY&campaign=hrmwy&track=embed&room=franklymadear', '_blank')" style="background-image: url('https://picsum.photos/300/300?random=20')"></div>
+            <div class="video-title">Hot Cam #20</div>
         </div>
 
         <!-- FOOTER -->
