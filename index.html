@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Τα βίντεο μου · δύο τύποι διαφημίσεων</title>
+    <title>Τα βίντεο μου · τετράγωνες διαφημίσεις</title>
     <style>
         * {
             margin: 0;
@@ -51,12 +51,12 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 48px;
+            gap: 40px;
             position: relative;
             z-index: 5;
         }
 
-        /* ο τίτλος διακριτικός, κομψός */
+        /* τίτλος σελίδας */
         .site-title {
             font-size: 2.8rem;
             font-weight: 500;
@@ -72,19 +72,19 @@
             background-clip: text;
         }
 
-        /* κάρτα για κάθε βίντεο + διαφήμιση από κάτω */
-        .video-ad-block {
+        /* κάρτα για κάθε βίντεο */
+        .video-card {
             background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border-radius: 48px;
-            padding: 26px 26px 34px 26px;
+            padding: 26px;
             box-shadow: 0 30px 45px -25px #2f254a, 0 0 0 4px #fff9f0, 0 0 0 10px rgba(255, 230, 250, 0.4);
             border: 2px solid rgba(255, 255, 255, 0.9);
             transition: all 0.2s;
         }
 
-        .video-ad-block:hover {
+        .video-card:hover {
             box-shadow: 0 40px 50px -20px #8560b0;
         }
 
@@ -96,7 +96,6 @@
             overflow: hidden;
             background: #0a0518;
             box-shadow: 0 30px 30px -15px #403050;
-            margin-bottom: 28px;
         }
 
         .video-wrap iframe {
@@ -108,32 +107,59 @@
             border: 0;
         }
 
-        /* Διαφημιστική ενότητα – κάτω από το βίντεο, κομψή και καθαρή */
-        .ad-below {
+        /* Διαφημιστικό μπλοκ ανάμεσα στα βίντεο - τετράγωνο, ίδιο πλάτος με το βίντεο */
+        .ad-between {
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 250, 245, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 38px;
-            padding: 22px 18px;
-            border: 2px solid #ffffffd0;
-            box-shadow: 0 12px 20px -10px #baa0d0;
+            margin: 20px 0 20px 0; /* απόσταση πάνω και κάτω */
         }
 
-        /* η διαφήμιση απόλυτα κεντραρισμένη */
-        .ad-code-container {
+        /* τετράγωνο πλαίσιο διαφήμισης - ίδιο πλάτος με τα βίντεο, τετράγωνο */
+        .ad-square-frame {
             width: 100%;
+            aspect-ratio: 1 / 1; /* τετράγωνο */
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 36px;
+            padding: 24px;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 30px -12px rgba(120, 80, 150, 0.4);
             display: flex;
-            justify-content: center;
             align-items: center;
-            min-height: 120px;
+            justify-content: center;
         }
 
-        /* μικρή αισθητική πινελιά – μόνο χρώμα, κανένα κείμενο */
+        /* εσωτερικό της διαφήμισης - καθαρός χώρος για τον κωδικό */
+        .ad-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 28px;
+            overflow: hidden;
+        }
+
+        /* οι διαφημίσεις προσαρμόζονται στο τετράγωνο */
+        .ad-content ins {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* απόσταση επιβεβαίωσης - μόνο οπτική */
+        .spacer-visual {
+            width: 100%;
+            height: 4px;
+            background: transparent;
+        }
+
+        /* μικρή αισθητική πινελιά */
         .gentle-glow {
             width: 120px;
             height: 4px;
@@ -158,133 +184,137 @@
         <!-- τίτλος σελίδας -->
         <div class="site-title">Τα βίντεο μου</div>
 
-        <!-- ΒΙΝΤΕΟ 1 + ΔΙΑΦΗΜΙΣΗ 1 (autorelaxed) -->
-        <div class="video-ad-block">
+        <!-- ΒΙΝΤΕΟ 1 -->
+        <div class="video-card">
             <div class="video-wrap" style="aspect-ratio: 560/379;">
                 <iframe src="https://www.facebook.com/plugins/video.php?height=379&href=https%3A%2F%2Fwww.facebook.com%2Fexoumethemata%2Fvideos%2F1613291436336520%2F&show_text=false&width=560&t=0" width="560" height="379" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
             </div>
-            <div class="ad-below">
-                <div class="ad-code-container">
+        </div>
+
+        <!-- ΔΙΑΦΗΜΙΣΗ 1 (ανάμεσα) - τετράγωνη, ίδιο πλάτος με βίντεο, με απόσταση -->
+        <div class="ad-between">
+            <div class="ad-square-frame">
+                <div class="ad-content">
                     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3186700611266549" crossorigin="anonymous"></script>
                     <ins class="adsbygoogle"
-                         style="display:block;"
-                         data-ad-format="autorelaxed"
+                         style="display:block; width:100%; height:100%;"
+                         data-ad-format="fluid"
+                         data-ad-layout-key="-fb+5w+4e-db+86"
                          data-ad-client="ca-pub-3186700611266549"
-                         data-ad-slot="9660744817"></ins>
+                         data-ad-slot="3969235710"></ins>
                     <script>
                          (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
                 </div>
-                <div class="gentle-glow"></div>
             </div>
+            <div class="gentle-glow"></div>
         </div>
 
-        <!-- ΒΙΝΤΕΟ 2 + ΔΙΑΦΗΜΙΣΗ 2 (in-article) -->
-        <div class="video-ad-block">
+        <!-- ΒΙΝΤΕΟ 2 -->
+        <div class="video-card">
             <div class="video-wrap" style="aspect-ratio: 458/476;">
                 <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2453583798395478%2F&show_text=false&width=458&t=0" width="458" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
             </div>
-            <div class="ad-below">
-                <div class="ad-code-container">
+        </div>
+
+        <!-- ΔΙΑΦΗΜΙΣΗ 2 (ανάμεσα) -->
+        <div class="ad-between">
+            <div class="ad-square-frame">
+                <div class="ad-content">
                     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3186700611266549" crossorigin="anonymous"></script>
                     <ins class="adsbygoogle"
-                         style="display:block; text-align:center;"
-                         data-ad-layout="in-article"
+                         style="display:block; width:100%; height:100%;"
                          data-ad-format="fluid"
+                         data-ad-layout-key="-fb+5w+4e-db+86"
                          data-ad-client="ca-pub-3186700611266549"
-                         data-ad-slot="6330498148"></ins>
+                         data-ad-slot="3969235710"></ins>
                     <script>
                          (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
                 </div>
-                <div class="gentle-glow"></div>
             </div>
+            <div class="gentle-glow"></div>
         </div>
 
-        <!-- ΒΙΝΤΕΟ 3 + ΔΙΑΦΗΜΙΣΗ 3 (autorelaxed) -->
-        <div class="video-ad-block">
+        <!-- ΒΙΝΤΕΟ 3 -->
+        <div class="video-card">
             <div class="video-wrap" style="aspect-ratio: 267/476;">
                 <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fexoumethemata%2Fvideos%2F938398358866051%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
             </div>
-            <div class="ad-below">
-                <div class="ad-code-container">
+        </div>
+
+        <!-- ΔΙΑΦΗΜΙΣΗ 3 (ανάμεσα) -->
+        <div class="ad-between">
+            <div class="ad-square-frame">
+                <div class="ad-content">
                     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3186700611266549" crossorigin="anonymous"></script>
                     <ins class="adsbygoogle"
-                         style="display:block;"
-                         data-ad-format="autorelaxed"
+                         style="display:block; width:100%; height:100%;"
+                         data-ad-format="fluid"
+                         data-ad-layout-key="-fb+5w+4e-db+86"
                          data-ad-client="ca-pub-3186700611266549"
-                         data-ad-slot="9660744817"></ins>
+                         data-ad-slot="3969235710"></ins>
                     <script>
                          (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
                 </div>
-                <div class="gentle-glow"></div>
             </div>
+            <div class="gentle-glow"></div>
         </div>
 
-        <!-- ΒΙΝΤΕΟ 4 + ΔΙΑΦΗΜΙΣΗ 4 (in-article) -->
-        <div class="video-ad-block">
+        <!-- ΒΙΝΤΕΟ 4 -->
+        <div class="video-card">
             <div class="video-wrap" style="aspect-ratio: 560/522;">
                 <iframe src="https://www.facebook.com/plugins/video.php?height=522&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1596734144873534%2F&show_text=false&width=560&t=0" width="560" height="522" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
             </div>
-            <div class="ad-below">
-                <div class="ad-code-container">
+        </div>
+
+        <!-- ΔΙΑΦΗΜΙΣΗ 4 (ανάμεσα) -->
+        <div class="ad-between">
+            <div class="ad-square-frame">
+                <div class="ad-content">
                     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3186700611266549" crossorigin="anonymous"></script>
                     <ins class="adsbygoogle"
-                         style="display:block; text-align:center;"
-                         data-ad-layout="in-article"
+                         style="display:block; width:100%; height:100%;"
                          data-ad-format="fluid"
+                         data-ad-layout-key="-fb+5w+4e-db+86"
                          data-ad-client="ca-pub-3186700611266549"
-                         data-ad-slot="6330498148"></ins>
+                         data-ad-slot="3969235710"></ins>
                     <script>
                          (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
                 </div>
-                <div class="gentle-glow"></div>
             </div>
+            <div class="gentle-glow"></div>
         </div>
 
-        <!-- ΒΙΝΤΕΟ 5 + ΔΙΑΦΗΜΙΣΗ 5 (autorelaxed) -->
-        <div class="video-ad-block">
+        <!-- ΒΙΝΤΕΟ 5 -->
+        <div class="video-card">
             <div class="video-wrap" style="aspect-ratio: 267/476;">
                 <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fexoumethemata%2Fvideos%2F2153146075484721%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
             </div>
-            <div class="ad-below">
-                <div class="ad-code-container">
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3186700611266549" crossorigin="anonymous"></script>
-                    <ins class="adsbygoogle"
-                         style="display:block;"
-                         data-ad-format="autorelaxed"
-                         data-ad-client="ca-pub-3186700611266549"
-                         data-ad-slot="9660744817"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
-                <div class="gentle-glow"></div>
-            </div>
         </div>
 
-        <!-- επιπλέον διαφήμιση in-article (για εξτρα ποικιλία) στο τέλος -->
-        <div class="video-ad-block" style="background: rgba(255,240,250,0.6);">
-            <div class="ad-below" style="padding: 32px;">
-                <div class="ad-code-container">
+        <!-- ΔΙΑΦΗΜΙΣΗ 5 (μετά το τελευταίο βίντεο) -->
+        <div class="ad-between">
+            <div class="ad-square-frame">
+                <div class="ad-content">
                     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3186700611266549" crossorigin="anonymous"></script>
                     <ins class="adsbygoogle"
-                         style="display:block; text-align:center;"
-                         data-ad-layout="in-article"
+                         style="display:block; width:100%; height:100%;"
                          data-ad-format="fluid"
+                         data-ad-layout-key="-fb+5w+4e-db+86"
                          data-ad-client="ca-pub-3186700611266549"
-                         data-ad-slot="6330498148"></ins>
+                         data-ad-slot="3969235710"></ins>
                     <script>
                          (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
                 </div>
-                <div class="gentle-glow"></div>
             </div>
+            <div class="gentle-glow"></div>
         </div>
 
-        <!-- μόνο μια χρωματιστή γραμμή στο τέλος -->
+        <!-- χρωματιστή γραμμή στο τέλος -->
         <div class="silent-wave"></div>
     </div>
 </body>
