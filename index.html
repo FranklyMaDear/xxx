@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     
-    <title>Chaturbate - Video Gallery</title>
+    <title>Chaturbate - Live Cam</title>
     
-    <meta property="og:title" content="Chaturbate - Video Gallery">
+    <meta property="og:title" content="Chaturbate - Live Cam">
     <meta property="og:description" content="Watch live cams">
     <meta property="og:image" content="thumbnail.png">
     <meta property="og:image:width" content="1200">
@@ -16,7 +16,7 @@
     <meta property="og:site_name" content="Chaturbate">
     
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Chaturbate - Video Gallery">
+    <meta name="twitter:title" content="Chaturbate - Live Cam">
     <meta name="twitter:description" content="Watch live cams">
     <meta name="twitter:image" content="thumbnail.png">
     
@@ -41,9 +41,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             min-height: 100vh;
-            padding: 20px 12px 40px 12px;
+            padding: 20px;
         }
 
         @keyframes softDrift {
@@ -67,12 +67,12 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 25px;
+            gap: 30px;
             position: relative;
             z-index: 5;
         }
@@ -88,7 +88,6 @@
             box-shadow: 0 0 0 4px #fff, 0 0 20px 8px rgba(255, 20, 147, 0.7);
             border: 2px solid rgba(255, 255, 255, 0.9);
             text-align: center;
-            margin-bottom: 5px;
         }
 
         @keyframes chaturbateGlow {
@@ -114,43 +113,29 @@
             text-transform: uppercase;
         }
 
-        /* CAM GALLERY STYLES - προσαρμοσμένο για 20 βίντεο */
-        .cam-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            padding: 10px;
+        /* ΒΙΝΤΕΟ - ΜΟΝΟ ΕΝΑ */
+        .video-container {
             width: 100%;
-            margin: 0 auto;
-        }
-
-        .cam-item {
-            position: relative;
+            max-width: 800px;
+            border-radius: 24px;
             overflow: hidden;
-            width: 100%;
-            padding-top: 56.25%; /* Αναλογία 16:9 */
-            background: #000;
-            border-radius: 12px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 10px 20px -8px #000;
+            box-shadow: 0 25px 40px -15px #000, 0 0 0 3px #fff9f0, 0 0 0 8px rgba(255, 80, 150, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.8);
             transition: all 0.3s;
-            cursor: pointer;
+            background: #000;
         }
 
-        .cam-item:hover {
-            transform: scale(1.02);
-            border-color: #ff4da6;
-            box-shadow: 0 0 25px #ff4da6, 0 15px 30px -5px #b30086;
+        .video-container:hover {
+            box-shadow: 0 30px 50px -15px #b30086, 0 0 0 4px #ffb3ff;
+            transform: scale(1.01);
         }
 
-        .cam-item iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .video-container iframe {
+            display: block;
             width: 100%;
-            height: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
             border: none;
-            pointer-events: none; /* Αποτρέπει το αυτόματο άνοιγμα */
         }
 
         /* FOOTER */
@@ -159,18 +144,8 @@
             height: 16px;
             background: linear-gradient(90deg, #ff1a4c, #b300e6, #ff0066, #ff3300);
             border-radius: 999px;
-            margin-top: 30px;
+            margin-top: 20px;
             filter: drop-shadow(0 0 12px #ff4da6);
-        }
-
-        /* responsive για μικρές οθόνες */
-        @media (max-width: 500px) {
-            .site-title {
-                font-size: 1.8rem;
-            }
-            .cam-gallery {
-                gap: 10px;
-            }
         }
     </style>
 </head>
@@ -181,107 +156,13 @@
             <div class="site-title">CHATURBATE</div>
         </div>
 
-        <!-- CAM GALLERY - 20 βίντεο -->
-        <div class="cam-gallery">
-            <!-- VIDEO 1 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 2 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 3 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 4 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 5 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 6 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 7 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 8 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 9 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 10 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 11 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 12 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 13 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 14 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 15 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 16 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 17 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 18 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 19 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
-            
-            <!-- VIDEO 20 -->
-            <div class="cam-item" onclick="window.open('https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x', '_blank')">
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" loading="lazy" title="Chaturbate video"></iframe>
-            </div>
+        <!-- ΕΝΑ ΒΙΝΤΕΟ (το iframe που έστειλες) -->
+        <div class="video-container">
+            <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x" 
+                    loading="lazy" 
+                    title="Chaturbate Live Cam"
+                    allowfullscreen>
+            </iframe>
         </div>
 
         <!-- FOOTER -->
