@@ -2,48 +2,335 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chaturbate - Live Cam</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    
+    <title>Chaturbate - Live Cams Gallery</title>
+    
     <style>
-        /* Βασικό reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Το body να καταλαμβάνει όλη την οθόνη */
-        body, html {
-            width: 100%;
+        body {
+            background: linear-gradient(145deg, #1a0b2e, #2d1b3e, #1f0f30, #2a1538);
+            background-size: 400% 400%;
+            animation: softDrift 24s ease infinite;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            padding: 20px 12px 40px;
             min-height: 100vh;
-            background: #1a0b2e; /* Σκούρο μωβ φόντο */
-            font-family: sans-serif;
         }
 
-        /* Απλός τίτλος στην κορυφή */
-        .page-header {
-            text-align: center;
-            padding: 20px 10px;
-            color: #ff99cc;
-            font-size: 1.8rem;
-            font-weight: bold;
-            text-shadow: 0 0 10px #ff4da6;
+        @keyframes softDrift {
+            0% { background-position: 0% 0%; }
+            33% { background-position: 100% 50%; }
+            66% { background-position: 50% 100%; }
+            100% { background-position: 0% 0%; }
         }
 
-        /* Το iframe σε πλήρη διάταξη */
-        iframe {
-            display: block;
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 1000px; /* Ύψος 1000px */
-            border: none;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 90, 150, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 90% 80%, rgba(150, 70, 255, 0.2) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* CHATURBATE BANNER */
+        .title-banner {
+            width: 100%;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #ff1a4c, #b300e6, #6b00b3, #ff0066);
+            background-size: 300% 300%;
+            animation: chaturbateGlow 5s ease infinite;
+            border-radius: 50px 15px 50px 15px;
+            box-shadow: 0 0 0 4px #fff, 0 0 20px 8px rgba(255, 20, 147, 0.7);
+            border: 2px solid rgba(255, 255, 255, 0.9);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        @keyframes chaturbateGlow {
+            0% { background-position: 0% 0%; filter: brightness(1); }
+            50% { background-position: 100% 100%; filter: brightness(1.2); }
+            100% { background-position: 0% 0%; filter: brightness(1); }
+        }
+
+        .site-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: white;
+            text-shadow: 0 0 8px #ff99cc, 0 0 15px #ff4da6, 0 0 25px #ff00bf, 2px 2px 0 #000;
+            letter-spacing: 2px;
+            background: rgba(0,0,0,0.2);
+            padding: 8px 25px;
+            border-radius: 40px;
+            display: inline-block;
+            backdrop-filter: blur(4px);
+            border: 2px solid rgba(255,255,255,0.7);
+            font-family: 'Impact', 'Arial Black', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* ΚΑΤΗΓΟΡΙΕΣ - TABS */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .category-btn {
+            background: rgba(30, 10, 40, 0.7);
+            backdrop-filter: blur(8px);
+            color: white;
+            border: 2px solid rgba(255, 100, 150, 0.5);
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 10px -3px #000;
+        }
+
+        .category-btn:hover, .category-btn.active {
+            background: #ff1a4c;
+            border-color: white;
+            box-shadow: 0 0 15px #ff4da6;
+            transform: scale(1.05);
+        }
+
+        /* GRID ΓΙΑ ΤΙΣ ΚΑΡΤΕΣ */
+        .cams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        /* ΚΑΡΤΑ CAM */
+        .cam-card {
+            background: rgba(20, 5, 30, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 25px -10px #000;
+            transition: all 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .cam-card:hover {
+            transform: scale(1.03);
+            border-color: #ff4da6;
+            box-shadow: 0 0 25px #ff4da6;
+        }
+
+        .cam-thumb {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            background: #000;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cam-info {
+            padding: 12px;
+        }
+
+        .cam-username {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #ff99cc;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .cam-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .cam-viewers {
+            color: #ff4da6;
+            font-weight: bold;
+        }
+
+        /* LOADING */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* FOOTER */
+        .silent-wave {
+            width: 100%;
+            height: 16px;
+            background: linear-gradient(90deg, #ff1a4c, #b300e6, #ff0066, #ff3300);
+            border-radius: 999px;
+            margin-top: 40px;
+            filter: drop-shadow(0 0 12px #ff4da6);
+        }
+
+        /* responsive */
+        @media (max-width: 500px) {
+            .site-title { font-size: 1.8rem; }
+            .cams-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
         }
     </style>
 </head>
 <body>
-    <div class="page-header">Chaturbate Live</div>
+    <div class="container">
+        <!-- BANNER -->
+        <div class="title-banner">
+            <div class="site-title">CHATURBATE</div>
+        </div>
 
-    <!-- ΕΝΑ iframe με το νέο link -->
-    <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x"></iframe>
+        <!-- ΚΑΤΗΓΟΡΙΕΣ -->
+        <div class="categories">
+            <button class="category-btn active" data-gender="">Featured Cams</button>
+            <button class="category-btn" data-gender="m">Male Cams</button>
+            <button class="category-btn" data-gender="f">Female Cams</button>
+            <button class="category-btn" data-gender="c">Couple Cams</button>
+            <button class="category-btn" data-gender="t">Trans Cams</button>
+        </div>
 
+        <!-- GRID ΓΙΑ ΤΑ ΑΠΟΤΕΛΕΣΜΑΤΑ -->
+        <div id="camsContainer" class="cams-grid">
+            <div class="loading">Loading cams...</div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="silent-wave"></div>
+    </div>
+
+    <script>
+        // Βασικές ρυθμίσεις
+        const affiliateCode = 'hrmwy';
+        const apiBase = 'https://chaturbate.com/api/chat/v1/rooms/';
+        let currentGender = '';
+
+        // Συνάρτηση για να φτιάξουμε το feed URL
+        function getFeedUrl(gender = '') {
+            let url = `https://chaturbate.com/feed/latest/?wm=${affiliateCode}`;
+            if (gender) {
+                url += `&gender=${gender}`;
+            }
+            // Χρησιμοποιούμε CORS proxy για να παρακάμψουμε τα restrictions
+            return `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+        }
+
+        // Συνάρτηση για φόρτωση δεδομένων
+        async function loadCams(gender = '') {
+            const container = document.getElementById('camsContainer');
+            container.innerHTML = '<div class="loading">Loading cams...</div>';
+            
+            try {
+                const feedUrl = getFeedUrl(gender);
+                const response = await fetch(feedUrl);
+                
+                if (!response.ok) throw new Error('Network error');
+                
+                const xmlText = await response.text();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+                
+                // Βρίσκουμε όλα τα items
+                const items = xmlDoc.querySelectorAll('item');
+                
+                if (items.length === 0) {
+                    container.innerHTML = '<div class="loading">No cams available</div>';
+                    return;
+                }
+
+                // Άδειασμα container
+                container.innerHTML = '';
+
+                // Δημιουργία καρτών για κάθε item
+                items.forEach(item => {
+                    // Εξαγωγή δεδομένων από το XML
+                    const title = item.querySelector('title')?.textContent || 'Unknown';
+                    const link = item.querySelector('link')?.textContent || '#';
+                    const description = item.querySelector('description')?.textContent || '';
+                    const pubDate = item.querySelector('pubDate')?.textContent || '';
+                    
+                    // Προσθήκη affiliate code στο link
+                    const camLink = new URL(link);
+                    camLink.searchParams.set('wm', affiliateCode);
+                    
+                    // Δημιουργία μοναδικού thumb (το Chaturbate δεν δίνει εικόνα στο feed, χρησιμοποιούμε placeholder)
+                    // Στην πραγματικότητα, θα πρέπει να πάρουμε το username από το link
+                    const username = link.split('/').filter(Boolean).pop() || 'cam';
+                    
+                    // Δημιουργία κάρτας
+                    const card = document.createElement('a');
+                    card.href = camLink.toString();
+                    card.target = '_blank';
+                    card.className = 'cam-card';
+                    
+                    // Εσωτερικό της κάρτας
+                    card.innerHTML = `
+                        <img class="cam-thumb" src="https://placehold.co/320x180/1a0b2e/ff4da6?text=${username}" alt="${title}">
+                        <div class="cam-info">
+                            <div class="cam-username">${title}</div>
+                            <div class="cam-details">
+                                <span>${gender ? gender.toUpperCase() : 'ALL'}</span>
+                                <span class="cam-viewers">🔴 LIVE</span>
+                            </div>
+                        </div>
+                    `;
+                    
+                    container.appendChild(card);
+                });
+
+            } catch (error) {
+                console.error('Error loading cams:', error);
+                container.innerHTML = '<div class="loading">Error loading cams. Please try again.</div>';
+            }
+        }
+
+        // Event listeners για τα κουμπιά κατηγοριών
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                // Update active state
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Get gender and load cams
+                const gender = btn.dataset.gender;
+                currentGender = gender;
+                await loadCams(gender);
+            });
+        });
+
+        // Αρχική φόρτωση (Featured)
+        loadCams('');
+    </script>
 </body>
 </html>
