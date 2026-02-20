@@ -93,32 +93,26 @@
             100% { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff4da6, 0 0 30px #ff00bf; }
         }
 
-        /* Grid για 2 iframe δίπλα-δίπλα */
-        .videos-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 ίσες στήλες */
-            gap: 20px;
+        /* Πλαίσιο για το iframe */
+        .frame {
             width: 100%;
+            background: rgba(30, 10, 40, 0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 30px;
+            padding: 20px;
+            border: 2px solid rgba(255, 80, 150, 0.4);
             margin-bottom: 30px;
         }
 
-        /* Κάθε iframe παίρνει όλο το πλάτος του grid cell */
-        .videos-grid iframe {
+        /* Iframe ύψους 1000px */
+        iframe {
+            display: block;
             width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 9; /* Αναλογία 16:9 για σωστή εμφάνιση */
+            height: 1000px;
             border: none;
-            border-radius: 16px;
-            box-shadow: 0 20px 30px -10px #000, 
-                        0 0 0 2px rgba(255, 80, 150, 0.3);
-            transition: all 0.3s;
+            border-radius: 20px;
             background: #000;
-        }
-
-        .videos-grid iframe:hover {
-            transform: scale(1.02);
-            box-shadow: 0 25px 35px -12px #b30086, 
-                        0 0 0 3px #ff4da6;
+            box-shadow: 0 25px 35px -12px #000;
         }
 
         /* Διακοσμητική γραμμή */
@@ -131,27 +125,25 @@
             filter: drop-shadow(0 0 8px #ff4da6);
         }
 
-        /* Responsive για κινητά - τα βάζει το ένα κάτω από το άλλο */
-        @media (max-width: 600px) {
-            .videos-grid {
-                grid-template-columns: 1fr; /* Μία στήλη */
-                gap: 15px;
+        /* Responsive */
+        @media (max-width: 800px) {
+            iframe {
+                height: 800px; /* Μικρότερο ύψος σε tablets */
             }
-            
+        }
+
+        @media (max-width: 500px) {
             .title h1 {
                 font-size: 2.2rem;
                 padding: 8px 20px;
             }
             
-            .videos-grid iframe {
-                border-radius: 12px;
+            iframe {
+                height: 600px; /* Ακόμα μικρότερο σε κινητά */
             }
-        }
-
-        /* Responsive για tablets - μικρότερο gap */
-        @media (min-width: 601px) and (max-width: 900px) {
-            .videos-grid {
-                gap: 15px;
+            
+            .frame {
+                padding: 10px;
             }
         }
     </style>
@@ -163,13 +155,8 @@
             <h1>CHATURBATE</h1>
         </div>
         
-        <!-- Grid με 2 iframe -->
-        <div class="videos-grid">
-            <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x" 
-                    frameborder="0"
-                    allowfullscreen>
-            </iframe>
-            
+        <!-- Πλαίσιο με ένα iframe ύψους 1000px -->
+        <div class="frame">
             <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x" 
                     frameborder="0"
                     allowfullscreen>
