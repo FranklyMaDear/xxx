@@ -2,171 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    
-    <title>Chaturbate - Live Cam</title>
-    
-    <meta property="og:title" content="Chaturbate - Live Cam">
-    <meta property="og:description" content="Watch live cams">
-    <meta property="og:image" content="thumbnail.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://www.example.com/">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Chaturbate">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Chaturbate - Live Cam">
-    <meta name="twitter:description" content="Watch live cams">
-    <meta name="twitter:image" content="thumbnail.png">
-    
-    <link rel="icon" type="image/png" href="thumbnail.png">
-    <link rel="apple-touch-icon" href="thumbnail.png">
-    <meta name="apple-mobile-web-app-title" content="Chaturbate">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaturbate - Live Cams</title>
     <style>
+        /* Βασικό reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            background: linear-gradient(145deg, #1a0b2e, #2d1b3e, #1f0f30, #2a1538);
-            background-size: 400% 400%;
-            animation: softDrift 24s ease infinite;
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        /* Το body να καταλαμβάνει όλη την οθόνη και να επιτρέπει scroll */
+        body, html {
+            width: 100%;
             min-height: 100vh;
-            padding: 20px;
+            background: #1a0b2e; /* Σκούρο μωβ φόντο, αντίστοιχο του Chaturbate */
+            font-family: sans-serif;
         }
 
-        @keyframes softDrift {
-            0% { background-position: 0% 0%; }
-            33% { background-position: 100% 50%; }
-            66% { background-position: 50% 100%; }
-            100% { background-position: 0% 0%; }
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 30%, rgba(255, 90, 150, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at 90% 80%, rgba(150, 70, 255, 0.2) 0%, transparent 60%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .container {
-            max-width: 900px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-            position: relative;
-            z-index: 5;
-        }
-
-        /* CHATURBATE BANNER */
-        .title-banner {
-            width: 100%;
-            padding: 12px 15px;
-            background: linear-gradient(135deg, #ff1a4c, #b300e6, #6b00b3, #ff0066);
-            background-size: 300% 300%;
-            animation: chaturbateGlow 5s ease infinite;
-            border-radius: 40px 10px 40px 10px;
-            box-shadow: 0 0 0 4px #fff, 0 0 20px 8px rgba(255, 20, 147, 0.7);
-            border: 2px solid rgba(255, 255, 255, 0.9);
+        /* Απλός τίτλος στην κορυφή (προαιρετικά, για αναφορά) */
+        .page-header {
             text-align: center;
+            padding: 20px 10px;
+            color: #ff99cc;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px #ff4da6;
         }
 
-        @keyframes chaturbateGlow {
-            0% { background-position: 0% 0%; filter: brightness(1); }
-            50% { background-position: 100% 100%; filter: brightness(1.2); }
-            100% { background-position: 0% 0%; filter: brightness(1); }
-        }
-
-        .site-title {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: white;
-            text-shadow: 0 0 8px #ff99cc, 0 0 15px #ff4da6, 0 0 25px #ff00bf, 2px 2px 0 #000;
-            letter-spacing: 1px;
-            white-space: nowrap;
-            background: rgba(0,0,0,0.2);
-            padding: 5px 18px;
-            border-radius: 30px;
-            display: inline-block;
-            backdrop-filter: blur(4px);
-            border: 2px solid rgba(255,255,255,0.7);
-            font-family: 'Impact', 'Arial Black', sans-serif;
-            text-transform: uppercase;
-        }
-
-        /* ΒΙΝΤΕΟ - ΜΟΝΟ ΕΝΑ */
-        .video-container {
-            width: 100%;
-            max-width: 800px;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 25px 40px -15px #000, 0 0 0 3px #fff9f0, 0 0 0 8px rgba(255, 80, 150, 0.4);
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            transition: all 0.3s;
-            background: #000;
-        }
-
-        .video-container:hover {
-            box-shadow: 0 30px 50px -15px #b30086, 0 0 0 4px #ffb3ff;
-            transform: scale(1.01);
-        }
-
-        .video-container iframe {
+        /* Το iframe το κάνουμε block, ώστε να είναι το ένα κάτω από το άλλο */
+        iframe {
             display: block;
             width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 9;
             border: none;
+            /* Δεν του βάζουμε固定 ύψος, αλλά το αφήνουμε να καθορίζεται από το περιεχόμενο 
+               ή αν θέλουμε σταθερό ύψος, βάζουμε π.χ. height: 400px; */
+            height: 500px; /* Προσάρμοσε το ύψος όπως επιθυμείς. Μπορείς να το αυξήσεις ή να το κάνεις "100vh" */
+            margin-bottom: 5px; /* Μικρή απόσταση μεταξύ των iframe */
         }
 
-        /* FOOTER */
-        .silent-wave {
-            width: 100%;
-            height: 16px;
-            background: linear-gradient(90deg, #ff1a4c, #b300e6, #ff0066, #ff3300);
-            border-radius: 999px;
-            margin-top: 20px;
-            filter: drop-shadow(0 0 12px #ff4da6);
-        }
+        /* Προαιρετικά: αν θέλεις να δημιουργήσεις την αίσθηση του "ατέλειωτου scroll", 
+           μπορείς να επαναλάβεις το ίδιο iframe πολλές φορές. 
+           Εδώ το βάζουμε 5 φορές για παράδειγμα. */
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- BANNER -->
-        <div class="title-banner">
-            <div class="site-title">CHATURBATE</div>
-        </div>
+    <div class="page-header">Chaturbate Live</div>
 
-        <!-- ΕΝΑ ΒΙΝΤΕΟ (το iframe που έστειλες) -->
-        <div class="video-container">
-            <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x" 
-                    loading="lazy" 
-                    title="Chaturbate Live Cam"
-                    allowfullscreen>
-            </iframe>
-        </div>
+    <!-- Επανάληψη του iframe 5 φορές, για να δημιουργηθεί scroll -->
+    <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x"></iframe>
+    <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x"></iframe>
+    <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x"></iframe>
+    <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x"></iframe>
+    <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x"></iframe>
+    <!-- Πρόσθεσε ή αφαίρεσε όσα αντίγραφα θέλεις -->
 
-        <!-- FOOTER -->
-        <div class="silent-wave"></div>
-    </div>
 </body>
 </html>
