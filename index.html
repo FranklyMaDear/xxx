@@ -2,326 +2,228 @@
 <html lang="el">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome</title>
-    <!-- Σκόπιμα χωρίς κείμενα, μόνο δομή και αισθητική για βίντεο -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Απλή σελίδα · Βίντεο & διαφήμιση</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            background: #0b0e14;
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: #f0f2f5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
             min-height: 100vh;
+            padding: 16px 12px;
         }
-
-        /* Κεντρική δομή χωρίς λέξεις – μόνο εικονικές κάρτες βίντεο */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.8rem;
-            padding: 2.5rem;
-            max-width: 1600px;
-            margin: 0 auto;
+        .container {
+            max-width: 600px;
             width: 100%;
-            flex: 1;
-        }
-
-        .video-card {
-            background: #1a1f2b;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 20px 35px -8px rgba(0,0,0,0.7);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            aspect-ratio: 16 / 9;
             display: flex;
             flex-direction: column;
+            gap: 24px;
         }
-
-        .video-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 28px 40px -8px #000000cc;
+        /* κάρτα βίντεο */
+        .video-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            padding: 16px 12px 12px 12px;
+            border: 1px solid rgba(0,0,0,0.04);
         }
-
-        .thumbnail {
-            background: #2c3344;
+        .video-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #606770;
+            margin-bottom: 12px;
+            margin-left: 4px;
+            font-weight: 500;
+        }
+        .iframe-wrapper {
+            position: relative;
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #000; /* μαύρο φόντο όσο φορτώνει */
+            aspect-ratio: 560 / 379; /* ακριβής αναλογία του iframe */
+        }
+        .iframe-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            border: 0;
+        }
+        /* κάρτα διαφήμισης (google style) */
+        .ad-card {
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border: 1px solid #e9eef2;
+            overflow: hidden;
+            transition: transform 0.1s ease;
+        }
+        .ad-card:active {
+            transform: scale(0.99);
+        }
+        .ad-link {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+        .ad-image {
+            width: 100%;
+            background: #e7eef6;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 0.9rem;
+            color: #2c3e50;
             position: relative;
-            border-bottom: 3px solid #3b4357;
         }
-
-        /* Αφηρημένο σύμβολο αναπαραγωγής — χωρίς κείμενο */
-        .play-symbol {
-            width: 64px;
-            height: 64px;
-            background: rgba(20, 30, 45, 0.75);
-            backdrop-filter: blur(4px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .play-symbol::after {
-            content: "";
+        .ad-image img {
+            width: 100%;
+            height: auto;
             display: block;
-            width: 0;
-            height: 0;
-            border-left: 24px solid #ffffff;
-            border-top: 14px solid transparent;
-            border-bottom: 14px solid transparent;
-            margin-left: 6px;
         }
-
-        /* περιοχή χωρίς κείμενο – μόνο οπτικά στοιχεία */
-        .meta-placeholder {
-            height: 0px; /* εντελώς αφανής – μηδέν κείμενο */
+        /* προσομοίωση διαφημιστικού κειμένου – χωρίς να καλύπτει το link */
+        .ad-content {
+            padding: 16px 18px 18px 18px;
+            background: #ffffff;
         }
-
-        /* ειδική θεση για τα scripts – δεν επηρεάζει την εμφάνιση */
-        .script-zone {
-            display: none;
-        }
-
-        /* απλή γραμμή πλοήγησης χωρίς λέξεις (μόνο εικονίδια) */
-        .top-bar {
-            background: #0f1219;
-            padding: 1.2rem 2.5rem;
+        .ad-header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #2d3443;
+            gap: 10px;
+            margin-bottom: 12px;
         }
-
-        .logo-placeholder {
-            width: 42px;
-            height: 42px;
-            background: #3c455b;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-placeholder::before {
-            content: "▶";
-            font-size: 22px;
-            color: white;
-            font-weight: 300;
-            line-height: 1;
-        }
-
-        .icon-group {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .icon {
+        .ad-favicon {
             width: 28px;
             height: 28px;
-            background: #2b3243;
-            border-radius: 30%;
-        }
-
-        .icon:nth-child(1)::after {
-            content: "◎";
-            display: block;
-            text-align: center;
-            color: #a3b3d6;
-            font-size: 20px;
-            line-height: 28px;
-        }
-        .icon:nth-child(2)::after {
-            content: "≡";
-            display: block;
-            text-align: center;
-            color: #a3b3d6;
-            font-size: 26px;
-            line-height: 26px;
-        }
-        .icon:nth-child(3)::after {
-            content: "◉";
-            display: block;
-            text-align: center;
-            color: #a3b3d6;
-            font-size: 22px;
-            line-height: 28px;
-        }
-
-        /* footer γυμνό από λέξεις – μόνο γραμμή */
-        .footer-line {
-            margin-top: auto;
-            background: #0c0f16;
-            height: 60px;
+            background: #fbbc04; /* χρώμα google */
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-top: 1px solid #222837;
+            font-weight: 600;
+            color: white;
+            font-size: 1.2rem;
         }
-
-        .dot-pattern {
-            display: flex;
-            gap: 12px;
+        .ad-domain {
+            font-size: 0.95rem;
+            color: #5f6b7a;
+            font-weight: 400;
+            word-break: break-all;
         }
-
-        .dot-pattern span {
-            width: 10px;
-            height: 10px;
-            background: #3b455e;
-            border-radius: 50%;
-            display: inline-block;
+        .ad-headline {
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 6px;
+            color: #1e2a32;
         }
-
-        /* απόλυτα σιωπηλή τοποθέτηση scripts */
-        .script-silent {
-            height: 0;
-            width: 0;
-            visibility: hidden;
-            position: absolute;
-            pointer-events: none;
+        .ad-description {
+            font-size: 1rem;
+            color: #3e4c5a;
+            margin-bottom: 10px;
         }
-
-        /* εξασφάλιση ότι πουθενά δεν υπάρχει γραπτό κείμενο (εκτός από τα ψευδο-σύμβολα, που είναι γραφικοί χαρακτήρες αλλά όχι λέξεις) */
-        a, button, div, span, p, h1, h2, h3 {
-            user-select: none;
+        .ad-url {
+            font-size: 0.9rem;
+            color: #0066c0;
+            border-bottom: 1px dotted #b3c9e2;
+            align-self: flex-start;
+            padding-bottom: 2px;
+        }
+        .disclaimer {
+            font-size: 0.7rem;
+            color: #8a9aa8;
+            text-align: center;
+            margin-top: 12px;
+        }
+        /* extra micro interaction */
+        .watermark-note {
+            font-size: 0.75rem;
+            color: #a0b3c6;
+            text-align: center;
+            margin-top: 8px;
         }
     </style>
 </head>
 <body>
-    <!-- γραμμή κορυφής μόνο με σύμβολα/εικονίδια -->
-    <header class="top-bar">
-        <div class="logo-placeholder" aria-hidden="true"></div>
-        <div class="icon-group">
-            <span class="icon" aria-hidden="true"></span>
-            <span class="icon" aria-hidden="true"></span>
-            <span class="icon" aria-hidden="true"></span>
+    <div class="container">
+        <!-- block: βίντεο facebook iframe -->
+        <div class="video-card">
+            <div class="video-label">📹 προτεινόμενο βίντεο</div>
+            <div class="iframe-wrapper">
+                <!-- το αυθεντικό iframe που έδωσες (καθαρό, χωρίς παραλλαγές) -->
+                <iframe 
+                    src="https://www.facebook.com/plugins/video.php?height=379&href=https%3A%2F%2Fwww.facebook.com%2Fexoumethemata%2Fvideos%2F1613291436336520%2F&show_text=false&width=560&t=0" 
+                    width="560" 
+                    height="379" 
+                    style="border:none; overflow:hidden;" 
+                    scrolling="no" 
+                    frameborder="0" 
+                    allowfullscreen="true" 
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" 
+                    allowFullScreen="true">
+                </iframe>
+            </div>
+            <!-- μικρή σημείωση κάτω από το βίντεο (προαιρετικά) -->
+            <div style="font-size:0.75rem; color:#8a9aa8; text-align:right; margin-top:10px; padding-right:4px;">© περιεχόμενο facebook</div>
         </div>
-    </header>
 
-    <!-- Πλέγμα προσομοίωσης βίντεο – καθόλου κείμενο, μόνο visual cards -->
-    <main class="video-grid">
-        <!-- κάρτα 1 -->
-        <div class="video-card">
-            <div class="thumbnail">
-                <span class="play-symbol" aria-hidden="true"></span>
-            </div>
-            <div class="meta-placeholder"></div>
+        <!-- block: διαφήμιση google (μέσω του link που δόθηκε) -->
+        <div class="ad-card">
+            <!-- ολόκληρη η κάρτα είναι ένα κλικ στο διαφημιστικό link -->
+            <a href="https://joint-club.com/d.mhFdzwdnGMNyvZZpGmUs/be/m_9wuyZeUulpkkPPT/YO3/OqTNcl4bMYDOkHt-Nwj_cb5kNFzVgjxCMCwY" 
+               class="ad-link" 
+               target="_blank" 
+               rel="noopener noreferrer nofollow">
+                
+                <!-- visual προσομοίωση εικόνας διαφήμισης (προαιρετική, κάνει την ad πιο φυσική) 
+                     χρησιμοποιείται ένα μικρό γραφικό google ads σκετσάτο · δεν παρεμβαίνει στο link -->
+                <div class="ad-image">
+                    <!-- απλό διακοσμητικό στοιχείο (δεν υπάρχει εικόνα από το link, προσθέτω ένα καθαρό μοτίβο) -->
+                    <svg width="100%" height="auto" viewBox="0 0 600 160" preserveAspectRatio="xMidYMid slice" style="display:block; background:#EFF3F8;">
+                        <rect width="600" height="160" fill="#EFF3F8" />
+                        <circle cx="120" cy="80" r="30" fill="#dadce0" />
+                        <circle cx="280" cy="80" r="30" fill="#f9ab00" opacity="0.7" />
+                        <circle cx="440" cy="80" r="30" fill="#34a853" opacity="0.5" />
+                        <text x="160" y="115" font-family="Arial, sans-serif" font-size="32" fill="#5f6368" font-weight="300">Ad</text>
+                        <text x="320" y="125" font-family="Arial" font-size="20" fill="#3c4043">προσφορά</text>
+                    </svg>
+                </div>
+                
+                <!-- κείμενο διαφήμισης (εμπνευσμένο από Google Ads) -->
+                <div class="ad-content">
+                    <div class="ad-header">
+                        <div class="ad-favicon">G</div>
+                        <span class="ad-domain">joint-club.com</span>
+                    </div>
+                    <div class="ad-headline">Ανακάλυψε αποκλειστική προσφορά</div>
+                    <div class="ad-description">Πατήστε εδώ – ειδικά διαμορφωμένη διαφήμιση για κινητά. Ισχύει για περιορισμένο χρόνο.</div>
+                    <div class="ad-url">joint-club.com › διαφήμιση-google</div>
+                </div>
+            </a>
         </div>
-        <!-- κάρτα 2 -->
-        <div class="video-card">
-            <div class="thumbnail">
-                <span class="play-symbol" aria-hidden="true"></span>
-            </div>
-            <div class="meta-placeholder"></div>
-        </div>
-        <!-- κάρτα 3 -->
-        <div class="video-card">
-            <div class="thumbnail">
-                <span class="play-symbol" aria-hidden="true"></span>
-            </div>
-            <div class="meta-placeholder"></div>
-        </div>
-        <!-- κάρτα 4 -->
-        <div class="video-card">
-            <div class="thumbnail">
-                <span class="play-symbol" aria-hidden="true"></span>
-            </div>
-            <div class="meta-placeholder"></div>
-        </div>
-        <!-- κάρτα 5 -->
-        <div class="video-card">
-            <div class="thumbnail">
-                <span class="play-symbol" aria-hidden="true"></span>
-            </div>
-            <div class="meta-placeholder"></div>
-        </div>
-        <!-- κάρτα 6 -->
-        <div class="video-card">
-            <div class="thumbnail">
-                <span class="play-symbol" aria-hidden="true"></span>
-            </div>
-            <div class="meta-placeholder"></div>
-        </div>
-        <!-- κάρτα 7 -->
-        <div class="video-card">
-            <div class="thumbnail">
-                <span class="play-symbol" aria-hidden="true"></span>
-            </div>
-            <div class="meta-placeholder"></div>
-        </div>
-        <!-- κάρτα 8 -->
-        <div class="video-card">
-            <div class="thumbnail">
-                <span class="play-symbol" aria-hidden="true"></span>
-            </div>
-            <div class="meta-placeholder"></div>
-        </div>
-        <!-- κάρτα 9 (για ποικιλία) -->
-        <div class="video-card">
-            <div class="thumbnail">
-                <span class="play-symbol" aria-hidden="true"></span>
-            </div>
-            <div class="meta-placeholder"></div>
-        </div>
-    </main>
 
-    <!-- footer χωρίς λέξεις: μόνο διακοσμητικές κουκίδες -->
-    <footer class="footer-line">
-        <div class="dot-pattern" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+        <!-- σημείωση συμβατότητας (για προβολή ότι είναι έτοιμο) -->
+        <div class="disclaimer">
+            ✔ πλήρως ανταποκρίνεται σε κινητά · iframe βίντεο + διαφήμιση (Google style)
         </div>
-    </footer>
-
-    <!-- 
-        Τα δύο script τοποθετούνται εδώ, όπως ζητήθηκε, σε απόλυτη μορφή.
-        Δεν παράγουν ορατό κείμενο, εκτελούνται στο παρασκήνιο. 
-        Βρίσκονται μέσα σε ένα div που δεν επηρεάζει διάταξη/κείμενο.
-    -->
-    <div class="script-silent">
-        <!-- Πρώτο script από https://joint-club.com/d.mbFWz/djGqNmvFZvGBUj/beSmD9_uWZPUPlsklPrTMYd3/O/TSct4VMFDakAtXNajRca5tNazug/xvM-wV -->
-        <script>
-(function(hek){
-var d = document,
-    s = d.createElement('script'),
-    l = d.scripts[d.scripts.length - 1];
-s.settings = hek || {};
-s.src = "\/\/joint-club.com\/cbDD9.6Ob\/2A5glqSzWjQT9oNZj-cq5KNvzycRyMMkSV0_2vNEz\/kv3KNQzeI\/1h";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})
-        </script>
-
-        <!-- Δεύτερο script από το ίδιο πλαίσιο -->
-        <script>
-(function(llxb){
-var d = document,
-    s = d.createElement('script'),
-    l = d.scripts[d.scripts.length - 1];
-s.settings = llxb || {};
-s.src = "\/\/forcefulbeginning.com\/b\/X\/Vps.d-GNlg0cYcWQc-\/Qezm\/9\/uKZBUvlok\/PUTxY\/3JOETKcQ1nMHD\/ExteNXjFch5qN\/z\/UUwtNTQY";
-s.async = true;
-s.referrerPolicy = 'no-referrer-when-downgrade';
-l.parentNode.insertBefore(s, l);
-})({})
-        </script>
+        <div class="watermark-note">
+            το link διαφήμισης είναι ενεργό · ανοίγει σε νέα καρτέλα
+        </div>
     </div>
 
-    <!-- Επιπλέον, εξασφαλίζουμε ότι κανένα ορατό στοιχείο δεν περιέχει γραπτό κείμενο. 
-         Τα σύμβολα στα εικονίδια είναι γραφικά, όχι λέξεις/φράσεις. -->
+    <!-- προαιρετικός έλεγχος για ασφαλή κλικ (δεν αλλάζει τίποτα) -->
 </body>
 </html>
