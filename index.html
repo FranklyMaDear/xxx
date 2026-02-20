@@ -11,11 +11,11 @@
             box-sizing: border-box;
         }
 
-        /* Φόντι που "παίζει" με ζωντανά χρώματα – χωρίς λέξεις */
+        /* Ζωντανό φόντο που αλλάζει – χωρίς λέξεις */
         body {
-            background: linear-gradient(324deg, #f09a9a, #b3a0ff, #a7f0c3, #ffcf8a, #ffa8d1);
-            background-size: 500% 500%;
-            animation: breatheBg 18s ease infinite;
+            background: linear-gradient(324deg, #f09a9a, #b3a0ff, #a7f0c3, #ffcf8a, #ffa8d1, #9be6ff);
+            background-size: 600% 600%;
+            animation: breatheBg 22s ease infinite;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             display: flex;
             flex-direction: column;
@@ -33,7 +33,7 @@
             100% { background-position: 0% 0%; }
         }
 
-        /* επιπλέον χρωματικό στρώμα χωρίς κείμενο */
+        /* επιπλέον στρώμα λάμψης */
         body::after {
             content: '';
             position: fixed;
@@ -41,8 +41,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 20% 30%, rgba(255, 225, 140, 0.4) 0%, transparent 40%),
-                        radial-gradient(circle at 90% 70%, rgba(190, 130, 255, 0.45) 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 40%, rgba(255, 210, 140, 0.5) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(200, 130, 255, 0.5) 0%, transparent 60%);
             pointer-events: none;
             z-index: 0;
         }
@@ -57,23 +57,7 @@
             z-index: 5;
         }
 
-        /* μόνο ο τίτλος "Τα Βίντεο μου" – ΤΙΠΟΤΑ ΑΛΛΟ */
-        .page-title {
-            font-size: 3.8rem;
-            font-weight: 900;
-            background: linear-gradient(145deg, #fff7b0, #ffd0b0, #e0c0ff, #b0f0d0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 30px #ffba7a, 0 0 60px #f8f;
-            letter-spacing: -0.5px;
-            border: none;
-            padding: 0 0 0 25px;
-            margin-bottom: 0;
-            line-height: 1.1;
-        }
-
-        /* κάρτες βίντεο – μόνο το iframe, τίποτα άλλο */
+        /* κάρτες βίντεο – μόνο iframe, τίποτα άλλο */
         .video-card {
             background: rgba(255, 250, 240, 0.5);
             backdrop-filter: blur(16px);
@@ -105,7 +89,7 @@
             border: 0;
         }
 
-        /* διαφημιστικά τετράγωνα – χωρίς λέξεις, μόνο το ad code */
+        /* διαφημιστικά τετράγωνα – μόνο ad code, κανένα άλλο οπτικό στοιχείο */
         .ad-spacer {
             width: 100%;
             display: flex;
@@ -117,47 +101,30 @@
         .ad-square {
             width: 300px;
             height: 300px;
-            background: linear-gradient(145deg, #fdba9a, #e0aaff, #b0f0d8, #ffe684);
-            background-size: 300% 300%;
-            animation: adMove 12s alternate infinite;
-            border-radius: 70px 30px 70px 30px;
-            padding: 24px;
-            box-shadow: 0 45px 45px -15px #b03f80, 0 0 0 8px #fff3b5, 0 0 0 16px #ffc6c6;
-            border: 6px solid #fffdf0;
-        }
-
-        @keyframes adMove {
-            0% { background-position: 0% 0%; border-radius: 70px 30px 70px 30px; }
-            50% { background-position: 100% 100%; border-radius: 40px 70px 30px 70px; }
-            100% { background-position: 30% 70%; border-radius: 60px 40px 70px 30px; }
-        }
-
-        .ad-square:hover {
-            transform: rotate(2deg) scale(1.04);
-            box-shadow: 0 45px 45px -10px #ff79a0, 0 0 0 12px #fffed0, 0 0 0 24px #ffcfdf;
-        }
-
-        .ad-inner {
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(22px);
-            -webkit-backdrop-filter: blur(22px);
-            border-radius: 45px;
-            padding: 12px;
-            border: 5px solid #ffffffdd;
-            box-shadow: inset 0 0 30px #fffacd;
+            background: transparent;  /* κανένα πλαίσιο, μόνο η διαφήμιση */
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* κανένα απολύτως κείμενο, μόνο χρώμα */
-        .no-text {
-            display: none;
+        /* το ad inner είναι ακριβώς το μέγεθος του ad code – χωρίς χρώμα, χωρίς περίγραμμα */
+        .ad-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
         }
 
-        /* μικρή γραμμή τέλους χωρίς λέξεις */
+        /* Οι διαφημίσεις είναι απόλυτα γυμνές – τίποτα άλλο */
+        .ad-inner ins {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* τελείως σιωπηλή γραμμή τέλους */
         .silent-end {
             width: 100%;
             height: 16px;
@@ -166,12 +133,13 @@
             box-shadow: 0 0 20px hotpink;
             margin-top: 20px;
         }
+
+        /* κανένα κείμενο πουθενά */
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- ΜΟΝΟ Ο ΤΙΤΛΟΣ: "Τα Βίντεο μου" – ακριβώς όπως το ζήτησες -->
-        <div class="page-title">Τα Βίντεο μου</div>
+        <!-- ΚΑΝΕΝΑΣ ΤΙΤΛΟΣ – ΜΟΝΟ ΒΙΝΤΕΟ ΚΑΙ ΔΙΑΦΗΜΙΣΕΙΣ -->
 
         <!-- ΒΙΝΤΕΟ 1 (αρχικό) -->
         <div class="video-card">
@@ -180,7 +148,7 @@
             </div>
         </div>
 
-        <!-- ΔΙΑΦΗΜΙΣΗ 1 (ανάμεσα) -->
+        <!-- ΔΙΑΦΗΜΙΣΗ 1 (ανάμεσα) – χωρίς πλαίσιο, μόνο ad code -->
         <div class="ad-spacer">
             <div class="ad-square">
                 <div class="ad-inner">
@@ -245,14 +213,14 @@
             </div>
         </div>
 
-        <!-- ΝΕΟ ΒΙΝΤΕΟ 5 (2153146075484721) – όπως ζητήθηκε τελευταίο -->
+        <!-- ΒΙΝΤΕΟ 5 (2153146075484721 – νέο) -->
         <div class="video-card">
             <div class="iframe-wrap" style="aspect-ratio: 267/476;">
                 <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fexoumethemata%2Fvideos%2F2153146075484721%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
             </div>
         </div>
 
-        <!-- ΔΙΑΦΗΜΙΣΗ 5 (επιπλέον, για να υπάρχει και μετά το 5ο βίντεο – αλλά χωρίς κείμενο) -->
+        <!-- ΔΙΑΦΗΜΙΣΗ 5 (μετά το τελευταίο βίντεο) -->
         <div class="ad-spacer">
             <div class="ad-square">
                 <div class="ad-inner">
@@ -263,7 +231,7 @@
             </div>
         </div>
 
-        <!-- Απολύτως κανένα κείμενο, μόνο μια έγχρωμη γραμμή στο τέλος (δεν μετράει ως κείμενο) -->
+        <!-- Μόνο μια έγχρωμη γραμμή (δεν είναι κείμενο) -->
         <div class="silent-end"></div>
     </div>
 </body>
