@@ -5,59 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Chaturbate - Live Cams</title>
     <style>
-        /* Βασικό reset - χωρίς καθόλου περιθώρια */
+        /* Βασικό reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Το body γεμίζει ακριβώς όλη την οθόνη, χωρίς κανένα κενό */
         html, body {
             width: 100%;
             min-height: 100vh;
-            background: #1a0b2e; /* σκούρο μωβ φόντο */
+            background: #1a0b2e;
             font-family: 'Segoe UI', Roboto, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* Ξεκινάει από πάνω */
+            justify-content: flex-start;
         }
 
-        /* Το container είναι ακριβώς στο κέντρο, χωρίς περιθώρια */
         .container {
             width: 100%;
-            max-width: 450px; /* Για μεγάλες οθόνες, τα iframes είναι 400px */
+            max-width: 800px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            gap: 0; /* ΚΑΝΕΝΑ απολύτως κενό μεταξύ των iframe */
-            padding: 0;
-            margin: 0;
+            gap: 20px;
+            padding: 20px 10px;
         }
 
-        /* Όλα τα iframe έχουν το ίδιο στυλ */
-        iframe {
-            display: block;
+        /* Στυλ για το πλαίσιο του 3ου iframe (επάνω) */
+        .top-frame {
             width: 100%;
-            max-width: 400px; /* Για μεγάλες οθόνες μένει 400px */
-            height: 480px;
-            border: none;
-            margin: 0;
-            padding: 0;
-            background: #000; /* μαύρο φόντο όσο φορτώνει */
+            max-width: 800px;
+            background: rgba(30, 10, 40, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
+            padding: 20px;
+            border: 2px solid rgba(255, 80, 150, 0.5);
+            box-shadow: 0 20px 30px -10px #000, 0 0 0 2px rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
         }
 
-        /* Σε πολύ μικρές οθόνες (π.χ. κινητά 320px), το iframe προσαρμόζεται */
-        @media (max-width: 400px) {
-            iframe {
-                max-width: 100%;
-                height: calc(100vw * 1.2); /* 480/400 = 1.2, διατηρεί αναλογία */
+        /* Το 3ο iframe μέσα στο πλαίσιο */
+        .top-frame iframe {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            aspect-ratio: 16/9;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px -5px #000;
+        }
+
+        /* Πλαίσιο για τα δύο μικρά iframe (350x350) */
+        .small-frames-container {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Κάθε μικρό πλαίσιο */
+        .small-frame {
+            background: rgba(30, 10, 40, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 15px;
+            border: 2px solid rgba(255, 80, 150, 0.5);
+            box-shadow: 0 15px 25px -8px #000, 0 0 0 2px rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+        }
+
+        /* Τα δύο πρώτα iframe 350x350 */
+        .small-frame iframe {
+            width: 350px;
+            height: 350px;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -5px #000;
+        }
+
+        /* Responsive για κινητά */
+        @media (max-width: 800px) {
+            .small-frames-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .small-frame iframe {
+                width: min(350px, 90vw);
+                height: min(350px, 90vw);
+            }
+            
+            .top-frame {
+                padding: 15px;
             }
         }
 
-        /* Προαιρετικά: αν θέλεις να φαίνεται ότι είναι ένα ενιαίο σύνολο */
+        /* Διακοσμητικό φόντο */
         body::after {
             content: '';
             position: fixed;
@@ -74,25 +125,32 @@
 </head>
 <body>
     <div class="container">
-        <!-- 1ο iframe - cbxyz με διαστάσεις 400x480 -->
-        <iframe src="https://cbxyz.com/in/?tour=dTm0&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
-                frameborder="0" 
-                scrolling="no"
-                allowfullscreen>
-        </iframe>
+        <!-- 3ο iframe (Chaturbate) επάνω, μέσα σε πλαίσιο -->
+        <div class="top-frame">
+            <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" 
+                    frameborder="0"
+                    allowfullscreen>
+            </iframe>
+        </div>
 
-        <!-- 2ο iframe - cbxyz ίδιο με το πρώτο -->
-        <iframe src="https://cbxyz.com/in/?tour=dTm0&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
-                frameborder="0" 
-                scrolling="no"
-                allowfullscreen>
-        </iframe>
+        <!-- Τα δύο πρώτα iframe (cbxyz) σε πλαίσια 350x350 -->
+        <div class="small-frames-container">
+            <div class="small-frame">
+                <iframe src="https://cbxyz.com/in/?tour=dTm0&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
+                        frameborder="0" 
+                        scrolling="no"
+                        allowfullscreen>
+                </iframe>
+            </div>
 
-        <!-- 3ο iframe - chaturbate -->
-        <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=20&p=1&gender=x" 
-                frameborder="0"
-                allowfullscreen>
-        </iframe>
+            <div class="small-frame">
+                <iframe src="https://cbxyz.com/in/?tour=dTm0&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
+                        frameborder="0" 
+                        scrolling="no"
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
     </div>
 </body>
 </html>
