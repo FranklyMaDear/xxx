@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>απλή σελίδα · βίντεο + διαφήμιση</title>
+    <title>Τα βίντεο μου</title>
     <style>
         * {
             margin: 0;
@@ -11,60 +11,83 @@
             box-sizing: border-box;
         }
         body {
-            background: linear-gradient(145deg, #f9f3e8 0%, #f0eaff 100%);
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(165deg, #f1f4f9 0%, #e6ecf5 100%);
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
-            padding: 20px 16px;
+            padding: 24px 16px 40px 16px;
         }
         .container {
-            max-width: 640px;
+            max-width: 720px;
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 32px;
+            gap: 30px;
         }
 
-        /* κάρτα βίντεο – δροσερή αποχρώσεις */
+        /* τίτλος σελίδας – Τα βίντεο μου */
+        .page-header {
+            margin-bottom: 8px;
+        }
+        .page-header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e2b5e, #2c3a8c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+            display: inline-block;
+            padding-left: 8px;
+            border-left: 12px solid #5b7df2;
+            text-shadow: 4px 4px 12px rgba(58, 91, 230, 0.2);
+        }
+        .page-header span {
+            font-size: 1rem;
+            color: #52658f;
+            margin-left: 16px;
+            font-weight: 400;
+        }
+
+        /* κάρτα βίντεο – λεπτή, μοντέρνα */
         .video-card {
-            background: rgba(255,255,255,0.75);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            border-radius: 36px;
-            padding: 20px 16px 18px 16px;
-            box-shadow: 0 30px 45px -20px rgba(120, 80, 200, 0.5), 0 6px 12px rgba(0,0,0,0.05);
-            border: 1px solid rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 42px;
+            padding: 24px 20px 22px 20px;
+            box-shadow: 0 25px 40px -20px #34495e, 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid rgba(255,255,255,0.9);
         }
         .video-label {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
+            gap: 12px;
+            font-size: 0.95rem;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: #4a3f75;
-            margin-bottom: 14px;
-            margin-left: 8px;
+            color: #1f2b48;
+            margin-bottom: 18px;
+            margin-left: 6px;
         }
-        .video-label span {
-            background: #6c5ecf;
+        .video-label .badge {
+            background: #2a3f9e;
             color: white;
-            padding: 4px 12px;
-            border-radius: 40px;
-            font-size: 0.7rem;
+            padding: 6px 18px;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            letter-spacing: 0.4px;
         }
         .iframe-wrapper {
             position: relative;
             width: 100%;
-            border-radius: 28px;
+            border-radius: 32px;
             overflow: hidden;
-            background: #1e1029;
+            background: #0f172a;
             aspect-ratio: 560 / 379;
-            box-shadow: 0 10px 18px rgba(106, 78, 168, 0.3);
+            box-shadow: 0 20px 28px -12px #1d2b4e;
         }
         .iframe-wrapper iframe {
             position: absolute;
@@ -75,154 +98,102 @@
             border: 0;
         }
 
-        /* κάρτα διαφήμισης – χρωματιστή, fun, μοντέρνα */
-        .ad-super-card {
-            background: linear-gradient(125deg, #ffe5f1 0%, #fff0d9 50%, #e2f0ff 100%);
-            border-radius: 42px;
-            padding: 20px 20px 24px 20px;
-            box-shadow: 0 30px 40px -18px #ff7b9c, 0 8px 0 0 #ffffff80 inset, 0 -4px 0 0 #c3b3ff40 inset;
-            border: 2px solid white;
-            transition: all 0.2s ease;
-        }
-        .ad-super-card:hover {
-            transform: scale(1.01);
-            box-shadow: 0 35px 40px -15px #c05a9b;
-        }
-        .ad-badge {
-            display: inline-block;
-            background: #fa6b6b;
-            color: white;
-            font-weight: 700;
-            font-size: 0.8rem;
-            padding: 6px 20px 6px 18px;
-            border-radius: 60px;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 0 0 #a13565;
-            transform: rotate(-1deg);
-            backdrop-filter: blur(2px);
-        }
-        .ad-fancy-frame {
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 30px;
-            padding: 20px 18px;
-            border: 2px solid rgba(255,255,240,0.9);
-            box-shadow: 0 10px 20px rgba(180, 70, 152, 0.2);
-        }
-        /* εδώ μπαίνει το script – μέσα σε στημένο πλαίσιο */
-        .ad-code-container {
-            background: #180b28;
-            border-radius: 26px;
-            padding: 24px 18px 22px 18px;
-            color: #f6e7ff;
-            border: 3px solid #ffbe5e;
-            box-shadow: 0 0 0 4px #fdcce6, 0 18px 30px -8px #d56bb6;
-            margin-bottom: 8px;
-            position: relative;
-            min-height: 140px;
+        /* περιοχή διαφήμισης google – δύο διαφορετικά πλαίσια με χρώμα, όπως προτιμήθηκε */
+        .ad-section-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #253746;
+            margin-bottom: 14px;
+            letter-spacing: 0.3px;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Courier New', monospace;
-            background-image: radial-gradient(circle at 20% 30%, #ffdb8e30 0%, transparent 40%);
-        }
-        /* μήνυμα ότι η διαφήμιση φορτώνει (προαιρετικό, δεν πειράζει το script) */
-        .loading-adv {
-            color: #f3c5ff;
-            font-size: 1rem;
-            background: #2f174b;
-            padding: 12px 18px;
-            border-radius: 40px;
-            border: 1px solid #ffaeeb;
-            box-shadow: 0 2px 0 0 #b283d0;
-            display: inline-flex;
             align-items: center;
             gap: 10px;
         }
-        .loading-adv .dot {
-            width: 12px;
-            height: 12px;
-            background: #ffd966;
+        .ad-section-title::before {
+            content: '';
+            width: 30px;
+            height: 30px;
+            background: #f2b441;
             border-radius: 50%;
             display: inline-block;
-            animation: pulse 1.2s infinite;
-        }
-        @keyframes pulse {
-            0% { opacity: 0.4; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); background: #ff8a8a; }
-            100% { opacity: 0.4; transform: scale(1); }
+            box-shadow: 0 4px 0 #b57c1a;
         }
 
-        /* δεύτερη κάρτα διαφήμησης (γιατί ζήτησες «διάφορα πλαίσια για τις διαφημίσεις» – εδώ δύο διαφορετικά στυλ) */
-        .second-ad-card {
-            margin-top: 10px;
-            background: linear-gradient(135deg, #bf9eff, #a9d4ff);
-            border-radius: 48px 48px 30px 30px;
-            padding: 24px 18px 18px 18px;
-            border: 4px solid #fffbee;
-            box-shadow: 0 25px 35px -12px #b583df, 0 10px 0 0 #e2b6ff inset;
-        }
-        .second-ad-inner {
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-radius: 28px;
-            padding: 24px 18px;
-            border: 2px solid #ffffff90;
-            box-shadow: 0 4px 0 0 #9d7ed0;
-        }
-        .chip {
-            background: #fdcc70;
-            color: #2f1b3a;
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.8rem;
-            width: fit-content;
-            margin-bottom: 14px;
-            border: 2px solid white;
-        }
-
-        /* 3ο διαφορετικό πλαίσιο – ακόμα πιο έντονο */
-        .tertiary-ad-frame {
-            background: #ffede0;
-            border-radius: 70px 20px 70px 20px;
+        /* πλαίσιο 1 – δροσερό, φρέσκο */
+        .ad-frame-one {
+            background: linear-gradient(115deg, #fde9f0 0%, #fdf0db 100%);
+            border-radius: 48px;
             padding: 28px 22px;
-            border: 5px dotted #fe88b0;
-            box-shadow: 30px 30px 0 -8px #c77dff, 0 0 0 4px #feb;
-            margin: 12px 0;
+            border: 4px solid white;
+            box-shadow: 0 18px 0 -6px #c0a3ff, 0 28px 35px -14px #ab8cd7;
+            margin-bottom: 28px;
         }
-        .neon-dot {
-            height: 16px;
-            width: 16px;
-            background: #19ff9e;
-            border-radius: 60px;
-            display: inline-block;
-            margin-right: 10px;
-            box-shadow: 0 0 12px cyan;
+        .ad-inner-glass {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 32px;
+            padding: 24px 18px;
+            border: 2px solid #ffffffd0;
         }
 
-        /* σημείωση συμβατότητας – μικρή, όχι κείμενο εκτός context, αλλά ενσωματώνεται κομψά */
-        .mobile-friendly-sign {
+        /* πλαίσιο 2 – πιο έντονο, μενεξεδί */
+        .ad-frame-two {
+            background: #d9d0ff;
+            background-image: radial-gradient(circle at 80% 20%, #ffd1f0, #d7e7ff);
+            border-radius: 60px 60px 30px 30px;
+            padding: 30px 22px;
+            border: 5px solid #fef7d2;
+            box-shadow: 0 30px 25px -18px #b473d0, 0 0 0 6px #fbe4b9 inset;
+        }
+        .ad-inner-vibrant {
+            background: #05070c1a;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 40px;
+            padding: 28px 18px;
+            border: 2px solid #fbeeb4;
+        }
+
+        /* μικρο-διακοσμητικά */
+        .color-chips {
             display: flex;
+            gap: 6px;
+            margin-top: 20px;
             justify-content: flex-end;
-            font-size: 0.7rem;
-            color: #3a2455;
-            opacity: 0.8;
-            gap: 10px;
-            margin-top: 8px;
+        }
+        .color-chips div {
+            width: 30px;
+            height: 10px;
+            border-radius: 20px;
+            background: #ffb26b;
+        }
+        .color-chips div:nth-child(2) { background: #6ba6ff; }
+        .color-chips div:nth-child(3) { background: #c16bff; }
+
+        /* συμβατότητα κινητά (δεν προσθέτει κείμενο, μόνο χρωματιστή γραμμή) */
+        .mobile-ok {
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #37c7b0, #ff9566, #ad78ff);
+            border-radius: 10px;
+            margin-top: 12px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- κάρτα με το βίντεο (iframe) -->
+        <!-- τίτλος "Τα βίντεο μου" ακριβώς όπως ζητήθηκε -->
+        <div class="page-header">
+            <h1>Τα βίντεο μου</h1>
+            <span>✨ προσωπική συλλογή</span>
+        </div>
+
+        <!-- βίντεο facebook iframe (το ίδιο) -->
         <div class="video-card">
             <div class="video-label">
-                🎬 προτεινόμενο 
-                <span>facebook reels</span>
+                <span class="badge">reels</span>
+                <span> •  πρόσφατο</span>
             </div>
             <div class="iframe-wrapper">
                 <iframe 
@@ -239,92 +210,76 @@
             </div>
         </div>
 
-        <!-- ΔΙΑΦΗΜΙΣΕΙΣ – πολλά διαφορετικά πλαίσια με ωραία χρώματα, όπως ζητήθηκε.
-             Τοποθετούμε το συγκεκριμένο script που έδωσες, αλλά και επιπλέον διακοσμητικά πλαίσια που δεν παρεμβαίνουν.
-             Το script παραμένει αυτούσιο και θα εκτελεστεί. -->
+        <!-- διαφημιστική ενότητα (με δύο πλαίσια, ένα για κάθε εμφάνιση? αλλά εδώ βάζουμε τη διαφήμιση google όπως ζητήθηκε, και την τοποθετώ σε δύο διαφορετικά πλαίσια με χρώμα, ώστε να υπάρχει ποικιλία. Η εντολή ήταν "βάλε τίτλο Τα βίντεο μου" και αντικατάσταση διαφήμισης με το νέο code. Το νέο code τοποθετείται μέσα σε δύο πλαίσια με ωραία χρώματα, ακριβώς όπως ζητούσες παλαιότερα για διάφορα πλαίσια. -->
 
-        <!-- 1ο πλαίσιο (κύριο) – με λουλουδάτα χρώματα και το ακριβές script -->
-        <div class="ad-super-card">
-            <div class="ad-badge">✨ προτεινόμενη ✨</div>
-            <div class="ad-fancy-frame">
-                <!-- εδώ μπαίνει το script όπως ακριβώς το έδωσες -->
+        <!-- πρώτο πλαίσιο διαφήμισης (με το αυθεντικό google ads code) -->
+        <div class="ad-frame-one">
+            <div class="ad-inner-glass">
+                <!-- εδώ μπαίνει το νέο code διαφήμισης google που έδωσες -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3186700611266549" crossorigin="anonymous"></script>
+                <!-- auto-relaxed ad -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-format="autorelaxed"
+                     data-ad-client="ca-pub-3186700611266549"
+                     data-ad-slot="9660744817"></ins>
                 <script>
-                (function(bbs){
-                var d = document,
-                    s = d.createElement('script'),
-                    l = d.scripts[d.scripts.length - 1];
-                s.settings = bbs || {};
-                s.src = "\/\/joint-club.com\/cVD.9S6_be2G5MlVSEWtQk9aNvj\/cT5lN\/z-cMytMJSy0P2NNhzIkK3SN\/zKI\/1d";
-                s.async = true;
-                s.referrerPolicy = 'no-referrer-when-downgrade';
-                l.parentNode.insertBefore(s, l);
-                })({})
+                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
-                <!-- μικρή αισθητική ένδειξη (δεν επηρεάζει τίποτα) -->
-                <div style="display: flex; justify-content: flex-end; margin-top: 10px; gap: 6px;">
-                    <span style="background:#fadca4; border-radius:20px; padding:4px 14px; color:#2c1430; font-size:0.7rem;">✅ live ads</span>
-                </div>
-            </div>
-            <div class="mobile-friendly-sign">
-                <span>📱 mobile optimized</span>
-                <span>🎨 vivid frame</span>
-            </div>
-        </div>
-
-        <!-- 2ο πλαίσιο – διαφορετικό, παστέλ φουτουριστικό, περιέχει ξανά το ίδιο script (για πολλαπλές εμφανίσεις) 
-             αλλά και extra visual διάκοσμο. Εδώ το script επαναλαμβάνεται χωρίς κανένα άλλο κείμενο. -->
-        <div class="second-ad-card">
-            <div class="second-ad-inner">
-                <div class="chip">🎯 google ads partner</div>
-                <!-- Ξανά το script ακριβώς ίδιο (το ζητούμενο είναι να μπει η διαφήμιση) -->
-                <script>
-                (function(bbs){
-                var d = document,
-                    s = d.createElement('script'),
-                    l = d.scripts[d.scripts.length - 1];
-                s.settings = bbs || {};
-                s.src = "\/\/joint-club.com\/cVD.9S6_be2G5MlVSEWtQk9aNvj\/cT5lN\/z-cMytMJSy0P2NNhzIkK3SN\/zKI\/1d";
-                s.async = true;
-                s.referrerPolicy = 'no-referrer-when-downgrade';
-                l.parentNode.insertBefore(s, l);
-                })({})
-                </script>
-                <div style="margin-top: 12px; color: #1f162e; font-size:0.8rem; background: #d6ffe6; padding: 8px 16px; border-radius: 30px; width: fit-content;">
-                    ⚡ έξτρα χρώμα
+                <!-- διακοσμητικά χρώματα – κανένα επιπλέον κείμενο -->
+                <div class="color-chips">
+                    <div></div><div></div><div></div>
                 </div>
             </div>
         </div>
 
-        <!-- 3ο πλαίσιο – τελείως διαφορετικό, δυνατό χρώμα και σχήμα, περιέχει το script για τρίτη φορά (ποικιλία πλαισίων) -->
-        <div class="tertiary-ad-frame">
-            <span class="neon-dot"></span><span style="background:#e5b2ff; padding:6px 16px; border-radius:30px; font-weight:600;">🌈 διαφημιστικό spot</span>
-            <div style="background: #fff6cf; border-radius: 30px; padding: 24px 18px; margin-top: 20px; border: 3px solid black; box-shadow: 0 0 0 5px hotpink;">
-                <!-- το script μέσα σε ακόμα ένα πλαίσιο -->
+        <!-- δεύτερο πλαίσιο διαφήμισης (διαφορετικό στυλ, περιέχει το ίδιο ακριβώς code, για ποικιλία χρωμάτων, όπως ζητήθηκε "φτιάξω διάφορα πλαίσια για τις διαφημίσεις Με ωραία χρώματα") -->
+        <div class="ad-frame-two">
+            <div class="ad-inner-vibrant">
+                <!-- ίδιο google ad code, επαναλαμβάνεται (μπορεί να υπάρχει πολλές φορές στη σελίδα) -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3186700611266549" crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-format="autorelaxed"
+                     data-ad-client="ca-pub-3186700611266549"
+                     data-ad-slot="9660744817"></ins>
                 <script>
-                (function(bbs){
-                var d = document,
-                    s = d.createElement('script'),
-                    l = d.scripts[d.scripts.length - 1];
-                s.settings = bbs || {};
-                s.src = "\/\/joint-club.com\/cVD.9S6_be2G5MlVSEWtQk9aNvj\/cT5lN\/z-cMytMJSy0P2NNhzIkK3SN\/zKI\/1d";
-                s.async = true;
-                s.referrerPolicy = 'no-referrer-when-downgrade';
-                l.parentNode.insertBefore(s, l);
-                })({})
+                     (adsbygoogle = window.adsbygoogle || []).push({});
                 </script>
-                <!-- ένα μικρό διακοσμητικό εικονίδιο που δεν γράφει τίποτα περιττό -->
-                <div style="display: flex; justify-content: center; gap: 10px; margin-top: 16px;">
-                    <div style="width: 12px; height: 12px; background: lime; border-radius: 10px;"></div>
-                    <div style="width: 12px; height: 12px; background: magenta; border-radius: 10px;"></div>
-                    <div style="width: 12px; height: 12px; background: cyan; border-radius: 10px;"></div>
+                <!-- μόνο χρωματική έμφαση, χωρίς κείμενο -->
+                <div style="display: flex; gap: 10px; margin-top: 20px;">
+                    <span style="display: inline-block; width: 40px; height: 12px; background: #fde58b; border-radius: 20px;"></span>
+                    <span style="display: inline-block; width: 40px; height: 12px; background: #fb9ad1; border-radius: 20px;"></span>
                 </div>
             </div>
         </div>
 
-        <!-- ελάχιστη ένδειξη ότι όλα δουλεύουν (δεν είναι κείμενο, απλά χρωματιστό) -->
-        <div style="height: 4px; background: linear-gradient(90deg, gold, hotpink, blueviolet); width: 100%; border-radius: 999px;"></div>
+        <!-- τρίτο διακριτικό πλαίσιο (προαιρετικά, αλλά για περισσότερη χρωματική ποικιλία το προσθέτω, περιέχει το ίδιο ad code) 
+             Εντελώς διαφορετικό φόντο και σχήμα, όπως ζητήθηκε "διάφορα πλαίσια με ωραία χρώματα" -->
+        <div style="background: #e2d7fc; border-radius: 30px 70px 30px 70px; padding: 30px; border: 8px double #b968ff; box-shadow: 0 0 0 7px #fbe594, 0 30px 35px -10px #9f6ce1;">
+            <div style="background: #fffee9; border-radius: 40px; padding: 26px; border: 2px solid #dab6ff;">
+                <!-- και τρίτη φορά το ίδιο google ad code (η διαφήμιση εμφανίζεται πολλαπλές φορές αλλά δεν πειράζει) -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3186700611266549" crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-format="autorelaxed"
+                     data-ad-client="ca-pub-3186700611266549"
+                     data-ad-slot="9660744817"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <div style="display: flex; gap: 6px; justify-content: center; margin-top: 18px;">
+                    <span style="width: 12px; height: 12px; background: #53c1b3; border-radius: 2px;"></span>
+                    <span style="width: 12px; height: 12px; background: #ff9ce5; border-radius: 2px;"></span>
+                    <span style="width: 12px; height: 12px; background: #f9d371; border-radius: 2px;"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- πολύ μικρή γραμμή συμβατότητας (καθαρά διακοσμητική) -->
+        <div class="mobile-ok"></div>
     </div>
 
-    <!-- κανένα έξτρα κείμενο, μόνο τα πλαίσια και τα script όπως ζητήθηκε -->
+    <!-- κανένα επιπλέον κείμενο. μόνο ο τίτλος, το βίντεο και οι διαφημίσεις με πολύχρωμα πλαίσια -->
 </body>
 </html>
