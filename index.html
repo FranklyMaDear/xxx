@@ -15,7 +15,7 @@
         /* Φόντο με gradient και κίνηση */
         html, body {
             width: 100%;
-            min-height: 100vh;
+            height: 100vh; /* Πλήρες ύψος */
             background: linear-gradient(145deg, #1a0b2e, #2d1b3e, #1f0f30, #2a1538);
             background-size: 400% 400%;
             animation: softDrift 24s ease infinite;
@@ -24,6 +24,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
+            overflow: hidden; /* Αποτρέπει scroll στο body */
         }
 
         @keyframes softDrift {
@@ -47,41 +48,35 @@
             z-index: 0;
         }
 
-        /* Container */
+        /* Container - χωρίς padding */
         .container {
             position: relative;
             z-index: 5;
             width: 100%;
-            max-width: 1200px;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding: 20px;
         }
 
         /* Τίτλος επάνω */
         .title {
             text-align: center;
-            margin: 10px 0 30px 0;
+            padding: 15px 0;
             width: 100%;
+            background: rgba(0,0,0,0.3); /* Ελαφρύ ημιδιάφανο background για τον τίτλο */
+            backdrop-filter: blur(5px);
         }
 
         .title h1 {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             font-weight: 900;
             color: white;
             text-shadow: 0 0 10px #ff99cc, 
                          0 0 20px #ff4da6, 
-                         0 0 30px #ff00bf, 
-                         4px 4px 0 #00000080;
+                         0 0 30px #ff00bf;
             letter-spacing: 4px;
-            background: rgba(0,0,0,0.3);
-            padding: 10px 30px;
-            border-radius: 60px;
-            display: inline-block;
-            backdrop-filter: blur(4px);
-            border: 2px solid rgba(255, 255, 255, 0.7);
             font-family: 'Impact', 'Arial Black', sans-serif;
             text-transform: uppercase;
             animation: glow 3s ease-in-out infinite;
@@ -93,57 +88,22 @@
             100% { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff4da6, 0 0 30px #ff00bf; }
         }
 
-        /* Πλαίσιο για το iframe */
-        .frame {
-            width: 100%;
-            background: rgba(30, 10, 40, 0.5);
-            backdrop-filter: blur(8px);
-            border-radius: 30px;
-            padding: 20px;
-            border: 2px solid rgba(255, 80, 150, 0.4);
-            margin-bottom: 30px;
-        }
-
-        /* Iframe ύψους 500px */
+        /* Iframe 100% πλάτος και ύψος */
         iframe {
             display: block;
             width: 100%;
-            height: 500px;
+            flex: 1; /* Παίρνει όλο το υπόλοιπο ύψος */
             border: none;
-            border-radius: 20px;
             background: #000;
-            box-shadow: 0 25px 35px -12px #000;
         }
 
-        /* Διακοσμητική γραμμή */
-        .glow-line {
-            width: 150px;
-            height: 5px;
-            background: linear-gradient(90deg, #ff1a4c, #b300e6, #ff0066, #ff3300);
-            border-radius: 5px;
-            margin: 10px auto 20px;
-            filter: drop-shadow(0 0 8px #ff4da6);
-        }
-
-        /* Responsive */
-        @media (max-width: 800px) {
-            iframe {
-                height: 400px; /* Μικρότερο ύψος σε tablets */
-            }
-        }
-
+        /* Responsive για κινητά - μικρότερος τίτλος */
         @media (max-width: 500px) {
             .title h1 {
-                font-size: 2.2rem;
-                padding: 8px 20px;
+                font-size: 1.8rem;
             }
-            
-            iframe {
-                height: 300px; /* Ακόμα μικρότερο σε κινητά */
-            }
-            
-            .frame {
-                padding: 10px;
+            .title {
+                padding: 10px 0;
             }
         }
     </style>
@@ -155,16 +115,11 @@
             <h1>CHATURBATE</h1>
         </div>
         
-        <!-- Πλαίσιο με ένα iframe ύψους 500px -->
-        <div class="frame">
-            <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x" 
-                    frameborder="0"
-                    allowfullscreen>
-            </iframe>
-        </div>
-        
-        <!-- Διακοσμητική γραμμή -->
-        <div class="glow-line"></div>
+        <!-- Iframe 100% πλάτος και ύψος -->
+        <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x" 
+                frameborder="0"
+                allowfullscreen>
+        </iframe>
     </div>
 </body>
 </html>
