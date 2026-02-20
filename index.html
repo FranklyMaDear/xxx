@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Chaturbate - Live Cam</title>
+    <title>Chaturbate - Live Cams</title>
     <style>
         /* Βασικό reset */
         * {
@@ -23,7 +23,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* Αλλάξαμε από center σε flex-start */
+            justify-content: flex-start;
         }
 
         @keyframes softDrift {
@@ -47,7 +47,7 @@
             z-index: 0;
         }
 
-        /* Container για το πλαίσιο */
+        /* Container */
         .container {
             position: relative;
             z-index: 5;
@@ -57,13 +57,13 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding: 0 20px;
+            padding: 20px;
         }
 
-        /* Τίτλος επάνω επάνω */
+        /* Τίτλος επάνω */
         .title {
             text-align: center;
-            margin: 20px 0 30px 0; /* Από πάνω, με λίγο περιθώριο */
+            margin: 10px 0 30px 0;
             width: 100%;
         }
 
@@ -93,40 +93,32 @@
             100% { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff4da6, 0 0 30px #ff00bf; }
         }
 
-        /* Πλαίσιο για το iframe 350x1000 */
-        .frame {
-            width: fit-content;
-            max-width: 100%;
-            background: rgba(30, 10, 40, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 40px 15px 40px 15px;
-            padding: 20px;
-            border: 3px solid rgba(255, 80, 150, 0.6);
-            box-shadow: 0 30px 40px -15px #000, 
-                        0 0 0 3px rgba(255, 255, 255, 0.3),
-                        0 0 30px 5px rgba(255, 20, 147, 0.5);
-            transition: all 0.3s;
+        /* Grid για 2 iframe δίπλα-δίπλα */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 ίσες στήλες */
+            gap: 20px;
+            width: 100%;
             margin-bottom: 30px;
         }
 
-        .frame:hover {
-            border-color: #ff4da6;
-            box-shadow: 0 30px 50px -15px #b30086, 
-                        0 0 0 4px rgba(255, 255, 255, 0.5),
-                        0 0 40px 10px #ff4da6;
-            transform: scale(1.02);
+        /* Κάθε iframe παίρνει όλο το πλάτος του grid cell */
+        .videos-grid iframe {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9; /* Αναλογία 16:9 για σωστή εμφάνιση */
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 20px 30px -10px #000, 
+                        0 0 0 2px rgba(255, 80, 150, 0.3);
+            transition: all 0.3s;
+            background: #000;
         }
 
-        /* Iframe 350x1000 */
-        iframe {
-            display: block;
-            width: 450px;
-            height: 1000px;
-            border: none;
-            border-radius: 30px 10px 30px 10px;
-            background: #000;
-            box-shadow: 0 20px 30px -10px #000;
+        .videos-grid iframe:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 35px -12px #b30086, 
+                        0 0 0 3px #ff4da6;
         }
 
         /* Διακοσμητική γραμμή */
@@ -135,40 +127,49 @@
             height: 5px;
             background: linear-gradient(90deg, #ff1a4c, #b300e6, #ff0066, #ff3300);
             border-radius: 5px;
-            margin: 20px auto 30px;
+            margin: 10px auto 20px;
             filter: drop-shadow(0 0 8px #ff4da6);
         }
 
-        /* Responsive για κινητά */
-        @media (max-width: 500px) {
+        /* Responsive για κινητά - τα βάζει το ένα κάτω από το άλλο */
+        @media (max-width: 600px) {
+            .videos-grid {
+                grid-template-columns: 1fr; /* Μία στήλη */
+                gap: 15px;
+            }
+            
             .title h1 {
                 font-size: 2.2rem;
                 padding: 8px 20px;
             }
             
-            iframe {
-                width: 100%;
-                max-width: 400px;
-                height: calc(100vw * 2.86); /* 1000/350 ≈ 2.86 */
-                max-height: 1000px;
+            .videos-grid iframe {
+                border-radius: 12px;
             }
-            
-            .frame {
-                width: 100%;
-                padding: 15px;
+        }
+
+        /* Responsive για tablets - μικρότερο gap */
+        @media (min-width: 601px) and (max-width: 900px) {
+            .videos-grid {
+                gap: 15px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Τίτλος επάνω επάνω -->
+        <!-- Τίτλος -->
         <div class="title">
             <h1>CHATURBATE</h1>
         </div>
         
-        <!-- Πλαίσιο με το iframe 350x1000 -->
-        <div class="frame">
+        <!-- Grid με 2 iframe -->
+        <div class="videos-grid">
+            <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x" 
+                    frameborder="0"
+                    allowfullscreen>
+            </iframe>
+            
             <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x" 
                     frameborder="0"
                     allowfullscreen>
