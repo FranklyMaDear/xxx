@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Τα βίντεο μου · με διαφημίσεις</title>
+    <title>Τα βίντεο μου · δύο τύποι διαφημίσεων</title>
     <style>
         * {
             margin: 0;
@@ -124,20 +124,13 @@
             box-shadow: 0 12px 20px -10px #baa0d0;
         }
 
-        /* η διαφήμιση απόλυτα κεντραρισμένη, χωρίς διακοσμητικά γύρω της */
+        /* η διαφήμιση απόλυτα κεντραρισμένη */
         .ad-code-container {
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 140px; /* για να μην καταρρεει πριν φορτώσει */
-        }
-
-        /* οι γραμμές του adsbygoogle θα προσαρμοστούν */
-        .ad-code-container ins {
-            display: block;
-            width: 100%;
-            max-width: 728px; /* ασφαλές όριο */
+            min-height: 120px;
         }
 
         /* μικρή αισθητική πινελιά – μόνο χρώμα, κανένα κείμενο */
@@ -162,10 +155,10 @@
 </head>
 <body>
     <div class="container">
-        <!-- τίτλος σελίδας – λιτός, μόνο "Τα βίντεο μου" -->
+        <!-- τίτλος σελίδας -->
         <div class="site-title">Τα βίντεο μου</div>
 
-        <!-- ΒΙΝΤΕΟ 1 + ΔΙΑΦΗΜΙΣΗ 1 (κάτω) -->
+        <!-- ΒΙΝΤΕΟ 1 + ΔΙΑΦΗΜΙΣΗ 1 (autorelaxed) -->
         <div class="video-ad-block">
             <div class="video-wrap" style="aspect-ratio: 560/379;">
                 <iframe src="https://www.facebook.com/plugins/video.php?height=379&href=https%3A%2F%2Fwww.facebook.com%2Fexoumethemata%2Fvideos%2F1613291436336520%2F&show_text=false&width=560&t=0" width="560" height="379" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
@@ -173,7 +166,6 @@
             <div class="ad-below">
                 <div class="ad-code-container">
                     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3186700611266549" crossorigin="anonymous"></script>
-                    <!-- Autorelaxed ad (αντικαταστάθηκε με τον νέο κωδικό) -->
                     <ins class="adsbygoogle"
                          style="display:block;"
                          data-ad-format="autorelaxed"
@@ -187,7 +179,7 @@
             </div>
         </div>
 
-        <!-- ΒΙΝΤΕΟ 2 + ΔΙΑΦΗΜΙΣΗ 2 -->
+        <!-- ΒΙΝΤΕΟ 2 + ΔΙΑΦΗΜΙΣΗ 2 (in-article) -->
         <div class="video-ad-block">
             <div class="video-wrap" style="aspect-ratio: 458/476;">
                 <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2453583798395478%2F&show_text=false&width=458&t=0" width="458" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
@@ -196,10 +188,11 @@
                 <div class="ad-code-container">
                     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3186700611266549" crossorigin="anonymous"></script>
                     <ins class="adsbygoogle"
-                         style="display:block;"
-                         data-ad-format="autorelaxed"
+                         style="display:block; text-align:center;"
+                         data-ad-layout="in-article"
+                         data-ad-format="fluid"
                          data-ad-client="ca-pub-3186700611266549"
-                         data-ad-slot="9660744817"></ins>
+                         data-ad-slot="6330498148"></ins>
                     <script>
                          (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
@@ -208,7 +201,7 @@
             </div>
         </div>
 
-        <!-- ΒΙΝΤΕΟ 3 + ΔΙΑΦΗΜΙΣΗ 3 -->
+        <!-- ΒΙΝΤΕΟ 3 + ΔΙΑΦΗΜΙΣΗ 3 (autorelaxed) -->
         <div class="video-ad-block">
             <div class="video-wrap" style="aspect-ratio: 267/476;">
                 <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fexoumethemata%2Fvideos%2F938398358866051%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
@@ -229,10 +222,32 @@
             </div>
         </div>
 
-        <!-- ΒΙΝΤΕΟ 4 + ΔΙΑΦΗΜΙΣΗ 4 -->
+        <!-- ΒΙΝΤΕΟ 4 + ΔΙΑΦΗΜΙΣΗ 4 (in-article) -->
         <div class="video-ad-block">
             <div class="video-wrap" style="aspect-ratio: 560/522;">
                 <iframe src="https://www.facebook.com/plugins/video.php?height=522&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1596734144873534%2F&show_text=false&width=560&t=0" width="560" height="522" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+            </div>
+            <div class="ad-below">
+                <div class="ad-code-container">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3186700611266549" crossorigin="anonymous"></script>
+                    <ins class="adsbygoogle"
+                         style="display:block; text-align:center;"
+                         data-ad-layout="in-article"
+                         data-ad-format="fluid"
+                         data-ad-client="ca-pub-3186700611266549"
+                         data-ad-slot="6330498148"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                <div class="gentle-glow"></div>
+            </div>
+        </div>
+
+        <!-- ΒΙΝΤΕΟ 5 + ΔΙΑΦΗΜΙΣΗ 5 (autorelaxed) -->
+        <div class="video-ad-block">
+            <div class="video-wrap" style="aspect-ratio: 267/476;">
+                <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fexoumethemata%2Fvideos%2F2153146075484721%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
             </div>
             <div class="ad-below">
                 <div class="ad-code-container">
@@ -250,19 +265,17 @@
             </div>
         </div>
 
-        <!-- ΒΙΝΤΕΟ 5 (πρόσθετο) + ΔΙΑΦΗΜΙΣΗ 5 -->
-        <div class="video-ad-block">
-            <div class="video-wrap" style="aspect-ratio: 267/476;">
-                <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Fexoumethemata%2Fvideos%2F2153146075484721%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
-            </div>
-            <div class="ad-below">
+        <!-- επιπλέον διαφήμιση in-article (για εξτρα ποικιλία) στο τέλος -->
+        <div class="video-ad-block" style="background: rgba(255,240,250,0.6);">
+            <div class="ad-below" style="padding: 32px;">
                 <div class="ad-code-container">
                     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3186700611266549" crossorigin="anonymous"></script>
                     <ins class="adsbygoogle"
-                         style="display:block;"
-                         data-ad-format="autorelaxed"
+                         style="display:block; text-align:center;"
+                         data-ad-layout="in-article"
+                         data-ad-format="fluid"
                          data-ad-client="ca-pub-3186700611266549"
-                         data-ad-slot="9660744817"></ins>
+                         data-ad-slot="6330498148"></ins>
                     <script>
                          (adsbygoogle = window.adsbygoogle || []).push({});
                     </script>
