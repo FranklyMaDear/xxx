@@ -52,16 +52,16 @@
             position: relative;
             z-index: 5;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding: 10px;
+            padding: 20px;
         }
 
-        /* Στυλ για τον τίτλο LIVE CAMS */
+        /* Στυλ για τον τίτλο LIVE CAMS - responsive */
         .title {
             text-align: center;
             margin: 20px 0 30px;
@@ -69,7 +69,7 @@
         }
 
         .title h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 8vw, 4.5rem);
             font-weight: 900;
             color: white;
             text-shadow: 0 0 10px #ff99cc, 
@@ -81,6 +81,7 @@
             text-transform: uppercase;
             animation: glow 3s ease-in-out infinite;
             display: inline-block;
+            line-height: 1.2;
         }
 
         @keyframes glow {
@@ -89,59 +90,124 @@
             100% { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff4da6, 0 0 30px #ff00bf; }
         }
 
-        /* Wrapper για το iframe - κέντραρισμα */
+        /* Wrapper για το iframe - responsive */
         .iframe-wrapper {
-            width: 200%;
+            width: 100%;
             display: flex;
             justify-content: center;
             margin-bottom: 30px;
         }
 
-        /* Iframe στυλ - βελτιστοποιημένο για κινητά */
+        /* Iframe στυλ - πλήρως responsive */
         iframe {
             display: block;
-            width: 400px;
-            max-width: 400px;
-            height: 600px;
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            aspect-ratio: 4/3; /* Αναλογία διαστάσεων */
+            min-height: 300px;
+            max-height: 900px;
             border: none;
             border-radius: 20px;
             background: #000;
             box-shadow: 0 25px 35px -12px #000;
+            transition: all 0.3s ease;
         }
 
-        /* Responsive για κινητά */
-        @media (max-width: 768px) {
-            .title h1 {
-                font-size: 2.5rem;
-            }
-            
-            iframe {
-                width: 90%;
-                max-width: 400px;
-                height: 600px;
-            }
-        }
-
+        /* Responsive breakpoints για όλες τις συσκευές */
+        
+        /* Κινητά τηλέφωνα (μικρά) */
         @media (max-width: 480px) {
-            .title h1 {
-                font-size: 2rem;
+            .container {
+                padding: 10px;
+            }
+            
+            .title {
+                margin: 10px 0 20px;
             }
             
             iframe {
-                width: 95%;
-                max-width: 400px;
-                height: 600px;
+                aspect-ratio: 3/4; /* Πιο ψηλό για κινητά */
+                max-height: 600px;
+                border-radius: 15px;
+            }
+        }
+
+        /* Κινητά τηλέφωνα (μεσαία) */
+        @media (min-width: 481px) and (max-width: 767px) {
+            iframe {
+                aspect-ratio: 4/5;
+                max-height: 650px;
+            }
+        }
+
+        /* Tablet (κατακόρυφα) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .title h1 {
+                font-size: 3.5rem;
+            }
+            
+            iframe {
+                max-width: 700px;
+                aspect-ratio: 4/3;
+                max-height: 700px;
+            }
+        }
+
+        /* Tablet (οριζόντια) */
+        @media (min-width: 1024px) and (max-width: 1199px) {
+            .title h1 {
+                font-size: 4rem;
+            }
+            
+            iframe {
+                max-width: 900px;
+                aspect-ratio: 16/9;
+                max-height: 700px;
+            }
+        }
+
+        /* Υπολογιστές */
+        @media (min-width: 1200px) {
+            .title h1 {
+                font-size: 4.5rem;
+            }
+            
+            iframe {
+                max-width: 1100px;
+                aspect-ratio: 16/9;
+                max-height: 800px;
+            }
+        }
+
+        /* Μεγάλες οθόνες */
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 1600px;
+            }
+            
+            iframe {
+                max-width: 1300px;
+                aspect-ratio: 21/9;
+                max-height: 900px;
             }
         }
 
         /* Διακοσμητική γραμμή */
         .glow-line {
-            width: 150px;
+            width: min(150px, 50%);
             height: 4px;
             background: linear-gradient(90deg, #ff1a4c, #b300e6, #ff0066);
             border-radius: 4px;
-            margin: 10px auto;
+            margin: 20px auto;
             filter: drop-shadow(0 0 8px #ff4da6);
+        }
+
+        /* Προσαρμογή για συσκευές με αφή */
+        @media (hover: none) and (pointer: coarse) {
+            iframe {
+                -webkit-overflow-scrolling: touch;
+            }
         }
     </style>
 </head>
@@ -152,11 +218,12 @@
             <h1>LIVE CAMS</h1>
         </div>
         
-        <!-- Iframe βελτιστοποιημένο για κινητά -->
+        <!-- Iframe - πλήρως responsive -->
         <div class="iframe-wrapper">
             <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x" 
                     frameborder="0"
-                    allowfullscreen>
+                    allowfullscreen
+                    loading="lazy">
             </iframe>
         </div>
 
