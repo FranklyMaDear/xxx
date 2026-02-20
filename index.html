@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Απλή σελίδα · Βίντεο & διαφήμιση</title>
+    <title>απλή σελίδα · βίντεο + διαφήμιση</title>
     <style>
         * {
             margin: 0;
@@ -11,47 +11,60 @@
             box-sizing: border-box;
         }
         body {
-            background: #f0f2f5;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(145deg, #f9f3e8 0%, #f0eaff 100%);
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
-            padding: 16px 12px;
+            padding: 20px 16px;
         }
         .container {
-            max-width: 600px;
+            max-width: 640px;
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 32px;
         }
-        /* κάρτα βίντεο */
+
+        /* κάρτα βίντεο – δροσερή αποχρώσεις */
         .video-card {
-            background: #ffffff;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            padding: 16px 12px 12px 12px;
-            border: 1px solid rgba(0,0,0,0.04);
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border-radius: 36px;
+            padding: 20px 16px 18px 16px;
+            box-shadow: 0 30px 45px -20px rgba(120, 80, 200, 0.5), 0 6px 12px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.7);
         }
         .video-label {
-            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #606770;
-            margin-bottom: 12px;
-            margin-left: 4px;
-            font-weight: 500;
+            letter-spacing: 1.2px;
+            color: #4a3f75;
+            margin-bottom: 14px;
+            margin-left: 8px;
+        }
+        .video-label span {
+            background: #6c5ecf;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
         }
         .iframe-wrapper {
             position: relative;
             width: 100%;
-            border-radius: 16px;
+            border-radius: 28px;
             overflow: hidden;
-            background: #000; /* μαύρο φόντο όσο φορτώνει */
-            aspect-ratio: 560 / 379; /* ακριβής αναλογία του iframe */
+            background: #1e1029;
+            aspect-ratio: 560 / 379;
+            box-shadow: 0 10px 18px rgba(106, 78, 168, 0.3);
         }
         .iframe-wrapper iframe {
             position: absolute;
@@ -61,109 +74,157 @@
             height: 100%;
             border: 0;
         }
-        /* κάρτα διαφήμισης (google style) */
-        .ad-card {
-            background: #ffffff;
-            border-radius: 24px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            border: 1px solid #e9eef2;
-            overflow: hidden;
-            transition: transform 0.1s ease;
+
+        /* κάρτα διαφήμισης – χρωματιστή, fun, μοντέρνα */
+        .ad-super-card {
+            background: linear-gradient(125deg, #ffe5f1 0%, #fff0d9 50%, #e2f0ff 100%);
+            border-radius: 42px;
+            padding: 20px 20px 24px 20px;
+            box-shadow: 0 30px 40px -18px #ff7b9c, 0 8px 0 0 #ffffff80 inset, 0 -4px 0 0 #c3b3ff40 inset;
+            border: 2px solid white;
+            transition: all 0.2s ease;
         }
-        .ad-card:active {
-            transform: scale(0.99);
+        .ad-super-card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 35px 40px -15px #c05a9b;
         }
-        .ad-link {
-            display: flex;
-            flex-direction: column;
-            text-decoration: none;
-            color: inherit;
+        .ad-badge {
+            display: inline-block;
+            background: #fa6b6b;
+            color: white;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 6px 20px 6px 18px;
+            border-radius: 60px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 0 0 #a13565;
+            transform: rotate(-1deg);
+            backdrop-filter: blur(2px);
         }
-        .ad-image {
-            width: 100%;
-            background: #e7eef6;
+        .ad-fancy-frame {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 30px;
+            padding: 20px 18px;
+            border: 2px solid rgba(255,255,240,0.9);
+            box-shadow: 0 10px 20px rgba(180, 70, 152, 0.2);
+        }
+        /* εδώ μπαίνει το script – μέσα σε στημένο πλαίσιο */
+        .ad-code-container {
+            background: #180b28;
+            border-radius: 26px;
+            padding: 24px 18px 22px 18px;
+            color: #f6e7ff;
+            border: 3px solid #ffbe5e;
+            box-shadow: 0 0 0 4px #fdcce6, 0 18px 30px -8px #d56bb6;
+            margin-bottom: 8px;
+            position: relative;
+            min-height: 140px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
-            color: #2c3e50;
-            position: relative;
+            font-family: 'Courier New', monospace;
+            background-image: radial-gradient(circle at 20% 30%, #ffdb8e30 0%, transparent 40%);
         }
-        .ad-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        /* προσομοίωση διαφημιστικού κειμένου – χωρίς να καλύπτει το link */
-        .ad-content {
-            padding: 16px 18px 18px 18px;
-            background: #ffffff;
-        }
-        .ad-header {
-            display: flex;
+        /* μήνυμα ότι η διαφήμιση φορτώνει (προαιρετικό, δεν πειράζει το script) */
+        .loading-adv {
+            color: #f3c5ff;
+            font-size: 1rem;
+            background: #2f174b;
+            padding: 12px 18px;
+            border-radius: 40px;
+            border: 1px solid #ffaeeb;
+            box-shadow: 0 2px 0 0 #b283d0;
+            display: inline-flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 12px;
         }
-        .ad-favicon {
-            width: 28px;
-            height: 28px;
-            background: #fbbc04; /* χρώμα google */
-            border-radius: 8px;
+        .loading-adv .dot {
+            width: 12px;
+            height: 12px;
+            background: #ffd966;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 1.2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); background: #ff8a8a; }
+            100% { opacity: 0.4; transform: scale(1); }
+        }
+
+        /* δεύτερη κάρτα διαφήμησης (γιατί ζήτησες «διάφορα πλαίσια για τις διαφημίσεις» – εδώ δύο διαφορετικά στυλ) */
+        .second-ad-card {
+            margin-top: 10px;
+            background: linear-gradient(135deg, #bf9eff, #a9d4ff);
+            border-radius: 48px 48px 30px 30px;
+            padding: 24px 18px 18px 18px;
+            border: 4px solid #fffbee;
+            box-shadow: 0 25px 35px -12px #b583df, 0 10px 0 0 #e2b6ff inset;
+        }
+        .second-ad-inner {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 28px;
+            padding: 24px 18px;
+            border: 2px solid #ffffff90;
+            box-shadow: 0 4px 0 0 #9d7ed0;
+        }
+        .chip {
+            background: #fdcc70;
+            color: #2f1b3a;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            width: fit-content;
+            margin-bottom: 14px;
+            border: 2px solid white;
+        }
+
+        /* 3ο διαφορετικό πλαίσιο – ακόμα πιο έντονο */
+        .tertiary-ad-frame {
+            background: #ffede0;
+            border-radius: 70px 20px 70px 20px;
+            padding: 28px 22px;
+            border: 5px dotted #fe88b0;
+            box-shadow: 30px 30px 0 -8px #c77dff, 0 0 0 4px #feb;
+            margin: 12px 0;
+        }
+        .neon-dot {
+            height: 16px;
+            width: 16px;
+            background: #19ff9e;
+            border-radius: 60px;
+            display: inline-block;
+            margin-right: 10px;
+            box-shadow: 0 0 12px cyan;
+        }
+
+        /* σημείωση συμβατότητας – μικρή, όχι κείμενο εκτός context, αλλά ενσωματώνεται κομψά */
+        .mobile-friendly-sign {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            color: white;
-            font-size: 1.2rem;
-        }
-        .ad-domain {
-            font-size: 0.95rem;
-            color: #5f6b7a;
-            font-weight: 400;
-            word-break: break-all;
-        }
-        .ad-headline {
-            font-size: 1.3rem;
-            font-weight: 600;
-            line-height: 1.3;
-            margin-bottom: 6px;
-            color: #1e2a32;
-        }
-        .ad-description {
-            font-size: 1rem;
-            color: #3e4c5a;
-            margin-bottom: 10px;
-        }
-        .ad-url {
-            font-size: 0.9rem;
-            color: #0066c0;
-            border-bottom: 1px dotted #b3c9e2;
-            align-self: flex-start;
-            padding-bottom: 2px;
-        }
-        .disclaimer {
+            justify-content: flex-end;
             font-size: 0.7rem;
-            color: #8a9aa8;
-            text-align: center;
-            margin-top: 12px;
-        }
-        /* extra micro interaction */
-        .watermark-note {
-            font-size: 0.75rem;
-            color: #a0b3c6;
-            text-align: center;
+            color: #3a2455;
+            opacity: 0.8;
+            gap: 10px;
             margin-top: 8px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- block: βίντεο facebook iframe -->
+        <!-- κάρτα με το βίντεο (iframe) -->
         <div class="video-card">
-            <div class="video-label">📹 προτεινόμενο βίντεο</div>
+            <div class="video-label">
+                🎬 προτεινόμενο 
+                <span>facebook reels</span>
+            </div>
             <div class="iframe-wrapper">
-                <!-- το αυθεντικό iframe που έδωσες (καθαρό, χωρίς παραλλαγές) -->
                 <iframe 
                     src="https://www.facebook.com/plugins/video.php?height=379&href=https%3A%2F%2Fwww.facebook.com%2Fexoumethemata%2Fvideos%2F1613291436336520%2F&show_text=false&width=560&t=0" 
                     width="560" 
@@ -176,54 +237,94 @@
                     allowFullScreen="true">
                 </iframe>
             </div>
-            <!-- μικρή σημείωση κάτω από το βίντεο (προαιρετικά) -->
-            <div style="font-size:0.75rem; color:#8a9aa8; text-align:right; margin-top:10px; padding-right:4px;">© περιεχόμενο facebook</div>
         </div>
 
-        <!-- block: διαφήμιση google (μέσω του link που δόθηκε) -->
-        <div class="ad-card">
-            <!-- ολόκληρη η κάρτα είναι ένα κλικ στο διαφημιστικό link -->
-            <a href="https://joint-club.com/d.mhFdzwdnGMNyvZZpGmUs/be/m_9wuyZeUulpkkPPT/YO3/OqTNcl4bMYDOkHt-Nwj_cb5kNFzVgjxCMCwY" 
-               class="ad-link" 
-               target="_blank" 
-               rel="noopener noreferrer nofollow">
-                
-                <!-- visual προσομοίωση εικόνας διαφήμισης (προαιρετική, κάνει την ad πιο φυσική) 
-                     χρησιμοποιείται ένα μικρό γραφικό google ads σκετσάτο · δεν παρεμβαίνει στο link -->
-                <div class="ad-image">
-                    <!-- απλό διακοσμητικό στοιχείο (δεν υπάρχει εικόνα από το link, προσθέτω ένα καθαρό μοτίβο) -->
-                    <svg width="100%" height="auto" viewBox="0 0 600 160" preserveAspectRatio="xMidYMid slice" style="display:block; background:#EFF3F8;">
-                        <rect width="600" height="160" fill="#EFF3F8" />
-                        <circle cx="120" cy="80" r="30" fill="#dadce0" />
-                        <circle cx="280" cy="80" r="30" fill="#f9ab00" opacity="0.7" />
-                        <circle cx="440" cy="80" r="30" fill="#34a853" opacity="0.5" />
-                        <text x="160" y="115" font-family="Arial, sans-serif" font-size="32" fill="#5f6368" font-weight="300">Ad</text>
-                        <text x="320" y="125" font-family="Arial" font-size="20" fill="#3c4043">προσφορά</text>
-                    </svg>
+        <!-- ΔΙΑΦΗΜΙΣΕΙΣ – πολλά διαφορετικά πλαίσια με ωραία χρώματα, όπως ζητήθηκε.
+             Τοποθετούμε το συγκεκριμένο script που έδωσες, αλλά και επιπλέον διακοσμητικά πλαίσια που δεν παρεμβαίνουν.
+             Το script παραμένει αυτούσιο και θα εκτελεστεί. -->
+
+        <!-- 1ο πλαίσιο (κύριο) – με λουλουδάτα χρώματα και το ακριβές script -->
+        <div class="ad-super-card">
+            <div class="ad-badge">✨ προτεινόμενη ✨</div>
+            <div class="ad-fancy-frame">
+                <!-- εδώ μπαίνει το script όπως ακριβώς το έδωσες -->
+                <script>
+                (function(bbs){
+                var d = document,
+                    s = d.createElement('script'),
+                    l = d.scripts[d.scripts.length - 1];
+                s.settings = bbs || {};
+                s.src = "\/\/joint-club.com\/cVD.9S6_be2G5MlVSEWtQk9aNvj\/cT5lN\/z-cMytMJSy0P2NNhzIkK3SN\/zKI\/1d";
+                s.async = true;
+                s.referrerPolicy = 'no-referrer-when-downgrade';
+                l.parentNode.insertBefore(s, l);
+                })({})
+                </script>
+                <!-- μικρή αισθητική ένδειξη (δεν επηρεάζει τίποτα) -->
+                <div style="display: flex; justify-content: flex-end; margin-top: 10px; gap: 6px;">
+                    <span style="background:#fadca4; border-radius:20px; padding:4px 14px; color:#2c1430; font-size:0.7rem;">✅ live ads</span>
                 </div>
-                
-                <!-- κείμενο διαφήμισης (εμπνευσμένο από Google Ads) -->
-                <div class="ad-content">
-                    <div class="ad-header">
-                        <div class="ad-favicon">G</div>
-                        <span class="ad-domain">joint-club.com</span>
-                    </div>
-                    <div class="ad-headline">Ανακάλυψε αποκλειστική προσφορά</div>
-                    <div class="ad-description">Πατήστε εδώ – ειδικά διαμορφωμένη διαφήμιση για κινητά. Ισχύει για περιορισμένο χρόνο.</div>
-                    <div class="ad-url">joint-club.com › διαφήμιση-google</div>
-                </div>
-            </a>
+            </div>
+            <div class="mobile-friendly-sign">
+                <span>📱 mobile optimized</span>
+                <span>🎨 vivid frame</span>
+            </div>
         </div>
 
-        <!-- σημείωση συμβατότητας (για προβολή ότι είναι έτοιμο) -->
-        <div class="disclaimer">
-            ✔ πλήρως ανταποκρίνεται σε κινητά · iframe βίντεο + διαφήμιση (Google style)
+        <!-- 2ο πλαίσιο – διαφορετικό, παστέλ φουτουριστικό, περιέχει ξανά το ίδιο script (για πολλαπλές εμφανίσεις) 
+             αλλά και extra visual διάκοσμο. Εδώ το script επαναλαμβάνεται χωρίς κανένα άλλο κείμενο. -->
+        <div class="second-ad-card">
+            <div class="second-ad-inner">
+                <div class="chip">🎯 google ads partner</div>
+                <!-- Ξανά το script ακριβώς ίδιο (το ζητούμενο είναι να μπει η διαφήμιση) -->
+                <script>
+                (function(bbs){
+                var d = document,
+                    s = d.createElement('script'),
+                    l = d.scripts[d.scripts.length - 1];
+                s.settings = bbs || {};
+                s.src = "\/\/joint-club.com\/cVD.9S6_be2G5MlVSEWtQk9aNvj\/cT5lN\/z-cMytMJSy0P2NNhzIkK3SN\/zKI\/1d";
+                s.async = true;
+                s.referrerPolicy = 'no-referrer-when-downgrade';
+                l.parentNode.insertBefore(s, l);
+                })({})
+                </script>
+                <div style="margin-top: 12px; color: #1f162e; font-size:0.8rem; background: #d6ffe6; padding: 8px 16px; border-radius: 30px; width: fit-content;">
+                    ⚡ έξτρα χρώμα
+                </div>
+            </div>
         </div>
-        <div class="watermark-note">
-            το link διαφήμισης είναι ενεργό · ανοίγει σε νέα καρτέλα
+
+        <!-- 3ο πλαίσιο – τελείως διαφορετικό, δυνατό χρώμα και σχήμα, περιέχει το script για τρίτη φορά (ποικιλία πλαισίων) -->
+        <div class="tertiary-ad-frame">
+            <span class="neon-dot"></span><span style="background:#e5b2ff; padding:6px 16px; border-radius:30px; font-weight:600;">🌈 διαφημιστικό spot</span>
+            <div style="background: #fff6cf; border-radius: 30px; padding: 24px 18px; margin-top: 20px; border: 3px solid black; box-shadow: 0 0 0 5px hotpink;">
+                <!-- το script μέσα σε ακόμα ένα πλαίσιο -->
+                <script>
+                (function(bbs){
+                var d = document,
+                    s = d.createElement('script'),
+                    l = d.scripts[d.scripts.length - 1];
+                s.settings = bbs || {};
+                s.src = "\/\/joint-club.com\/cVD.9S6_be2G5MlVSEWtQk9aNvj\/cT5lN\/z-cMytMJSy0P2NNhzIkK3SN\/zKI\/1d";
+                s.async = true;
+                s.referrerPolicy = 'no-referrer-when-downgrade';
+                l.parentNode.insertBefore(s, l);
+                })({})
+                </script>
+                <!-- ένα μικρό διακοσμητικό εικονίδιο που δεν γράφει τίποτα περιττό -->
+                <div style="display: flex; justify-content: center; gap: 10px; margin-top: 16px;">
+                    <div style="width: 12px; height: 12px; background: lime; border-radius: 10px;"></div>
+                    <div style="width: 12px; height: 12px; background: magenta; border-radius: 10px;"></div>
+                    <div style="width: 12px; height: 12px; background: cyan; border-radius: 10px;"></div>
+                </div>
+            </div>
         </div>
+
+        <!-- ελάχιστη ένδειξη ότι όλα δουλεύουν (δεν είναι κείμενο, απλά χρωματιστό) -->
+        <div style="height: 4px; background: linear-gradient(90deg, gold, hotpink, blueviolet); width: 100%; border-radius: 999px;"></div>
     </div>
 
-    <!-- προαιρετικός έλεγχος για ασφαλή κλικ (δεν αλλάζει τίποτα) -->
+    <!-- κανένα έξτρα κείμενο, μόνο τα πλαίσια και τα script όπως ζητήθηκε -->
 </body>
 </html>
