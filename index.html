@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     
-    <!-- Βασικές μετα-ετικέτες για SEO και κοινή χρήση -->
+    <!-- Basic meta tags for SEO and sharing -->
     <title>Live Cams - Chaturbate</title>
-    <meta name="description" content="Live Cams - Ζωντανή μετάδοση με τα καλύτερα μοντέλα. Μπες τώρα για απεριόριστη διασκέδαση!">
+    <meta name="description" content="Live Cams - Watch the best live cam models. Join now for unlimited fun!">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://livecams.gr/">
     <meta property="og:title" content="Live Cams">
-    <meta property="og:description" content="Ζωντανή μετάδοση με τα καλύτερα μοντέλα. Μπες τώρα για απεριόριστη διασκέδαση!">
+    <meta property="og:description" content="Watch the best live cam models. Join now for unlimited fun!">
     <meta property="og:image" content="https://livecams.gr/photo2.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -22,29 +22,29 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://livecams.gr/">
     <meta name="twitter:title" content="Live Cams">
-    <meta name="twitter:description" content="Ζωντανή μετάδοση με τα καλύτερα μοντέλα. Μπες τώρα για απεριόριστη διασκέδαση!">
+    <meta name="twitter:description" content="Watch the best live cam models. Join now for unlimited fun!">
     <meta name="twitter:image" content="https://livecams.gr/photo2.png">
     
-    <!-- Για προσθήκη στην αρχική οθόνη (iOS) -->
+    <!-- For home screen addition (iOS) -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Live Cams">
     <link rel="apple-touch-icon" href="photo2.png">
     
-    <!-- Για προσθήκη στην αρχική οθόνη (Android) -->
+    <!-- For home screen addition (Android) -->
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="icon" type="image/png" href="photo2.png">
     <link rel="shortcut icon" href="photo2.png">
     
     <style>
-        /* Βασικό reset */
+        /* Basic reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Φόντο με gradient και κίνηση */
+        /* Background with gradient and animation */
         html, body {
             width: 100%;
             min-height: 100vh;
@@ -65,7 +65,7 @@
             100% { background-position: 0% 0%; }
         }
 
-        /* Διακοσμητικές ακτίνες */
+        /* Decorative rays */
         body::after {
             content: '';
             position: fixed;
@@ -79,7 +79,7 @@
             z-index: 0;
         }
 
-        /* Container - κεντραρισμένο */
+        /* Container - centered */
         .container {
             position: relative;
             z-index: 5;
@@ -93,7 +93,7 @@
             padding: 20px;
         }
 
-        /* Στυλ για τον τίτλο LIVE CAMS - responsive */
+        /* Title style LIVE CAMS - responsive */
         .title {
             text-align: center;
             margin: 20px 0 30px;
@@ -122,7 +122,7 @@
             100% { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff4da6, 0 0 30px #ff00bf; }
         }
 
-        /* Στυλ για την εικόνα */
+        /* Image style */
         .image-container {
             width: 100%;
             display: flex;
@@ -138,7 +138,7 @@
             border: 2px solid rgba(255, 75, 150, 0.5);
         }
 
-        /* Wrapper για τα iframe - responsive */
+        /* Wrapper for iframes - responsive */
         .iframe-wrapper {
             width: 100%;
             display: flex;
@@ -146,7 +146,7 @@
             margin-bottom: 30px;
         }
 
-        /* Iframe στυλ - πλήρως responsive */
+        /* Iframe style - fully responsive */
         iframe {
             display: block;
             width: 100%;
@@ -162,7 +162,7 @@
             transition: all 0.3s ease;
         }
 
-        /* Ειδικό στυλ για τα iframe με συγκεκριμένες διαστάσεις */
+        /* Special style for iframes with specific dimensions */
         iframe.code {
             width: 100%;
             max-width: 850px;
@@ -170,9 +170,9 @@
             aspect-ratio: auto;
         }
 
-        /* Responsive breakpoints για όλες τις συσκευές */
+        /* Responsive breakpoints for all devices */
         
-        /* Κινητά τηλέφωνα (μικρά) */
+        /* Mobile phones (small) */
         @media (max-width: 480px) {
             .container {
                 padding: 10px;
@@ -193,7 +193,7 @@
             }
         }
 
-        /* Κινητά τηλέφωνα (μεσαία) */
+        /* Mobile phones (medium) */
         @media (min-width: 481px) and (max-width: 767px) {
             iframe:not(.code) {
                 aspect-ratio: 4/5;
@@ -205,7 +205,7 @@
             }
         }
 
-        /* Tablet (κατακόρυφα) */
+        /* Tablet (portrait) */
         @media (min-width: 768px) and (max-width: 1023px) {
             .title h1 {
                 font-size: 3.5rem;
@@ -222,7 +222,7 @@
             }
         }
 
-        /* Tablet (οριζόντια) */
+        /* Tablet (landscape) */
         @media (min-width: 1024px) and (max-width: 1199px) {
             .title h1 {
                 font-size: 4rem;
@@ -235,7 +235,7 @@
             }
         }
 
-        /* Υπολογιστές */
+        /* Desktop */
         @media (min-width: 1200px) {
             .title h1 {
                 font-size: 4.5rem;
@@ -248,7 +248,7 @@
             }
         }
 
-        /* Μεγάλες οθόνες */
+        /* Large screens */
         @media (min-width: 1600px) {
             .container {
                 max-width: 1600px;
@@ -261,7 +261,7 @@
             }
         }
 
-        /* Διακοσμητική γραμμή */
+        /* Decorative line */
         .glow-line {
             width: min(150px, 50%);
             height: 4px;
@@ -271,7 +271,7 @@
             filter: drop-shadow(0 0 8px #ff4da6);
         }
 
-        /* Προσαρμογή για συσκευές με αφή */
+        /* Adjustment for touch devices */
         @media (hover: none) and (pointer: coarse) {
             iframe {
                 -webkit-overflow-scrolling: touch;
@@ -281,12 +281,12 @@
 </head>
 <body>
     <div class="container">
-        <!-- Τίτλος LIVE CAMS -->
+        <!-- Title LIVE CAMS -->
         <div class="title">
             <h1>LIVE CAMS</h1>
         </div>
         
-        <!-- Φωτογραφία photo2.png -->
+        <!-- Photo photo2.png -->
         <div class="image-container">
             <img src="photo2.png" alt="Live Cams" loading="lazy">
         </div>
@@ -333,7 +333,7 @@
             </iframe>
         </div>
         
-        <!-- Iframe 5 - Chaturbate (couple) - ΝΕΟ -->
+        <!-- Iframe 5 - Chaturbate (couple) -->
         <div class="iframe-wrapper">
             <iframe src="https://chaturbate.com/in/?tour=W5j4&campaign=hrmwy&track=default&c=15&p=1&gender=x&tag=couple" 
                     frameborder="0"
@@ -342,7 +342,7 @@
             </iframe>
         </div>
         
-        <!-- Iframe 6 - cbxyz sEAI - ΝΕΟ -->
+        <!-- Iframe 6 - cbxyz sEAI -->
         <div class="iframe-wrapper">
             <iframe src="https://cbxyz.com/in/?tour=sEAI&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
                     height="480px" 
@@ -354,7 +354,7 @@
             </iframe>
         </div>
 
-        <!-- Διακοσμητική γραμμή -->
+        <!-- Decorative line -->
         <div class="glow-line"></div>
     </div>
 </body>
