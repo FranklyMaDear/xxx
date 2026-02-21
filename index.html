@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="el">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Chaturbate - Live Cams</title>
     <style>
-        [span_0](start_span)/* Βασικό reset[span_0](end_span) */
+        /* Βασικό reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        [span_1](start_span)/* Φόντο με gradient και κίνηση[span_1](end_span) */
+        /* Φόντο με gradient και κίνηση */
         html, body {
             width: 100%;
             min-height: 100vh;
@@ -33,7 +33,7 @@
             100% { background-position: 0% 0%; }
         }
 
-        [span_2](start_span)/* Διακοσμητικές ακτίνες[span_2](end_span) */
+        /* Διακοσμητικές ακτίνες */
         body::after {
             content: '';
             position: fixed;
@@ -47,6 +47,7 @@
             z-index: 0;
         }
 
+        /* Container - κεντραρισμένο */
         .container {
             position: relative;
             z-index: 5;
@@ -60,10 +61,10 @@
             padding: 20px;
         }
 
-        [span_3](start_span)/* Στυλ για τον τίτλο[span_3](end_span) */
+        /* Στυλ για τον τίτλο LIVE CAMS - responsive */
         .title {
             text-align: center;
-            margin: 20px 0 10px;
+            margin: 20px 0 30px;
             width: 100%;
         }
 
@@ -71,58 +72,164 @@
             font-size: clamp(2rem, 8vw, 4.5rem);
             font-weight: 900;
             color: white;
-            text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff4da6, 0 0 30px #ff00bf, 4px 4px 0 #00000080;
+            text-shadow: 0 0 10px #ff99cc, 
+                         0 0 20px #ff4da6, 
+                         0 0 30px #ff00bf, 
+                         4px 4px 0 #00000080;
             letter-spacing: 4px;
             font-family: 'Impact', 'Arial Black', sans-serif;
             text-transform: uppercase;
             animation: glow 3s ease-in-out infinite;
+            display: inline-block;
+            line-height: 1.2;
         }
 
         @keyframes glow {
-            0%, 100% { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff4da6, 0 0 30px #ff00bf; }
+            0% { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff4da6, 0 0 30px #ff00bf; }
             50% { text-shadow: 0 0 15px #ff4da6, 0 0 25px #ff00bf, 0 0 40px #b300e6; }
+            100% { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff4da6, 0 0 30px #ff00bf; }
         }
 
-        /* Στυλ για την εικόνα photo2.png */
-        .header-image {
+        /* Στυλ για την εικόνα */
+        .image-container {
             width: 100%;
-            max-width: 800px;
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
             height: auto;
             border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 75, 150, 0.5);
         }
 
-        [span_4](start_span)/* Wrapper και Iframes[span_4](end_span) */
+        /* Wrapper για τα iframe - responsive */
         .iframe-wrapper {
             width: 100%;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px; /* Απόσταση μεταξύ των iframes */
+            justify-content: center;
             margin-bottom: 30px;
         }
 
+        /* Iframe στυλ - πλήρως responsive */
         iframe {
             display: block;
             width: 100%;
             max-width: 1200px;
             height: auto;
-            aspect-ratio: 16/9;
+            aspect-ratio: 4/3;
             min-height: 300px;
+            max-height: 900px;
             border: none;
             border-radius: 20px;
             background: #000;
             box-shadow: 0 25px 35px -12px #000;
+            transition: all 0.3s ease;
         }
 
-        /* Ειδικό στυλ για iframes με συγκεκριμένες διαστάσεις */
-        .code {
+        /* Ειδικό στυλ για τα iframe με συγκεκριμένες διαστάσεις */
+        iframe.code {
+            width: 100%;
             max-width: 850px;
             height: 480px;
+            aspect-ratio: auto;
         }
 
-        [span_5](start_span)/* Διακοσμητική γραμμή[span_5](end_span) */
+        /* Responsive breakpoints για όλες τις συσκευές */
+        
+        /* Κινητά τηλέφωνα (μικρά) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .title {
+                margin: 10px 0 20px;
+            }
+            
+            iframe:not(.code) {
+                aspect-ratio: 3/4;
+                max-height: 600px;
+                border-radius: 15px;
+            }
+            
+            iframe.code {
+                height: 320px;
+            }
+        }
+
+        /* Κινητά τηλέφωνα (μεσαία) */
+        @media (min-width: 481px) and (max-width: 767px) {
+            iframe:not(.code) {
+                aspect-ratio: 4/5;
+                max-height: 650px;
+            }
+            
+            iframe.code {
+                height: 400px;
+            }
+        }
+
+        /* Tablet (κατακόρυφα) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .title h1 {
+                font-size: 3.5rem;
+            }
+            
+            iframe:not(.code) {
+                max-width: 700px;
+                aspect-ratio: 4/3;
+                max-height: 700px;
+            }
+            
+            iframe.code {
+                max-width: 700px;
+            }
+        }
+
+        /* Tablet (οριζόντια) */
+        @media (min-width: 1024px) and (max-width: 1199px) {
+            .title h1 {
+                font-size: 4rem;
+            }
+            
+            iframe:not(.code) {
+                max-width: 900px;
+                aspect-ratio: 16/9;
+                max-height: 700px;
+            }
+        }
+
+        /* Υπολογιστές */
+        @media (min-width: 1200px) {
+            .title h1 {
+                font-size: 4.5rem;
+            }
+            
+            iframe:not(.code) {
+                max-width: 1100px;
+                aspect-ratio: 16/9;
+                max-height: 800px;
+            }
+        }
+
+        /* Μεγάλες οθόνες */
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 1600px;
+            }
+            
+            iframe:not(.code) {
+                max-width: 1300px;
+                aspect-ratio: 21/9;
+                max-height: 900px;
+            }
+        }
+
+        /* Διακοσμητική γραμμή */
         .glow-line {
             width: min(150px, 50%);
             height: 4px;
@@ -132,44 +239,69 @@
             filter: drop-shadow(0 0 8px #ff4da6);
         }
 
-        [span_6](start_span)[span_7](start_span)/* Breakpoints για κινητά[span_6](end_span)[span_7](end_span) */
-        @media (max-width: 767px) {
+        /* Προσαρμογή για συσκευές με αφή */
+        @media (hover: none) and (pointer: coarse) {
             iframe {
-                aspect-ratio: 3/4;
-                max-height: 600px;
-            }
-            .code {
-                height: 350px; /* Προσαρμογή ύψους για μικρές οθόνες */
+                -webkit-overflow-scrolling: touch;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Τίτλος LIVE CAMS -->
         <div class="title">
             <h1>LIVE CAMS</h1>
         </div>
-
-        <img src="photo2.png" alt="Featured Photo" class="header-image">
         
+        <!-- Φωτογραφία photo2.png -->
+        <div class="image-container">
+            <img src="photo2.png" alt="Live Cams" loading="lazy">
+        </div>
+        
+        <!-- Iframe 1 - πλήρως responsive -->
         <div class="iframe-wrapper">
             <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x" 
-                    allowfullscreen loading="lazy">
-            </iframe>
-
-            <iframe src="https://cbxyz.com/in/?tour=NxHf&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
-                    class="code" scrolling="no" frameborder="0">
-            </iframe>
-
-            <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=10&p=1&gender=x&tag=18" 
-                    allowfullscreen loading="lazy">
-            </iframe>
-
-            <iframe src="https://cbxyz.com/in/?tour=dTm0&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
-                    class="code" scrolling="no" frameborder="0">
+                    frameborder="0"
+                    allowfullscreen
+                    loading="lazy">
             </iframe>
         </div>
 
+        <!-- Iframe 2 - cbxyz με συγκεκριμένες διαστάσεις -->
+        <div class="iframe-wrapper">
+            <iframe src="https://cbxyz.com/in/?tour=NxHf&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
+                    height="480px" 
+                    width="850px" 
+                    frameborder="0" 
+                    class="code" 
+                    scrolling="no"
+                    loading="lazy">
+            </iframe>
+        </div>
+        
+        <!-- Iframe 3 - chaturbate -->
+        <div class="iframe-wrapper">
+            <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=10&p=1&gender=x&tag=18" 
+                    frameborder="0"
+                    allowfullscreen
+                    loading="lazy">
+            </iframe>
+        </div>
+        
+        <!-- Iframe 4 - cbxyz δεύτερο -->
+        <div class="iframe-wrapper">
+            <iframe src="https://cbxyz.com/in/?tour=dTm0&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
+                    height="480px" 
+                    width="850px" 
+                    frameborder="0" 
+                    class="code" 
+                    scrolling="no"
+                    loading="lazy">
+            </iframe>
+        </div>
+
+        <!-- Διακοσμητική γραμμή -->
         <div class="glow-line"></div>
     </div>
 </body>
