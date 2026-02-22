@@ -190,6 +190,15 @@
             aspect-ratio: auto;
         }
 
+        /* Νέος κανόνας για τα πρώτα δύο iframe που έχουν 850x480 */
+        iframe.cbxyz-large {
+            max-width: 850px;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 850/480; /* διατήρηση αναλογίας 850:480 */
+            max-height: 480px;
+        }
+
         /* Ειδικές ρυθμίσεις για κινητά - Δεν αλλάζουμε το header-row, μένει δίπλα */
         @media (max-width: 480px) {
             .container {
@@ -221,6 +230,10 @@
             iframe.code {
                 height: 300px;
             }
+            iframe.cbxyz-large {
+                aspect-ratio: 16/9; /* 480/850 ≈ 0.564, αλλά δίνουμε 16:9 για καλύτερη εμφάνιση σε μικρή οθόνη */
+                max-height: 280px;
+            }
         }
 
         /* Πολύ μικρές οθόνες (π.χ. iPhone SE) - ακόμα πιο συμπαγή */
@@ -248,6 +261,10 @@
             iframe.code {
                 height: 400px;
             }
+            iframe.cbxyz-large {
+                max-height: 350px;
+                aspect-ratio: 850/480;
+            }
         }
 
         /* Tablet */
@@ -261,6 +278,10 @@
             iframe:not(.code) {
                 max-width: 700px;
                 aspect-ratio: 4/3;
+            }
+            iframe.cbxyz-large {
+                max-width: 700px;
+                max-height: 395px; /* διατήρηση αναλογίας */
             }
         }
 
@@ -289,7 +310,7 @@
 </head>
 <body>
     <div class="container">
-        <!-- HEADER: Τίτλος αριστερά, Banner δεξιά - ΠΑΝΤΑ ΔΙΠΛΑ, ακόμα και στο πιο μικρό κινητό -->
+        <!-- HEADER: Τίτλος αριστερά, Banner δεξιά - ΠΑΝΤΑ ΔΙΠΛΑ -->
         <div class="header-row">
             <div class="title">
                 <h1>LIVE CAMS</h1>
@@ -299,7 +320,39 @@
             </div>
         </div>
         
-        <!-- Iframe 1 - Chaturbate (default) -->
+        <!-- ΠΡΩΤΟ iframe (cbxyz dTm0) με διαστάσεις 850x480 και κλάση cbxyz-large -->
+        <div class="iframe-wrapper">
+            <iframe src="https://cbxyz.com/in/?tour=dTm0&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
+                    frameborder="0" 
+                    class="code cbxyz-large" 
+                    scrolling="no"
+                    loading="lazy"
+                    style="max-width:850px; aspect-ratio:850/480; height:auto; width:100%;">
+            </iframe>
+        </div>
+        
+        <!-- ΔΕΥΤΕΡΟ iframe (cbxyz 6o0b) με διαστάσεις 850x480 και κλάση cbxyz-large -->
+        <div class="iframe-wrapper">
+            <iframe src="https://cbxyz.com/in/?tour=6o0b&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
+                    frameborder="0" 
+                    class="code cbxyz-large" 
+                    scrolling="no"
+                    loading="lazy"
+                    style="max-width:850px; aspect-ratio:850/480; height:auto; width:100%;">
+            </iframe>
+        </div>
+        
+        <!-- ΤΡΙΤΟ iframe (chaturbate new / gender=c) default στυλ, χωρίς κλάση code για να έχει 4/3 aspect ratio όπως τα άλλα chaturbate -->
+        <div class="iframe-wrapper">
+            <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=c&tag=new" 
+                    frameborder="0"
+                    allowfullscreen
+                    loading="lazy">
+            </iframe>
+        </div>
+        
+        <!-- Υπόλοιπα iframe όπως ακριβώς στο αρχικό index.html -->
+        <!-- Iframe 4 - Chaturbate (default) -->
         <div class="iframe-wrapper">
             <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x" 
                     frameborder="0"
@@ -308,7 +361,7 @@
             </iframe>
         </div>
 
-        <!-- Iframe 2 - cbxyz NxHf -->
+        <!-- Iframe 5 - cbxyz NxHf (original) -->
         <div class="iframe-wrapper">
             <iframe src="https://cbxyz.com/in/?tour=NxHf&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
                     height="780px" 
@@ -320,7 +373,7 @@
             </iframe>
         </div>
         
-        <!-- Iframe 3 - Chaturbate (tag 18) -->
+        <!-- Iframe 6 - Chaturbate (tag 18) -->
         <div class="iframe-wrapper">
             <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=10&p=1&gender=x&tag=18" 
                     frameborder="0"
@@ -329,7 +382,7 @@
             </iframe>
         </div>
         
-        <!-- Iframe 4 - cbxyz dTm0 -->
+        <!-- Iframe 7 - cbxyz dTm0 (original duplicate? το βάζω όπως ήταν στο αρχικό με 780x550 code) -->
         <div class="iframe-wrapper">
             <iframe src="https://cbxyz.com/in/?tour=dTm0&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
                     height="780px" 
@@ -341,7 +394,7 @@
             </iframe>
         </div>
         
-        <!-- Iframe 5 - Chaturbate (couple) -->
+        <!-- Iframe 8 - Chaturbate (couple) -->
         <div class="iframe-wrapper">
             <iframe src="https://chaturbate.com/in/?tour=W5j4&campaign=hrmwy&track=default&c=15&p=1&gender=x&tag=couple" 
                     frameborder="0"
@@ -350,7 +403,7 @@
             </iframe>
         </div>
         
-        <!-- Iframe 6 - cbxyz sEAI -->
+        <!-- Iframe 9 - cbxyz sEAI -->
         <div class="iframe-wrapper">
             <iframe src="https://cbxyz.com/in/?tour=sEAI&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
                     height="780px" 
