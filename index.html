@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     
-    <!-- Basic meta tags -->
+    <!-- Basic meta tags for SEO and sharing -->
     <title>Live Cams - Chaturbate</title>
     <meta name="description" content="Live Cams - Watch the best live cam models. Join now for unlimited fun!">
     
-    <!-- Open Graph -->
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://xxx.franklymadear.com">
     <meta property="og:title" content="Live Cams">
@@ -25,22 +25,26 @@
     <meta name="twitter:description" content="Watch the best live cam models. Join now for unlimited fun!">
     <meta name="twitter:image" content="https://xxx.franklymadear.com/photo2.png">
     
-    <!-- Home screen icons -->
+    <!-- For home screen addition (iOS) -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Live Cams">
     <link rel="apple-touch-icon" href="https://xxx.franklymadear.com/photo2.png">
+    
+    <!-- For home screen addition (Android) -->
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="icon" type="image/png" href="https://xxx.franklymadear.com/photo2.png">
     <link rel="shortcut icon" href="https://xxx.franklymadear.com/photo2.png">
     
     <style>
+        /* Basic reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Background with gradient and animation */
         html, body {
             width: 100%;
             min-height: 100vh;
@@ -61,6 +65,7 @@
             100% { background-position: 0% 0%; }
         }
 
+        /* Decorative rays */
         body::after {
             content: '';
             position: fixed;
@@ -74,6 +79,7 @@
             z-index: 0;
         }
 
+        /* Container - centered */
         .container {
             position: relative;
             z-index: 5;
@@ -83,27 +89,31 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: flex-start;
             padding: 20px;
         }
 
-        /* Τίτλος κεντραρισμένος */
-        .title-wrapper {
-            width: 100%;
+        /* Title style LIVE CAMS - responsive */
+        .title {
             text-align: center;
-            margin: 10px 0 5px 0;
+            margin: 20px 0 30px;
+            width: 100%;
         }
 
         .title h1 {
-            font-size: clamp(1.2rem, 4vw, 3.2rem);
+            font-size: clamp(2rem, 8vw, 4.5rem);
             font-weight: 900;
             color: white;
-            text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff4da6, 0 0 30px #ff00bf, 4px 4px 0 #00000080;
-            letter-spacing: 2px;
+            text-shadow: 0 0 10px #ff99cc, 
+                         0 0 20px #ff4da6, 
+                         0 0 30px #ff00bf, 
+                         4px 4px 0 #00000080;
+            letter-spacing: 4px;
             font-family: 'Impact', 'Arial Black', sans-serif;
             text-transform: uppercase;
             animation: glow 3s ease-in-out infinite;
-            line-height: 1.2;
             display: inline-block;
+            line-height: 1.2;
         }
 
         @keyframes glow {
@@ -112,100 +122,156 @@
             100% { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff4da6, 0 0 30px #ff00bf; }
         }
 
-        /* Banner - 250x250 */
-        .banner-wrapper {
+        /* Image style */
+        .image-container {
             width: 100%;
             display: flex;
             justify-content: center;
-            align-items: center;
-            margin: 0 0 30px 0;
+            margin: 20px 0;
         }
 
-        .banner-container img {
-            display: block;
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 20px;
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
-            border: 4px solid rgba(255, 75, 150, 0.8);
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 75, 150, 0.5);
         }
 
-        /* Iframe wrapper */
+        /* Wrapper for iframes - responsive */
         .iframe-wrapper {
             width: 100%;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
         }
 
-        /* Βασικό στυλ για το iframe - ΧΩΡΙΣ ΚΑΘΟΛΟΥ ΠΛΑΙΣΙΑ */
+        /* Iframe style - fully responsive */
         iframe {
             display: block;
-            border: none !important;
-            outline: none !important;
-            box-shadow: none !important;
-            background: transparent !important;
-            transition: all 0.3s ease;
-            max-width: 100%;
+            width: 100%;
+            max-width: 1200px;
             height: auto;
+            aspect-ratio: 4/3;
+            min-height: 300px;
+            max-height: 900px;
+            border: none;
+            border-radius: 20px;
+            background: #000;
+            box-shadow: 0 25px 35px -12px #000;
+            transition: all 0.3s ease;
         }
 
-        /* Γραμμή διαχωρισμού (προαιρετικά, μπορείς να την αφαιρέσεις αν δεν την θες) */
-        .iframe-divider {
-            width: 80%;
-            max-width: 900px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #ff1a8c, #b300e6, #ff4da6, transparent);
-            border-radius: 10px;
-            margin: 25px auto 10px auto;
-            filter: drop-shadow(0 0 12px #ff4da6);
-            animation: pulseLine 3s infinite;
+        /* Special style for iframes with specific dimensions */
+        iframe.code {
+            width: 100%;
+            max-width: 850px;
+            height: 480px;
+            aspect-ratio: auto;
         }
 
-        @keyframes pulseLine {
-            0% { opacity: 0.7; filter: drop-shadow(0 0 5px #ff4da6); }
-            50% { opacity: 1; filter: drop-shadow(0 0 20px #ff80bf); }
-            100% { opacity: 0.7; filter: drop-shadow(0 0 5px #ff4da6); }
-        }
-
-        /* Responsive */
+        /* Responsive breakpoints for all devices */
+        
+        /* Mobile phones (small) */
         @media (max-width: 480px) {
             .container {
                 padding: 10px;
             }
-            .title h1 {
-                font-size: clamp(1.2rem, 6vw, 1.9rem);
+            
+            .title {
+                margin: 10px 0 20px;
             }
-            .banner-container img {
-                width: 200px;
-                height: 200px;
+            
+            iframe:not(.code) {
+                aspect-ratio: 3/4;
+                max-height: 600px;
+                border-radius: 15px;
             }
-            .iframe-divider {
-                width: 95%;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .title h1 {
-                font-size: 1.1rem;
-            }
-            .banner-container img {
-                width: 170px;
-                height: 170px;
+            
+            iframe.code {
+                height: 320px;
             }
         }
 
+        /* Mobile phones (medium) */
+        @media (min-width: 481px) and (max-width: 767px) {
+            iframe:not(.code) {
+                aspect-ratio: 4/5;
+                max-height: 650px;
+            }
+            
+            iframe.code {
+                height: 400px;
+            }
+        }
+
+        /* Tablet (portrait) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .title h1 {
+                font-size: 3.5rem;
+            }
+            
+            iframe:not(.code) {
+                max-width: 700px;
+                aspect-ratio: 4/3;
+                max-height: 700px;
+            }
+            
+            iframe.code {
+                max-width: 700px;
+            }
+        }
+
+        /* Tablet (landscape) */
+        @media (min-width: 1024px) and (max-width: 1199px) {
+            .title h1 {
+                font-size: 4rem;
+            }
+            
+            iframe:not(.code) {
+                max-width: 900px;
+                aspect-ratio: 16/9;
+                max-height: 700px;
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 1200px) {
+            .title h1 {
+                font-size: 4.5rem;
+            }
+            
+            iframe:not(.code) {
+                max-width: 1100px;
+                aspect-ratio: 16/9;
+                max-height: 800px;
+            }
+        }
+
+        /* Large screens */
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 1600px;
+            }
+            
+            iframe:not(.code) {
+                max-width: 1300px;
+                aspect-ratio: 21/9;
+                max-height: 900px;
+            }
+        }
+
+        /* Decorative line */
         .glow-line {
             width: min(150px, 50%);
             height: 4px;
             background: linear-gradient(90deg, #ff1a4c, #b300e6, #ff0066);
             border-radius: 4px;
-            margin: 20px auto 10px;
+            margin: 20px auto;
             filter: drop-shadow(0 0 8px #ff4da6);
         }
 
+        /* Adjustment for touch devices */
         @media (hover: none) and (pointer: coarse) {
             iframe {
                 -webkit-overflow-scrolling: touch;
@@ -215,33 +281,81 @@
 </head>
 <body>
     <div class="container">
-        <!-- Τίτλος -->
-        <div class="title-wrapper">
-            <div class="title">
-                <h1>LIVE CAMS</h1>
-            </div>
-        </div>
-
-        <!-- Banner 250x250 -->
-        <div class="banner-wrapper">
-            <div class="banner-container">
-                <img src="photo2.png" alt="Live Cams Banner" loading="lazy">
-            </div>
+        <!-- Title LIVE CAMS -->
+        <div class="title">
+            <h1>LIVE CAMS</h1>
         </div>
         
-        <!-- Μοναδικό iframe: chaturbate natural -->
+        <!-- Photo photo2.png -->
+        <div class="image-container">
+            <img src="photo2.png" alt="Live Cams" loading="lazy">
+        </div>
+        
+        <!-- Iframe 1 - Chaturbate (default) -->
         <div class="iframe-wrapper">
-            <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=10&p=1&gender=x&tag=natural" 
+            <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x" 
                     frameborder="0"
                     allowfullscreen
                     loading="lazy">
             </iframe>
-            <!-- <div class="iframe-divider"></div>  Αφαίρεσα τη γραμμή αν δεν την θες, αλλά την άφησα σχολιασμένη -->
         </div>
 
-        <!-- Decorative line (μικρή γραμμή στο τέλος) -->
+        <!-- Iframe 2 - cbxyz NxHf -->
+        <div class="iframe-wrapper">
+            <iframe src="https://cbxyz.com/in/?tour=NxHf&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
+                    height="480px" 
+                    width="850px" 
+                    frameborder="0" 
+                    class="code" 
+                    scrolling="no"
+                    loading="lazy">
+            </iframe>
+        </div>
+        
+        <!-- Iframe 3 - Chaturbate (tag 18) -->
+        <div class="iframe-wrapper">
+            <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=10&p=1&gender=x&tag=18" 
+                    frameborder="0"
+                    allowfullscreen
+                    loading="lazy">
+            </iframe>
+        </div>
+        
+        <!-- Iframe 4 - cbxyz dTm0 -->
+        <div class="iframe-wrapper">
+            <iframe src="https://cbxyz.com/in/?tour=dTm0&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
+                    height="480px" 
+                    width="850px" 
+                    frameborder="0" 
+                    class="code" 
+                    scrolling="no"
+                    loading="lazy">
+            </iframe>
+        </div>
+        
+        <!-- Iframe 5 - Chaturbate (couple) -->
+        <div class="iframe-wrapper">
+            <iframe src="https://chaturbate.com/in/?tour=W5j4&campaign=hrmwy&track=default&c=15&p=1&gender=x&tag=couple" 
+                    frameborder="0"
+                    allowfullscreen
+                    loading="lazy">
+            </iframe>
+        </div>
+        
+        <!-- Iframe 6 - cbxyz sEAI -->
+        <div class="iframe-wrapper">
+            <iframe src="https://cbxyz.com/in/?tour=sEAI&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
+                    height="480px" 
+                    width="850px" 
+                    frameborder="0" 
+                    class="code" 
+                    scrolling="no"
+                    loading="lazy">
+            </iframe>
+        </div>
+
+        <!-- Decorative line -->
         <div class="glow-line"></div>
     </div>
-    <!-- Scripts αφαιρέθηκαν εντελώς -->
 </body>
 </html>
