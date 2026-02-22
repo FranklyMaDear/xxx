@@ -103,7 +103,7 @@
             text-transform: uppercase;
             animation: glow 3s ease-in-out infinite;
             line-height: 1.2;
-            display: inline-block;  /* για να μαζεύει το περιεχόμενο */
+            display: inline-block;
         }
 
         @keyframes glow {
@@ -112,7 +112,7 @@
             100% { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff4da6, 0 0 30px #ff00bf; }
         }
 
-        /* Banner - κάτω από τον τίτλο, κεντραρισμένο */
+        /* Banner - 250x250, κεντραρισμένο */
         .banner-wrapper {
             width: 100%;
             display: flex;
@@ -123,33 +123,26 @@
 
         .banner-container img {
             display: block;
-            width: auto;
-            height: auto;
-            max-height: 200px;       /* Μεγάλο banner */
-            min-width: 120px;
+            width: 250px;
+            height: 250px;
+            object-fit: cover;        /* γεμίζει το τετράγωνο, μπορεί να κόψει λίγο την εικόνα */
             border-radius: 20px;
             box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
             border: 4px solid rgba(255, 75, 150, 0.8);
-            object-fit: contain;
         }
 
         /* Iframe wrappers */
         .iframe-wrapper {
             width: 100%;
             display: flex;
-            flex-direction: column;   /* για να βάλουμε την κάτω γραμμή */
+            flex-direction: column;
             align-items: center;
-            margin-bottom: 15px;       /* μικρότερο margin, η γραμμή δίνει απόσταση */
+            margin-bottom: 15px;
         }
 
+        /* Βασικό στυλ για όλα τα iframe - θα παρακαμφθεί από πιο ειδικούς κανόνες */
         iframe {
             display: block;
-            width: 100%;
-            max-width: 1200px;
-            height: auto;
-            aspect-ratio: 4/3;
-            min-height: 450px;        /* αυξημένο για να φαίνονται περισσότερα βίντεο */
-            max-height: 1200px;        /* αυξημένο */
             border: none;
             border-radius: 20px;
             background: #000;
@@ -157,23 +150,32 @@
             transition: all 0.3s ease;
         }
 
-        iframe.code {
-            width: 100%;
-            max-width: 550px;
-            height: 1000px;            /* αυξήθηκε σε 1000px */
-            aspect-ratio: auto;
+        /* Ειδικές διαστάσεις ανά iframe μέσω κλάσεων */
+        .iframe-350x350 {
+            width: 350px;
+            height: 350px;
         }
 
-        /* Μεγάλα iframes τύπου cbxyz με 850x1000 (αυξημένο ύψος) */
-        iframe.cbxyz-large {
-            max-width: 850px;
-            width: 100%;
-            height: auto;
-            aspect-ratio: 850/1000;    /* ύψος 1000 για λίστα */
-            max-height: 1000px;
+        .iframe-350x800 {
+            width: 350px;
+            height: 800px;
         }
 
-        /* Γραμμή διαχωρισμού με εφέ μετά από κάθε iframe */
+        /* Για τα iframe chaturbate που δεν έχουν κλάση, εφαρμόζουμε 350x800 (5ο iframe) */
+        .chaturbate-800 {
+            width: 350px;
+            height: 800px;
+        }
+
+        /* Για τα υπόλοιπα chaturbate (default, tag 18, couple) θέλουμε 350x350? 
+           Από την περιγραφή: 5ο iframe 350x800, τα άλλα chaturbate (εκτός 3ου & 5ου) δεν ορίζονται, 
+           αλλά για συνέπεια τα βάζω 350x350 όπως τα 6,8,10 */
+        .chaturbate-350 {
+            width: 350px;
+            height: 350px;
+        }
+
+        /* Γραμμή διαχωρισμού με εφέ */
         .iframe-divider {
             width: 80%;
             max-width: 900px;
@@ -191,98 +193,53 @@
             100% { opacity: 0.7; filter: drop-shadow(0 0 5px #ff4da6); }
         }
 
-        /* Ειδικές ρυθμίσεις για κινητά */
+        /* Responsive μικρές οθόνες */
         @media (max-width: 480px) {
             .container {
                 padding: 10px;
             }
-
             .title h1 {
                 font-size: clamp(1.2rem, 6vw, 1.9rem);
             }
-
             .banner-container img {
-                max-height: 120px;
-                border-radius: 16px;
+                width: 200px;        /* προσαρμογή σε μικρότερη οθόνη */
+                height: 200px;
             }
-
-            iframe:not(.code) {
-                aspect-ratio: 3/4;
-                max-height: 900px;     /* αυξημένο */
-                min-height: 350px;
+            .iframe-350x350, .iframe-350x800, .chaturbate-800, .chaturbate-350 {
+                width: 100%;         /* στα κινητά παίρνει όλο το πλάτος */
+                max-width: 350px;     
+                height: auto;         /* διατήρηση αναλογίας αν γίνεται; Χειροκίνητα ορίζουμε ύψος */
             }
-            
-            iframe.code {
-                height: 800px;          /* λίγο μικρότερο λόγω οθόνης, αλλά κοντά στα 1000 */
-                max-width: 450px;
+            /* Για να μην χαλάει η αναλογία, ορίζουμε εκ νέου ύψος ανάλογα με πλάτος */
+            .iframe-350x350 {
+                height: auto;
+                aspect-ratio: 1/1;
             }
-            iframe.cbxyz-large {
-                aspect-ratio: 16/10;     /* προσαρμογή */
-                max-height: 600px;
+            .iframe-350x800 {
+                height: auto;
+                aspect-ratio: 350/800;
+            }
+            .chaturbate-800 {
+                height: auto;
+                aspect-ratio: 350/800;
+            }
+            .chaturbate-350 {
+                height: auto;
+                aspect-ratio: 1/1;
             }
             .iframe-divider {
                 width: 95%;
             }
         }
 
-        /* Πολύ μικρές οθόνες (π.χ. iPhone SE) */
+        /* Πολύ μικρές οθόνες */
         @media (max-width: 360px) {
             .title h1 {
                 font-size: 1.1rem;
             }
             .banner-container img {
-                max-height: 100px;
-            }
-        }
-
-        /* Ενδιάμεσες συσκευές */
-        @media (min-width: 481px) and (max-width: 767px) {
-            .title h1 {
-                font-size: clamp(1.6rem, 5vw, 2.2rem);
-            }
-            .banner-container img {
-                max-height: 160px;
-            }
-            iframe:not(.code) {
-                aspect-ratio: 4/5;
-                max-height: 900px;
-            }
-            iframe.code {
-                height: 900px;
-            }
-            iframe.cbxyz-large {
-                max-height: 700px;
-                aspect-ratio: 850/900;
-            }
-        }
-
-        /* Tablet */
-        @media (min-width: 768px) and (max-width: 1023px) {
-            .title h1 {
-                font-size: 2.5rem;
-            }
-            .banner-container img {
-                max-height: 180px;
-            }
-            iframe:not(.code) {
-                max-width: 750px;
-                aspect-ratio: 4/3;
-                max-height: 1000px;
-            }
-            iframe.code {
-                height: 1000px;
-            }
-            iframe.cbxyz-large {
-                max-width: 750px;
-                max-height: 880px;
-                aspect-ratio: 850/950;
-            }
-        }
-
-        /* Desktop */
-        @media (min-width: 1200px) {
-            .title h1 {
-                font-size: 3.5rem;
+                width: 170px;
+                height: 170px;
             }
         }
 
@@ -304,137 +261,131 @@
 </head>
 <body>
     <div class="container">
-        <!-- Τίτλος πάνω, κεντραρισμένος -->
+        <!-- Τίτλος -->
         <div class="title-wrapper">
             <div class="title">
                 <h1>LIVE CAMS</h1>
             </div>
         </div>
 
-        <!-- Banner κάτω από τον τίτλο, στο κέντρο -->
+        <!-- Banner 250x250 -->
         <div class="banner-wrapper">
             <div class="banner-container">
                 <img src="photo2.png" alt="Live Cams Banner" loading="lazy">
             </div>
         </div>
         
-        <!-- 1ο iframe (cbxyz dTm0) με αυξημένο ύψος ~1000 -->
+        <!-- 1ο iframe: 350x350 (cbxyz dTm0) -->
         <div class="iframe-wrapper">
             <iframe src="https://cbxyz.com/in/?tour=dTm0&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
                     frameborder="0" 
-                    class="code cbxyz-large" 
+                    class="iframe-350x350"
                     scrolling="no"
-                    loading="lazy"
-                    style="max-width:850px; aspect-ratio:850/1000; height:auto; width:100%;">
+                    loading="lazy">
             </iframe>
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- 2ο iframe (cbxyz 6o0b) -->
+        <!-- 2ο iframe: 350x350 (cbxyz 6o0b) -->
         <div class="iframe-wrapper">
             <iframe src="https://cbxyz.com/in/?tour=6o0b&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
                     frameborder="0" 
-                    class="code cbxyz-large" 
+                    class="iframe-350x350"
                     scrolling="no"
-                    loading="lazy"
-                    style="max-width:850px; aspect-ratio:850/1000; height:auto; width:100%;">
+                    loading="lazy">
             </iframe>
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- 3ο iframe (chaturbate new / gender=c) με ύψος προσαρμοσμένο από CSS (min-height 450px, max-height 1200px) -->
+        <!-- 3ο iframe: 350x800 (chaturbate new / gender=c) -->
         <div class="iframe-wrapper">
             <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=c&tag=new" 
                     frameborder="0"
                     allowfullscreen
+                    class="iframe-350x800"
                     loading="lazy">
             </iframe>
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- 4ο iframe (cbxyz k9Ve) το νέο, με μεγάλο ύψος -->
+        <!-- 4ο iframe: 350x350 (cbxyz k9Ve) -->
         <div class="iframe-wrapper">
             <iframe src="https://cbxyz.com/in/?tour=k9Ve&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
                     frameborder="0" 
-                    class="code cbxyz-large" 
+                    class="iframe-350x350"
                     scrolling="no"
-                    loading="lazy"
-                    style="max-width:850px; aspect-ratio:850/1000; height:auto; width:100%;">
+                    loading="lazy">
             </iframe>
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- Υπόλοιπα iframe με αυξημένα ύψη λόγω .code (1000px) -->
-        <!-- Iframe 5 - Chaturbate (default) -->
+        <!-- 5ο iframe: 350x800 (Chaturbate default) - το πέμπτο iframe σύμφωνα με σειρά είναι αυτό -->
         <div class="iframe-wrapper">
             <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x" 
                     frameborder="0"
                     allowfullscreen
+                    class="iframe-350x800"
                     loading="lazy">
             </iframe>
             <div class="iframe-divider"></div>
         </div>
 
-        <!-- Iframe 6 - cbxyz NxHf (code class, ύψος 1000px) -->
+        <!-- 6ο iframe: 350x350 (cbxyz NxHf) -->
         <div class="iframe-wrapper">
             <iframe src="https://cbxyz.com/in/?tour=NxHf&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
-                    height="1000px" 
-                    width="550px" 
                     frameborder="0" 
-                    class="code" 
+                    class="iframe-350x350"
                     scrolling="no"
                     loading="lazy">
             </iframe>
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- Iframe 7 - Chaturbate (tag 18) -->
+        <!-- 7ο iframe: Δεν ορίστηκε, το αφήνω 350x350 (Chaturbate tag 18) για συνέπεια -->
         <div class="iframe-wrapper">
             <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=10&p=1&gender=x&tag=18" 
                     frameborder="0"
                     allowfullscreen
+                    class="iframe-350x350"
                     loading="lazy">
             </iframe>
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- Iframe 8 - cbxyz dTm0 (code class, ύψος 1000px) -->
+        <!-- 8ο iframe: 350x350 (cbxyz dTm0 repeat) -->
         <div class="iframe-wrapper">
             <iframe src="https://cbxyz.com/in/?tour=dTm0&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
-                    height="1000px" 
-                    width="550px" 
                     frameborder="0" 
-                    class="code" 
+                    class="iframe-350x350"
                     scrolling="no"
                     loading="lazy">
             </iframe>
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- Iframe 9 - Chaturbate (couple) -->
+        <!-- 9ο iframe: Δεν ορίστηκε, 350x350 (Chaturbate couple) -->
         <div class="iframe-wrapper">
             <iframe src="https://chaturbate.com/in/?tour=W5j4&campaign=hrmwy&track=default&c=15&p=1&gender=x&tag=couple" 
                     frameborder="0"
                     allowfullscreen
+                    class="iframe-350x350"
                     loading="lazy">
             </iframe>
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- Iframe 10 - cbxyz sEAI (code class, ύψος 1000px) -->
+        <!-- 10ο iframe: 350x350 (cbxyz sEAI) -->
         <div class="iframe-wrapper">
             <iframe src="https://cbxyz.com/in/?tour=sEAI&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
-                    height="1000px" 
-                    width="550px" 
                     frameborder="0" 
-                    class="code" 
+                    class="iframe-350x350"
                     scrolling="no"
                     loading="lazy">
             </iframe>
             <div class="iframe-divider"></div>
         </div>
 
-        <!-- Decorative line (πρόσθετη γραμμή στο τέλος) -->
+        <!-- Decorative line -->
         <div class="glow-line"></div>
     </div>
     <!-- Scripts αφαιρέθηκαν εντελώς -->
