@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     
-    <!-- Basic meta tags for SEO and sharing -->
+    <!-- Basic meta tags -->
     <title>Live Cams - Chaturbate</title>
     <meta name="description" content="Live Cams - Watch the best live cam models. Join now for unlimited fun!">
     
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://xxx.franklymadear.com">
     <meta property="og:title" content="Live Cams">
@@ -25,26 +25,22 @@
     <meta name="twitter:description" content="Watch the best live cam models. Join now for unlimited fun!">
     <meta name="twitter:image" content="https://xxx.franklymadear.com/photo2.png">
     
-    <!-- For home screen addition (iOS) -->
+    <!-- Home screen icons -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Live Cams">
     <link rel="apple-touch-icon" href="https://xxx.franklymadear.com/photo2.png">
-    
-    <!-- For home screen addition (Android) -->
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="icon" type="image/png" href="https://xxx.franklymadear.com/photo2.png">
     <link rel="shortcut icon" href="https://xxx.franklymadear.com/photo2.png">
     
     <style>
-        /* Basic reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Background with gradient and animation */
         html, body {
             width: 100%;
             min-height: 100vh;
@@ -65,7 +61,6 @@
             100% { background-position: 0% 0%; }
         }
 
-        /* Decorative rays */
         body::after {
             content: '';
             position: fixed;
@@ -79,7 +74,6 @@
             z-index: 0;
         }
 
-        /* Container - centered */
         .container {
             position: relative;
             z-index: 5;
@@ -89,44 +83,42 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
             padding: 20px;
         }
 
-        /* --- Banner δίπλα από τον τίτλο (ίδια γραμμή) --- */
-        .title-banner-row {
+        /* ===== ΤΙΤΛΟΣ ΚΑΙ BANNER ΠΑΝΤΑ ΔΙΠΛΑ ===== */
+        .header-row {
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            margin: 20px 0 30px;
-            gap: 20px;
-            flex-wrap: wrap; /* Allows wrapping on very small screens */
+            margin: 10px 0 25px 0;
+            gap: 15px;
+            /* Απαγορεύουμε το wrap για να μην πέσει κάτω το banner ποτέ */
+            flex-wrap: nowrap;
         }
 
-        /* Title style - left aligned */
+        /* Τίτλος - συρρικνώνεται αν χρειαστεί */
         .title {
             flex: 1 1 auto;
+            min-width: 0; /* Επιτρέπει το shrinking κάτω από το περιεχόμενο */
             text-align: left;
-            min-width: 250px;
         }
 
         .title h1 {
-            font-size: clamp(2rem, 6vw, 4.5rem);
+            font-size: clamp(1.6rem, 5vw, 4.5rem);
             font-weight: 900;
             color: white;
-            text-shadow: 0 0 10px #ff99cc, 
-                         0 0 20px #ff4da6, 
-                         0 0 30px #ff00bf, 
-                         4px 4px 0 #00000080;
-            letter-spacing: 4px;
+            text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff4da6, 0 0 30px #ff00bf, 4px 4px 0 #00000080;
+            letter-spacing: 2px;
             font-family: 'Impact', 'Arial Black', sans-serif;
             text-transform: uppercase;
             animation: glow 3s ease-in-out infinite;
-            display: inline-block;
             line-height: 1.2;
-            margin: 0;
+            white-space: nowrap; /* Κρατά τον τίτλο σε μία γραμμή */
+            overflow: hidden;
+            text-overflow: ellipsis; /* Αν είναι πολύ μεγάλος, βάζει αποσιωπητικά */
         }
 
         @keyframes glow {
@@ -135,26 +127,40 @@
             100% { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff4da6, 0 0 30px #ff00bf; }
         }
 
-        /* Banner image style - right aligned */
+        /* Banner - σταθερό μέγεθος, δεν μικραίνει ποτέ υπερβολικά */
         .banner-container {
             flex: 0 0 auto;
             display: flex;
+            align-items: center;
             justify-content: flex-end;
-            max-width: 100%;
         }
 
         .banner-container img {
-            max-width: 100%;
-            height: auto;
-            max-height: 120px; /* Limits banner height */
+            display: block;
             width: auto;
-            border-radius: 15px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(255, 75, 150, 0.5);
+            height: auto;
+            max-height: 90px;      /* Μέγιστο ύψος σε κινητά */
+            min-width: 60px;        /* Ελάχιστο πλάτος για να φαίνεται */
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            border: 2px solid rgba(255, 75, 150, 0.6);
             object-fit: contain;
         }
 
-        /* Wrapper for iframes - responsive */
+        /* Μεγαλύτερο banner σε tablet/desktop */
+        @media (min-width: 768px) {
+            .banner-container img {
+                max-height: 120px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .banner-container img {
+                max-height: 140px;
+            }
+        }
+
+        /* Iframe wrappers */
         .iframe-wrapper {
             width: 100%;
             display: flex;
@@ -162,14 +168,13 @@
             margin-bottom: 30px;
         }
 
-        /* Iframe style - fully responsive */
         iframe {
             display: block;
             width: 100%;
             max-width: 1200px;
             height: auto;
             aspect-ratio: 4/3;
-            min-height: 300px;
+            min-height: 250px;
             max-height: 900px;
             border: none;
             border-radius: 20px;
@@ -178,7 +183,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Special style for iframes with specific dimensions */
         iframe.code {
             width: 100%;
             max-width: 850px;
@@ -186,94 +190,77 @@
             aspect-ratio: auto;
         }
 
-        /* Responsive breakpoints for all devices */
-        
-        /* Mobile phones (small) */
+        /* Ειδικές ρυθμίσεις για κινητά - Δεν αλλάζουμε το header-row, μένει δίπλα */
         @media (max-width: 480px) {
             .container {
                 padding: 10px;
             }
             
-            /* Stack title and banner vertically on very small screens */
-            .title-banner-row {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-            }
-            
-            .title {
-                text-align: left;
-                width: 100%;
+            .header-row {
+                gap: 8px;  /* Μικρότερο gap στα κινητά */
+                margin: 5px 0 20px 0;
             }
 
-            .banner-container {
-                justify-content: flex-start;
-                width: 100%;
+            .title h1 {
+                font-size: clamp(1.4rem, 7vw, 2.2rem); /* Λίγο μικρότερο αλλά πάντα δίπλα */
+                letter-spacing: 1px;
+                white-space: normal; /* Επιτρέπουμε το wrap μόνο σε ακραίες περιπτώσεις */
+                word-break: break-word;
             }
 
             .banner-container img {
-                max-height: 100px;
+                max-height: 65px;    /* Μικρότερο banner για κινητά */
+                border-radius: 10px;
             }
-            
+
             iframe:not(.code) {
                 aspect-ratio: 3/4;
                 max-height: 600px;
-                border-radius: 15px;
             }
             
             iframe.code {
-                height: 320px;
+                height: 300px;
             }
         }
 
-        /* Mobile phones (medium) */
-        @media (min-width: 481px) and (max-width: 767px) {
+        /* Πολύ μικρές οθόνες (π.χ. iPhone SE) - ακόμα πιο συμπαγή */
+        @media (max-width: 360px) {
+            .title h1 {
+                font-size: 1.3rem;
+            }
             .banner-container img {
-                max-height: 100px;
+                max-height: 55px;
+            }
+        }
+
+        /* Ενδιάμεσες συσκευές */
+        @media (min-width: 481px) and (max-width: 767px) {
+            .title h1 {
+                font-size: clamp(1.8rem, 6vw, 2.8rem);
+            }
+            .banner-container img {
+                max-height: 80px;
             }
             iframe:not(.code) {
                 aspect-ratio: 4/5;
                 max-height: 650px;
             }
-            
             iframe.code {
                 height: 400px;
             }
         }
 
-        /* Tablet (portrait) */
+        /* Tablet */
         @media (min-width: 768px) and (max-width: 1023px) {
             .title h1 {
-                font-size: 3.5rem;
+                font-size: 3.2rem;
             }
             .banner-container img {
                 max-height: 110px;
             }
-            
             iframe:not(.code) {
                 max-width: 700px;
                 aspect-ratio: 4/3;
-                max-height: 700px;
-            }
-            
-            iframe.code {
-                max-width: 700px;
-            }
-        }
-
-        /* Tablet (landscape) */
-        @media (min-width: 1024px) and (max-width: 1199px) {
-            .title h1 {
-                font-size: 4rem;
-            }
-            .banner-container img {
-                max-height: 120px;
-            }
-            
-            iframe:not(.code) {
-                max-width: 900px;
-                aspect-ratio: 16/9;
-                max-height: 700px;
             }
         }
 
@@ -282,44 +269,17 @@
             .title h1 {
                 font-size: 4.5rem;
             }
-            .banner-container img {
-                max-height: 140px;
-            }
-            
-            iframe:not(.code) {
-                max-width: 1100px;
-                aspect-ratio: 16/9;
-                max-height: 800px;
-            }
         }
 
-        /* Large screens */
-        @media (min-width: 1600px) {
-            .container {
-                max-width: 1600px;
-            }
-            .banner-container img {
-                max-height: 160px;
-            }
-            
-            iframe:not(.code) {
-                max-width: 1300px;
-                aspect-ratio: 21/9;
-                max-height: 900px;
-            }
-        }
-
-        /* Decorative line */
         .glow-line {
             width: min(150px, 50%);
             height: 4px;
             background: linear-gradient(90deg, #ff1a4c, #b300e6, #ff0066);
             border-radius: 4px;
-            margin: 20px auto;
+            margin: 15px auto 5px;
             filter: drop-shadow(0 0 8px #ff4da6);
         }
 
-        /* Adjustment for touch devices */
         @media (hover: none) and (pointer: coarse) {
             iframe {
                 -webkit-overflow-scrolling: touch;
@@ -329,8 +289,8 @@
 </head>
 <body>
     <div class="container">
-        <!-- Τίτλος αριστερά, banner (εικόνα) δεξιά στην ίδια γραμμή -->
-        <div class="title-banner-row">
+        <!-- HEADER: Τίτλος αριστερά, Banner δεξιά - ΠΑΝΤΑ ΔΙΠΛΑ, ακόμα και στο πιο μικρό κινητό -->
+        <div class="header-row">
             <div class="title">
                 <h1>LIVE CAMS</h1>
             </div>
@@ -405,6 +365,6 @@
         <!-- Decorative line -->
         <div class="glow-line"></div>
     </div>
-    <!-- Τα δύο script έχουν αφαιρεθεί σύμφωνα με την εντολή -->
+    <!-- Scripts αφαιρέθηκαν εντελώς -->
 </body>
 </html>
