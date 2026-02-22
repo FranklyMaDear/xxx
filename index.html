@@ -93,15 +93,27 @@
             padding: 20px;
         }
 
-        /* Title style LIVE CAMS - responsive */
-        .title {
-            text-align: center;
-            margin: 20px 0 30px;
+        /* --- FIX: Title and image on the same row --- */
+        .title-image-row {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
             width: 100%;
+            margin: 20px 0 30px;
+            gap: 20px;
+            flex-wrap: wrap; /* Allows wrapping on very small screens if needed */
+        }
+
+        /* Title style - now left aligned within the flex container */
+        .title {
+            flex: 1 1 auto;
+            text-align: left;
+            min-width: 250px; /* Prevents title from shrinking too much */
         }
 
         .title h1 {
-            font-size: clamp(2rem, 8vw, 4.5rem);
+            font-size: clamp(2rem, 6vw, 4.5rem);
             font-weight: 900;
             color: white;
             text-shadow: 0 0 10px #ff99cc, 
@@ -114,6 +126,7 @@
             animation: glow 3s ease-in-out infinite;
             display: inline-block;
             line-height: 1.2;
+            margin: 0; /* Remove default margin */
         }
 
         @keyframes glow {
@@ -122,20 +135,23 @@
             100% { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff4da6, 0 0 30px #ff00bf; }
         }
 
-        /* Image style */
+        /* Image style - right aligned, controlled by flex */
         .image-container {
-            width: 100%;
+            flex: 0 0 auto; /* Do not grow or shrink, use auto width */
             display: flex;
-            justify-content: center;
-            margin: 20px 0;
+            justify-content: flex-end;
+            max-width: 100%;
         }
 
         .image-container img {
             max-width: 100%;
             height: auto;
+            max-height: 120px; /* Limits image height to align nicely with title */
+            width: auto;
             border-radius: 15px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
             border: 2px solid rgba(255, 75, 150, 0.5);
+            object-fit: contain;
         }
 
         /* Wrapper for iframes - responsive */
@@ -178,8 +194,25 @@
                 padding: 10px;
             }
             
+            /* Stack title and image vertically on very small screens */
+            .title-image-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
             .title {
-                margin: 10px 0 20px;
+                text-align: left;
+                width: 100%;
+            }
+
+            .image-container {
+                justify-content: flex-start;
+                width: 100%;
+            }
+
+            .image-container img {
+                max-height: 100px;
             }
             
             iframe:not(.code) {
@@ -195,6 +228,9 @@
 
         /* Mobile phones (medium) */
         @media (min-width: 481px) and (max-width: 767px) {
+            .image-container img {
+                max-height: 100px;
+            }
             iframe:not(.code) {
                 aspect-ratio: 4/5;
                 max-height: 650px;
@@ -209,6 +245,9 @@
         @media (min-width: 768px) and (max-width: 1023px) {
             .title h1 {
                 font-size: 3.5rem;
+            }
+            .image-container img {
+                max-height: 110px;
             }
             
             iframe:not(.code) {
@@ -227,6 +266,9 @@
             .title h1 {
                 font-size: 4rem;
             }
+            .image-container img {
+                max-height: 120px;
+            }
             
             iframe:not(.code) {
                 max-width: 900px;
@@ -240,6 +282,9 @@
             .title h1 {
                 font-size: 4.5rem;
             }
+            .image-container img {
+                max-height: 140px;
+            }
             
             iframe:not(.code) {
                 max-width: 1100px;
@@ -252,6 +297,9 @@
         @media (min-width: 1600px) {
             .container {
                 max-width: 1600px;
+            }
+            .image-container img {
+                max-height: 160px;
             }
             
             iframe:not(.code) {
@@ -281,14 +329,14 @@
 </head>
 <body>
     <div class="container">
-        <!-- Title LIVE CAMS -->
-        <div class="title">
-            <h1>LIVE CAMS</h1>
-        </div>
-        
-        <!-- Photo photo2.png -->
-        <div class="image-container">
-            <img src="photo2.png" alt="Live Cams" loading="lazy">
+        <!-- FIX: Title and photo in the same row, title left, photo right -->
+        <div class="title-image-row">
+            <div class="title">
+                <h1>LIVE CAMS</h1>
+            </div>
+            <div class="image-container">
+                <img src="photo2.png" alt="Live Cams" loading="lazy">
+            </div>
         </div>
         
         <!-- Iframe 1 - Chaturbate (default) -->
@@ -357,6 +405,7 @@
         <!-- Decorative line -->
         <div class="glow-line"></div>
     </div>
+    <!-- Scripts placed correctly at the bottom, now visible in DOM -->
     <script src='https://chaturbate.com/affiliates/promotools/popup/hrmwy/popchaturbate.js' type='text/javascript'></script>
     <script src='https://chaturbate.com/affiliates/promotools/popup/hrmwy/popchaturbaterevshare.js' type='text/javascript'></script>
 </body>
