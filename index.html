@@ -140,33 +140,25 @@
             margin-bottom: 15px;
         }
 
-        /* Βασικό στυλ για όλα τα iframe */
+        /* Βασικό στυλ για όλα τα iframe - ΧΩΡΙΣ ΚΑΘΟΛΟΥ ΠΛΑΙΣΙΑ */
         iframe {
             display: block;
-            border: none;
-            border-radius: 20px;
-            background: #000;
-            box-shadow: 0 30px 40px -15px #000;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            background: transparent !important;
             transition: all 0.3s ease;
         }
 
         /* Κλάσεις διαστάσεων */
         .iframe-350x350 {
             width: 350px;
-            height: 350px;
+            height: 550px;  /* ΑΥΞΗΜΕΝΟ ΥΨΟΣ για να φαίνονται 10 βίντεο */
         }
 
         .iframe-350x800 {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Ειδική κλάση για iframe χωρίς πλαίσιο (θα αφαιρέσει border και border-radius αν χρειάζεται) */
-        .iframe-no-border {
-            border: none !important;
-            outline: none !important;
-            box-shadow: none !important;  /* αν θέλεις να φύγει και η σκιά, το προσθέτω */
-            background: transparent !important; /* προαιρετικά, για πλήρη αφάνεια */
+            width: 350px;
+            height: 800px;   /* Παραμένει για live video ολόκληρο */
         }
 
         /* Γραμμή διαχωρισμού */
@@ -205,10 +197,12 @@
                 height: auto;
             }
             .iframe-350x350 {
-                aspect-ratio: 1/1;
+                aspect-ratio: 350/550;  /* διατήρηση αναλογίας */
+                height: auto;
             }
             .iframe-350x800 {
                 aspect-ratio: 350/800;
+                height: auto;
             }
             .iframe-divider {
                 width: 95%;
@@ -257,7 +251,7 @@
             </div>
         </div>
         
-        <!-- 1ο iframe: 350x350 (cbxyz dTm0) -->
+        <!-- 1ο iframe: 350x550 (cbxyz dTm0) - 10 βίντεο -->
         <div class="iframe-wrapper">
             <iframe src="https://cbxyz.com/in/?tour=dTm0&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
                     frameborder="0" 
@@ -268,7 +262,7 @@
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- 2ο iframe: 350x350 (cbxyz 6o0b) -->
+        <!-- 2ο iframe: 350x550 (cbxyz 6o0b) - 10 βίντεο -->
         <div class="iframe-wrapper">
             <iframe src="https://cbxyz.com/in/?tour=6o0b&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
                     frameborder="0" 
@@ -279,18 +273,18 @@
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- 3ο iframe: 350x800 (chaturbate new) - ΧΩΡΙΣ ΠΛΑΙΣΙΟ (no border) -->
+        <!-- 3ο iframe: 350x800 (chaturbate new) - LIVE ΟΛΟΚΛΗΡΟ -->
         <div class="iframe-wrapper">
             <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=c&tag=new" 
                     frameborder="0"
                     allowfullscreen
-                    class="iframe-350x800 iframe-no-border"
+                    class="iframe-350x800"
                     loading="lazy">
             </iframe>
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- 4ο iframe: 350x350 (cbxyz k9Ve) -->
+        <!-- 4ο iframe: 350x550 (cbxyz k9Ve) - 10 βίντεο -->
         <div class="iframe-wrapper">
             <iframe src="https://cbxyz.com/in/?tour=k9Ve&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
                     frameborder="0" 
@@ -301,18 +295,18 @@
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- 5ο iframe: 350x800 (Chaturbate default) - ΧΩΡΙΣ ΠΛΑΙΣΙΟ -->
+        <!-- 5ο iframe: 350x800 (Chaturbate default) - LIVE ΟΛΟΚΛΗΡΟ -->
         <div class="iframe-wrapper">
             <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x" 
                     frameborder="0"
                     allowfullscreen
-                    class="iframe-350x800 iframe-no-border"
+                    class="iframe-350x800"
                     loading="lazy">
             </iframe>
             <div class="iframe-divider"></div>
         </div>
 
-        <!-- 6ο iframe: 350x350 (cbxyz NxHf) -->
+        <!-- 6ο iframe: 350x550 (cbxyz NxHf) - 10 βίντεο -->
         <div class="iframe-wrapper">
             <iframe src="https://cbxyz.com/in/?tour=NxHf&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
                     frameborder="0" 
@@ -323,18 +317,18 @@
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- 7ο iframe: (Chaturbate tag 18) - ΧΩΡΙΣ ΠΛΑΙΣΙΟ (το 7ο) -->
+        <!-- 7ο iframe: 350x800 (Chaturbate tag 18) - LIVE ΟΛΟΚΛΗΡΟ -->
         <div class="iframe-wrapper">
             <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=10&p=1&gender=x&tag=18" 
                     frameborder="0"
                     allowfullscreen
-                    class="iframe-350x350 iframe-no-border"
+                    class="iframe-350x800"
                     loading="lazy">
             </iframe>
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- 8ο iframe: 350x350 (cbxyz dTm0 repeat) -->
+        <!-- 8ο iframe: 350x550 (cbxyz dTm0 repeat) - 10 βίντεο -->
         <div class="iframe-wrapper">
             <iframe src="https://cbxyz.com/in/?tour=dTm0&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
                     frameborder="0" 
@@ -345,18 +339,18 @@
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- 9ο iframe: (Chaturbate couple) - ΧΩΡΙΣ ΠΛΑΙΣΙΟ -->
+        <!-- 9ο iframe: 350x800 (Chaturbate couple) - LIVE ΟΛΟΚΛΗΡΟ -->
         <div class="iframe-wrapper">
             <iframe src="https://chaturbate.com/in/?tour=W5j4&campaign=hrmwy&track=default&c=15&p=1&gender=x&tag=couple" 
                     frameborder="0"
                     allowfullscreen
-                    class="iframe-350x350 iframe-no-border"
+                    class="iframe-350x800"
                     loading="lazy">
             </iframe>
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- 10ο iframe: 350x350 (cbxyz sEAI) -->
+        <!-- 10ο iframe: 350x550 (cbxyz sEAI) - 10 βίντεο -->
         <div class="iframe-wrapper">
             <iframe src="https://cbxyz.com/in/?tour=sEAI&campaign=hrmwy&track=embed&disable_sound=1&mobileRedirect=auto&embed_video_only=1" 
                     frameborder="0" 
