@@ -112,7 +112,7 @@
             100% { text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff4da6, 0 0 30px #ff00bf; }
         }
 
-        /* Banner - 250x250, κεντραρισμένο */
+        /* Banner - 250x250 */
         .banner-wrapper {
             width: 100%;
             display: flex;
@@ -125,7 +125,7 @@
             display: block;
             width: 250px;
             height: 250px;
-            object-fit: cover;        /* γεμίζει το τετράγωνο, μπορεί να κόψει λίγο την εικόνα */
+            object-fit: cover;
             border-radius: 20px;
             box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
             border: 4px solid rgba(255, 75, 150, 0.8);
@@ -140,7 +140,7 @@
             margin-bottom: 15px;
         }
 
-        /* Βασικό στυλ για όλα τα iframe - θα παρακαμφθεί από πιο ειδικούς κανόνες */
+        /* Βασικό στυλ για όλα τα iframe */
         iframe {
             display: block;
             border: none;
@@ -150,7 +150,7 @@
             transition: all 0.3s ease;
         }
 
-        /* Ειδικές διαστάσεις ανά iframe μέσω κλάσεων */
+        /* Κλάσεις διαστάσεων */
         .iframe-350x350 {
             width: 350px;
             height: 350px;
@@ -161,21 +161,15 @@
             height: 800px;
         }
 
-        /* Για τα iframe chaturbate που δεν έχουν κλάση, εφαρμόζουμε 350x800 (5ο iframe) */
-        .chaturbate-800 {
-            width: 350px;
-            height: 800px;
+        /* Ειδική κλάση για iframe χωρίς πλαίσιο (θα αφαιρέσει border και border-radius αν χρειάζεται) */
+        .iframe-no-border {
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;  /* αν θέλεις να φύγει και η σκιά, το προσθέτω */
+            background: transparent !important; /* προαιρετικά, για πλήρη αφάνεια */
         }
 
-        /* Για τα υπόλοιπα chaturbate (default, tag 18, couple) θέλουμε 350x350? 
-           Από την περιγραφή: 5ο iframe 350x800, τα άλλα chaturbate (εκτός 3ου & 5ου) δεν ορίζονται, 
-           αλλά για συνέπεια τα βάζω 350x350 όπως τα 6,8,10 */
-        .chaturbate-350 {
-            width: 350px;
-            height: 350px;
-        }
-
-        /* Γραμμή διαχωρισμού με εφέ */
+        /* Γραμμή διαχωρισμού */
         .iframe-divider {
             width: 80%;
             max-width: 900px;
@@ -193,7 +187,7 @@
             100% { opacity: 0.7; filter: drop-shadow(0 0 5px #ff4da6); }
         }
 
-        /* Responsive μικρές οθόνες */
+        /* Responsive */
         @media (max-width: 480px) {
             .container {
                 padding: 10px;
@@ -202,37 +196,25 @@
                 font-size: clamp(1.2rem, 6vw, 1.9rem);
             }
             .banner-container img {
-                width: 200px;        /* προσαρμογή σε μικρότερη οθόνη */
+                width: 200px;
                 height: 200px;
             }
-            .iframe-350x350, .iframe-350x800, .chaturbate-800, .chaturbate-350 {
-                width: 100%;         /* στα κινητά παίρνει όλο το πλάτος */
-                max-width: 350px;     
-                height: auto;         /* διατήρηση αναλογίας αν γίνεται; Χειροκίνητα ορίζουμε ύψος */
-            }
-            /* Για να μην χαλάει η αναλογία, ορίζουμε εκ νέου ύψος ανάλογα με πλάτος */
-            .iframe-350x350 {
+            .iframe-350x350, .iframe-350x800 {
+                width: 100%;
+                max-width: 350px;
                 height: auto;
+            }
+            .iframe-350x350 {
                 aspect-ratio: 1/1;
             }
             .iframe-350x800 {
-                height: auto;
                 aspect-ratio: 350/800;
-            }
-            .chaturbate-800 {
-                height: auto;
-                aspect-ratio: 350/800;
-            }
-            .chaturbate-350 {
-                height: auto;
-                aspect-ratio: 1/1;
             }
             .iframe-divider {
                 width: 95%;
             }
         }
 
-        /* Πολύ μικρές οθόνες */
         @media (max-width: 360px) {
             .title h1 {
                 font-size: 1.1rem;
@@ -297,12 +279,12 @@
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- 3ο iframe: 350x800 (chaturbate new / gender=c) -->
+        <!-- 3ο iframe: 350x800 (chaturbate new) - ΧΩΡΙΣ ΠΛΑΙΣΙΟ (no border) -->
         <div class="iframe-wrapper">
             <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=c&tag=new" 
                     frameborder="0"
                     allowfullscreen
-                    class="iframe-350x800"
+                    class="iframe-350x800 iframe-no-border"
                     loading="lazy">
             </iframe>
             <div class="iframe-divider"></div>
@@ -319,12 +301,12 @@
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- 5ο iframe: 350x800 (Chaturbate default) - το πέμπτο iframe σύμφωνα με σειρά είναι αυτό -->
+        <!-- 5ο iframe: 350x800 (Chaturbate default) - ΧΩΡΙΣ ΠΛΑΙΣΙΟ -->
         <div class="iframe-wrapper">
             <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=x" 
                     frameborder="0"
                     allowfullscreen
-                    class="iframe-350x800"
+                    class="iframe-350x800 iframe-no-border"
                     loading="lazy">
             </iframe>
             <div class="iframe-divider"></div>
@@ -341,12 +323,12 @@
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- 7ο iframe: Δεν ορίστηκε, το αφήνω 350x350 (Chaturbate tag 18) για συνέπεια -->
+        <!-- 7ο iframe: (Chaturbate tag 18) - ΧΩΡΙΣ ΠΛΑΙΣΙΟ (το 7ο) -->
         <div class="iframe-wrapper">
             <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=10&p=1&gender=x&tag=18" 
                     frameborder="0"
                     allowfullscreen
-                    class="iframe-350x350"
+                    class="iframe-350x350 iframe-no-border"
                     loading="lazy">
             </iframe>
             <div class="iframe-divider"></div>
@@ -363,12 +345,12 @@
             <div class="iframe-divider"></div>
         </div>
         
-        <!-- 9ο iframe: Δεν ορίστηκε, 350x350 (Chaturbate couple) -->
+        <!-- 9ο iframe: (Chaturbate couple) - ΧΩΡΙΣ ΠΛΑΙΣΙΟ -->
         <div class="iframe-wrapper">
             <iframe src="https://chaturbate.com/in/?tour=W5j4&campaign=hrmwy&track=default&c=15&p=1&gender=x&tag=couple" 
                     frameborder="0"
                     allowfullscreen
-                    class="iframe-350x350"
+                    class="iframe-350x350 iframe-no-border"
                     loading="lazy">
             </iframe>
             <div class="iframe-divider"></div>
