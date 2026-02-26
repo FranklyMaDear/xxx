@@ -2,68 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
 
-    <!-- Τίτλος για κοινοποίηση (X, WhatsApp, Viber) -->
+    <!-- ΚΟΙΝΟΠΟΙΗΣΗ (X, WhatsApp, Viber) -->
     <meta property="og:title" content="Girls">
     <meta name="twitter:title" content="Girls">
-
-    <!-- Μικρή περιγραφή (προαιρετικά, καλό για εμφάνιση) -->
     <meta property="og:description" content=" ">
     <meta name="twitter:description" content=" ">
-
-    <!-- Η ΕΙΚΟΝΑ ΓΙΑ ΚΟΙΝΟΠΟΙΗΣΗ (αντικατέστησε το link) -->
-    <meta property="og:image" content="[ΒΑΛΕ ΕΔΩ ΤΟ LINK ΤΗΣ photos3.png]">
-    <meta name="twitter:image" content="[ΒΑΛΕ ΕΔΩ ΤΟ LINK ΤΗΣ photos3.png]">
-
-    <!-- Απαραίτητα για σωστή εμφάνιση σε WhatsApp/Viber -->
+    <!-- ΒΑΛΕ ΤΟ LINK ΤΗΣ photos3.png -->
+    <meta property="og:image" content="photos3.png">
+    <meta name="twitter:image" content="photos3.png">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:url" content="[ΤΟ LINK ΤΗΣ ΣΕΛΙΔΑΣ ΣΟΥ]">
+    <meta property="og:url" content="">
 
-    <!-- ΓΙΑ ΠΡΟΣΘΗΚΗ ΣΤΗΝ ΑΡΧΙΚΗ ΟΘΟΝΗ (iOS/Android) -->
+    <!-- ΠΡΟΣΘΗΚΗ ΣΤΗΝ ΑΡΧΙΚΗ ΟΘΟΝΗ -->
     <meta name="apple-mobile-web-app-title" content="Girls">
     <meta name="application-name" content="Girls">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#000000">
-
-    <!-- Εικονίδιο για αρχική οθόνη (ίδιο photos3.png) -->
-    <link rel="apple-touch-icon" href="[ΒΑΛΕ ΕΔΩ ΤΟ LINK ΤΗΣ photos3.png]">
-    <link rel="apple-touch-icon" sizes="152x152" href="[ΒΑΛΕ ΕΔΩ ΤΟ LINK ΤΗΣ photos3.png]">
-    <link rel="apple-touch-icon" sizes="180x180" href="[ΒΑΛΕ ΕΔΩ ΤΟ LINK ΤΗΣ photos3.png]">
-    <link rel="apple-touch-icon" sizes="167x167" href="[ΒΑΛΕ ΕΔΩ ΤΟ LINK ΤΗΣ photos3.png]">
-    <link rel="icon" type="image/png" href="[ΒΑΛΕ ΕΔΩ ΤΟ LINK ΤΗΣ photos3.png]">
+    <link rel="apple-touch-icon" href="photos3.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="photos3.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="photos3.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="photos3.png">
+    <link rel="icon" type="image/png" href="photos3.png">
 
     <title>Girls</title>
     <style>
-        /* Πλήρης καθαρισμός περιθωρίων */
+        /* Επαναφορά όλων των περιθωρίων */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Μαύρο φόντο παντού, χωρίς κύλιση */
+        /* Γεμίζουμε όλη την οθόνη, μαύρο φόντο */
         html, body {
             width: 100%;
             height: 100%;
-            overflow: hidden;
-            background-color: black;
+            background-color: #000000;
+            overflow-x: hidden;
+            overflow-y: auto; /* επιτρέπουμε κύλιση μόνο κατακόρυφα */
         }
 
-        /* Δύο ίσες στήλες που γεμίζουν όλη την οθόνη */
-        .split {
-            width: 100vw;
-            height: 100vh;
+        /* Στοίβαξη κάθετη */
+        .stack {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
+            width: 100%;
+            min-height: 100%; /* τουλάχιστον όσο το ύψος οθόνης */
         }
 
-        .half {
-            width: 50%;
-            height: 100%;
-            background: black;
+        /* Κάθε iframe παίρνει ύψος ανάλογο της οθόνης */
+        .iframe-block {
+            width: 100%;
+            height: 100vh; /* πλήρες ύψος οθόνης για κάθε iframe */
+            background-color: #000000;
+            position: relative;
         }
 
         iframe {
@@ -71,21 +67,28 @@
             height: 100%;
             display: block;
             border: none;
-            background: black;
+            background-color: #000000;
+        }
+
+        /* Μικρή προσαρμογή για tablets: ίδια λογική */
+        @media (orientation: landscape) and (min-width: 768px) {
+            .iframe-block {
+                height: 100vh; /* παραμένει πλήρες ύψος */
+            }
         }
     </style>
 </head>
 <body>
-    <div class="split">
-        <!-- Πρώτο iframe: LPLiteIframe -->
-        <div class="half">
+    <div class="stack">
+        <!-- ΠΡΩΤΟ iframe: LPLiteIframe -->
+        <div class="iframe-block">
             <iframe src="https://creative.mavrtracktor.com/LPLiteIframe?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497"></iframe>
         </div>
-        <!-- Δεύτερο iframe: Universal με tag girls -->
-        <div class="half">
+        <!-- ΔΕΥΤΕΡΟ iframe: Universal με tag girls -->
+        <div class="iframe-block">
             <iframe src="https://creative.mavrtracktor.com/widgets/v4/Universal?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls"></iframe>
         </div>
     </div>
-    <!-- ΚΑΜΙΑ ΕΠΙΠΛΕΟΝ ΕΠΙΚΕΦΑΛΙΔΑ Ή ΚΕΙΜΕΝΟ -->
+    <!-- ΤΙΠΟΤΑ ΑΛΛΟ -->
 </body>
 </html>
