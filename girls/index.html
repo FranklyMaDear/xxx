@@ -1,136 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-88">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- >>>>>>>>>>> ΓΙΑ ΚΟΙΝΟΠΟΙΗΣΗ (Social Media, WhatsApp, Viber) <<<<<<<<<<< -->
-    <!-- Τίτλος για κοινοποίηση -->
-    <meta property="og:title" content="Girls">
-    <meta name="twitter:title" content="Girls">
-
-    <!-- Περιγραφή (μικρή) -->
-    <meta property="og:description" content="Check out this page">
-    <meta name="twitter:description" content="Check out this page">
-
-    <!-- Η ΕΙΚΟΝΑ ΣΑΣ: Αλλάξτε το URL με το photos3.png -->
-    <meta property="og:image" content="[ΠΛΗΡΗΣ URL ΤΗΣ ΕΙΚΟΝΑΣ ΣΑΣ/photos3.png]">
-    <meta name="twitter:image" content="[ΠΛΗΡΗΣ URL ΤΗΣ ΕΙΚΟΝΑΣ ΣΑΣ/photos3.png]">
-
-    <!-- Τύπος περιεχομένου -->
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-
-    <!-- Για WhatsApp / Viber (βοηθάει στο να διαβάσουν σωστά τα meta) -->
-    <meta property="og:url" content="[ΤΟ LINK ΤΗΣ ΣΕΛΙΔΑΣ ΣΑΣ]">
-    <!-- <<<<<<<<<<< ΓΙΑ ΚΟΙΝΟΠΟΙΗΣΗ >>>>>>>>>>>>> -->
-
-    <!-- >>>>>>>>>>> ΓΙΑ ΠΡΟΣΘΗΚΗ ΣΤΗΝ ΑΡΧΙΚΗ ΟΘΟΝΗ (iOS / Android) <<<<<<<<<<< -->
-    <!-- Όνομα της εφαρμογής -->
-    <meta name="apple-mobile-web-app-title" content="Girls">
-    <meta name="application-name" content="Girls">
-
-    <!-- Να συμπεριφέρεται ως standalone app (χωρίς τη γραμμή διεύθυνσης του browser) -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-
-    <!-- Χρώμα θέματος (για Android) -->
-    <meta name="theme-color" content="#1a1a1a">
-
-    <!-- ΕΙΚΟΝΙΔΙΟ ΓΙΑ ΑΡΧΙΚΗ ΟΘΟΝΗ (iOS) - photos3.png -->
-    <link rel="apple-touch-icon" href="[ΠΛΗΡΗΣ URL ΤΗΣ ΕΙΚΟΝΑΣ ΣΑΣ/photos3.png]">
-    <link rel="apple-touch-icon" sizes="152x152" href="[ΠΛΗΡΗΣ URL ΤΗΣ ΕΙΚΟΝΑΣ ΣΑΣ/photos3.png]">
-    <link rel="apple-touch-icon" sizes="180x180" href="[ΠΛΗΡΗΣ URL ΤΗΣ ΕΙΚΟΝΑΣ ΣΑΣ/photos3.png]">
-    <link rel="apple-touch-icon" sizes="167x167" href="[ΠΛΗΡΗΣ URL ΤΗΣ ΕΙΚΟΝΑΣ ΣΑΣ/photos3.png]">
-
-    <!-- Για Android / γενικά favicon -->
-    <link rel="icon" type="image/png" href="[ΠΛΗΡΗΣ URL ΤΗΣ ΕΙΚΟΝΑΣ ΣΑΣ/photos3.png]">
-    <!-- <<<<<<<<<<< ΓΙΑ ΠΡΟΣΘΗΚΗ ΣΤΗΝ ΑΡΧΙΚΗ ΟΘΟΝΗ >>>>>>>>>>>>> -->
-
     <title>Girls</title>
     <style>
-        /* Βασικό στυλ για τη σελίδα */
-        body {
-            margin: 20px;
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-            background-color: #1a1a1a;
-            color: #e0e0e0;
+        /* Πλήρης επαναφορά περιθωρίων και απόσταση */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        h1 {
-            color: #ffffff;
-            text-align: center;
-            margin-bottom: 30px;
-            font-weight: 300;
-            letter-spacing: 2px;
-            font-size: 2.5rem;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+
+        /* Το σώμα της σελίδας χωρίς κανένα απολύτως περιθώριο */
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Αποτρέπει μπάρες κύλισης */
+            background-color: #000; /* Μαύρο φόντο για να μην φαίνεται τίποτα */
         }
-        /* Κοντέινερ για τη σειρά των iframe */
-        .iframe-row {
+
+        /* Κοντέινερ που γεμίζει όλη την οθόνη */
+        .full-screen {
+            width: 100vw;
+            height: 100vh;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            background-color: #2a2a2a;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-            gap: 0;
+            flex-direction: row; /* Τα iframe σε σειρά (οριζόντια) */
+            flex-wrap: nowrap; /* Ποτέ κάτω, μόνο στο πλάι */
         }
-        /* Κοντέινερ για κάθε iframe */
-        .iframe-container {
-            flex: 1 1 300px;
-            min-width: 280px;
-            height: 550px;
-            position: relative;
-            background: #000;
+
+        /* Κοντέινερ για κάθε iframe - παίρνει ίσο χώρο */
+        .iframe-wrapper {
+            flex: 1 1 0; /* Μοιράζεται εξίσου τον διαθέσιμο χώρο */
+            min-width: 0; /* Απαραίτητο για να μην σπρώχνουν */
+            height: 100%;
+            position: relative; /* Για την τοποθέτηση της γραμμής */
+            background-color: #000; /* Μαύρο φόντο για να μην φαίνεται τίποτα άλλο */
         }
-        /* Η κάθετη διαχωριστική γραμμή */
-        .iframe-container:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            top: 5%;
-            right: -2px;
-            width: 4px;
-            height: 90%;
-            background: linear-gradient(to bottom, #ff8a5c, #ff4d6d, #c77dff);
-            border-radius: 4px;
-            box-shadow: 0 0 12px #ff4d6d;
-            z-index: 10;
-        }
+
+        /* Το iframe γεμίζει απόλυτα το wrapper του */
         iframe {
             width: 100%;
             height: 100%;
             display: block;
-            border: none;
-            background-color: #111;
-            border-radius: 8px;
+            border: none; /* Κανένα πλαίσιο */
+            background-color: #000;
         }
-        @media (max-width: 900px) {
-            .iframe-container:not(:last-child)::after {
-                display: none;
-            }
+
+        /* Η γραμμή που ξεχωρίζει τα iframe - μόνο ανάμεσά τους */
+        .iframe-wrapper:first-child::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -2px; /* Μισή στην άκρη */
+            width: 4px; /* Πάχος γραμμής */
+            height: 100%;
+            background: linear-gradient(180deg, #ff4d4d, #ff9f4d, #ffff4d, #4dff4d, #4dffff, #4d4dff, #ff4dff);
+            box-shadow: 0 0 15px rgba(255,255,255,0.7); /* Λάμψη */
+            z-index: 100;
+            pointer-events: none; /* Η γραμμή δεν εμποδίζει κλικ */
+        }
+
+        /* Εξασφάλιση ότι δεν υπάρχουν άλλα ορατά στοιχεία */
+        body::before,
+        body::after,
+        div::before,
+        div::after {
+            display: none;
+        }
+
+        /* Για παν ενδεχόμενο, κρύβουμε οτιδήποτε άλλο θα μπορούσε να εμφανιστεί */
+        .no-extra {
+            display: none;
         }
     </style>
 </head>
 <body>
-
-    <h1>Girls</h1>
-
-    <div class="iframe-row">
-        <!-- Πρώτο Iframe: MobileSlider -->
-        <div class="iframe-container">
+    <!-- ΜΟΝΟ δύο div με iframe μέσα. Τίποτα άλλο. -->
+    <div class="full-screen">
+        <!-- ΠΡΩΤΟ iframe: MobileSlider (με απλό animation) -->
+        <div class="iframe-wrapper">
             <iframe 
                 src="https://creative.mavrtracktor.com/widgets/v4/MobileSlider?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls&hideTitle=1&animation=simple">
             </iframe>
         </div>
 
-        <!-- Δεύτερο Iframe: Universal -->
-        <div class="iframe-container">
+        <!-- ΔΕΥΤΕΡΟ iframe: Universal -->
+        <div class="iframe-wrapper">
             <iframe 
                 src="https://creative.mavrtracktor.com/widgets/v4/Universal?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls">
             </iframe>
         </div>
     </div>
-
+    <!-- ΚΑΝΕΝΑ ΑΛΛΟ ΣΤΟΙΧΕΙΟ. Ούτε τίτλος, ούτε κείμενο, ούτε λεζάντα. -->
 </body>
 </html>
