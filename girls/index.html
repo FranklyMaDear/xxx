@@ -37,13 +37,11 @@
             box-sizing: border-box;
         }
 
-        /* Γεμίζουμε όλη την οθόνη, μαύρο φόντο */
         html, body {
             width: 100%;
-            height: 100%;
             background-color: #000000;
             overflow-x: hidden;
-            overflow-y: auto; /* επιτρέπουμε κύλιση μόνο κατακόρυφα */
+            overflow-y: auto;
         }
 
         /* Στοίβαξη κάθετη */
@@ -51,7 +49,6 @@
             display: flex;
             flex-direction: column;
             width: 100%;
-            min-height: 100%; /* τουλάχιστον όσο το ύψος οθόνης */
         }
 
         /* Κάθε iframe παίρνει ύψος ανάλογο της οθόνης */
@@ -69,13 +66,6 @@
             border: none;
             background-color: #000000;
         }
-
-        /* Μικρή προσαρμογή για tablets: ίδια λογική */
-        @media (orientation: landscape) and (min-width: 768px) {
-            .iframe-block {
-                height: 100vh; /* παραμένει πλήρες ύψος */
-            }
-        }
     </style>
 </head>
 <body>
@@ -84,9 +74,9 @@
         <div class="iframe-block">
             <iframe src="https://creative.mavrtracktor.com/LPLiteIframe?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497"></iframe>
         </div>
-        <!-- ΔΕΥΤΕΡΟ iframe: Universal με tag girls -->
+        <!-- ΔΕΥΤΕΡΟ iframe: Universal με tag girls και πλήθος παραμέτρων -->
         <div class="iframe-block">
-            <iframe src="https://creative.mavrtracktor.com/widgets/v4/Universal?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls"></iframe>
+            <iframe src="https://creative.mavrtracktor.com/widgets/v4/Universal?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls&playButton=1&thumbType=default&thumbSizeKey=middle&thumbsMargin=2&hideTitle=1&hideButtonOnSmallSpots=0&hideTitleOnSmallSpots=0&hideModelNameOnSmallSpots=0&backgroundColor=331414"></iframe>
         </div>
     </div>
     <!-- ΤΙΠΟΤΑ ΑΛΛΟ -->
