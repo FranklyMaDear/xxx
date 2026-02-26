@@ -1,3 +1,205 @@
-<iframe width="100%" height="100%" style="display:block" marginWidth="0" marginHeight="0" frameBorder="no" src="https://creative.mavrtracktor.com/LPAkira?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls%2Fteens&hideLogo=1&showInfoContent=1"></iframe>
-<iframe width="100%" height="100%" style="display:block" marginWidth="0" marginHeight="0" frameBorder="no" src="https://creative.mavrtracktor.com/widgets/v4/Universal?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls"></iframe>
-<iframe width="100%" height="100%" style="display:block" marginWidth="0" marginHeight="0" frameBorder="no" src="https://creative.mavrtracktor.com/widgets/v4/MobileSlider?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls"></iframe>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories · background iframe</title>
+    <style>
+        /* global reset & full base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;           /* no scroll on the body – iframe handles its own content */
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+        }
+
+        /* main container: exactly the viewport, relative to stack elements */
+        .stage {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: #0b0c10;         /* fallback while iframe loads */
+        }
+
+        /* iframe background – covers full area, behind everything */
+        .bg-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+            z-index: 1;
+            pointer-events: auto;         /* iframe remains interactive (clicks pass to iframe) */
+        }
+
+        /* category overlay – flexible on top, but does not block iframe clicks? 
+           we want categories clickable, but the rest of iframe accessible. 
+           solution: overlay itself is a transparent layer (pointer-events:none) 
+           but the menu buttons have pointer-events:auto */
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 20;                  /* above iframe */
+            display: flex;
+            justify-content: center;
+            padding: 1.5rem 1rem 1rem 1rem;
+            pointer-events: none;          /* by default clicks fall through to iframe */
+        }
+
+        /* the nav container – background slightly visible, but clickable */
+        .category-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.2rem;
+            justify-content: center;
+            background: rgba(10, 10, 20, 0.45);    /* semi‑transparent dark */
+            backdrop-filter: blur(6px);             /* modern frost */
+            -webkit-backdrop-filter: blur(6px);
+            padding: 0.9rem 2rem;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            pointer-events: auto;                    /* buttons clickable */
+        }
+
+        /* base link style – colorful, with animated effects */
+        .category-link {
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.4rem;
+            letter-spacing: 0.5px;
+            padding: 0.5rem 1.3rem;
+            border-radius: 40px;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            text-shadow: 0 2px 3px rgba(0,0,0,0.3);
+            display: inline-block;
+            border: 1px solid rgba(255,255,255,0.3);
+            background-origin: border-box;
+        }
+
+        /* distinct colors per category – with extra gradient/glow effects */
+        .cat-couples {
+            background: linear-gradient(145deg, #ff4d7d, #f9b5ac);
+            color: #ffeef2;
+            box-shadow: 0 0 12px #ff9eb5, 0 4px 10px black;
+        }
+        .cat-girls {
+            background: linear-gradient(145deg, #f05b9b, #ffb3c6);
+            color: #18000c;
+            text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+            box-shadow: 0 0 12px #ffa6c9, 0 4px 10px black;
+        }
+        .cat-men {
+            background: linear-gradient(145deg, #3b9ae1, #8ec9ff);
+            color: #001c31;
+            text-shadow: 0 1px 3px rgba(255,255,255,0.4);
+            box-shadow: 0 0 12px #7abfff, 0 4px 10px black;
+        }
+        .cat-trans {
+            background: linear-gradient(145deg, #b380df, #e5b2ff);
+            color: #1b0030;
+            text-shadow: 0 1px 3px #e9cbff;
+            box-shadow: 0 0 12px #dbb5ff, 0 4px 10px black;
+        }
+
+        /* hover effects – scale + brightness + border glow */
+        .category-link:hover {
+            transform: scale(1.08) translateY(-3px);
+            filter: brightness(1.2);
+            border-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 22px currentColor, 0 8px 18px black;
+        }
+
+        /* active click effect */
+        .category-link:active {
+            transform: scale(0.98) translateY(2px);
+            filter: brightness(0.9);
+            transition: 0.07s;
+        }
+
+        /* optional small credit (very discreet) – stays above but non intrusive */
+        .watermark-note {
+            position: absolute;
+            bottom: 12px;
+            right: 20px;
+            z-index: 25;
+            pointer-events: none;
+            color: rgba(255,255,240,0.35);
+            font-size: 0.8rem;
+            backdrop-filter: blur(2px);
+            background: rgba(0,0,0,0.2);
+            padding: 4px 12px;
+            border-radius: 40px;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* mobile responsiveness: keep category nav compact */
+        @media (max-width: 500px) {
+            .category-link {
+                font-size: 1.1rem;
+                padding: 0.4rem 1rem;
+            }
+            .category-nav {
+                padding: 0.7rem 1.2rem;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stage">
+        <!-- background iframe exactly as provided, covers everything behind -->
+        <iframe class="bg-iframe" 
+                src="https://creative.mavrtracktor.com/LPAkira?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=couples&hideLogo=1"
+                marginwidth="0" 
+                marginheight="0" 
+                frameborder="no"
+                allowfullscreen>
+        </iframe>
+
+        <!-- category menu on top (clickable, with effects) -->
+        <div class="category-overlay">
+            <nav class="category-nav">
+                <a href="https://xxx.franklymadear.com/couples/index.html" 
+                   class="category-link cat-couples" 
+                   target="_blank" 
+                   rel="noopener noreferrer">Couples</a>
+                <a href="https://xxx.franklymadear.com/girls/index.html" 
+                   class="category-link cat-girls" 
+                   target="_blank" 
+                   rel="noopener noreferrer">Girls</a>
+                <a href="https://xxx.franklymadear.com/men/index.html" 
+                   class="category-link cat-men" 
+                   target="_blank" 
+                   rel="noopener noreferrer">Men</a>
+                <a href="https://xxx.franklymadear.com/trans/index.html" 
+                   class="category-link cat-trans" 
+                   target="_blank" 
+                   rel="noopener noreferrer">Trans</a>
+            </nav>
+        </div>
+
+        <!-- tiny unobtrusive hint, no interference -->
+        <div class="watermark-note">✨ categories over iframe</div>
+    </div>
+
+    <!-- 
+        all elements are set. 
+        - pointer-events on overlay container = none → clicks go through to iframe.
+        - but .category-nav has pointer-events:auto → only the nav area catches clicks.
+        - iframe itself fully interactive.
+    -->
+</body>
+</html>
