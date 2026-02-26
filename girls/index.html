@@ -66,20 +66,35 @@
 </head>
 <body>
     <div class="stack">
-        <!-- ΠΡΩΤΟ iframe -->
+        <!-- ΠΡΩΤΟ iframe: LPLiteIframe (μόνιμα πρώτο) -->
         <div class="iframe-block">
-            <iframe src="https://creative.mavrtracktor.com/widgets/v4/Universal?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls&hideModelName=1&thumbSizeKey=middle&thumbsMargin=2&hideTitle=1&frameHeight=2160"></iframe>
+            <iframe src="https://creative.mavrtracktor.com/LPLiteIframe?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&broadcastVR=1&shuffleList=randomAfterLimit&tag=girls"></iframe>
         </div>
 
         <!-- ΔΕΥΤΕΡΟ iframe -->
         <div class="iframe-block">
-            <iframe src="https://creative.mavrtracktor.com/widgets/v4/Universal?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls&hideModelName=1&thumbType=default&thumbSizeKey=middle&thumbsMargin=2&hideTitle=1&frameHeight=2160"></iframe>
+            <iframe src="https://creative.mavrtracktor.com/widgets/v4/Universal?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls&hideModelName=1&thumbSizeKey=middle&thumbsMargin=2&hideTitle=1&frameHeight=2160"></iframe>
         </div>
 
         <!-- ΤΡΙΤΟ iframe -->
         <div class="iframe-block">
+            <iframe src="https://creative.mavrtracktor.com/widgets/v4/Universal?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls&hideModelName=1&thumbType=default&thumbSizeKey=middle&thumbsMargin=2&hideTitle=1&frameHeight=2160"></iframe>
+        </div>
+
+        <!-- ΤΕΤΑΡΤΟ iframe -->
+        <div class="iframe-block">
             <iframe src="https://creative.mavrtracktor.com/widgets/v4/Universal?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls&hideModelName=1&thumbType=avatar&thumbSizeKey=middle&thumbsMargin=2&hideTitle=1&frameHeight=2160"></iframe>
         </div>
     </div>
+
+    <!-- Stripchat Spot Script -->
+    <script id="SCSpotScript" type="text/javascript" src="https://creative.mavrtracktor.com/widgets/Spot/lib.js"></script>
+    <script type="text/javascript">
+        (new StripchatSpot({
+            "userId": "a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497",
+            "shuffleList": "randomBeforeLimit",
+            "tag": "girls"
+        })).mount(document.body)
+    </script>
 </body>
 </html>
