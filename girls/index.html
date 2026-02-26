@@ -1,1 +1,101 @@
-<iframe width="100%" height="100%" style="display:block" marginWidth="0" marginHeight="0" frameBorder="no" src="https://creative.mavrtracktor.com/widgets/v4/Universal?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls&hideTitle=1"></iframe>
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girls Page with Iframes</title>
+    <style>
+        /* Βασικό στυλ για τη σελίδα */
+        body {
+            margin: 20px;
+            font-family: sans-serif;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        /* Κοντέινερ για τα iframe σε σειρά */
+        .iframe-row {
+            display: flex;
+            flex-wrap: wrap; /* Για μικρές οθόνες, να πηγαίνουν κάτω */
+            gap: 20px; /* Απόσταση μεταξύ των iframe */
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        /* Στυλ για κάθε iframe-κοντέινερ */
+        .iframe-container {
+            flex: 1 1 300px; /* Μεγαλώνουν, μικραίνουν, βασικό πλάτος 300px */
+            min-width: 280px; /* Ελάχιστο πλάτος */
+            height: 500px; /* Σταθερό ύψος για όλα */
+            border-radius: 12px; /* Στρογγυλεμένες γωνίες */
+            overflow: hidden; /* Κρύβει τυχόν υπερχειλίσεις */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* Σκιά για βάθος */
+            transition: transform 0.2s ease; /* Μικρό εφέ hover */
+        }
+        .iframe-container:hover {
+            transform: scale(1.02); /* Ελαφρύ μεγάλωμα στο hover */
+        }
+        /* Ξεχωριστά φανταστικά χρώματα για κάθε iframe-κοντέινερ */
+        .container-1 {
+            background: linear-gradient(145deg, #f9c9e2, #f8a5c2); /* Ροζ αποχρώσεις */
+            border: 4px solid #ff6b9d;
+        }
+        .container-2 {
+            background: linear-gradient(145deg, #b0e0ff, #7ec8ff); /* Γαλάζιες αποχρώσεις */
+            border: 4px solid #3a9efd;
+        }
+        .container-3 {
+            background: linear-gradient(145deg, #d0f0c0, #a5d6a5); /* Πράσινες αποχρώσεις */
+            border: 4px solid #4caf50;
+        }
+        /* Το iframe να γεμίζει πλήρως το κοντέινερ του */
+        iframe {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border: none;
+        }
+        /* Μικρή σημείωση για τα χρώματα */
+        .note {
+            text-align: center;
+            color: #555;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>✨ Girls ✨</h1>
+
+    <div class="iframe-row">
+        <!-- Πρώτο Iframe (MobileSlider) με Ροζ φόντο -->
+        <div class="iframe-container container-1">
+            <iframe 
+                src="https://creative.mavrtracktor.com/widgets/v4/MobileSlider?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls&hideTitle=1">
+            </iframe>
+        </div>
+
+        <!-- Δεύτερο Iframe (Universal) με Γαλάζιο φόντο -->
+        <div class="iframe-container container-2">
+            <iframe 
+                src="https://creative.mavrtracktor.com/widgets/v4/Universal?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls&playButton=1&thumbsMargin=1&responsive=0&hideTitle=1&gridColumns=3&gridRows=2">
+            </iframe>
+        </div>
+
+        <!-- Τρίτο Iframe (MobileSlider) με Πράσινο φόντο -->
+        <div class="iframe-container container-3">
+            <iframe 
+                src="https://creative.mavrtracktor.com/widgets/v4/MobileSlider?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls&hideTitle=1">
+            </iframe>
+        </div>
+    </div>
+
+    <div class="note">
+        ⚡ Η σελίδα έχει τρία iframe σε σειρά με φανταστικά χρώματα: Ροζ, Γαλάζιο, Πράσινο.
+    </div>
+
+</body>
+</html>
