@@ -55,7 +55,7 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        /* container for the three iframes */
+        /* container for the iframes */
         .content-container {
             display: flex;
             flex-direction: column;
@@ -63,11 +63,10 @@
             min-height: 100%;
         }
 
-        /* base iframe style - all iframes full height */
-        .content-iframe {
+        /* universal iframe style - 2160px height each */
+        .universal-iframe {
             width: 100%;
-            height: 100vh;                /* full viewport height each */
-            min-height: 500px;
+            height: 2160px;
             border: 0;
             display: block;
             flex-shrink: 0;
@@ -215,39 +214,28 @@
             </nav>
         </div>
 
-        <!-- container with the three iframes -->
+        <!-- container with the two Universal iframes -->
         <div class="content-container">
-            <!-- First iframe: LPAkira με πολλαπλά tags -->
-            <iframe class="content-iframe"
+            <!-- First iframe: Universal with couples/cheap-privates -->
+            <iframe class="universal-iframe"
                     width="100%" 
-                    height="100%" 
+                    height="2160" 
                     style="display:block" 
                     marginWidth="0" 
                     marginHeight="0" 
                     frameBorder="no" 
-                    src="https://creative.mavrtracktor.com/LPAkira?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls%2Flatin%2Cgirls%2Fteens%2Cgirls%2Fyoung">
+                    src="https://creative.mavrtracktor.com/widgets/v4/Universal?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=couples%2Fcheap-privates&thumbSizeKey=middle&hideTitle=1&frameHeight=2160">
             </iframe>
 
-            <!-- Second iframe: LPExperience -->
-            <iframe class="content-iframe"
+            <!-- Second iframe: Universal with girls -->
+            <iframe class="universal-iframe"
                     width="100%" 
-                    height="100%" 
+                    height="2160" 
                     style="display:block" 
                     marginWidth="0" 
                     marginHeight="0" 
                     frameBorder="no" 
-                    src="https://creative.mavrtracktor.com/LPExperience?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls">
-            </iframe>
-
-            <!-- Third iframe: Player -->
-            <iframe class="content-iframe"
-                    width="100%" 
-                    height="100%" 
-                    style="display:block" 
-                    marginWidth="0" 
-                    marginHeight="0" 
-                    frameBorder="no" 
-                    src="https://creative.mavrtracktor.com/widgets/Player?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497">
+                    src="https://creative.mavrtracktor.com/widgets/v4/Universal?userId=a98378fc20cd5d2b39758085bbd83b655a60b53c2bb9b7d76806da11ad2c0497&tag=girls&thumbSizeKey=middle&hideTitle=1&frameHeight=2160">
             </iframe>
         </div>
 
