@@ -41,7 +41,7 @@
         html, body {
             width: 100%;
             height: 100%;
-            overflow: hidden;            /* no page scroll – iframe handles content */
+            overflow: hidden;
             font-family: 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
         }
 
@@ -50,140 +50,28 @@
             position: relative;
             width: 100%;
             height: 100%;
-            background: #0a0c12;          /* fallback while iframe loads */
-            overflow-y: auto;              /* allow scrolling for multiple iframes */
+            background: #0a0c12;
+            overflow-y: auto;
             -webkit-overflow-scrolling: touch;
         }
 
-        /* container for the iframes and scripts */
+        /* container for the content */
         .content-container {
             display: flex;
             flex-direction: column;
             width: 100%;
             min-height: 100%;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* universal iframe style - specific dimensions for each iframe */
-        .frame {
-            border: 0;
-            display: block;
-            flex-shrink: 0;
-            margin: 0 auto;  /* center iframes horizontally */
-        }
-
-        /* second iframe specific size override */
-        iframe[src*="template1001"] {
-            width: 463px;
-            height: 1357px;
-            max-width: 100%;  /* make responsive on small screens */
-        }
-
-        /* style for script containers */
+        /* style for the script container */
         .script-container {
             width: 100%;
             display: flex;
             justify-content: center;
-            margin: 0 auto;
-        }
-
-        /* διαχωριστική γραμμή */
-        .separator {
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, #ff6a8f, #f26bac, #ff99b4, transparent);
-            box-shadow: 0 0 10px rgba(255, 106, 143, 0.5);
-            margin: 20px 0;    /* add vertical spacing */
-            flex-shrink: 0;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* overlay for categories – completely non‑blocking except the nav strip */
-        .category-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 20;
-            display: flex;
-            justify-content: center;
-            padding: 1rem 0.8rem 0.5rem 0.8rem;
-            pointer-events: none;           /* clicks pass through to iframe by default */
-        }
-
-        /* banner strip – perfectly centered, single line, smaller banners & text */
-        .category-nav {
-            display: flex;
-            flex-direction: row;             /* always horizontal */
-            flex-wrap: nowrap;               /* force single line, even on narrow mobile */
-            gap: 0.7rem;                     /* consistent gap between banners */
-            justify-content: center;
             align-items: center;
-            background: rgba(8, 8, 16, 0.5);  /* dark glass */
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 48px;              /* pill shape */
-            padding: 0.45rem 1rem;            /* tighter padding = smaller banner block */
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: 0 10px 28px -5px rgba(0, 0, 0, 0.6);
-            pointer-events: auto;              /* only the nav area clickable */
-            max-width: 98vw;                    /* prevent overflow on small screens */
-            overflow-x: auto;                    /* if extreme narrow, slight scroll (rare) */
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* hide scrollbar but keep functionality – cleaner look */
-        .category-nav::-webkit-scrollbar {
-            display: none;
-        }
-        .category-nav {
-            -ms-overflow-style: none;  /* IE/Edge */
-            scrollbar-width: none;     /* Firefox */
-        }
-
-        /* base banner style – smaller font, compact padding */
-        .category-link {
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;                /* smaller letters */
-            letter-spacing: 0.3px;
-            padding: 0.4rem 1rem;              /* compact vertical/horizontal */
-            border-radius: 40px;                /* pill shaped banners */
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-            display: inline-block;
-            border: 1px solid rgba(255,255,255,0.2);
-            white-space: nowrap;                 /* keep text in one line */
-            flex-shrink: 0;                       /* prevent shrinking, keep banners intact */
-            line-height: 1.3;
-        }
-
-        /* distinct colorful gradients — a bit softer but vivid */
-        .cat-couples {
-            background: linear-gradient(145deg, #ff6a8f, #ff99b4);
-            color: #1f0010;
-            box-shadow: 0 0 8px #ff9eb5, 0 2px 6px black;
-        }
-        .cat-girls {
-            background: linear-gradient(145deg, #f26bac, #ffb0cc);
-            color: #220011;
-            box-shadow: 0 0 8px #ffa8cc, 0 2px 6px black;
-        }
-
-        /* subtle hover effect – scale a little, brightness, no big movement */
-        .category-link:hover {
-            transform: scale(1.04);
-            filter: brightness(1.2);
-            border-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 0 15px currentColor, 0 4px 10px black;
-        }
-
-        /* active tap feedback */
-        .category-link:active {
-            transform: scale(0.97);
-            filter: brightness(0.9);
-            transition: 0.06s;
+            margin: 0 auto;
         }
 
         /* very discreet watermark – stays out of way */
@@ -202,80 +90,15 @@
             border: 1px solid rgba(255,255,255,0.1);
             letter-spacing: 0.3px;
         }
-
-        /* responsive adjustments for smaller screens */
-        @media (max-width: 768px) {            
-            iframe[src*="template1001"] {
-                height: auto;
-                min-height: 1357px;
-            }
-        }
-
-        /* even smaller banners for very narrow phones (<= 420px) */
-        @media (max-width: 420px) {
-            .category-link {
-                font-size: 0.95rem;
-                padding: 0.3rem 0.8rem;
-            }
-            .category-nav {
-                gap: 0.45rem;
-                padding: 0.35rem 0.9rem;
-            }
-        }
-
-        /* for extremely small devices (<= 350px) we shrink further */
-        @media (max-width: 350px) {
-            .category-link {
-                font-size: 0.85rem;
-                padding: 0.25rem 0.65rem;
-            }
-        }
-        
-        /* make the awe-container responsive */
-        [data-awe-container-id] {
-            width: 100% !important;
-            height: auto !important;
-            min-height: 200px;
-            display: flex !important;
-            justify-content: center;
-        }
     </style>
 </head>
 <body>
     <div class="stage">
-        <!-- category banner strip – aligned in a single straight row for mobile/desktop -->
-        <div class="category-overlay">
-            <nav class="category-nav">
-                <a href="https://xxx.franklymadear.com/couples/index.html" 
-                   class="category-link cat-couples" 
-                   target="_blank" 
-                   rel="noopener noreferrer">Couples</a>
-                <a href="https://xxx.franklymadear.com/girls/index.html" 
-                   class="category-link cat-girls" 
-                   target="_blank" 
-                   rel="noopener noreferrer">Girls</a>
-            </nav>
-        </div>
-
-        <!-- container with the new script, iframe and embed -->
+        <!-- container with only the new script -->
         <div class="content-container">
-            <!-- First script: postexralifkhd embed -->
             <div class="script-container">
-<iframe class="frame" src="https://atwmcd.com/iframes/?t_id=template1000&psid=franklymadear&psprogram=revs&pstool=203_1&site=jasmin&cobrandId=&flags=&column=2&row=2&campaign_id=&categoryName=girl&subAffId=" scrolling="no" align="MIDDLE" width="300px" height="250px" frameborder="No" allowtransparency="true" background-color="transparent" marginHeight="0" marginWidth="0"></iframe>
+                <script src="https://ecdwm.com/embed/play?psid=franklymadear&pstool=400_31&psprogram=revs&campaign_id=&categoryName=girl&cobrandId=&site=livesex&ms_notrack=1&subAffId="></script>
             </div>
-
-            <!-- Διαχωριστική γραμμή -->
-            <div class="separator"></div>
-
-            <!-- Second iframe: template1001 -->
-            <script src="https://ecdwm.com/embed/postlp22?psid=franklymadear&pstool=400_461&psprogram=revs&campaign_id=&categoryName=girl&cobrandId=&site=jasmin&ms_notrack=1&subAffId="></script>
-
-            <!-- Διαχωριστική γραμμή -->
-            <div class="separator"></div>
-
-            <!-- AWE container and script -->
-            <div data-awe-container-id="object_container" style="display:inline-block;width:100%;height:200px;"></div>
-          <iframe class="frame" src="https://atwmcd.com/iframes/?t_id=template1001&psid=franklymadear&psprogram=revs&pstool=203_2&site=jasmin&cobrandId=&flags=&column=2&row=5&campaign_id=&categoryName=girl&subAffId=" scrolling="no" align="MIDDLE" width="463px" height="702px" frameborder="No" allowtransparency="true" background-color="transparent" marginHeight="0" marginWidth="0"></iframe>
         </div>
 
         <!-- tiny helper text – negligible -->
