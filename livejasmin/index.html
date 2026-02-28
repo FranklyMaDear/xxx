@@ -72,37 +72,68 @@
             font-size: clamp(0.9rem, 4vw, 1.2rem);
         }
 
-        /* Script container - κεντράρει το περιεχόμενο */
-        .script-container {
+        /* Iframe container - κεντράρει το περιεχόμενο */
+        .iframe-container {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
-            min-height: 400px;
+            min-height: 250px;
             margin: 10px 0 20px 0;
             background: rgba(255,255,255,0.02);
             border-radius: 20px;
             padding: 20px 10px;
         }
 
+        /* Iframe styling - responsive */
+        .frame {
+            border: none;
+            display: block;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+            border-radius: 12px;
+            max-width: 100%;
+            width: auto;
+            height: auto;
+        }
+
+        /* Ειδικά για το iframe template1000 */
+        iframe[src*="template1000"] {
+            width: min(300px, 95%);
+            height: calc(min(300px, 95%) * (250/300));
+            max-width: 300px;
+            max-height: 250px;
+            transition: transform 0.2s ease;
+        }
+
+        iframe[src*="template1000"]:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(255,106,143,0.3);
+        }
+
         /* Responsive για κινητά */
         @media (max-width: 480px) {
-            .script-container {
+            .iframe-container {
                 padding: 15px 5px;
                 margin: 5px 0 15px 0;
-                min-height: 300px;
+                min-height: 200px;
             }
             
             .header h1 {
                 font-size: 1.6rem;
             }
+            
+            iframe[src*="template1000"] {
+                width: 95%;
+                height: calc(95vw * (250/300));
+                max-width: 280px;
+            }
         }
 
         /* Για πολύ μικρές οθόνες (έως 350px) */
         @media (max-width: 350px) {
-            .script-container {
+            .iframe-container {
                 padding: 10px 3px;
-                min-height: 250px;
+                min-height: 180px;
             }
             
             .header h1 {
@@ -112,6 +143,11 @@
             .header p {
                 font-size: 0.9rem;
             }
+            
+            iframe[src*="template1000"] {
+                width: 98%;
+                max-width: 260px;
+            }
         }
 
         /* Tablets */
@@ -120,8 +156,13 @@
                 padding: 20px 25px;
             }
             
-            .script-container {
+            .iframe-container {
                 padding: 25px 15px;
+            }
+            
+            iframe[src*="template1000"] {
+                width: 320px;
+                height: 267px;
             }
         }
 
@@ -131,7 +172,7 @@
                 padding: 30px 20px;
             }
             
-            .script-container {
+            .iframe-container {
                 margin: 15px 0 25px 0;
                 padding: 30px 20px;
             }
@@ -165,14 +206,9 @@
             white-space: nowrap;
         }
 
-        /* Το script συνήθως δημιουργεί iframe - το κάνουμε responsive */
-        script + iframe,
-        script ~ iframe,
-        iframe[src*="pusedwm"] {
-            max-width: 100% !important;
-            height: auto !important;
-            border-radius: 12px !important;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important;
+        /* Touch-friendly */
+        .frame {
+            -webkit-tap-highlight-color: transparent;
         }
     </style>
 </head>
@@ -183,15 +219,49 @@
             <p>Live Jasmin · Girls</p>
         </div>
 
-        <!-- Script container - το script θα φορτώσει εδώ το περιεχόμενό του -->
-        <div class="script-container">
-            <script src="https://pusedwm.com/pu/?target=explralifk&site=jasmin&psid=franklymadear&pstool=300_364&psprogram=revs&campaign_id=&category=girl&subaffid=&width=1100&height=764&cap=24&ms_notrack=1"></script>
+        <!-- Iframe container - template1000 (2x2 grid) -->
+        <div class="iframe-container">
+            <iframe class="frame" 
+                    src="https://atwmcd.com/iframes/?t_id=template1000&psid=franklymadear&psprogram=revs&pstool=203_1&site=jasmin&cobrandId=&flags=&column=2&row=2&campaign_id=&categoryName=girl&subAffId=" 
+                    scrolling="no" 
+                    align="MIDDLE" 
+                    width="300" 
+                    height="250" 
+                    frameborder="No" 
+                    allowtransparency="true" 
+                    background-color="transparent" 
+                    marginHeight="0" 
+                    marginWidth="0"
+                    title="Live Jasmin Models">
+            </iframe>
         </div>
 
-        <!-- Προαιρετικό: αν θέλεις προσθήκη δεύτερου script ή περιεχομένου -->
+        <!-- Προαιρετικό: αν θέλεις προσθήκη δεύτερου iframe ή περιεχομένου -->
         <!-- <div class="separator"></div> -->
     </div>
 
     <div class="watermark">✦ live cams</div>
+
+    <!-- Μικρό script για έξτρα responsiveness αν χρειαστεί -->
+    <script>
+        (function() {
+            function adjustIframe() {
+                const iframe = document.querySelector('iframe[src*="template1000"]');
+                if (!iframe) return;
+                
+                if (window.innerWidth < 480) {
+                    iframe.style.width = '95%';
+                    iframe.style.height = 'auto';
+                } else {
+                    iframe.style.width = '300px';
+                    iframe.style.height = '250px';
+                }
+            }
+            
+            window.addEventListener('resize', adjustIframe);
+            window.addEventListener('orientationchange', adjustIframe);
+            adjustIframe();
+        })();
+    </script>
 </body>
 </html>
