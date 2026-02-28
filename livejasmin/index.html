@@ -53,7 +53,7 @@
         .header {
             text-align: center;
             padding: 15px 10px 15px 10px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             width: 100%;
             border-bottom: 2px solid #ff6a8f;
         }
@@ -72,34 +72,108 @@
             font-size: clamp(0.9rem, 4vw, 1.2rem);
         }
 
-        /* Iframe container - κεντραρισμένο με σκιά */
-        .iframe-container {
+        /* Banner container - κεντράρει το banner */
+        .banner-container {
             display: flex;
             justify-content: center;
+            align-items: center;
             width: 100%;
-            margin: 15px 0;
+            margin: 20px 0 30px 0;
             background: rgba(255,255,255,0.02);
-            border-radius: 16px;
-            padding: 15px 5px;
+            border-radius: 20px;
+            padding: 25px 10px;
         }
 
-        /* Iframe responsive magic */
-        .frame {
-            border: none;
-            display: block;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-            border-radius: 12px;
+        /* Banner link & image responsive */
+        .banner-link {
+            display: inline-block;
             max-width: 100%;
-            width: auto;
-            height: auto;
-            aspect-ratio: 463 / 1357; /* Διατηρεί αναλογία ύψους/πλάτους */
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
         }
 
-        /* Ειδικά για το iframe template1001 - responsive dimensions */
-        iframe[src*="template1001"] {
-            width: min(463px, 95%);
-            height: calc(min(463px, 95%) * (1357/463));
-            max-height: 90vh; /* Δεν ξεπερνά το 90% της οθόνης */
+        .banner-link:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(255,106,143,0.3);
+        }
+
+        .banner-link:active {
+            transform: scale(0.98);
+        }
+
+        .banner-img {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: 300px;  /* Φυσικό μέγεθος εικόνας */
+            border-radius: 12px;
+            border: 2px solid rgba(255,106,143,0.3);
+        }
+
+        /* Responsive για κινητά */
+        @media (max-width: 480px) {
+            .banner-container {
+                padding: 15px 5px;
+                margin: 15px 0 20px 0;
+            }
+            
+            .banner-img {
+                max-width: 100%;  /* Σε μικρές οθόνες παίρνει όλο το πλάτος */
+                width: auto;
+                border-width: 1px;
+            }
+            
+            .header h1 {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Για πολύ μικρές οθόνες (έως 350px) */
+        @media (max-width: 350px) {
+            .banner-container {
+                padding: 10px 3px;
+            }
+            
+            .header h1 {
+                font-size: 1.4rem;
+            }
+            
+            .header p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Tablets */
+        @media (min-width: 600px) and (max-width: 900px) {
+            .container {
+                padding: 20px 25px;
+            }
+            
+            .banner-img {
+                max-width: 350px;  /* Λίγο μεγαλύτερο σε tablets */
+            }
+        }
+
+        /* Desktops */
+        @media (min-width: 901px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .banner-container {
+                margin: 25px 0 35px 0;
+                padding: 30px 0;
+            }
+            
+            .banner-img {
+                transition: all 0.3s ease;
+            }
+            
+            .banner-img:hover {
+                border-color: #ff99b4;
+            }
         }
 
         /* Διαχωριστικά γραμμές - αν χρειαστούν */
@@ -109,7 +183,7 @@
             height: 3px;
             background: linear-gradient(90deg, transparent, #ff6a8f, #f26bac, #ff99b4, transparent);
             border-radius: 3px;
-            margin: 15px 0;
+            margin: 10px 0 20px 0;
         }
 
         /* Watermark - πάντα ορατό, μικρό */
@@ -130,59 +204,9 @@
             white-space: nowrap;
         }
 
-        /* Small phones (≤ 400px) */
-        @media (max-width: 400px) {
-            .container {
-                padding: 8px 5px 20px 5px;
-            }
-            .header {
-                padding: 10px 5px;
-            }
-            .iframe-container {
-                padding: 10px 0;
-            }
-            iframe[src*="template1001"] {
-                width: 98%;
-                height: calc(98vw * (1357/463));
-            }
-        }
-
-        /* Tablets (600px - 900px) */
-        @media (min-width: 600px) and (max-width: 900px) {
-            .container {
-                padding: 20px 25px;
-            }
-            iframe[src*="template1001"] {
-                width: min(500px, 90%);
-                height: calc(min(500px, 90%) * (1357/463));
-            }
-        }
-
-        /* Desktops (≥ 901px) */
-        @media (min-width: 901px) {
-            .container {
-                padding: 30px 20px;
-            }
-            .header {
-                margin-bottom: 25px;
-            }
-            .iframe-container {
-                margin: 20px 0;
-                padding: 25px 0;
-            }
-        }
-
-        /* Για πολύ ψηλές οθόνες, περιορίζουμε το ύψος */
-        @media (min-height: 1200px) {
-            iframe[src*="template1001"] {
-                max-height: 1000px;
-                width: auto;
-            }
-        }
-
-        /* Touch-friendly βελτιώσεις */
-        .frame {
-            -webkit-overflow-scrolling: touch;
+        /* Touch-friendly */
+        .banner-link {
+            -webkit-tap-highlight-color: transparent;
         }
     </style>
 </head>
@@ -193,48 +217,25 @@
             <p>Live Jasmin · Girls</p>
         </div>
 
-        <!-- IFrame container - πλήρως responsive -->
-        <div class="iframe-container">
-            <iframe class="frame" 
-                    src="https://atwmcd.com/iframes/?t_id=template1001&psid=franklymadear&psprogram=revs&pstool=203_2&site=jasmin&cobrandId=&flags=&column=2&row=10&campaign_id=&categoryName=girl&subAffId=" 
-                    scrolling="no" 
-                    align="MIDDLE" 
-                    width="463" 
-                    height="1357" 
-                    frameborder="No" 
-                    allowtransparency="true" 
-                    background-color="transparent" 
-                    marginHeight="0" 
-                    marginWidth="0"
-                    title="Live Jasmin Models">
-            </iframe>
+        <!-- Banner container - πλήρως responsive -->
+        <div class="banner-container">
+            <a class="banner-link" 
+               title="Live webcam sex! More than 20000 Hot Girls are waiting for you!" 
+               href="https://ctwmsg.com/?siteId=jasmin&cobrandId=&superCategoryName=&categoryName=girl&pageName=listpage&prm[psid]=franklymadear&prm[pstool]=201_2&prm[psprogram]=revs&prm[campaign_id]=&subAffId=" 
+               align="center" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                <img class="banner-img" 
+                     alt="Live webcam sex! More than 20000 Hot Girls are waiting for you!" 
+                     src="https://pt-static1.ptwmstcnt.com/npt/banner/s1_girl/300x250.jpg?sid=963d74cc&psid=franklymadear&pstool=201_2&psprogram=revs&campaign_id=" 
+                     border="0" />
+            </a>
         </div>
 
-        <!-- Προαιρετικό: αν θέλεις προσθήκη δεύτερου iframe ή περιεχομένου -->
+        <!-- Προαιρετικό: αν θέλεις προσθήκη δεύτερου banner ή περιεχομένου -->
         <!-- <div class="separator"></div> -->
     </div>
 
     <div class="watermark">✦ live cams</div>
-
-    <!-- Μικρό script για έξτρα responsiveness αν χρειαστεί -->
-    <script>
-        (function() {
-            // Διασφαλίζει ότι το iframe προσαρμόζεται σε αλλαγές προσανατολισμού
-            function adjustIframe() {
-                const iframe = document.querySelector('iframe[src*="template1001"]');
-                if (!iframe) return;
-                
-                // Αν η οθόνη είναι μικρότερη από 480px, κάνουμε fine-tuning
-                if (window.innerWidth < 480) {
-                    iframe.style.width = '100%';
-                    iframe.style.height = 'auto';
-                }
-            }
-            
-            window.addEventListener('resize', adjustIframe);
-            window.addEventListener('orientationchange', adjustIframe);
-            adjustIframe();
-        })();
-    </script>
 </body>
 </html>
