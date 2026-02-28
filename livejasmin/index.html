@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    
+    <!-- ===== SHARING METADATA ===== -->
+    <meta property="og:title" content="Live Web Cam" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://creative.mavrtracktor.com/LPAkira/photo2.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:description" content="Live Jasmin · girls" />
+    <meta property="og:site_name" content="Live Web Cam" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Live Web Cam" />
+    <meta name="twitter:description" content="Live Jasmin · girls" />
+    <meta name="twitter:image" content="https://creative.mavrtracktor.com/LPAkira/photo2.png" />
+    <meta property="og:image:alt" content="Live webcam preview" />
+    <link rel="image_src" href="https://creative.mavrtracktor.com/LPAkira/photo2.png" />
+    <meta name="theme-color" content="#1a1025" />
+    <title>Live Web Cam</title>
+    
+    <style>
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100%;
+            background: #0a0c12;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Main container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 12px 10px 30px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Header - προσαρμόζεται σε μικρές οθόνες */
+        .header {
+            text-align: center;
+            padding: 15px 10px 15px 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            border-bottom: 2px solid #ff6a8f;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: clamp(1.5rem, 6vw, 2.2rem);
+            letter-spacing: 1px;
+            line-height: 1.2;
+            word-break: break-word;
+        }
+
+        .header p {
+            color: #ff99b4;
+            margin-top: 8px;
+            font-size: clamp(0.9rem, 4vw, 1.2rem);
+        }
+
+        /* Script container - κεντράρει το περιεχόμενο */
+        .script-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            min-height: 400px;
+            margin: 10px 0 20px 0;
+            background: rgba(255,255,255,0.02);
+            border-radius: 20px;
+            padding: 20px 10px;
+        }
+
+        /* Responsive για κινητά */
+        @media (max-width: 480px) {
+            .script-container {
+                padding: 15px 5px;
+                margin: 5px 0 15px 0;
+                min-height: 300px;
+            }
+            
+            .header h1 {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Για πολύ μικρές οθόνες (έως 350px) */
+        @media (max-width: 350px) {
+            .script-container {
+                padding: 10px 3px;
+                min-height: 250px;
+            }
+            
+            .header h1 {
+                font-size: 1.4rem;
+            }
+            
+            .header p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Tablets */
+        @media (min-width: 600px) and (max-width: 900px) {
+            .container {
+                padding: 20px 25px;
+            }
+            
+            .script-container {
+                padding: 25px 15px;
+            }
+        }
+
+        /* Desktops */
+        @media (min-width: 901px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .script-container {
+                margin: 15px 0 25px 0;
+                padding: 30px 20px;
+            }
+        }
+
+        /* Διαχωριστικές γραμμές - αν χρειαστούν */
+        .separator {
+            width: 100%;
+            max-width: 600px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #ff6a8f, #f26bac, #ff99b4, transparent);
+            border-radius: 3px;
+            margin: 10px 0 20px 0;
+        }
+
+        /* Watermark - πάντα ορατό, μικρό */
+        .watermark {
+            position: fixed;
+            bottom: 8px;
+            right: 12px;
+            color: rgba(255, 255, 255, 0.25);
+            font-size: 0.7rem;
+            background: rgba(0,0,0,0.3);
+            padding: 4px 12px;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.1);
+            z-index: 1000;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        /* Το script συνήθως δημιουργεί iframe - το κάνουμε responsive */
+        script + iframe,
+        script ~ iframe,
+        iframe[src*="pusedwm"] {
+            max-width: 100% !important;
+            height: auto !important;
+            border-radius: 12px !important;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✨ Live Web Cam</h1>
+            <p>Live Jasmin · Girls</p>
+        </div>
+
+        <!-- Script container - το script θα φορτώσει εδώ το περιεχόμενό του -->
+        <div class="script-container">
+            <script src="https://pusedwm.com/pu/?target=explralifk&site=jasmin&psid=franklymadear&pstool=300_364&psprogram=revs&campaign_id=&category=girl&subaffid=&width=1100&height=764&cap=24&ms_notrack=1"></script>
+        </div>
+
+        <!-- Προαιρετικό: αν θέλεις προσθήκη δεύτερου script ή περιεχομένου -->
+        <!-- <div class="separator"></div> -->
+    </div>
+
+    <div class="watermark">✦ live cams</div>
+</body>
+</html>
