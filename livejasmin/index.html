@@ -55,7 +55,7 @@
             -webkit-overflow-scrolling: touch;
         }
 
-        /* container for the iframes */
+        /* container for the iframes and scripts */
         .content-container {
             display: flex;
             flex-direction: column;
@@ -71,18 +71,19 @@
             margin: 0 auto;  /* center iframes horizontally */
         }
 
-        /* first iframe specific size override */
-        iframe[src*="template1005"] {
-            width: 750px;
-            height: 250px;
-            max-width: 100%;  /* make responsive on small screens */
-        }
-
         /* second iframe specific size override */
         iframe[src*="template1001"] {
             width: 463px;
             height: 1357px;
             max-width: 100%;  /* make responsive on small screens */
+        }
+
+        /* style for script containers */
+        .script-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
         }
 
         /* διαχωριστική γραμμή */
@@ -203,12 +204,7 @@
         }
 
         /* responsive adjustments for smaller screens */
-        @media (max-width: 768px) {
-            iframe[src*="template1005"] {
-                height: auto;  /* allow natural scaling */
-                min-height: 250px;
-            }
-            
+        @media (max-width: 768px) {            
             iframe[src*="template1001"] {
                 height: auto;
                 min-height: 1357px;
@@ -261,20 +257,12 @@
             </nav>
         </div>
 
-        <!-- container with the new iframes and script embed -->
+        <!-- container with the new script, iframe and embed -->
         <div class="content-container">
-            <!-- First iframe: template1005 -->
-            <iframe class="frame" 
-                    src="https://atwmcd.com/iframes/?t_id=template1005&psid=franklymadear&psprogram=revs&pstool=203_6&site=jasmin&cobrandId=&flags=&column=3&row=1&campaign_id=&categoryName=girl&subAffId=" 
-                    scrolling="no" 
-                    align="MIDDLE" 
-                    width="750px" 
-                    height="250px" 
-                    frameborder="No" 
-                    allowtransparency="true" 
-                    background-color="transparent" 
-                    marginHeight="0" 
-                    marginWidth="0"></iframe>
+            <!-- First script: postexralifkhd embed -->
+            <div class="script-container">
+                <script src="https://ecdwm.com/embed/postexralifkhd?psid=franklymadear&pstool=400_370&psprogram=revs&campaign_id=&categoryName=girl&cobrandId=&site=jasmin&ms_notrack=1&subAffId="></script>
+            </div>
 
             <!-- Διαχωριστική γραμμή -->
             <div class="separator"></div>
