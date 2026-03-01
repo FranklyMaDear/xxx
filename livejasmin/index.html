@@ -24,7 +24,7 @@
         
         .container {
             width: 100%;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
@@ -62,7 +62,7 @@
             100% { opacity: 1; transform: scale(1); }
         }
         
-        /* Grid για τα 2 iframe */
+        /* Grid για τα 2 iframe - ΔΙΠΛΑ-ΔΙΠΛΑ */
         .cams-grid {
             display: flex;
             flex-wrap: wrap;
@@ -71,7 +71,7 @@
             margin: 20px 0 40px;
         }
         
-        /* Κάρτα για κάθε cam */
+        /* Κάρτα για κάθε cam - ΙΔΙΟ ΜΕΓΕΘΟΣ 450x964 */
         .cam-card {
             background: #050507;
             border-radius: 20px;
@@ -79,6 +79,7 @@
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.8);
             transition: transform 0.3s ease;
+            width: 450px; /* Σταθερό πλάτος */
         }
         
         .cam-card:hover {
@@ -110,16 +111,19 @@
             color: #99ccff;
         }
         
-        /* Iframe styles */
-        .frame {
+        /* Και τα δύο iframe ΑΚΡΙΒΩΣ 450x964 */
+        .cam-frame {
+            width: 450px;
+            height: 964px;
+            border: none;
             display: block;
             background: #000;
         }
         
-        /* Chaturbate iframe responsive */
-        .chaturbate-frame {
-            width: 100%;
-            height: 700px;
+        /* Ειδικά για το Jasmin iframe - διατηρούμε τα attributes */
+        .jasmin-frame {
+            width: 450px;
+            height: 964px;
             border: none;
             display: block;
             background: #000;
@@ -209,6 +213,20 @@
             color: #7a7aa3;
             text-decoration: none;
         }
+        
+        /* Mobile responsive - στα κινητά το ένα κάτω από το άλλο */
+        @media (max-width: 1000px) {
+            .cam-card {
+                width: 100%;
+                max-width: 450px;
+            }
+            
+            .cam-frame, .jasmin-frame {
+                width: 100%;
+                height: auto;
+                min-height: 964px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -219,20 +237,20 @@
             <span class="live-badge"></span> Live Jasmin + Chaturbate <span class="live-badge"></span>
         </div>
         
-        <!-- GRID ΜΕ ΤΑ 2 IFRAME -->
+        <!-- GRID ΜΕ ΤΑ 2 IFRAME - ΚΑΙ ΤΑ ΔΥΟ 450x964 -->
         <div class="cams-grid">
-            <!-- 1. Live Jasmin iframe - ΑΚΡΙΒΩΣ ΟΠΩΣ ΤΟ ΔΩΣΑΤΕ -->
+            <!-- 1. Live Jasmin iframe - 450x964 -->
             <div class="cam-card">
                 <div class="cam-header">
                     <span class="logo jasmin">✨ Live Jasmin</span>
                     <span>|</span>
                     <span>Girls</span>
                 </div>
-                <iframe class="frame" 
+                <iframe class="jasmin-frame" 
                         src="https://atwmcd.com/iframes/?t_id=template1001&psid=franklymadear&psprogram=revs&pstool=203_2&site=jasmin&cobrandId=&flags=&column=2&row=7&campaign_id=&categoryName=girl&subAffId=" 
                         scrolling="no" 
                         align="MIDDLE" 
-                        width="400px" 
+                        width="450px" 
                         height="964px" 
                         frameborder="No" 
                         allowtransparency="true" 
@@ -241,15 +259,22 @@
                         marginWidth="0"></iframe>
             </div>
             
-            <!-- 2. Chaturbate iframe - ΑΚΡΙΒΩΣ ΟΠΩΣ ΤΟ ΔΩΣΑΤΕ -->
+            <!-- 2. Chaturbate iframe - 450x964 -->
             <div class="cam-card">
                 <div class="cam-header">
                     <span class="logo chaturbate">🔥 Chaturbate</span>
                     <span>|</span>
                     <span>Girls</span>
                 </div>
-                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=f" 
-                        style="width:100%; height:700px; border:none; display:block; background:#000;"></iframe>
+                <iframe class="cam-frame"
+                        src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=f"
+                        width="450px"
+                        height="964px"
+                        frameborder="No"
+                        scrolling="no"
+                        allowtransparency="true"
+                        marginheight="0"
+                        marginwidth="0"></iframe>
             </div>
         </div>
         
@@ -298,12 +323,15 @@
         const iframes = document.querySelectorAll('iframe');
         iframes.forEach((iframe, index) => {
             iframe.onload = function() {
-                console.log(`✅ Iframe ${index + 1} φορτώθηκε επιτυχώς`);
+                console.log(`✅ Iframe ${index + 1} (${iframe.width}x${iframe.height}) φορτώθηκε επιτυχώς`);
             };
             iframe.onerror = function() {
                 console.log(`⚠️ Πρόβλημα στο iframe ${index + 1}`);
             };
         });
+        
+        // Εμφάνιση διαστάσεων στην κονσόλα
+        console.log('📏 Και τα δύο iframe είναι 450x964');
     </script>
 </body>
 </html>
