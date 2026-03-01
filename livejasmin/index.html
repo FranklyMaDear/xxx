@@ -69,7 +69,7 @@
             100% { opacity: 1; transform: scale(1); }
         }
         
-        /* MAIN CAM AREA - ΚΡΙΣΙΜΟ: Ακριβείς διαστάσεις όπως στο script */
+        /* MAIN CAM AREA */
         .cam-section {
             background: #050507;
             border-radius: 30px;
@@ -81,7 +81,7 @@
         
         .cam-wrapper {
             width: 100%;
-            min-height: 764px;
+            min-height: 600px; /* Προσαρμοσμένο για το νέο script */
             background: #000000;
             display: flex;
             align-items: center;
@@ -89,7 +89,7 @@
             position: relative;
         }
         
-        /* Loading indicator - θα εξαφανιστεί όταν φορτώσει το script */
+        /* Loading indicator */
         .loading-indicator {
             position: absolute;
             top: 50%;
@@ -112,7 +112,7 @@
             100% { opacity: 0.3; }
         }
         
-        /* Το script θα φορτώσει ΠΑΝΩ από το loading indicator */
+        /* Το script θα φορτώσει πάνω από το loading indicator */
         .cam-wrapper script {
             position: relative;
             z-index: 10;
@@ -208,6 +208,17 @@
             color: #ff9999;
             border: 1px solid #ff4d6d33;
         }
+        
+        /* SUCCESS MESSAGE */
+        .success-message {
+            background: #1a241a;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: #99ff99;
+            border: 1px solid #33ff3355;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
@@ -220,17 +231,17 @@
             </div>
         </div>
         
-        <!-- MAIN CAM SECTION - ΕΔΩ ΜΠΑΙΝΕΙ ΤΟ SCRIPT -->
+        <!-- MAIN CAM SECTION - ΝΕΟ SCRIPT -->
         <div class="cam-section">
             <div class="cam-wrapper">
-                <!-- Loading message (θα εξαφανιστεί όταν φορτώσει το script) -->
+                <!-- Loading message -->
                 <div class="loading-indicator" id="loadingMessage">
                     Σύνδεση με live κάμερρες 
                     <span class="dots">...</span>
                 </div>
                 
-                <!-- ΤΟ SCRIPT ΤΗΣ AWEMPIRE - ΑΚΡΙΒΩΣ ΟΠΩΣ ΤΟ ΔΩΣΑΤΕ -->
-                <script src="https://pusedwm.com/pu/?target=explralifk&site=jasmin&psid=franklymadear&pstool=300_364&psprogram=revs&campaign_id=&category=girl&subaffid=&width=1100&height=764&cap=24&ms_notrack=1"></script>
+                <!-- ΤΟ ΝΕΟ SCRIPT ΤΗΣ AWEMPIRE -->
+                <script src="https://ecdwm.com/embed/postexralivip?psid=franklymadear&pstool=400_368&psprogram=revs&campaign_id=&categoryName=girl&cobrandId=&site=jasmin&ms_notrack=1&subAffId="></script>
                 
                 <!-- Αν δεν έχει ενεργή JavaScript -->
                 <noscript>
@@ -242,7 +253,12 @@
             </div>
         </div>
         
-        <!-- CATEGORIES όπως στην αρχική σας σελίδα -->
+        <!-- ΕΝΔΕΙΞΗ ΟΤΙ ΤΟ ΝΕΟ SCRIPT ΕΙΝΑΙ ΕΝΕΡΓΟ -->
+        <div style="text-align: center; margin: 10px 0; color: #88ff88; font-size: 0.9rem;">
+            ⚡ Νέο embed script · 400x368
+        </div>
+        
+        <!-- CATEGORIES -->
         <div class="categories">
             <span>✦ live cams</span>
             <a href="#">Girls</a>
@@ -270,11 +286,10 @@
         </div>
     </div>
     
-    <!-- ΜΙΚΡΟ SCRIPT ΓΙΑ ΑΠΟΚΡΥΨΗ ΤΟΥ LOADING ΟΤΑΝ ΦΟΡΤΩΣΕΙ ΤΟ ΠΕΡΙΕΧΟΜΕΝΟ -->
+    <!-- SCRIPT ΓΙΑ ΔΙΑΧΕΙΡΙΣΗ ΤΟΥ LOADING -->
     <script>
         (function() {
-            // Απόκρυψη του loading message μετά από 3 δευτερόλεπτα
-            // (το script της awempire θα το αντικαταστήσει από μόνο του, αλλά αυτό είναι fallback)
+            // Απόκρυψη loading message
             setTimeout(function() {
                 var loading = document.getElementById('loadingMessage');
                 if (loading) {
@@ -287,43 +302,59 @@
                 }
             }, 3000);
             
-            // Έλεγχος για adblocker (προαιρετικό - βοηθάει στο debugging)
-            var testScript = document.createElement('script');
-            testScript.src = 'https://pusedwm.com/pu/check.js?t=' + Date.now();
-            testScript.onerror = function() {
-                console.warn('⚠️ Πιθανό adblocker εντοπίστηκε - το script μπλοκάρεται');
-                var loading = document.getElementById('loadingMessage');
-                if (loading) {
-                    loading.innerHTML = '⚠️ Το περιεχόμενο μπλοκάρεται από adblocker.<br>Απενεργοποιήστε το για να δείτε τα live cams.';
-                    loading.style.color = '#ff9999';
-                }
-            };
-            // Σχόλιο: δεν το προσθέτουμε πραγματικά, απλά ελέγχουμε
+            // Έλεγχος φόρτωσης του νέου script
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    var wrapper = document.querySelector('.cam-wrapper');
+                    var loading = document.getElementById('loadingMessage');
+                    
+                    // Έλεγχος αν υπάρχει περιεχόμενο από το script
+                    var hasContent = false;
+                    if (wrapper) {
+                        // Το script συνήθως προσθέτει iframe ή div
+                        var children = wrapper.children;
+                        for (var i = 0; i < children.length; i++) {
+                            if (children[i].tagName !== 'SCRIPT' && 
+                                children[i].tagName !== 'DIV' && 
+                                children[i].id !== 'loadingMessage') {
+                                hasContent = true;
+                                break;
+                            }
+                        }
+                    }
+                    
+                    // Αν το loading είναι ακόμα ορατό και δεν υπάρχει περιεχόμενο
+                    if (loading && loading.style.display !== 'none' && !hasContent) {
+                        loading.innerHTML = '⚠️ Δεν ήταν δυνατή η φόρτωση.<br><br>';
+                        loading.innerHTML += '🔧 Πιθανές λύσεις:<br>';
+                        loading.innerHTML += '• Απενεργοποιήστε το adblocker<br>';
+                        loading.innerHTML += '• Δοκιμάστε incognito mode<br>';
+                        loading.innerHTML += '• Ελέγξτε ότι το script είναι σωστό';
+                        loading.style.color = '#ffaa00';
+                        loading.style.background = '#1a1a24';
+                        loading.style.padding = '30px';
+                        loading.style.borderRadius = '15px';
+                        loading.style.border = '1px solid #ffaa0055';
+                    }
+                    
+                    // Αν φόρτωσε επιτυχώς
+                    if (hasContent) {
+                        console.log('✅ Νέο script φόρτωσε επιτυχώς!');
+                        if (loading) {
+                            loading.style.display = 'none';
+                        }
+                    }
+                }, 5000);
+            });
         })();
     </script>
     
-    <!-- ΕΠΙΠΛΕΟΝ ΕΛΕΓΧΟΣ: Αν το script δεν φορτώσει, εμφάνισε μήνυμα -->
+    <!-- ΔΟΚΙΜΑΣΤΙΚΟ ALERT ΓΙΑ ΕΠΙΒΕΒΑΙΩΣΗ (αφαιρέστε το αν ενοχλεί) -->
     <script>
-        // Αυτό το script εκτελείται ΑΦΟΥ προσπαθήσει να φορτώσει το awempire script
-        window.addEventListener('load', function() {
-            // Έλεγχος αν το awempire script φόρτωσε περιεχόμενο
-            setTimeout(function() {
-                var wrapper = document.querySelector('.cam-wrapper');
-                var loading = document.getElementById('loadingMessage');
-                
-                // Αν το loading message είναι ακόμα ορατό μετά από 5 δευτερόλεπτα
-                if (loading && loading.style.display !== 'none' && loading.parentNode) {
-                    if (wrapper.children.length <= 2) { // μόνο το loading και το script
-                        loading.innerHTML = '⚠️ Δεν ήταν δυνατή η φόρτωση των live καμερών.<br>';
-                        loading.innerHTML += 'Παρακαλούμε:<br>';
-                        loading.innerHTML += '• Απενεργοποιήστε το adblocker<br>';
-                        loading.innerHTML += '• Δοκιμάστε σε incognito mode<br>';
-                        loading.innerHTML += '• Ελέγξτε τη σύνδεσή σας';
-                        loading.style.color = '#ffaa00';
-                    }
-                }
-            }, 5000);
-        });
+        // Μικρή καθυστέρηση για να μην μπλοκάρει το κύριο script
+        setTimeout(function() {
+            console.log('✅ Η JavaScript λειτουργεί κανονικά - Νέο script εγκατεστημένο');
+        }, 100);
     </script>
 </body>
 </html>
