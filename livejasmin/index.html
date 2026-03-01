@@ -1,10 +1,309 @@
 <!DOCTYPE html>
-<html>
+<html lang="el">
 <head>
-    <title>Live Jasmin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Live Cams - Live Jasmin & Chaturbate</title>
+    <style>
+        /* Βασικό reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0a0e;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        h1 {
+            color: #ffffff;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(255,100,150,0.3);
+        }
+        
+        .subtitle {
+            color: #b0b0d0;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        
+        .live-badge {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #ff4d6d;
+            border-radius: 50%;
+            margin: 0 8px;
+            box-shadow: 0 0 15px #ff4d6d;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.1); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Grid για τα 2 iframe */
+        .cams-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin: 20px 0 40px;
+        }
+        
+        /* Κάρτα για κάθε cam */
+        .cam-card {
+            background: #050507;
+            border-radius: 20px;
+            border: 1px solid #2d2d3a;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            transition: transform 0.3s ease;
+        }
+        
+        .cam-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(200,140,180,0.15);
+        }
+        
+        .cam-header {
+            background: #1a1a24;
+            padding: 12px 20px;
+            color: #d0d0f0;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #2d2d3a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cam-header .logo {
+            font-weight: 600;
+            color: #ffffff;
+        }
+        
+        .cam-header .jasmin {
+            color: #ff99aa;
+        }
+        
+        .cam-header .chaturbate {
+            color: #99ccff;
+        }
+        
+        /* Iframe styles */
+        .frame {
+            display: block;
+            background: #000;
+        }
+        
+        /* Chaturbate iframe responsive */
+        .chaturbate-frame {
+            width: 100%;
+            height: 700px;
+            border: none;
+            display: block;
+            background: #000;
+        }
+        
+        /* Fallback links */
+        .fallback-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .fallback-link {
+            padding: 15px 25px;
+            background: #1a1a24;
+            border-radius: 10px;
+            color: #d0d0f0;
+            border: 1px solid #2d2d3a;
+        }
+        
+        .fallback-link a {
+            color: #ff99aa;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .fallback-link a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Categories */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+            padding: 20px 0;
+            border-top: 1px solid #2a2a35;
+            border-bottom: 1px solid #2a2a35;
+            color: #a0a0c0;
+        }
+        
+        .categories span {
+            color: #ffa7b9;
+            font-weight: 500;
+        }
+        
+        .categories a {
+            color: #b4b4d6;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .categories a:hover {
+            color: #ffb8c9;
+        }
+        
+        /* Stats */
+        .live-stats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #14141f;
+            padding: 12px 25px;
+            border-radius: 50px;
+            width: fit-content;
+            margin: 25px auto;
+            border: 1px solid #2e2e40;
+            color: #d0d0f0;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            color: #5d5d7a;
+            font-size: 0.9rem;
+            text-align: center;
+            border-top: 1px solid #22222c;
+            padding-top: 20px;
+        }
+        
+        .footer a {
+            color: #7a7aa3;
+            text-decoration: none;
+        }
+    </style>
 </head>
-<body style="margin:0; background:#000;">
-    <!-- Δοκιμάστε αυτό το script αντί για το προηγούμενο -->
-    <script src="https://www.awempire.com/embed/script.js?psid=franklymadear&site=jasmin&category=girls"></script>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <h1>✨ Live Web Cams</h1>
+        <div class="subtitle">
+            <span class="live-badge"></span> Live Jasmin + Chaturbate <span class="live-badge"></span>
+        </div>
+        
+        <!-- GRID ΜΕ ΤΑ 2 IFRAME -->
+        <div class="cams-grid">
+            <!-- 1. Live Jasmin iframe - ΑΚΡΙΒΩΣ ΟΠΩΣ ΤΟ ΔΩΣΑΤΕ -->
+            <div class="cam-card">
+                <div class="cam-header">
+                    <span class="logo jasmin">✨ Live Jasmin</span>
+                    <span>|</span>
+                    <span>Girls</span>
+                </div>
+                <iframe class="frame" 
+                        src="https://atwmcd.com/iframes/?t_id=template1001&psid=franklymadear&psprogram=revs&pstool=203_2&site=jasmin&cobrandId=&flags=&column=2&row=7&campaign_id=&categoryName=girl&subAffId=" 
+                        scrolling="no" 
+                        align="MIDDLE" 
+                        width="400px" 
+                        height="964px" 
+                        frameborder="No" 
+                        allowtransparency="true" 
+                        background-color="transparent" 
+                        marginHeight="0" 
+                        marginWidth="0"></iframe>
+            </div>
+            
+            <!-- 2. Chaturbate iframe - ΑΚΡΙΒΩΣ ΟΠΩΣ ΤΟ ΔΩΣΑΤΕ -->
+            <div class="cam-card">
+                <div class="cam-header">
+                    <span class="logo chaturbate">🔥 Chaturbate</span>
+                    <span>|</span>
+                    <span>Girls</span>
+                </div>
+                <iframe src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=f" 
+                        style="width:100%; height:700px; border:none; display:block; background:#000;"></iframe>
+            </div>
+        </div>
+        
+        <!-- Fallback links σε περίπτωση προβλήματος -->
+        <div class="fallback-links">
+            <div class="fallback-link">
+                ⚡ Live Jasmin: 
+                <a href="https://atwmcd.com/iframes/?t_id=template1001&psid=franklymadear&psprogram=revs&pstool=203_2&site=jasmin&cobrandId=&flags=&column=2&row=7&campaign_id=&categoryName=girl&subAffId=" target="_blank">
+                    Άνοιγμα σε νέο παράθυρο
+                </a>
+            </div>
+            <div class="fallback-link">
+                ⚡ Chaturbate: 
+                <a href="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=f" target="_blank">
+                    Άνοιγμα σε νέο παράθυρο
+                </a>
+            </div>
+        </div>
+        
+        <!-- Categories -->
+        <div class="categories">
+            <span>✦ live cams</span>
+            <a href="#">Girls</a>
+            <a href="#">Couples</a>
+            <a href="#">Trans</a>
+            <a href="#">New models</a>
+            <a href="#">Group</a>
+            <a href="#">VR</a>
+        </div>
+        
+        <!-- Live stats -->
+        <div class="live-stats">
+            <span class="live-badge" style="margin:0;"></span>
+            <span>2000+ models live now · join FREE</span>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <a href="https://xxx.franklymadear.com/livejasmin/index.html">xxx.franklymadear.com</a> — 18+ only — All models are 18+
+        </div>
+    </div>
+    
+    <!-- Script για έλεγχο φόρτωσης -->
+    <script>
+        // Έλεγχος αν φορτώθηκαν τα iframe
+        const iframes = document.querySelectorAll('iframe');
+        iframes.forEach((iframe, index) => {
+            iframe.onload = function() {
+                console.log(`✅ Iframe ${index + 1} φορτώθηκε επιτυχώς`);
+            };
+            iframe.onerror = function() {
+                console.log(`⚠️ Πρόβλημα στο iframe ${index + 1}`);
+            };
+        });
+    </script>
 </body>
 </html>
