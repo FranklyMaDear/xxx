@@ -53,8 +53,8 @@
             width: 100%;
             background: #12121c;
             border-radius: 40px;
-            padding: 12px 6px;
-            margin: 10px 0 25px;
+            padding: 8px 4px;        /* μείωση από 12px 6px */
+            margin: 5px 0 15px;       /* μείωση από 10px 0 25px */
             border: 1.5px solid #ff99bb;
             box-shadow: 0 0 20px rgba(255, 120, 160, 0.3);
             overflow-x: auto;        /* allows horizontal scroll if screen is tiny, but keeps items in one line */
@@ -77,8 +77,8 @@
 
         .banner-inline-list {
             display: inline-flex;    /* horizontal row */
-            gap: 20px;
-            padding: 0 10px;
+            gap: 12px;               /* μείωση από 20px */
+            padding: 0 6px;           /* μείωση από 0 10px */
             align-items: center;
         }
 
@@ -89,10 +89,10 @@
             background: linear-gradient(130deg, #1f1f30, #151520);
             border: 1px solid #ff99bb;
             border-radius: 50px;
-            padding: 10px 24px;
+            padding: 6px 16px;        /* μείωση από 10px 24px */
             color: white;
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-weight: 500;          /* ελαφρύτερο fontWeight */
+            font-size: 0.95rem;        /* μείωση από 1.1rem */
             text-decoration: none;
             box-shadow: 0 8px 14px rgba(0,0,0,0.6);
             transition: all 0.15s;
@@ -103,9 +103,9 @@
         .banner-item span {
             background: #ff2f55;
             border-radius: 30px;
-            padding: 4px 12px;
-            font-size: 0.75rem;
-            margin-left: 10px;
+            padding: 2px 8px;         /* μείωση από 4px 12px */
+            font-size: 0.65rem;        /* μείωση από 0.75rem */
+            margin-left: 6px;          /* μείωση από 10px */
             font-weight: 500;
             color: white;
         }
@@ -273,7 +273,8 @@
 
         /* override for very narrow screens */
         @media (max-width: 380px) {
-            .banner-item { padding: 8px 16px; font-size: 1rem; }
+            .banner-item { padding: 4px 10px; font-size: 0.8rem; }
+            .banner-item span { padding: 2px 5px; font-size: 0.55rem; }
             .big-banner a { font-size: 1.2rem; }
         }
     </style>
@@ -437,7 +438,7 @@
 </div>
 
 <script>
-    console.log('Livejasmin mobile – top horizontal category banners');
+    console.log('Livejasmin mobile – top horizontal category banners (smaller)');
 </script>
 </body>
 </html>
