@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- mobile-only viewport: width=device-width, no scaling, user can zoom if needed but we design strictly for mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>✨ LiveJasmin - Live Cams</title>
+    <title>Livejasmin · mobile</title>
     <style>
-        /* === RESET & BASE === */
+        /* RESET & BASE – mobile first */
         * {
             margin: 0;
             padding: 0;
@@ -13,413 +14,447 @@
         }
 
         body {
-            background: #0a0a0e;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            color: #ffffff;
+            background: #0b0b12;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #f0eef9;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
-            padding: 16px 10px;
+            padding: 12px 10px 20px;
         }
 
         .container {
             width: 100%;
-            max-width: 700px;
+            max-width: 480px;  /* typical mobile width */
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
         }
 
-        /* === HEADER === */
+        /* header */
         .site-header {
             text-align: center;
             margin-bottom: 20px;
         }
 
         .site-header h1 {
-            font-size: clamp(2.2rem, 8vw, 3.2rem);
-            font-weight: 300;
-            background: linear-gradient(135deg, #ffb6c1, #d8b4ff, #9ad0ff);
+            font-size: 2.6rem;
+            font-weight: 350;
+            background: linear-gradient(145deg, #ffb8d0, #cfb3ff, #a5d0ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 5px;
             letter-spacing: 1px;
+            margin-bottom: 6px;
         }
 
         .subhead {
-            color: #b0b0d0;
-            font-size: clamp(0.9rem, 3.5vw, 1.2rem);
-            border-bottom: 1px solid #2a2a35;
-            padding-bottom: 15px;
+            color: #b9b9e0;
+            font-size: 1rem;
+            border-bottom: 1px solid #2c2c3c;
+            padding-bottom: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
-        .live-badge {
+        .live-dot {
             display: inline-block;
-            width: 12px;
-            height: 12px;
-            background: #ff4d6d;
+            width: 10px;
+            height: 10px;
+            background: #ff5a7a;
             border-radius: 50%;
-            margin: 0 6px;
-            box-shadow: 0 0 15px #ff4d6d;
-            animation: pulse 2s infinite;
-            vertical-align: middle;
+            box-shadow: 0 0 15px #ff3b5c;
+            animation: pulse 1.8s infinite;
         }
 
         @keyframes pulse {
             0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.1); }
+            50% { opacity: 0.7; transform: scale(1.2); }
             100% { opacity: 1; transform: scale(1); }
         }
 
-        /* === SECTIONS === */
-        .content-section {
-            margin-bottom: 30px;
+        /* === HORIZONTAL BANNER ROW — Chaturbate style line (single line, scrollable if needed, but stays one line) === */
+        .chaturbate-banner-row {
             width: 100%;
+            background: #12121c;
+            border-radius: 40px;
+            padding: 12px 6px;
+            margin: 20px 0 25px;
+            border: 1.5px solid #ff99bb;
+            box-shadow: 0 0 20px rgba(255, 120, 160, 0.3);
+            overflow-x: auto;        /* allows horizontal scroll if screen is tiny, but keeps items in one line */
+            -webkit-overflow-scrolling: touch;
+            white-space: nowrap;     /* force single line */
+            scrollbar-width: thin;
+            scrollbar-color: #ff99aa #2a2a3a;
         }
 
-        .section-title {
-            color: #ffb3c6;
-            font-size: 1.3rem;
-            font-weight: 400;
-            margin-bottom: 15px;
-            border-left: 4px solid #ff99aa;
-            padding-left: 12px;
+        .chaturbate-banner-row::-webkit-scrollbar {
+            height: 5px;
         }
-
-        .embed-card {
-            background: #050507;
+        .chaturbate-banner-row::-webkit-scrollbar-thumb {
+            background: #ff99aa;
             border-radius: 20px;
-            border: 1px solid #2d2d3a;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
-            width: 100%;
-            display: flex;
-            flex-direction: column;
+        }
+        .chaturbate-banner-row::-webkit-scrollbar-track {
+            background: #2a2a3a;
+        }
+
+        .banner-inline-list {
+            display: inline-flex;    /* horizontal row */
+            gap: 20px;
+            padding: 0 10px;
             align-items: center;
-            padding: 16px 0;
+        }
+
+        .banner-item {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(130deg, #1f1f30, #151520);
+            border: 1px solid #ff99bb;
+            border-radius: 50px;
+            padding: 10px 24px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            box-shadow: 0 8px 14px rgba(0,0,0,0.6);
+            transition: all 0.15s;
+            backdrop-filter: blur(2px);
+            white-space: nowrap;
+        }
+
+        .banner-item span {
+            background: #ff2f55;
+            border-radius: 30px;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            margin-left: 10px;
+            font-weight: 500;
+            color: white;
+        }
+
+        .banner-item:active {
+            transform: scale(0.96);
+            background: #2a2a40;
+        }
+
+        /* special style for the chaturbate text inside row */
+        .cb-brand {
+            color: #ffccdd;
+            font-weight: 400;
+            margin-right: 5px;
+        }
+
+        /* section headers */
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin: 15px 0 12px;
+            border-left: 4px solid #ff99bb;
+            padding-left: 12px;
+            color: #f5c6d5;
+        }
+
+        /* embed cards (for category iframes) */
+        .embed-card {
+            background: #0d0d16;
+            border-radius: 28px;
+            border: 1px solid #313145;
+            overflow: hidden;
+            margin-bottom: 24px;
+            box-shadow: 0 12px 30px #00000080;
         }
 
         .embed-header {
-            background: #1a1a24;
+            background: #1d1d2b;
             padding: 12px 16px;
-            color: #d0d0f0;
-            font-size: 1rem;
-            border-bottom: 1px solid #2d2d3a;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            width: 100%;
-        }
-
-        .embed-header .logo {
-            font-weight: 600;
-            color: #ffb3c6;
-        }
-
-        /* === CIFRA CONTAINER STYLES - 10 rows with scroll === */
-        .cifra-wrapper {
-            position: relative;
-            width: 100%;
-            background: #0a0a0e;
-            border-radius: 12px;
-            overflow-y: auto;
-            overflow-x: hidden;
-            margin: 10px 0;
-            height: 1000px;
-            max-height: 1000px;
-            min-height: 600px;
-        }
-
-        #awe-customiframe-container-couple,
-        #awe-customiframe-container-lesbian,
-        #awe-customiframe-container-hotflirt,
-        #awe-customiframe-container-mature {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            min-height: 1000px;
-        }
-
-        /* === AD CONTAINERS === */
-        .ad-box {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 0;
-        }
-
-        .full-width-200h {
-            width: 100%;
-            min-height: 200px;
-            background: #1a1a24;
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* === BANNER STYLES === */
-        .custom-banner {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(145deg, #1e1e2b, #13131c);
-            border: 2px solid #ff99aa;
-            border-radius: 60px;
-            padding: 18px 25px;
-            margin: 25px 0 20px;
-            text-align: center;
-            box-shadow: 0 0 25px rgba(255, 100, 150, 0.3);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            width: 100%;
-        }
-
-        .custom-banner:hover {
-            transform: scale(1.02);
-            box-shadow: 0 0 35px rgba(255, 153, 170, 0.5);
-        }
-
-        .custom-banner a {
-            color: white;
-            text-decoration: none;
-            font-size: clamp(1.3rem, 5vw, 2rem);
-            font-weight: 600;
-            letter-spacing: 1px;
+            color: #cdcdf5;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #3a3a4e;
             display: flex;
             align-items: center;
             gap: 12px;
-            word-break: break-word;
         }
 
-        .custom-banner span {
-            background: #ff4d6d;
-            padding: 5px 15px;
-            border-radius: 40px;
-            font-size: 1rem;
+        .jasmin-tag {
+            font-weight: 600;
+            color: #ffb0c0;
+        }
+
+        /* scrollable iframe wrappers (10 rows per category) */
+        .cifra-scrollbox {
+            width: 100%;
+            height: 860px;
+            max-height: 860px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: #05050b;
+        }
+
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 860px;
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            background: transparent;
+        }
+
+        /* 300x250 ad box */
+        .ad-square {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #12121a;
+            border-radius: 24px;
+            padding: 24px 12px;
+            margin: 20px 0;
+            border: 1px solid #3c2c34;
+        }
+
+        /* full width banner (200h) */
+        .fullwidth-ad {
+            width: 100%;
+            min-height: 200px;
+            background: #14141f;
+            border-radius: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 8px 0;
+        }
+
+        /* classic banner (fullwidth big) */
+        .big-banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(155deg, #1e1e30, #151523);
+            border: 2px solid #ff99bb;
+            border-radius: 60px;
+            padding: 18px 16px;
+            margin: 25px 0 20px;
+            box-shadow: 0 0 30px #ff4d6d4d;
+            width: 100%;
+        }
+
+        .big-banner a {
             color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        /* === SCROLL HINT === */
-        .scroll-hint {
+        .big-banner span {
+            background: #ff3b5c;
+            border-radius: 40px;
+            padding: 6px 18px;
+            font-size: 1rem;
+        }
+
+        .footer {
+            margin-top: 35px;
+            color: #6a6a8b;
+            font-size: 0.8rem;
             text-align: center;
-            color: #5d5d7a;
-            font-size: 0.9rem;
-            margin: 15px 0 25px;
+            border-top: 1px solid #292937;
+            padding-top: 18px;
+        }
+
+        /* scroll hint */
+        .hint-scroll {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            color: #6a6a95;
+            font-size: 0.9rem;
+            margin: 5px 0 20px;
         }
 
-        .scroll-hint .arrow {
-            animation: bounce 1.5s infinite;
-            font-size: 1.2rem;
+        .hint-scroll .down {
+            animation: bounce 1.6s infinite;
         }
 
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(5px); }
+            0%,100%{ transform: translateY(0); }
+            50%{ transform: translateY(6px); }
         }
 
-        /* === FOOTER === */
-        .footer {
-            margin-top: 30px;
-            color: #5d5d7a;
-            font-size: 0.8rem;
-            text-align: center;
-            border-top: 1px solid #22222c;
-            padding-top: 20px;
-        }
-
-        .footer a {
-            color: #7a7aa3;
-            text-decoration: none;
-        }
-
-        /* === RESPONSIVE === */
-        @media (max-width: 600px) {
-            .cifra-wrapper {
-                height: 800px;
-                max-height: 800px;
-            }
-            #awe-customiframe-container-couple,
-            #awe-customiframe-container-lesbian,
-            #awe-customiframe-container-hotflirt,
-            #awe-customiframe-container-mature {
-                min-height: 800px;
-            }
-            .custom-banner a {
-                font-size: 1.2rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
+        /* override for very narrow screens */
+        @media (max-width: 380px) {
+            .banner-item { padding: 8px 16px; font-size: 1rem; }
+            .big-banner a { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="site-header">
-            <h1>✨ LiveJasmin</h1>
-            <div class="subhead">
-                <span class="live-badge"></span> Girls · Couples · Trans · Live 24/7 <span class="live-badge"></span>
-            </div>
-        </header>
+<div class="container">
 
-        <!-- Scroll hint -->
-        <div class="scroll-hint">
-            <span class="arrow">👇</span>
-            <span>Scroll down for more videos</span>
-            <span class="arrow">👇</span>
+    <!-- header with Livejasmin title -->
+    <header class="site-header">
+        <h1>Livejasmin</h1>
+        <div class="subhead">
+            <span class="live-dot"></span> Girls · Couples · Trans · 24/7 <span class="live-dot"></span>
         </div>
+    </header>
 
-        <!-- ========== SECTION 1 - COUPLE (10 rows, scrollable) ========== -->
-        <section class="content-section">
-            <h2 class="section-title">🔥 Couple Cams</h2>
-            <div class="embed-card">
-                <div class="embed-header">
-                    <span class="logo">✨ LiveJasmin</span> · <span>couple · 10 rows</span>
-                </div>
-                <div class="cifra-wrapper">
-                    <div id="awe-customiframe-container-couple" style="position:relative; width:100%; height:100%;">
-                        <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=couple&row=10&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1" 
-                                scrolling="no" 
-                                align="middle" 
-                                frameborder="no" 
-                                allowtransparency="true" 
-                                marginHeight="0" 
-                                marginWidth="0" 
-                                style="position:absolute; top:0; left:0; width:100%; height:100%; background:transparent;">
-                        </iframe>
-                        <script src="https://atwmcd.com/cifra/script?id=awe-customiframe-container-couple&row=10&column=2&border=&wide=1&padding=6px&model=insidehover&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&legacyRedirect=1"></script>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- scroll hint (mobile friendly) -->
+    <div class="hint-scroll">
+        <span class="down">👇</span> <span>scroll for cams</span> <span class="down">👇</span>
+    </div>
 
-        <!-- ========== SECTION 2 - LESBIAN (10 rows, scrollable) ========== -->
-        <section class="content-section">
-            <h2 class="section-title">🔥 Lesbian Cams</h2>
-            <div class="embed-card">
-                <div class="embed-header">
-                    <span class="logo">✨ LiveJasmin</span> · <span>lesbian · 10 rows</span>
-                </div>
-                <div class="cifra-wrapper">
-                    <div id="awe-customiframe-container-lesbian" style="position:relative; width:100%; height:100%;">
-                        <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=lesbian&row=10&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1" 
-                                scrolling="no" 
-                                align="middle" 
-                                frameborder="no" 
-                                allowtransparency="true" 
-                                marginHeight="0" 
-                                marginWidth="0" 
-                                style="position:absolute; top:0; left:0; width:100%; height:100%; background:transparent;">
-                        </iframe>
-                        <script src="https://atwmcd.com/cifra/script?id=awe-customiframe-container-lesbian&row=10&column=2&border=&wide=1&padding=6px&model=insidehover&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&legacyRedirect=1"></script>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== SECTION 3 - HOT FLIRT (10 rows, scrollable) ========== -->
-        <section class="content-section">
-            <h2 class="section-title">🔥 Hot Flirt Cams</h2>
-            <div class="embed-card">
-                <div class="embed-header">
-                    <span class="logo">✨ LiveJasmin</span> · <span>hot_flirt · 10 rows</span>
-                </div>
-                <div class="cifra-wrapper">
-                    <div id="awe-customiframe-container-hotflirt" style="position:relative; width:100%; height:100%;">
-                        <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=hot_flirt&row=10&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1" 
-                                scrolling="no" 
-                                align="middle" 
-                                frameborder="no" 
-                                allowtransparency="true" 
-                                marginHeight="0" 
-                                marginWidth="0" 
-                                style="position:absolute; top:0; left:0; width:100%; height:100%; background:transparent;">
-                        </iframe>
-                        <script src="https://atwmcd.com/cifra/script?id=awe-customiframe-container-hotflirt&row=10&column=2&border=&wide=1&padding=6px&model=insidehover&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&legacyRedirect=1"></script>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== SECTION 4 - MATURE (10 rows, scrollable) ========== -->
-        <section class="content-section">
-            <h2 class="section-title">🔥 Mature Cams</h2>
-            <div class="embed-card">
-                <div class="embed-header">
-                    <span class="logo">✨ LiveJasmin</span> · <span>mature · 10 rows</span>
-                </div>
-                <div class="cifra-wrapper">
-                    <div id="awe-customiframe-container-mature" style="position:relative; width:100%; height:100%;">
-                        <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=mature&row=10&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1" 
-                                scrolling="no" 
-                                align="middle" 
-                                frameborder="no" 
-                                allowtransparency="true" 
-                                marginHeight="0" 
-                                marginWidth="0" 
-                                style="position:absolute; top:0; left:0; width:100%; height:100%; background:transparent;">
-                        </iframe>
-                        <script src="https://atwmcd.com/cifra/script?id=awe-customiframe-container-mature&row=10&column=2&border=&wide=1&padding=6px&model=insidehover&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&legacyRedirect=1"></script>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ========== VB EMBED 300x250 ========== -->
-        <section class="content-section">
-            <h2 class="section-title">📢 Special Offer</h2>
-            <div class="embed-card" style="padding: 20px;">
-                <div data-awe-container-id="object_container_vb" style="display:inline-block;width:300px;height:250px;"></div>
-                <script src="https://ecdwm.com/embed/vb?c=object_container_vb&categoryName=girl&pageName=listpage&color=black_yellow&psid=franklymadear&pstool=316_2&siteId=jasmin&cobrandId=&psprogram=revs&campaign_id=&ms_notrack=1&subAffId="></script>
-            </div>
-        </section>
-
-        <!-- ========== NEW BANNER: LiveSexAsian ========== -->
-        <div class="custom-banner">
-            <a href="https://atwmcd.com/post/exralifk/hd?ms_rnd=1772447636.79196&pstool=400_370&psid=franklymadear&psprogram=revs&campaign_id=&categoryName=girl&cobrandId=&site=las&subAffId=&embedTool=1&origin=&mr=0" target="_blank" rel="noopener noreferrer">
-                🔥 LiveSexAsian <span>HOT</span>
-            </a>
+    <!-- ========== HORIZONTAL BANNER ROW (exactly as requested: "Τα banner τον κατηγοριών να είναι σε μια ευθεία οριζόντια σε μια γραμμή Chaturbate") ========= -->
+    <div class="chaturbate-banner-row">
+        <div class="banner-inline-list">
+            <!-- banner items: categories, styled like Chaturbate line but using our own flair. Each is an inline banner -->
+            <a href="#" class="banner-item" onclick="return false;"><span class="cb-brand">🔥</span> Girls <span>88+</span></a>
+            <a href="#" class="banner-item" onclick="return false;"><span class="cb-brand">⚡</span> Couples <span>42</span></a>
+            <a href="#" class="banner-item" onclick="return false;"><span class="cb-brand">💗</span> Trans <span>27</span></a>
+            <a href="#" class="banner-item" onclick="return false;"><span class="cb-brand">🍑</span> Lesbian <span>31</span></a>
+            <a href="#" class="banner-item" onclick="return false;"><span class="cb-brand">🔥</span> Mature <span>24</span></a>
+            <a href="#" class="banner-item" onclick="return false;"><span class="cb-brand">✨</span> Hot Flirt <span>16</span></a>
         </div>
+    </div>
 
-        <!-- ========== IS EMBED (full width, 200px height) ========== -->
-        <section class="content-section">
-            <h2 class="section-title">📺 More Live</h2>
-            <div class="embed-card" style="padding: 16px;">
-                <div class="full-width-200h" style="width:100%; min-height:200px; display:flex; justify-content:center; align-items:center;">
-                    <div data-awe-container-id="object_container_is" style="display:inline-block;width:100%;height:200px;"></div>
-                    <script id="" src="https://atwmcd.com/embed/is?c=object_container_is&categoryName=girl&backgroundColor=&cardBgColor=&btnBgColor=&btnTextColor=&textColor=&mobileBgColor=&mobileCardBgColor=&mobileCardTextColor=&mobileBadgeBgColor=&mobileBadgeTextColor=&mobileBorderColor=&enableMobile=1&mobilePreview=1&psid=franklymadear&pstool=428_1&site=jasmin&cobrandId=&psprogram=revs&campaign_id=&ms_notrack=1&subAffId="></script>
+    <!-- ========== SECTION 1 – Couple cams (10 rows) ========= -->
+    <section class="content-section">
+        <h2 class="section-title">🔥 Couple · 10 rows</h2>
+        <div class="embed-card">
+            <div class="embed-header">
+                <span class="jasmin-tag">✨LiveJasmin</span> <span>couple</span>
+            </div>
+            <div class="cifra-scrollbox">
+                <div id="awe-couple" class="iframe-container">
+                    <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=couple&row=10&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1" 
+                        scrolling="no" 
+                        frameborder="no" 
+                        allowtransparency="true">
+                    </iframe>
+                    <script src="https://atwmcd.com/cifra/script?id=awe-couple&row=10&column=2&border=&wide=1&padding=6px&model=insidehover&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&legacyRedirect=1"></script>
                 </div>
             </div>
-        </section>
-
-        <!-- ========== UPDATED MORE VIDEOS BANNER with new link ========== -->
-        <div class="custom-banner">
-            <a href="https://atwmcd.com/post/exralifk/sc?ms_rnd=1772447850.77100&pstool=400_367&psid=franklymadear&psprogram=revs&campaign_id=&categoryName=girl&cobrandId=&site=las&subAffId=&embedTool=1&origin=&mr=0" target="_blank" rel="noopener noreferrer">
-                ▶️ MORE VIDEOS <span>LIVE</span>
-            </a>
         </div>
+    </section>
 
-        <!-- === SLIDEBAR SCRIPT (Overlay) === -->
-        <script>
+    <!-- ========== SECTION 2 – Lesbian cams (10 rows) ========= -->
+    <section class="content-section">
+        <h2 class="section-title">🔥 Lesbian · 10 rows</h2>
+        <div class="embed-card">
+            <div class="embed-header">
+                <span class="jasmin-tag">✨LiveJasmin</span> <span>lesbian</span>
+            </div>
+            <div class="cifra-scrollbox">
+                <div id="awe-lesbian" class="iframe-container">
+                    <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=lesbian&row=10&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1"
+                        scrolling="no"
+                        frameborder="no"
+                        allowtransparency="true">
+                    </iframe>
+                    <script src="https://atwmcd.com/cifra/script?id=awe-lesbian&row=10&column=2&border=&wide=1&padding=6px&model=insidehover&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&legacyRedirect=1"></script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 3 – Hot Flirt (10 rows) ========= -->
+    <section class="content-section">
+        <h2 class="section-title">🔥 Hot Flirt · 10 rows</h2>
+        <div class="embed-card">
+            <div class="embed-header">
+                <span class="jasmin-tag">✨LiveJasmin</span> <span>hot_flirt</span>
+            </div>
+            <div class="cifra-scrollbox">
+                <div id="awe-hotflirt" class="iframe-container">
+                    <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=hot_flirt&row=10&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1"
+                        scrolling="no"
+                        frameborder="no"
+                        allowtransparency="true">
+                    </iframe>
+                    <script src="https://atwmcd.com/cifra/script?id=awe-hotflirt&row=10&column=2&border=&wide=1&padding=6px&model=insidehover&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&legacyRedirect=1"></script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECTION 4 – Mature (10 rows) ========= -->
+    <section class="content-section">
+        <h2 class="section-title">🔥 Mature · 10 rows</h2>
+        <div class="embed-card">
+            <div class="embed-header">
+                <span class="jasmin-tag">✨LiveJasmin</span> <span>mature</span>
+            </div>
+            <div class="cifra-scrollbox">
+                <div id="awe-mature" class="iframe-container">
+                    <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=mature&row=10&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1"
+                        scrolling="no"
+                        frameborder="no"
+                        allowtransparency="true">
+                    </iframe>
+                    <script src="https://atwmcd.com/cifra/script?id=awe-mature&row=10&column=2&border=&wide=1&padding=6px&model=insidehover&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&legacyRedirect=1"></script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VB embed 300x250 square -->
+    <div class="ad-square">
+        <div data-awe-container-id="vb_square_mobile" style="display:inline-block; width:300px; height:250px;"></div>
+        <script src="https://ecdwm.com/embed/vb?c=vb_square_mobile&categoryName=girl&pageName=listpage&color=black_yellow&psid=franklymadear&pstool=316_2&siteId=jasmin&cobrandId=&psprogram=revs&campaign_id=&ms_notrack=1&subAffId="></script>
+    </div>
+
+    <!-- LiveSexAsian banner (big) -->
+    <div class="big-banner">
+        <a href="https://atwmcd.com/post/exralifk/hd?ms_rnd=1772447636.79196&pstool=400_370&psid=franklymadear&psprogram=revs&campaign_id=&categoryName=girl&cobrandId=&site=las&subAffId=&embedTool=1&origin=&mr=0" target="_blank" rel="noopener noreferrer">
+            🔥 LiveSexAsian <span>HOT</span>
+        </a>
+    </div>
+
+    <!-- IS embed full width (200px height) -->
+    <section class="content-section">
+        <h2 class="section-title">📺 More Live</h2>
+        <div class="embed-card" style="padding: 16px;">
+            <div class="fullwidth-ad">
+                <div data-awe-container-id="is_container_mobile" style="display:inline-block; width:100%; height:200px;"></div>
+                <script src="https://atwmcd.com/embed/is?c=is_container_mobile&categoryName=girl&backgroundColor=&cardBgColor=&btnBgColor=&btnTextColor=&textColor=&mobileBgColor=&mobileCardBgColor=&mobileCardTextColor=&mobileBadgeBgColor=&mobileBadgeTextColor=&mobileBorderColor=&enableMobile=1&mobilePreview=1&psid=franklymadear&pstool=428_1&site=jasmin&cobrandId=&psprogram=revs&campaign_id=&ms_notrack=1&subAffId="></script>
+            </div>
+        </div>
+    </section>
+
+    <!-- MORE VIDEOS banner with updated link -->
+    <div class="big-banner">
+        <a href="https://atwmcd.com/post/exralifk/sc?ms_rnd=1772447850.77100&pstool=400_367&psid=franklymadear&psprogram=revs&campaign_id=&categoryName=girl&cobrandId=&site=las&subAffId=&embedTool=1&origin=&mr=0" target="_blank" rel="noopener noreferrer">
+            ▶️ MORE VIDEOS <span>LIVE</span>
+        </a>
+    </div>
+
+    <!-- slidebar overlay script -->
+    <script>
         var _aweslidebar = _aweslidebar || {};
         _aweslidebar.category = 'girl';
         _aweslidebar.width = 300;
         _aweslidebar.position = 'left';
         _aweslidebar.col = 1;
         _aweslidebar.type = 'overlay';
-        _aweslidebar.flick = {
-           padding: 100,
-           position: 'top'
-        };
+        _aweslidebar.flick = { padding: 100, position: 'top' };
         _aweslidebar.zIndex = 999;
         _aweslidebar.bgcolor = '#990000';
         _aweslidebar.color = '#FFCC00';
@@ -428,17 +463,15 @@
            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
            s.src = 'https://ecdwm.com/embed/sldbr?legacyRedirect=1&ms_notrack=1&site=jasmin&superCategory=&performerId=&performerList=&forcedPerformer=0&cobrandId=&psId=franklymadear&psTool=208_1&psProgram=revs&campaignId=&subAffId='; var p = document.getElementsByTagName('script')[0]; p.parentNode.insertBefore(s, p);
         })();
-        </script>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <a href="#">xxx.franklymadear.com</a> — 18+ only — All models are 18+
-        </footer>
-    </div>
-
-    <!-- Console log -->
-    <script>
-        console.log("✅ LiveJasmin page — new LiveSexAsian banner, updated MORE VIDEOS link");
     </script>
+
+    <footer class="footer">
+        <a href="https://xxx.franklymadear.com" style="color:#a0a0d0;">xxx.franklymadear.com</a> — 18+ only — models are 18+
+    </footer>
+</div>
+
+<script>
+    console.log('Livejasmin mobile – horizontal category banners (Chaturbate style)');
+</script>
 </body>
 </html>
