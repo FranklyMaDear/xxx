@@ -1,419 +1,346 @@
 <!DOCTYPE html>
-<html lang="el">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>✨ Live Cams - Live Jasmin & Chaturbate</title>
+    <title>✨ LiveJasmin - Live Cams</title>
     <style>
-        /* Βασικό reset */
+        /* === RESET & BASE === */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             background: #0a0a0e;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #ffffff;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 10px;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 16px 10px;
         }
-        
+
         .container {
             width: 100%;
-            max-width: 600px;
+            max-width: 700px; /* Comfortable width for the main column */
             margin: 0 auto;
         }
-        
-        /* Header */
-        h1 {
-            color: #ffffff;
-            font-size: clamp(1.8rem, 6vw, 2.5rem);
-            margin-bottom: 5px;
+
+        /* === HEADER (English) === */
+        .site-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .site-header h1 {
+            font-size: clamp(2.2rem, 8vw, 3.2rem);
             font-weight: 300;
-            text-align: center;
-            text-shadow: 0 0 20px rgba(255,100,150,0.3);
+            background: linear-gradient(135deg, #ffb6c1, #d8b4ff, #9ad0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
         }
-        
-        .subtitle {
+
+        .subhead {
             color: #b0b0d0;
-            margin-bottom: 15px;
-            text-align: center;
-            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+            font-size: clamp(0.9rem, 3.5vw, 1.2rem);
+            border-bottom: 1px solid #2a2a35;
+            padding-bottom: 15px;
         }
-        
+
         .live-badge {
             display: inline-block;
-            width: clamp(8px, 2vw, 12px);
-            height: clamp(8px, 2vw, 12px);
+            width: 12px;
+            height: 12px;
             background: #ff4d6d;
             border-radius: 50%;
-            margin: 0 4px;
+            margin: 0 6px;
             box-shadow: 0 0 15px #ff4d6d;
             animation: pulse 2s infinite;
+            vertical-align: middle;
         }
-        
+
         @keyframes pulse {
             0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
             100% { opacity: 1; transform: scale(1); }
         }
-        
-        /* Grid για τα 2 iframe - ΤΟ ΕΝΑ ΚΑΤΩ ΑΠΟ ΤΟ ΑΛΛΟ */
-        .cams-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            margin: 15px 0 30px;
+
+        /* === MAIN CONTENT SECTIONS (Stacked Vertically) === */
+        .content-section {
+            margin-bottom: 30px;
             width: 100%;
         }
-        
-        /* Κάρτα για κάθε cam */
-        .cam-card {
+
+        .section-title {
+            color: #ffb3c6;
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            padding-left: 5px;
+            border-left: 4px solid #ff99aa;
+            padding-left: 12px;
+        }
+
+        /* Cards for iframes/embeds with a subtle background */
+        .embed-card {
             background: #050507;
-            border-radius: 16px;
+            border-radius: 20px;
             border: 1px solid #2d2d3a;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
             width: 100%;
         }
-        
-        .cam-header {
+
+        .embed-header {
             background: #1a1a24;
-            padding: 12px 15px;
+            padding: 12px 16px;
             color: #d0d0f0;
-            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            font-size: 1rem;
             border-bottom: 1px solid #2d2d3a;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
-        .cam-header .logo {
+
+        .embed-header .logo {
             font-weight: 600;
-            color: #ffffff;
+            color: #ffb3c6;
         }
-        
-        .cam-header .jasmin {
-            color: #ff99aa;
-        }
-        
-        .cam-header .chaturbate {
-            color: #99ccff;
-        }
-        
-        /* Live Jasmin iframe - 463x1357 */
-        .jasmin-frame {
+
+        /* === SPECIFIC IFRAME / EMBED STYLES === */
+
+        /* First Iframe (Main Gallery) - responsive with aspect ratio */
+        .main-iframe {
             width: 100%;
             height: auto;
-            aspect-ratio: 463 / 1357; /* Διατήρηση αναλογίας */
+            aspect-ratio: 320 / 600; /* Matches width="320px" height="600px" */
             border: none;
             display: block;
             background: #000;
         }
-        
-        /* Chaturbate iframe - 2200px ύψος ΜΕ SCROLL */
-        .chaturbate-frame {
-            width: 100%;
-            height: 2200px; /* ΣΤΑΘΕΡΟ ΥΨΟΣ 2200px */
-            border: none;
-            display: block;
-            background: #000;
-            overflow-y: auto; /* ΕΝΕΡΓΟΠΟΙΗΣΗ VERTICAL SCROLL */
-            overflow-x: hidden; /* ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ horizontal scroll */
-            -webkit-overflow-scrolling: touch; /* Ομαλό scroll σε iOS */
+
+        /* Container for the 300x250 ad unit */
+        .banner-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0f0f14;
+            padding: 15px 0;
+            border-radius: 12px;
+            border: 1px solid #2d2d3a;
         }
-        
-        /* Scrollbar styling (προαιρετικό) */
-        .chaturbate-frame::-webkit-scrollbar {
-            width: 8px;
+
+        /* The "More Videos" banner styled as requested */
+        .more-videos-banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #1e1e2b, #13131c);
+            border: 2px solid #ff99aa;
+            border-radius: 60px;
+            padding: 18px 25px;
+            margin: 25px 0 20px;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(255, 100, 150, 0.3);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-        
-        .chaturbate-frame::-webkit-scrollbar-track {
-            background: #1a1a24;
+
+        .more-videos-banner:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 35px rgba(255, 153, 170, 0.5);
         }
-        
-        .chaturbate-frame::-webkit-scrollbar-thumb {
-            background: #ff99aa;
-            border-radius: 4px;
+
+        .more-videos-banner a {
+            color: white;
+            text-decoration: none;
+            font-size: clamp(1.3rem, 5vw, 2rem);
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
-        
-        .chaturbate-frame::-webkit-scrollbar-thumb:hover {
+
+        .more-videos-banner span {
             background: #ff4d6d;
+            padding: 5px 15px;
+            border-radius: 40px;
+            font-size: 1rem;
+            color: white;
         }
-        
-        /* Scroll indicators */
+
+        /* Second Iframe (template1002) */
+        .secondary-iframe {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 320 / 600; /* width="320px" height="600px" */
+            border: none;
+            display: block;
+            background: #000;
+        }
+
+        /* Scroll hint */
         .scroll-hint {
             text-align: center;
             color: #5d5d7a;
             font-size: 0.9rem;
-            margin: 10px 0 20px;
+            margin: 15px 0 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
         }
-        
+
         .scroll-hint .arrow {
             animation: bounce 1.5s infinite;
             font-size: 1.2rem;
         }
-        
-        .iframe-scroll-hint {
-            text-align: center;
-            color: #8888aa;
-            font-size: 0.8rem;
-            margin: 5px 0 10px;
-            padding: 5px;
-            background: #1a1a24;
-            border-radius: 20px;
-            display: inline-block;
-            border: 1px solid #2d2d3a;
-        }
-        
+
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(5px); }
         }
-        
-        /* Fallback links */
-        .fallback-links {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            margin: 20px 0;
-        }
-        
-        .fallback-link {
-            padding: 10px 18px;
-            background: #1a1a24;
-            border-radius: 30px;
-            color: #d0d0f0;
-            border: 1px solid #2d2d3a;
-            font-size: clamp(0.8rem, 2.5vw, 1rem);
-        }
-        
-        .fallback-link a {
-            color: #ff99aa;
-            text-decoration: none;
-            font-weight: 500;
-        }
-        
-        /* Categories */
-        .categories {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px 15px;
-            justify-content: center;
-            margin: 20px 0;
-            padding: 15px 0;
-            border-top: 1px solid #2a2a35;
-            border-bottom: 1px solid #2a2a35;
-            color: #a0a0c0;
-            font-size: clamp(0.8rem, 3vw, 1rem);
-        }
-        
-        .categories span {
-            color: #ffa7b9;
-            font-weight: 500;
-        }
-        
-        .categories a {
-            color: #b4b4d6;
-            text-decoration: none;
-        }
-        
-        /* Stats */
-        .live-stats {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: #14141f;
-            padding: 10px 20px;
-            border-radius: 40px;
-            width: fit-content;
-            margin: 15px auto;
-            border: 1px solid #2e2e40;
-            color: #d0d0f0;
-            font-size: clamp(0.8rem, 3vw, 1rem);
-        }
-        
+
         /* Footer */
         .footer {
-            margin-top: 25px;
+            margin-top: 30px;
             color: #5d5d7a;
-            font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+            font-size: 0.8rem;
             text-align: center;
             border-top: 1px solid #22222c;
-            padding-top: 18px;
+            padding-top: 20px;
         }
-        
+
         .footer a {
             color: #7a7aa3;
             text-decoration: none;
         }
-        
-        /* Ειδικά για το iframe scroll hint */
-        .iframe-container {
-            position: relative;
+
+        /* Simple category tags */
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 15px;
+            justify-content: center;
+            margin: 15px 0 10px;
+            color: #9f9fc5;
+            font-size: 0.9rem;
         }
-        
-        .scroll-indicator {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            border: 1px solid #ff99aa;
-            pointer-events: none;
-            z-index: 10;
+
+        .category-tags span {
+            color: #ffb3c6;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
-        <h1>✨ Live Cams</h1>
-        <div class="subtitle">
-            <span class="live-badge"></span> Live Jasmin + Chaturbate <span class="live-badge"></span>
-        </div>
-        
-        <!-- Scroll hint για τη σελίδα -->
+        <!-- Header - English -->
+        <header class="site-header">
+            <h1>✨ LiveJasmin</h1>
+            <div class="subhead">
+                <span class="live-badge"></span> Girls · Couples · Trans · Live 24/7 <span class="live-badge"></span>
+            </div>
+        </header>
+
+        <!-- Scroll hint (optional, friendly) -->
         <div class="scroll-hint">
             <span class="arrow">👇</span>
-            <span>Scroll down για περισσότερα</span>
+            <span>Scroll down for more videos</span>
             <span class="arrow">👇</span>
         </div>
-        
-        <!-- GRID ΜΕ ΤΑ 2 IFRAME -->
-        <div class="cams-grid">
-            <!-- 1. Live Jasmin iframe -->
-            <div class="cam-card">
-                <div class="cam-header">
-                    <span class="logo jasmin">✨ Live Jasmin</span>
-                    <span>|</span>
-                    <span>Girls · 10 rows</span>
+
+        <!-- === MAIN SECTION: FIRST IFRAME (atwmcd template1001) === -->
+        <section class="content-section">
+            <h2 class="section-title">🔥 Live Girls Gallery</h2>
+            <div class="embed-card">
+                <div class="embed-header">
+                    <span class="logo">✨ LiveJasmin</span> · <span>Featured Models</span>
                 </div>
-                <iframe class="frame jasmin-frame" 
-                        src="https://atwmcd.com/iframes/?t_id=template1001&psid=franklymadear&psprogram=revs&pstool=203_2&site=jasmin&cobrandId=&flags=&column=2&row=10&campaign_id=&categoryName=girl&subAffId=" 
+                <!-- First iframe: template1001, 320x600 -->
+                <iframe class="main-iframe frame" 
+                        src="https://atwmcd.com/iframes/?t_id=template1001&psid=franklymadear&psprogram=revs&pstool=203_2&site=jasmin&cobrandId=&flags=&column=2&row=5&campaign_id=&categoryName=girl&subAffId=" 
                         scrolling="no" 
                         align="MIDDLE" 
-                        width="463px" 
-                        height="1357px" 
+                        width="320px" 
+                        height="600px" 
                         frameborder="No" 
                         allowtransparency="true" 
                         background-color="transparent" 
                         marginHeight="0" 
-                        marginWidth="0"></iframe>
+                        marginWidth="0">
+                </iframe>
             </div>
-            
-            <!-- 2. Chaturbate iframe - ΜΕ 2200px ΥΨΟΣ ΚΑΙ SCROLL -->
-            <div class="cam-card">
-                <div class="cam-header">
-                    <span class="logo chaturbate">🔥 Chaturbate</span>
-                    <span>|</span>
-                    <span>All genders · c=30 · 2200px scroll</span>
+        </section>
+
+        <!-- === AD CONTAINER (300x250) === -->
+        <section class="content-section">
+            <h2 class="section-title">📢 Special Offer</h2>
+            <div class="banner-container">
+                <!-- Exact container + script as requested -->
+                <div data-awe-container-id="object_container" style="display:inline-block;width:300px;height:250px;"></div>
+                <script src="https://ecdwm.com/embed/vb?c=object_container&categoryName=girl&pageName=listpage&color=black_yellow&psid=franklymadear&pstool=316_2&siteId=jasmin&cobrandId=&psprogram=revs&campaign_id=&ms_notrack=1&subAffId="></script>
+            </div>
+        </section>
+
+        <!-- === "MORE VIDEOS" BANNER === -->
+        <section class="content-section">
+            <!-- Banner linking to the provided URL -->
+            <div class="more-videos-banner">
+                <a href="https://ctwmsg.com/?performerName=&siteId=jasmin&categoryName=&pageName=home&prm[psid]=franklymadear&prm[pstool]=205_1&prm[psprogram]=revs&prm[campaign_id]=&subAffId=" target="_blank">
+                    ▶️ MORE VIDEOS <span>LIVE</span> 🔥
+                </a>
+            </div>
+        </section>
+
+        <!-- === SECOND IFRAME (atwmcd template1002, 320x600) === -->
+        <section class="content-section">
+            <h2 class="section-title">✨ More Live Models</h2>
+            <div class="embed-card">
+                <div class="embed-header">
+                    <span class="logo">✨ LiveJasmin</span> · <span>New & Trending</span>
                 </div>
-                
-                <!-- Scroll hint μέσα στο iframe -->
-                <div style="text-align: center; background: #1a1a24; padding: 5px; border-bottom: 1px solid #2d2d3a;">
-                    <span class="iframe-scroll-hint">👇 Κάντε scroll ΜΕΣΑ στο iframe (2200px περιεχόμενο) 👇</span>
-                </div>
-                
-                <!-- Το iframe με 2200px ύψος και scroll -->
-                <iframe class="chaturbate-frame"
-                        src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=30&p=1&gender=x"
-                        width="100%"
-                        height="2200"
-                        frameborder="No"
-                        scrolling="yes" /* Ενεργοποίηση scroll */
-                        allowtransparency="true"
-                        marginheight="0"
-                        marginwidth="0"></iframe>
-                
-                <!-- Ένδειξη scroll (προαιρετικό) -->
-                <div style="text-align: center; background: #1a1a24; padding: 5px; border-top: 1px solid #2d2d3a;">
-                    <span class="iframe-scroll-hint">👆 Scroll μέσα στο iframe για περισσότερα 👆</span>
-                </div>
+                <!-- Second iframe: template1002, 320x600 exactly as given -->
+                <iframe class="secondary-iframe frame" 
+                        src="https://atwmcd.com/iframes/?t_id=template1002&psid=franklymadear&psprogram=revs&pstool=203_3&site=jasmin&cobrandId=&flags=&column=2&row=5&campaign_id=&categoryName=girl&subAffId=" 
+                        scrolling="no" 
+                        align="MIDDLE" 
+                        width="320px" 
+                        height="600px" 
+                        frameborder="No" 
+                        allowtransparency="true" 
+                        background-color="transparent" 
+                        marginHeight="0" 
+                        marginWidth="0">
+                </iframe>
             </div>
+        </section>
+
+        <!-- Simple category row (English) -->
+        <div class="category-tags">
+            <span>✦ trending:</span>
+            <a href="#" style="color:#b4b4d6; text-decoration:none;">Girls</a>
+            <a href="#" style="color:#b4b4d6; text-decoration:none;">Couples</a>
+            <a href="#" style="color:#b4b4d6; text-decoration:none;">Trans</a>
+            <a href="#" style="color:#b4b4d6; text-decoration:none;">New Models</a>
         </div>
-        
-        <!-- Δεύτερο scroll hint για τη σελίδα -->
-        <div class="scroll-hint">
-            <span class="arrow">👆</span>
-            <span>Scroll up για Live Jasmin</span>
-            <span class="arrow">👆</span>
-        </div>
-        
-        <!-- Fallback links -->
-        <div class="fallback-links">
-            <div class="fallback-link">
-                <a href="https://atwmcd.com/iframes/?t_id=template1001&psid=franklymadear&psprogram=revs&pstool=203_2&site=jasmin&cobrandId=&flags=&column=2&row=10&campaign_id=&categoryName=girl&subAffId=" target="_blank">✨ Άνοιγμα Live Jasmin</a>
-            </div>
-            <div class="fallback-link">
-                <a href="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=30&p=1&gender=x" target="_blank">🔥 Άνοιγμα Chaturbate</a>
-            </div>
-        </div>
-        
-        <!-- Categories -->
-        <div class="categories">
-            <span>✦ live cams</span>
-            <a href="#">Girls</a>
-            <a href="#">Couples</a>
-            <a href="#">Trans</a>
-            <a href="#">Men</a>
-            <a href="#">All genders</a>
-        </div>
-        
-        <!-- Live stats -->
-        <div class="live-stats">
-            <span class="live-badge" style="margin:0;"></span>
-            <span>3000+ models live now</span>
-        </div>
-        
-        <!-- Footer -->
-        <div class="footer">
-            <a href="https://xxx.franklymadear.com">xxx.franklymadear.com</a> — 18+ only — All models are 18+
-        </div>
+
+        <!-- Footer (English) -->
+        <footer class="footer">
+            <a href="#">xxx.franklymadear.com</a> — 18+ only — All models are 18+
+        </footer>
     </div>
-    
-    <!-- Script για έλεγχο -->
+
+    <!-- Simple console log to confirm English version loaded -->
     <script>
-        function reportDimensions() {
-            console.log(`📱 Πλάτος οθόνης: ${window.innerWidth}px`);
-            console.log(`📜 Συνολικό ύψος σελίδας: ${document.documentElement.scrollHeight}px`);
-            
-            const iframes = document.querySelectorAll('iframe');
-            iframes.forEach((iframe, i) => {
-                console.log(`📦 Iframe ${i+1}: ${iframe.offsetWidth} x ${iframe.offsetHeight}`);
-                console.log(`   Scroll enabled: ${iframe.scrolling} (ή ${iframe.style.overflowY})`);
-            });
-        }
-        
-        const iframes = document.querySelectorAll('iframe');
-        iframes.forEach((iframe, index) => {
-            iframe.onload = () => {
-                console.log(`✅ Iframe ${index + 1} φορτώθηκε`);
-                if (index === 1) {
-                    console.log('   📌 Chaturbate iframe: 2200px ύψος ΜΕ scroll');
-                }
-            };
-        });
-        
-        window.addEventListener('load', reportDimensions);
-        
-        console.log('👇 Νέα διάταξη:');
-        console.log('1. Live Jasmin: 463x1357, row=10, ΧΩΡΙΣ scroll');
-        console.log('2. Chaturbate: 2200px ύψος ΜΕ εσωτερικό scroll');
+        console.log("✅ English LiveJasmin page loaded with all components.");
+        console.log("📦 Elements: 2 iframes, 1 ad container, 1 banner.");
     </script>
 </body>
 </html>
