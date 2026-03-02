@@ -119,29 +119,31 @@
             color: #ffb3c6;
         }
 
-        /* === CIFRA CONTAINER STYLES - Adjusted to show 8 rows === */
+        /* === CIFRA CONTAINER STYLES - 10 rows with scroll === */
         .cifra-wrapper {
             position: relative;
             width: 100%;
             background: #0a0a0e;
             border-radius: 12px;
-            overflow: hidden;
+            overflow-y: auto;  /* Enable vertical scrolling */
+            overflow-x: hidden;
             margin: 10px 0;
-            /* Height set to accommodate 8 rows of content */
-            /* Based on typical thumbnail size (~100px per row including spacing) */
-            height: 850px; /* 8 rows * approx 100px + some margin */
-            min-height: 800px;
+            /* Height for 10 rows - approx 100px per row = 1000px */
+            height: 1000px;
+            max-height: 1000px;
+            min-height: 600px; /* fallback for smaller screens */
         }
 
-        /* Ensure absolute iframe fills container */
+        /* Ensure iframe fills container and scrolls if needed */
         #awe-customiframe-container-couple,
         #awe-customiframe-container-lesbian,
         #awe-customiframe-container-hotflirt,
-        #awe-customiframe-container-mature {
+        #awe-customiframe-container-mature,
+        #awe-customiframe-container-postex {
             position: relative;
             width: 100%;
             height: 100%;
-            min-height: 800px;
+            min-height: 1000px; /* Match container height to show all rows */
         }
 
         /* === AD CONTAINERS === */
@@ -151,14 +153,6 @@
             justify-content: center;
             align-items: center;
             padding: 10px 0;
-        }
-
-        .fixed-400x300 {
-            width: 400px;
-            height: 300px;
-            background: #1a1a24;
-            border-radius: 8px;
-            overflow: hidden;
         }
 
         .full-width-200h {
@@ -233,30 +227,6 @@
             50% { transform: translateY(5px); }
         }
 
-        /* === CATEGORY TAGS === */
-        .category-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px 15px;
-            justify-content: center;
-            margin: 15px 0 10px;
-            color: #9f9fc5;
-            font-size: 0.9rem;
-        }
-
-        .category-tags span {
-            color: #ffb3c6;
-        }
-
-        .category-tags a {
-            color: #b4b4d6;
-            text-decoration: none;
-        }
-
-        .category-tags a:hover {
-            color: #ffb3c6;
-        }
-
         /* === FOOTER === */
         .footer {
             margin-top: 30px;
@@ -275,8 +245,15 @@
         /* === RESPONSIVE === */
         @media (max-width: 600px) {
             .cifra-wrapper {
-                height: 700px; /* Slightly smaller on mobile but still show 8 rows */
-                min-height: 700px;
+                height: 800px; /* Slightly smaller on mobile but still scrollable */
+                max-height: 800px;
+            }
+            #awe-customiframe-container-couple,
+            #awe-customiframe-container-lesbian,
+            #awe-customiframe-container-hotflirt,
+            #awe-customiframe-container-mature,
+            #awe-customiframe-container-postex {
+                min-height: 800px;
             }
         }
     </style>
@@ -298,16 +275,16 @@
             <span class="arrow">👇</span>
         </div>
 
-        <!-- ========== SECTION 1 - COUPLE (8 rows visible) ========== -->
+        <!-- ========== SECTION 1 - COUPLE (10 rows, scrollable) ========== -->
         <section class="content-section">
             <h2 class="section-title">🔥 Couple Cams</h2>
             <div class="embed-card">
                 <div class="embed-header">
-                    <span class="logo">✨ LiveJasmin</span> · <span>couple · 8 rows</span>
+                    <span class="logo">✨ LiveJasmin</span> · <span>couple · 10 rows</span>
                 </div>
                 <div class="cifra-wrapper">
                     <div id="awe-customiframe-container-couple" style="position:relative; width:100%; height:100%;">
-                        <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=couple&row=8&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1" 
+                        <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=couple&row=10&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1" 
                                 scrolling="no" 
                                 align="middle" 
                                 frameborder="no" 
@@ -316,22 +293,22 @@
                                 marginWidth="0" 
                                 style="position:absolute; top:0; left:0; width:100%; height:100%; background:transparent;">
                         </iframe>
-                        <script src="https://atwmcd.com/cifra/script?id=awe-customiframe-container-couple&row=8&column=2&border=&wide=1&padding=6px&model=insidehover&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&legacyRedirect=1"></script>
+                        <script src="https://atwmcd.com/cifra/script?id=awe-customiframe-container-couple&row=10&column=2&border=&wide=1&padding=6px&model=insidehover&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&legacyRedirect=1"></script>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ========== SECTION 2 - LESBIAN (8 rows visible) ========== -->
+        <!-- ========== SECTION 2 - LESBIAN (10 rows, scrollable) ========== -->
         <section class="content-section">
             <h2 class="section-title">🔥 Lesbian Cams</h2>
             <div class="embed-card">
                 <div class="embed-header">
-                    <span class="logo">✨ LiveJasmin</span> · <span>lesbian · 8 rows</span>
+                    <span class="logo">✨ LiveJasmin</span> · <span>lesbian · 10 rows</span>
                 </div>
                 <div class="cifra-wrapper">
                     <div id="awe-customiframe-container-lesbian" style="position:relative; width:100%; height:100%;">
-                        <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=lesbian&row=8&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1" 
+                        <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=lesbian&row=10&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1" 
                                 scrolling="no" 
                                 align="middle" 
                                 frameborder="no" 
@@ -340,22 +317,22 @@
                                 marginWidth="0" 
                                 style="position:absolute; top:0; left:0; width:100%; height:100%; background:transparent;">
                         </iframe>
-                        <script src="https://atwmcd.com/cifra/script?id=awe-customiframe-container-lesbian&row=8&column=2&border=&wide=1&padding=6px&model=insidehover&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&legacyRedirect=1"></script>
+                        <script src="https://atwmcd.com/cifra/script?id=awe-customiframe-container-lesbian&row=10&column=2&border=&wide=1&padding=6px&model=insidehover&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&legacyRedirect=1"></script>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ========== SECTION 3 - HOT FLIRT (8 rows visible) ========== -->
+        <!-- ========== SECTION 3 - HOT FLIRT (10 rows, scrollable) ========== -->
         <section class="content-section">
             <h2 class="section-title">🔥 Hot Flirt Cams</h2>
             <div class="embed-card">
                 <div class="embed-header">
-                    <span class="logo">✨ LiveJasmin</span> · <span>hot_flirt · 8 rows</span>
+                    <span class="logo">✨ LiveJasmin</span> · <span>hot_flirt · 10 rows</span>
                 </div>
                 <div class="cifra-wrapper">
                     <div id="awe-customiframe-container-hotflirt" style="position:relative; width:100%; height:100%;">
-                        <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=hot_flirt&row=8&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1" 
+                        <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=hot_flirt&row=10&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1" 
                                 scrolling="no" 
                                 align="middle" 
                                 frameborder="no" 
@@ -364,22 +341,22 @@
                                 marginWidth="0" 
                                 style="position:absolute; top:0; left:0; width:100%; height:100%; background:transparent;">
                         </iframe>
-                        <script src="https://atwmcd.com/cifra/script?id=awe-customiframe-container-hotflirt&row=8&column=2&border=&wide=1&padding=6px&model=insidehover&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&legacyRedirect=1"></script>
+                        <script src="https://atwmcd.com/cifra/script?id=awe-customiframe-container-hotflirt&row=10&column=2&border=&wide=1&padding=6px&model=insidehover&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&legacyRedirect=1"></script>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ========== SECTION 4 - MATURE (8 rows visible) ========== -->
+        <!-- ========== SECTION 4 - MATURE (10 rows, scrollable) ========== -->
         <section class="content-section">
             <h2 class="section-title">🔥 Mature Cams</h2>
             <div class="embed-card">
                 <div class="embed-header">
-                    <span class="logo">✨ LiveJasmin</span> · <span>mature · 8 rows</span>
+                    <span class="logo">✨ LiveJasmin</span> · <span>mature · 10 rows</span>
                 </div>
                 <div class="cifra-wrapper">
                     <div id="awe-customiframe-container-mature" style="position:relative; width:100%; height:100%;">
-                        <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=mature&row=8&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1" 
+                        <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=mature&row=10&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1" 
                                 scrolling="no" 
                                 align="middle" 
                                 frameborder="no" 
@@ -388,7 +365,7 @@
                                 marginWidth="0" 
                                 style="position:absolute; top:0; left:0; width:100%; height:100%; background:transparent;">
                         </iframe>
-                        <script src="https://atwmcd.com/cifra/script?id=awe-customiframe-container-mature&row=8&column=2&border=&wide=1&padding=6px&model=insidehover&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&legacyRedirect=1"></script>
+                        <script src="https://atwmcd.com/cifra/script?id=awe-customiframe-container-mature&row=10&column=2&border=&wide=1&padding=6px&model=insidehover&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&legacyRedirect=1"></script>
                     </div>
                 </div>
             </div>
@@ -400,6 +377,15 @@
             <div class="embed-card" style="padding: 20px;">
                 <div data-awe-container-id="object_container_vb" style="display:inline-block;width:300px;height:250px;"></div>
                 <script src="https://ecdwm.com/embed/vb?c=object_container_vb&categoryName=girl&pageName=listpage&color=black_yellow&psid=franklymadear&pstool=316_2&siteId=jasmin&cobrandId=&psprogram=revs&campaign_id=&ms_notrack=1&subAffId="></script>
+            </div>
+        </section>
+
+        <!-- ========== NEW POSTEX SCRIPT (postexralivip) ========== -->
+        <section class="content-section">
+            <h2 class="section-title">🎥 Live Picks</h2>
+            <div class="embed-card" style="padding: 20px; min-height: auto;">
+                <script src="https://ecdwm.com/embed/postexralivip?psid=franklymadear&pstool=400_368&psprogram=revs&campaign_id=&categoryName=girl&cobrandId=&site=las&ms_notrack=1&subAffId="></script>
+                <p style="color:#b0b0d0; margin-top: 8px;">✨ Featured performers</p>
             </div>
         </section>
 
@@ -443,17 +429,7 @@
         })();
         </script>
 
-        <!-- Category tags -->
-        <div class="category-tags">
-            <span>✦ trending:</span>
-            <a href="#">Girls</a>
-            <a href="#">Couples</a>
-            <a href="#">Trans</a>
-            <a href="#">New Models</a>
-            <a href="#">VR</a>
-        </div>
-
-        <!-- Footer -->
+        <!-- Footer (trending tags removed as requested) -->
         <footer class="footer">
             <a href="#">xxx.franklymadear.com</a> — 18+ only — All models are 18+
         </footer>
@@ -461,8 +437,8 @@
 
     <!-- Console log -->
     <script>
-        console.log("✅ LiveJasmin page — all cifra blocks now show 8 rows (height increased)");
-        console.log("📦 Components: 4x cifra (8 rows each), vb, is, more videos, slidebar");
+        console.log("✅ LiveJasmin page — 10 rows per cifra with scroll, new postexralivip added, trending row removed.");
+        console.log("📦 Components: 4x cifra (10 rows scrollable), vb, postexralivip, is, more videos, slidebar");
     </script>
 </body>
 </html>
