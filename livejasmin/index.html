@@ -119,23 +119,29 @@
             color: #ffb3c6;
         }
 
-        /* === CIFRA CONTAINER STYLES === */
+        /* === CIFRA CONTAINER STYLES - Adjusted to show 8 rows === */
         .cifra-wrapper {
             position: relative;
             width: 100%;
             background: #0a0a0e;
             border-radius: 12px;
             overflow: hidden;
-            aspect-ratio: 2 / 1; /* adjust based on typical cifra content */
-            min-height: 250px;
             margin: 10px 0;
+            /* Height set to accommodate 8 rows of content */
+            /* Based on typical thumbnail size (~100px per row including spacing) */
+            height: 850px; /* 8 rows * approx 100px + some margin */
+            min-height: 800px;
         }
 
-        /* ensure absolute iframe fills container */
-        #awe-customiframe-container {
+        /* Ensure absolute iframe fills container */
+        #awe-customiframe-container-couple,
+        #awe-customiframe-container-lesbian,
+        #awe-customiframe-container-hotflirt,
+        #awe-customiframe-container-mature {
+            position: relative;
             width: 100%;
             height: 100%;
-            min-height: 250px;
+            min-height: 800px;
         }
 
         /* === AD CONTAINERS === */
@@ -267,11 +273,10 @@
         }
 
         /* === RESPONSIVE === */
-        @media (max-width: 500px) {
-            .fixed-400x300 {
-                width: 100%;
-                height: auto;
-                aspect-ratio: 4 / 3;
+        @media (max-width: 600px) {
+            .cifra-wrapper {
+                height: 700px; /* Slightly smaller on mobile but still show 8 rows */
+                min-height: 700px;
             }
         }
     </style>
@@ -293,15 +298,15 @@
             <span class="arrow">👇</span>
         </div>
 
-        <!-- ========== SECTION 1 (formerly template1003) replaced with cifra couple ========== -->
+        <!-- ========== SECTION 1 - COUPLE (8 rows visible) ========== -->
         <section class="content-section">
             <h2 class="section-title">🔥 Couple Cams</h2>
             <div class="embed-card">
                 <div class="embed-header">
-                    <span class="logo">✨ LiveJasmin</span> · <span>couple</span>
+                    <span class="logo">✨ LiveJasmin</span> · <span>couple · 8 rows</span>
                 </div>
-                <div class="cifra-wrapper" style="width:100%; padding:0 10px;">
-                    <div id="awe-customiframe-container-couple" style="position:relative; width:100%; aspect-ratio: 2/1; min-height:250px;">
+                <div class="cifra-wrapper">
+                    <div id="awe-customiframe-container-couple" style="position:relative; width:100%; height:100%;">
                         <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=couple&row=8&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1" 
                                 scrolling="no" 
                                 align="middle" 
@@ -317,15 +322,15 @@
             </div>
         </section>
 
-        <!-- ========== SECTION 2 (formerly Live Cams Special / fk) replaced with cifra lesbian ========== -->
+        <!-- ========== SECTION 2 - LESBIAN (8 rows visible) ========== -->
         <section class="content-section">
             <h2 class="section-title">🔥 Lesbian Cams</h2>
             <div class="embed-card">
                 <div class="embed-header">
-                    <span class="logo">✨ LiveJasmin</span> · <span>lesbian</span>
+                    <span class="logo">✨ LiveJasmin</span> · <span>lesbian · 8 rows</span>
                 </div>
-                <div class="cifra-wrapper" style="width:100%; padding:0 10px;">
-                    <div id="awe-customiframe-container-lesbian" style="position:relative; width:100%; aspect-ratio: 2/1; min-height:250px;">
+                <div class="cifra-wrapper">
+                    <div id="awe-customiframe-container-lesbian" style="position:relative; width:100%; height:100%;">
                         <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=lesbian&row=8&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1" 
                                 scrolling="no" 
                                 align="middle" 
@@ -341,15 +346,15 @@
             </div>
         </section>
 
-        <!-- ========== SECTION 3 (formerly template1002) replaced with cifra hot_flirt ========== -->
+        <!-- ========== SECTION 3 - HOT FLIRT (8 rows visible) ========== -->
         <section class="content-section">
             <h2 class="section-title">🔥 Hot Flirt Cams</h2>
             <div class="embed-card">
                 <div class="embed-header">
-                    <span class="logo">✨ LiveJasmin</span> · <span>hot_flirt</span>
+                    <span class="logo">✨ LiveJasmin</span> · <span>hot_flirt · 8 rows</span>
                 </div>
-                <div class="cifra-wrapper" style="width:100%; padding:0 10px;">
-                    <div id="awe-customiframe-container-hotflirt" style="position:relative; width:100%; aspect-ratio: 2/1; min-height:250px;">
+                <div class="cifra-wrapper">
+                    <div id="awe-customiframe-container-hotflirt" style="position:relative; width:100%; height:100%;">
                         <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=hot_flirt&row=8&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1" 
                                 scrolling="no" 
                                 align="middle" 
@@ -365,15 +370,15 @@
             </div>
         </section>
 
-        <!-- ========== SECTION 4 (formerly template1000) replaced with cifra mature ========== -->
+        <!-- ========== SECTION 4 - MATURE (8 rows visible) ========== -->
         <section class="content-section">
             <h2 class="section-title">🔥 Mature Cams</h2>
             <div class="embed-card">
                 <div class="embed-header">
-                    <span class="logo">✨ LiveJasmin</span> · <span>mature</span>
+                    <span class="logo">✨ LiveJasmin</span> · <span>mature · 8 rows</span>
                 </div>
-                <div class="cifra-wrapper" style="width:100%; padding:0 10px;">
-                    <div id="awe-customiframe-container-mature" style="position:relative; width:100%; aspect-ratio: 2/1; min-height:250px;">
+                <div class="cifra-wrapper">
+                    <div id="awe-customiframe-container-mature" style="position:relative; width:100%; height:100%;">
                         <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=mature&row=8&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1" 
                                 scrolling="no" 
                                 align="middle" 
@@ -389,7 +394,7 @@
             </div>
         </section>
 
-        <!-- ========== VB EMBED 300x250 (unchanged) ========== -->
+        <!-- ========== VB EMBED 300x250 ========== -->
         <section class="content-section">
             <h2 class="section-title">📢 Special Offer</h2>
             <div class="embed-card" style="padding: 20px;">
@@ -398,7 +403,7 @@
             </div>
         </section>
 
-        <!-- ========== IS EMBED (full width, 200px height) at the end ========== -->
+        <!-- ========== IS EMBED (full width, 200px height) ========== -->
         <section class="content-section">
             <h2 class="section-title">📺 More Live</h2>
             <div class="embed-card" style="padding: 16px;">
@@ -456,8 +461,8 @@
 
     <!-- Console log -->
     <script>
-        console.log("✅ LiveJasmin page — all iframes replaced with cifra (couple, lesbian, hot_flirt, mature).");
-        console.log("📦 Components: 4x cifra (different categories), vb, is, more videos, slidebar");
+        console.log("✅ LiveJasmin page — all cifra blocks now show 8 rows (height increased)");
+        console.log("📦 Components: 4x cifra (8 rows each), vb, is, more videos, slidebar");
     </script>
 </body>
 </html>
