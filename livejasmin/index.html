@@ -24,7 +24,7 @@
         
         .container {
             width: 100%;
-            max-width: 600px; /* Μέγιστο πλάτος για κεντράρισμα */
+            max-width: 600px;
             margin: 0 auto;
         }
         
@@ -71,7 +71,7 @@
             width: 100%;
         }
         
-        /* Κάρτα για κάθε cam - ΠΛΑΤΟΣ 100% */
+        /* Κάρτα για κάθε cam */
         .cam-card {
             background: #050507;
             border-radius: 16px;
@@ -105,16 +105,28 @@
             color: #99ccff;
         }
         
-        /* ΚΑΙ ΤΑ ΔΥΟ IFRAME ΜΕ ΥΨΟΣ 900px */
-        .cam-frame, .jasmin-frame {
+        /* Live Jasmin iframe - 463x1357 */
+        .jasmin-frame {
             width: 100%;
-            height: 900px; /* ΣΤΑΘΕΡΟ ΥΨΟΣ 900px */
+            height: auto;
+            aspect-ratio: 463 / 1357; /* Διατήρηση αναλογίας */
             border: none;
             display: block;
             background: #000;
         }
         
-        /* Scroll indicator - δείχνει ότι μπορείτε να κάνετε scroll */
+        /* Chaturbate iframe - 100% πλάτος */
+        .chaturbate-frame {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9; /* Τυπική αναλογία για το c=30 */
+            border: none;
+            display: block;
+            background: #000;
+            min-height: 300px;
+        }
+        
+        /* Scroll indicator */
         .scroll-hint {
             text-align: center;
             color: #5d5d7a;
@@ -215,18 +227,6 @@
             color: #7a7aa3;
             text-decoration: none;
         }
-        
-        /* Πολύ μικρές οθόνες */
-        @media (max-width: 400px) {
-            .cam-frame, .jasmin-frame {
-                height: 800px; /* Λίγο μικρότερο για πολύ μικρές οθόνες */
-            }
-            
-            .cam-header {
-                padding: 8px 12px;
-                font-size: 0.8rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -244,21 +244,21 @@
             <span class="arrow">👇</span>
         </div>
         
-        <!-- GRID ΜΕ ΤΑ 2 IFRAME - ΤΟ ΕΝΑ ΚΑΤΩ ΑΠΟ ΤΟ ΑΛΛΟ ΜΕ ΥΨΟΣ 900px -->
+        <!-- GRID ΜΕ ΤΑ 2 IFRAME - ΤΟ ΕΝΑ ΚΑΤΩ ΑΠΟ ΤΟ ΑΛΛΟ -->
         <div class="cams-grid">
-            <!-- 1. Live Jasmin iframe - 900px ύψος -->
+            <!-- 1. Live Jasmin iframe - ΝΕΟ με row=10, 463x1357 -->
             <div class="cam-card">
                 <div class="cam-header">
                     <span class="logo jasmin">✨ Live Jasmin</span>
                     <span>|</span>
-                    <span>Girls · Couples · Trans</span>
+                    <span>Girls · 10 rows</span>
                 </div>
-                <iframe class="jasmin-frame" 
-                        src="https://atwmcd.com/iframes/?t_id=template1001&psid=franklymadear&psprogram=revs&pstool=203_2&site=jasmin&cobrandId=&flags=&column=2&row=7&campaign_id=&categoryName=girl&subAffId=" 
+                <iframe class="frame jasmin-frame" 
+                        src="https://atwmcd.com/iframes/?t_id=template1001&psid=franklymadear&psprogram=revs&pstool=203_2&site=jasmin&cobrandId=&flags=&column=2&row=10&campaign_id=&categoryName=girl&subAffId=" 
                         scrolling="no" 
                         align="MIDDLE" 
-                        width="100%" 
-                        height="900" 
+                        width="463px" 
+                        height="1357px" 
                         frameborder="No" 
                         allowtransparency="true" 
                         background-color="transparent" 
@@ -266,17 +266,17 @@
                         marginWidth="0"></iframe>
             </div>
             
-            <!-- 2. Chaturbate iframe - 900px ύψος -->
+            <!-- 2. Chaturbate iframe - ΝΕΟ με c=30&gender=x -->
             <div class="cam-card">
                 <div class="cam-header">
                     <span class="logo chaturbate">🔥 Chaturbate</span>
                     <span>|</span>
-                    <span>Girls · Couples · Trans</span>
+                    <span>All genders · c=30</span>
                 </div>
-                <iframe class="cam-frame"
-                        src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=f"
+                <iframe class="chaturbate-frame"
+                        src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=30&p=1&gender=x"
                         width="100%"
-                        height="900"
+                        height="100%"
                         frameborder="No"
                         scrolling="no"
                         allowtransparency="true"
@@ -285,7 +285,7 @@
             </div>
         </div>
         
-        <!-- Δεύτερο scroll hint στο τέλος -->
+        <!-- Δεύτερο scroll hint -->
         <div class="scroll-hint">
             <span class="arrow">👆</span>
             <span>Scroll up για τα υπόλοιπα</span>
@@ -295,10 +295,10 @@
         <!-- Fallback links -->
         <div class="fallback-links">
             <div class="fallback-link">
-                <a href="https://atwmcd.com/iframes/?t_id=template1001&psid=franklymadear&psprogram=revs&pstool=203_2&site=jasmin&cobrandId=&flags=&column=2&row=7&campaign_id=&categoryName=girl&subAffId=" target="_blank">✨ Άνοιγμα Live Jasmin</a>
+                <a href="https://atwmcd.com/iframes/?t_id=template1001&psid=franklymadear&psprogram=revs&pstool=203_2&site=jasmin&cobrandId=&flags=&column=2&row=10&campaign_id=&categoryName=girl&subAffId=" target="_blank">✨ Άνοιγμα Live Jasmin (10 rows)</a>
             </div>
             <div class="fallback-link">
-                <a href="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=15&p=1&gender=f" target="_blank">🔥 Άνοιγμα Chaturbate</a>
+                <a href="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=30&p=1&gender=x" target="_blank">🔥 Άνοιγμα Chaturbate (All genders)</a>
             </div>
         </div>
         
@@ -308,14 +308,14 @@
             <a href="#">Girls</a>
             <a href="#">Couples</a>
             <a href="#">Trans</a>
-            <a href="#">New models</a>
-            <a href="#">Group</a>
+            <a href="#">Men</a>
+            <a href="#">All genders</a>
         </div>
         
         <!-- Live stats -->
         <div class="live-stats">
             <span class="live-badge" style="margin:0;"></span>
-            <span>2000+ models live now</span>
+            <span>3000+ models live now</span>
         </div>
         
         <!-- Footer -->
@@ -324,12 +324,10 @@
         </div>
     </div>
     
-    <!-- Script για έλεγχο ύψους και scroll -->
+    <!-- Script για έλεγχο -->
     <script>
-        // Εμφάνιση πληροφοριών για το scroll
         function reportDimensions() {
             console.log(`📱 Πλάτος οθόνης: ${window.innerWidth}px`);
-            console.log(`📱 Ύψος οθόνης: ${window.innerHeight}px`);
             console.log(`📜 Συνολικό ύψος σελίδας: ${document.documentElement.scrollHeight}px`);
             
             const iframes = document.querySelectorAll('iframe');
@@ -338,18 +336,16 @@
             });
         }
         
-        // Έλεγχος φόρτωσης iframe
         const iframes = document.querySelectorAll('iframe');
         iframes.forEach((iframe, index) => {
-            iframe.onload = () => console.log(`✅ Iframe ${index + 1} (900px ύψος) φορτώθηκε`);
+            iframe.onload = () => console.log(`✅ Iframe ${index + 1} φορτώθηκε`);
         });
         
-        // Αναφορά διαστάσεων
         window.addEventListener('load', reportDimensions);
-        window.addEventListener('resize', reportDimensions);
         
-        // Υπενθύμιση για scroll
-        console.log('👇 Κάντε scroll down για να δείτε και τα δύο iframe');
+        console.log('👇 Νέα iframe:');
+        console.log('1. Live Jasmin: 463x1357, row=10');
+        console.log('2. Chaturbate: c=30, gender=x (all genders)');
     </script>
 </body>
 </html>
