@@ -115,18 +115,37 @@
             background: #000;
         }
         
-        /* Chaturbate iframe - 100% πλάτος */
+        /* Chaturbate iframe - 2200px ύψος ΜΕ SCROLL */
         .chaturbate-frame {
             width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 9; /* Τυπική αναλογία για το c=30 */
+            height: 2200px; /* ΣΤΑΘΕΡΟ ΥΨΟΣ 2200px */
             border: none;
             display: block;
             background: #000;
-            min-height: 300px;
+            overflow-y: auto; /* ΕΝΕΡΓΟΠΟΙΗΣΗ VERTICAL SCROLL */
+            overflow-x: hidden; /* ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ horizontal scroll */
+            -webkit-overflow-scrolling: touch; /* Ομαλό scroll σε iOS */
         }
         
-        /* Scroll indicator */
+        /* Scrollbar styling (προαιρετικό) */
+        .chaturbate-frame::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .chaturbate-frame::-webkit-scrollbar-track {
+            background: #1a1a24;
+        }
+        
+        .chaturbate-frame::-webkit-scrollbar-thumb {
+            background: #ff99aa;
+            border-radius: 4px;
+        }
+        
+        .chaturbate-frame::-webkit-scrollbar-thumb:hover {
+            background: #ff4d6d;
+        }
+        
+        /* Scroll indicators */
         .scroll-hint {
             text-align: center;
             color: #5d5d7a;
@@ -141,6 +160,18 @@
         .scroll-hint .arrow {
             animation: bounce 1.5s infinite;
             font-size: 1.2rem;
+        }
+        
+        .iframe-scroll-hint {
+            text-align: center;
+            color: #8888aa;
+            font-size: 0.8rem;
+            margin: 5px 0 10px;
+            padding: 5px;
+            background: #1a1a24;
+            border-radius: 20px;
+            display: inline-block;
+            border: 1px solid #2d2d3a;
         }
         
         @keyframes bounce {
@@ -227,6 +258,25 @@
             color: #7a7aa3;
             text-decoration: none;
         }
+        
+        /* Ειδικά για το iframe scroll hint */
+        .iframe-container {
+            position: relative;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            border: 1px solid #ff99aa;
+            pointer-events: none;
+            z-index: 10;
+        }
     </style>
 </head>
 <body>
@@ -237,16 +287,16 @@
             <span class="live-badge"></span> Live Jasmin + Chaturbate <span class="live-badge"></span>
         </div>
         
-        <!-- Scroll hint -->
+        <!-- Scroll hint για τη σελίδα -->
         <div class="scroll-hint">
             <span class="arrow">👇</span>
             <span>Scroll down για περισσότερα</span>
             <span class="arrow">👇</span>
         </div>
         
-        <!-- GRID ΜΕ ΤΑ 2 IFRAME - ΤΟ ΕΝΑ ΚΑΤΩ ΑΠΟ ΤΟ ΑΛΛΟ -->
+        <!-- GRID ΜΕ ΤΑ 2 IFRAME -->
         <div class="cams-grid">
-            <!-- 1. Live Jasmin iframe - ΝΕΟ με row=10, 463x1357 -->
+            <!-- 1. Live Jasmin iframe -->
             <div class="cam-card">
                 <div class="cam-header">
                     <span class="logo jasmin">✨ Live Jasmin</span>
@@ -266,39 +316,51 @@
                         marginWidth="0"></iframe>
             </div>
             
-            <!-- 2. Chaturbate iframe - ΝΕΟ με c=30&gender=x -->
+            <!-- 2. Chaturbate iframe - ΜΕ 2200px ΥΨΟΣ ΚΑΙ SCROLL -->
             <div class="cam-card">
                 <div class="cam-header">
                     <span class="logo chaturbate">🔥 Chaturbate</span>
                     <span>|</span>
-                    <span>All genders · c=30</span>
+                    <span>All genders · c=30 · 2200px scroll</span>
                 </div>
+                
+                <!-- Scroll hint μέσα στο iframe -->
+                <div style="text-align: center; background: #1a1a24; padding: 5px; border-bottom: 1px solid #2d2d3a;">
+                    <span class="iframe-scroll-hint">👇 Κάντε scroll ΜΕΣΑ στο iframe (2200px περιεχόμενο) 👇</span>
+                </div>
+                
+                <!-- Το iframe με 2200px ύψος και scroll -->
                 <iframe class="chaturbate-frame"
                         src="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=30&p=1&gender=x"
                         width="100%"
-                        height="100%"
+                        height="2200"
                         frameborder="No"
-                        scrolling="no"
+                        scrolling="yes" /* Ενεργοποίηση scroll */
                         allowtransparency="true"
                         marginheight="0"
                         marginwidth="0"></iframe>
+                
+                <!-- Ένδειξη scroll (προαιρετικό) -->
+                <div style="text-align: center; background: #1a1a24; padding: 5px; border-top: 1px solid #2d2d3a;">
+                    <span class="iframe-scroll-hint">👆 Scroll μέσα στο iframe για περισσότερα 👆</span>
+                </div>
             </div>
         </div>
         
-        <!-- Δεύτερο scroll hint -->
+        <!-- Δεύτερο scroll hint για τη σελίδα -->
         <div class="scroll-hint">
             <span class="arrow">👆</span>
-            <span>Scroll up για τα υπόλοιπα</span>
+            <span>Scroll up για Live Jasmin</span>
             <span class="arrow">👆</span>
         </div>
         
         <!-- Fallback links -->
         <div class="fallback-links">
             <div class="fallback-link">
-                <a href="https://atwmcd.com/iframes/?t_id=template1001&psid=franklymadear&psprogram=revs&pstool=203_2&site=jasmin&cobrandId=&flags=&column=2&row=10&campaign_id=&categoryName=girl&subAffId=" target="_blank">✨ Άνοιγμα Live Jasmin (10 rows)</a>
+                <a href="https://atwmcd.com/iframes/?t_id=template1001&psid=franklymadear&psprogram=revs&pstool=203_2&site=jasmin&cobrandId=&flags=&column=2&row=10&campaign_id=&categoryName=girl&subAffId=" target="_blank">✨ Άνοιγμα Live Jasmin</a>
             </div>
             <div class="fallback-link">
-                <a href="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=30&p=1&gender=x" target="_blank">🔥 Άνοιγμα Chaturbate (All genders)</a>
+                <a href="https://chaturbate.com/in/?tour=x1Rd&campaign=hrmwy&track=default&c=30&p=1&gender=x" target="_blank">🔥 Άνοιγμα Chaturbate</a>
             </div>
         </div>
         
@@ -333,19 +395,25 @@
             const iframes = document.querySelectorAll('iframe');
             iframes.forEach((iframe, i) => {
                 console.log(`📦 Iframe ${i+1}: ${iframe.offsetWidth} x ${iframe.offsetHeight}`);
+                console.log(`   Scroll enabled: ${iframe.scrolling} (ή ${iframe.style.overflowY})`);
             });
         }
         
         const iframes = document.querySelectorAll('iframe');
         iframes.forEach((iframe, index) => {
-            iframe.onload = () => console.log(`✅ Iframe ${index + 1} φορτώθηκε`);
+            iframe.onload = () => {
+                console.log(`✅ Iframe ${index + 1} φορτώθηκε`);
+                if (index === 1) {
+                    console.log('   📌 Chaturbate iframe: 2200px ύψος ΜΕ scroll');
+                }
+            };
         });
         
         window.addEventListener('load', reportDimensions);
         
-        console.log('👇 Νέα iframe:');
-        console.log('1. Live Jasmin: 463x1357, row=10');
-        console.log('2. Chaturbate: c=30, gender=x (all genders)');
+        console.log('👇 Νέα διάταξη:');
+        console.log('1. Live Jasmin: 463x1357, row=10, ΧΩΡΙΣ scroll');
+        console.log('2. Chaturbate: 2200px ύψος ΜΕ εσωτερικό scroll');
     </script>
 </body>
 </html>
