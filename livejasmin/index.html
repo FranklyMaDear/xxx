@@ -26,11 +26,13 @@
 
         .container {
             width: 100%;
-            max-width: 700px; /* Comfortable width for the main column */
+            max-width: 700px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        /* === HEADER (English) === */
+        /* === HEADER === */
         .site-header {
             text-align: center;
             margin-bottom: 20px;
@@ -72,7 +74,7 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
-        /* === MAIN CONTENT SECTIONS (Stacked Vertically) === */
+        /* === SECTIONS === */
         .content-section {
             margin-bottom: 30px;
             width: 100%;
@@ -83,12 +85,10 @@
             font-size: 1.3rem;
             font-weight: 400;
             margin-bottom: 15px;
-            padding-left: 5px;
             border-left: 4px solid #ff99aa;
             padding-left: 12px;
         }
 
-        /* Cards for iframes/embeds with a subtle background */
         .embed-card {
             background: #050507;
             border-radius: 20px;
@@ -114,30 +114,49 @@
             color: #ffb3c6;
         }
 
-        /* === SPECIFIC IFRAME / EMBED STYLES === */
-
-        /* First Iframe (Main Gallery) - responsive with aspect ratio */
-        .main-iframe {
+        /* === IFRAME STYLES === */
+        .jasmin-iframe {
             width: 100%;
             height: auto;
-            aspect-ratio: 320 / 600; /* Matches width="320px" height="600px" */
+            aspect-ratio: 320 / 600;
             border: none;
             display: block;
             background: #000;
         }
 
-        /* Container for the 300x250 ad unit */
+        /* === CONTAINERS === */
         .banner-container {
             display: flex;
             justify-content: center;
             align-items: center;
             background: #0f0f14;
-            padding: 15px 0;
+            padding: 20px 0;
             border-radius: 12px;
             border: 1px solid #2d2d3a;
         }
 
-        /* The "More Videos" banner styled as requested */
+        /* First ad container - 300x250 */
+        .ad-container-300 {
+            display: inline-block;
+            width: 300px;
+            height: 250px;
+            background: #1a1a24;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Second ad container - 400x300 */
+        .ad-container-400 {
+            width: 400px;
+            height: 300px;
+            max-width: 100%;
+            background: #1a1a24;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        /* === MORE VIDEOS BANNER === */
         .more-videos-banner {
             display: flex;
             align-items: center;
@@ -176,17 +195,7 @@
             color: white;
         }
 
-        /* Second Iframe (template1002) */
-        .secondary-iframe {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 320 / 600; /* width="320px" height="600px" */
-            border: none;
-            display: block;
-            background: #000;
-        }
-
-        /* Scroll hint */
+        /* === SCROLL HINT === */
         .scroll-hint {
             text-align: center;
             color: #5d5d7a;
@@ -208,7 +217,31 @@
             50% { transform: translateY(5px); }
         }
 
-        /* Footer */
+        /* === CATEGORY TAGS === */
+        .category-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 15px;
+            justify-content: center;
+            margin: 15px 0 10px;
+            color: #9f9fc5;
+            font-size: 0.9rem;
+        }
+
+        .category-tags span {
+            color: #ffb3c6;
+        }
+
+        .category-tags a {
+            color: #b4b4d6;
+            text-decoration: none;
+        }
+
+        .category-tags a:hover {
+            color: #ffb3c6;
+        }
+
+        /* === FOOTER === */
         .footer {
             margin-top: 30px;
             color: #5d5d7a;
@@ -223,25 +256,19 @@
             text-decoration: none;
         }
 
-        /* Simple category tags */
-        .category-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px 15px;
-            justify-content: center;
-            margin: 15px 0 10px;
-            color: #9f9fc5;
-            font-size: 0.9rem;
-        }
-
-        .category-tags span {
-            color: #ffb3c6;
+        /* === RESPONSIVE === */
+        @media (max-width: 500px) {
+            .ad-container-400 {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 4 / 3;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header - English -->
+        <!-- Header -->
         <header class="site-header">
             <h1>✨ LiveJasmin</h1>
             <div class="subhead">
@@ -249,22 +276,21 @@
             </div>
         </header>
 
-        <!-- Scroll hint (optional, friendly) -->
+        <!-- Scroll hint -->
         <div class="scroll-hint">
             <span class="arrow">👇</span>
             <span>Scroll down for more videos</span>
             <span class="arrow">👇</span>
         </div>
 
-        <!-- === MAIN SECTION: FIRST IFRAME (atwmcd template1001) === -->
+        <!-- === 1. FIRST IFRAME (template1001) === -->
         <section class="content-section">
             <h2 class="section-title">🔥 Live Girls Gallery</h2>
             <div class="embed-card">
                 <div class="embed-header">
                     <span class="logo">✨ LiveJasmin</span> · <span>Featured Models</span>
                 </div>
-                <!-- First iframe: template1001, 320x600 -->
-                <iframe class="main-iframe frame" 
+                <iframe class="jasmin-iframe frame" 
                         src="https://atwmcd.com/iframes/?t_id=template1001&psid=franklymadear&psprogram=revs&pstool=203_2&site=jasmin&cobrandId=&flags=&column=2&row=5&campaign_id=&categoryName=girl&subAffId=" 
                         scrolling="no" 
                         align="MIDDLE" 
@@ -279,19 +305,17 @@
             </div>
         </section>
 
-        <!-- === AD CONTAINER (300x250) === -->
+        <!-- === 2. FIRST AD CONTAINER (300x250) === -->
         <section class="content-section">
             <h2 class="section-title">📢 Special Offer</h2>
             <div class="banner-container">
-                <!-- Exact container + script as requested -->
                 <div data-awe-container-id="object_container" style="display:inline-block;width:300px;height:250px;"></div>
                 <script src="https://ecdwm.com/embed/vb?c=object_container&categoryName=girl&pageName=listpage&color=black_yellow&psid=franklymadear&pstool=316_2&siteId=jasmin&cobrandId=&psprogram=revs&campaign_id=&ms_notrack=1&subAffId="></script>
             </div>
         </section>
 
-        <!-- === "MORE VIDEOS" BANNER === -->
+        <!-- === 3. MORE VIDEOS BANNER === -->
         <section class="content-section">
-            <!-- Banner linking to the provided URL -->
             <div class="more-videos-banner">
                 <a href="https://ctwmsg.com/?performerName=&siteId=jasmin&categoryName=&pageName=home&prm[psid]=franklymadear&prm[pstool]=205_1&prm[psprogram]=revs&prm[campaign_id]=&subAffId=" target="_blank">
                     ▶️ MORE VIDEOS <span>LIVE</span> 🔥
@@ -299,15 +323,14 @@
             </div>
         </section>
 
-        <!-- === SECOND IFRAME (atwmcd template1002, 320x600) === -->
+        <!-- === 4. SECOND IFRAME (template1002 - SAME CHARACTERISTICS) === -->
         <section class="content-section">
             <h2 class="section-title">✨ More Live Models</h2>
             <div class="embed-card">
                 <div class="embed-header">
                     <span class="logo">✨ LiveJasmin</span> · <span>New & Trending</span>
                 </div>
-                <!-- Second iframe: template1002, 320x600 exactly as given -->
-                <iframe class="secondary-iframe frame" 
+                <iframe class="jasmin-iframe frame" 
                         src="https://atwmcd.com/iframes/?t_id=template1002&psid=franklymadear&psprogram=revs&pstool=203_3&site=jasmin&cobrandId=&flags=&column=2&row=5&campaign_id=&categoryName=girl&subAffId=" 
                         scrolling="no" 
                         align="MIDDLE" 
@@ -322,25 +345,60 @@
             </div>
         </section>
 
-        <!-- Simple category row (English) -->
+        <!-- === 5. SECOND AD CONTAINER (400x300) === -->
+        <section class="content-section">
+            <h2 class="section-title">📺 Live Preview</h2>
+            <div class="banner-container">
+                <div id="object_container" style="width:400px;height:300px; max-width:100%;"></div>
+                <script src="https://ecdwm.com/embed/lf?c=object_container&site=jasmin&cobrandId=&psid=franklymadear&pstool=202_1&psprogram=revs&campaign_id=&category=girl&forcedPerformers[]=&vp[showChat]=&vp[chatAutoHide]=&vp[showCallToAction]=&vp[showPerformerName]=&vp[showPerformerStatus]=&ms_notrack=1&subAffId="></script>
+            </div>
+        </section>
+
+        <!-- === 6. SLIDEBAR SCRIPT (Overlay) === -->
+        <script>
+        var _aweslidebar = _aweslidebar || {};
+        _aweslidebar.category = 'girl';
+        _aweslidebar.width = 300;
+        _aweslidebar.position = 'left';
+        _aweslidebar.col = 1;
+        _aweslidebar.type = 'overlay';
+        _aweslidebar.flick = {
+           padding: 100,
+           position: 'top'
+        };
+        _aweslidebar.zIndex = 999;
+        _aweslidebar.bgcolor = '#990000';
+        _aweslidebar.color = '#FFCC00';
+        _aweslidebar.orientation = 'portrait';
+        (function() {
+           var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
+           s.src = 'https://ecdwm.com/embed/sldbr?legacyRedirect=1&ms_notrack=1&site=jasmin&superCategory=&performerId=&performerList=&forcedPerformer=0&cobrandId=&psId=franklymadear&psTool=208_1&psProgram=revs&campaignId=&subAffId='; var p = document.getElementsByTagName('script')[0]; p.parentNode.insertBefore(s, p);
+        })();
+        </script>
+
+        <!-- Category tags -->
         <div class="category-tags">
             <span>✦ trending:</span>
-            <a href="#" style="color:#b4b4d6; text-decoration:none;">Girls</a>
-            <a href="#" style="color:#b4b4d6; text-decoration:none;">Couples</a>
-            <a href="#" style="color:#b4b4d6; text-decoration:none;">Trans</a>
-            <a href="#" style="color:#b4b4d6; text-decoration:none;">New Models</a>
+            <a href="#">Girls</a>
+            <a href="#">Couples</a>
+            <a href="#">Trans</a>
+            <a href="#">New Models</a>
+            <a href="#">VR</a>
         </div>
 
-        <!-- Footer (English) -->
+        <!-- Footer -->
         <footer class="footer">
             <a href="#">xxx.franklymadear.com</a> — 18+ only — All models are 18+
         </footer>
     </div>
 
-    <!-- Simple console log to confirm English version loaded -->
+    <!-- Console log -->
     <script>
-        console.log("✅ English LiveJasmin page loaded with all components.");
-        console.log("📦 Elements: 2 iframes, 1 ad container, 1 banner.");
+        console.log("✅ English LiveJasmin page loaded with all components:");
+        console.log("📦 2 iframes (320x600) - same characteristics");
+        console.log("📦 2 ad containers (300x250 & 400x300)");
+        console.log("📦 1 More Videos banner");
+        console.log("📦 1 Slidebar overlay script");
     </script>
 </body>
 </html>
