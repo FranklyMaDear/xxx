@@ -98,6 +98,8 @@
             width: 100%;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            padding: 16px 0;
         }
 
         .embed-header {
@@ -109,6 +111,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            width: 100%;
         }
 
         .embed-header .logo {
@@ -116,7 +119,7 @@
             color: #ffb3c6;
         }
 
-        /* === IFRAME STYLES — maintain original dimensions but responsive === */
+        /* === IFRAME STYLES === */
         .frame {
             display: block;
             margin: 0 auto;
@@ -125,7 +128,6 @@
             background: #000;
         }
 
-        /* iframe specific sizing */
         .iframe-300x250 {
             width: 300px;
             height: 250px;
@@ -136,35 +138,55 @@
             height: 600px;
         }
 
-        /* === CONTAINERS for ads (if any, but we keep for consistency) === */
-        .banner-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #0f0f14;
-            padding: 20px 0;
-            border-radius: 12px;
-            border: 1px solid #2d2d3a;
-        }
-
-        /* === NEW BANNER (CUSTOM CTOW) === */
-        .custom-banner-wrapper {
-            margin: 25px 0 20px;
-            background: #0c0c12;
-            border-radius: 16px;
-            border: 1px solid #3a2a3a;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(255, 100, 150, 0.2);
-        }
-
-        .ctow-banner-container {
+        /* === AD CONTAINERS === */
+        .ad-box {
             width: 100%;
-            min-height: 100px;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #0f0f14;
-            padding: 10px;
+            padding: 10px 0;
+        }
+
+        .ad-box > div, .ad-box > iframe {
+            max-width: 100%;
+        }
+
+        .fixed-400x300 {
+            width: 400px;
+            height: 300px;
+            background: #1a1a24;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .fixed-300x250 {
+            width: 300px;
+            height: 250px;
+            background: #1a1a24;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .full-width-200h {
+            width: 100%;
+            min-height: 200px;
+            background: #1a1a24;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Custom iframe container (cifra) */
+        .cifra-wrapper {
+            position: relative;
+            width: 100%;
+            background: #0a0a0e;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 2 / 1; /* adjust based on typical cifra content */
+            min-height: 250px;
         }
 
         /* === MORE VIDEOS BANNER === */
@@ -268,13 +290,23 @@
         }
 
         /* === RESPONSIVE === */
-        @media (max-width: 400px) {
+        @media (max-width: 500px) {
             .iframe-320x600 {
                 width: 100%;
                 height: auto;
                 aspect-ratio: 320 / 600;
             }
             .iframe-300x250 {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 300 / 250;
+            }
+            .fixed-400x300 {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 4 / 3;
+            }
+            .fixed-300x250 {
                 width: 100%;
                 height: auto;
                 aspect-ratio: 300 / 250;
@@ -299,9 +331,7 @@
             <span class="arrow">👇</span>
         </div>
 
-        <!-- ========== THREE IFRAMES AS REQUESTED ========== -->
-
-        <!-- 1. FIRST IFRAME (template1003) 320x600 -->
+        <!-- ========== IFRAME 1 (template1003) ========== -->
         <section class="content-section">
             <h2 class="section-title">🔥 Live Gallery 1</h2>
             <div class="embed-card">
@@ -323,7 +353,19 @@
             </div>
         </section>
 
-        <!-- 2. SECOND IFRAME (template1002) 320x600 -->
+        <!-- ========== NEW ELEMENT BETWEEN IFRAME 1 AND IFRAME 2 ========== -->
+        <!-- fk embed 400x300 -->
+        <section class="content-section">
+            <h2 class="section-title">🔥 Live Cams Special</h2>
+            <div class="embed-card">
+                <div class="ad-box">
+                    <div id="object_container_fk" class="fixed-400x300" style="width:400px;height:300px;"></div>
+                    <script src="https://ecdwm.com/embed/fk?c=object_container_fk&site=jasmin&cobrandId=&psid=franklymadear&pstool=319_1&psprogram=revs&campaign_id=&category=girl&vp[showChat]=&vp[chatAutoHide]=&vp[showCallToAction]=&vp[showPerformerName]=&vp[showPerformerStatus]=&ms_notrack=1&subAffId="></script>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== IFRAME 2 (template1002) ========== -->
         <section class="content-section">
             <h2 class="section-title">🔥 Live Gallery 2</h2>
             <div class="embed-card">
@@ -345,7 +387,7 @@
             </div>
         </section>
 
-        <!-- 3. THIRD IFRAME (template1000) 300x250 -->
+        <!-- ========== IFRAME 3 (template1000) ========== -->
         <section class="content-section">
             <h2 class="section-title">🔥 Live Gallery 3</h2>
             <div class="embed-card">
@@ -367,31 +409,42 @@
             </div>
         </section>
 
-        <!-- === CTOW BANNER (kept from previous requests) === -->
+        <!-- ========== CIFRA EMBED (new) ========== -->
         <section class="content-section">
-            <h2 class="section-title">⚡ Hot Offers</h2>
-            <div class="custom-banner-wrapper">
-                <div class="ctow-banner-container">
-                    <script src="https://atwmcd.com/ctow?psid=franklymadear&psprogram=revs&pstool=426_2&site=jasmin&cobrandId=&campaign_id=&category=girl&preferredPerformers=&backgroundColor=A60000&wColor1=F69191&wColor2=FFFFFF&wTagClBgColor=640000&wTagClTextColor=FFFFFF&wTagClBorderColor=640000&wTagClBorderRadius=5&btnBgColor=FDBB01&btnTextColor=000000&btnBorderColor=FDBB01&btnBorderRadius=5&cams=girls,boys,couple,tranny&subaffid=&ms_notrack=1"></script>
+            <h2 class="section-title">🎥 Interactive Grid</h2>
+            <div class="embed-card" style="padding: 20px;">
+                <div id="awe-customiframe-container" style="position:relative; width:100%; aspect-ratio: 2/1; min-height: 250px;">
+                    <iframe src="https://atwmcd.com/cifra?psid=franklymadear&psprogram=revs&pstool=212_1&site=jasmin&cobrandid=&campaign_id=&category=girl&row=8&column=2&background=A60000&fill=&border=&model=insidehover&modelColor=&modelFill=0&wide=1&padding=6px&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&performerList=&subaffid=&legacyRedirect=1" 
+                            scrolling="no" 
+                            align="middle" 
+                            frameborder="no" 
+                            allowtransparency="true" 
+                            marginHeight="0" 
+                            marginWidth="0" 
+                            style="position:absolute; top:0; left:0; width:100%; height:100%; background:transparent;">
+                    </iframe>
+                    <script src="https://atwmcd.com/cifra/script?id=awe-customiframe-container&row=8&column=2&border=&wide=1&padding=6px&model=insidehover&width=0&height=0&imageWidth=0&imageHeight=0&stream=1&start=1&legacyRedirect=1"></script>
                 </div>
             </div>
         </section>
 
-        <!-- === POSTEXRALIFKHD SCRIPT (kept) === -->
+        <!-- ========== VB EMBED 300x250 ========== -->
         <section class="content-section">
-            <h2 class="section-title">🎥 Exclusive Content</h2>
-            <div class="embed-card" style="padding: 16px; background: #0f0f14; text-align: center; min-height: auto;">
-                <script src="https://ecdwm.com/embed/postexralifkhd?psid=franklymadear&pstool=400_370&psprogram=revs&campaign_id=&categoryName=girl&cobrandId=&site=jasmin&ms_notrack=1&subAffId="></script>
-                <p style="color:#b0b0d0; margin-top: 8px;">✨ Special performer highlights</p>
+            <h2 class="section-title">📢 Special Offer</h2>
+            <div class="embed-card" style="padding: 20px;">
+                <div data-awe-container-id="object_container_vb" style="display:inline-block;width:300px;height:250px;"></div>
+                <script src="https://ecdwm.com/embed/vb?c=object_container_vb&categoryName=girl&pageName=listpage&color=black_yellow&psid=franklymadear&pstool=316_2&siteId=jasmin&cobrandId=&psprogram=revs&campaign_id=&ms_notrack=1&subAffId="></script>
             </div>
         </section>
 
-        <!-- === SIFK SCRIPT EMBED (kept) === -->
+        <!-- ========== IS EMBED (full width, 200px height) at the end ========== -->
         <section class="content-section">
-            <h2 class="section-title">📺 Special Feature</h2>
-            <div class="embed-card" style="flex-direction: column; min-height: auto; padding: 20px;">
-                <script src="https://atwmcd.com/embed/sifk/?psid=franklymadear&width=432&height=243&ms_notrack=1&textColor=000000&backgroundColor=FFFFFF&slideInDirection=left&category=girl&site=jasmin&target=sifk&pstool=322_1&campaign_id=&psprogram=revs"></script>
-                <p style="color:#b0b0d0; margin-top: 12px;">✨ Interactive slide-in content</p>
+            <h2 class="section-title">📺 More Live</h2>
+            <div class="embed-card" style="padding: 16px;">
+                <div class="full-width-200h" style="width:100%; min-height:200px; display:flex; justify-content:center; align-items:center;">
+                    <div data-awe-container-id="object_container_is" style="display:inline-block;width:100%;height:200px;"></div>
+                    <script id="" src="https://atwmcd.com/embed/is?c=object_container_is&categoryName=girl&backgroundColor=&cardBgColor=&btnBgColor=&btnTextColor=&textColor=&mobileBgColor=&mobileCardBgColor=&mobileCardTextColor=&mobileBadgeBgColor=&mobileBadgeTextColor=&mobileBorderColor=&enableMobile=1&mobilePreview=1&psid=franklymadear&pstool=428_1&site=jasmin&cobrandId=&psprogram=revs&campaign_id=&ms_notrack=1&subAffId="></script>
+                </div>
             </div>
         </section>
 
@@ -442,8 +495,8 @@
 
     <!-- Console log -->
     <script>
-        console.log("✅ LiveJasmin page — three specific iframes (1003,1002,1000) placed first.");
-        console.log("📦 Components: 3x iframes, ctow, postexralifkhd, sifk, more videos banner, slidebar");
+        console.log("✅ LiveJasmin page — removed Hot Offers/Exclusive/Special, added new elements between iframes and at end.");
+        console.log("📦 Components: 3 iframes, fk (between 1&2), cifra, vb, is (at end), more videos, slidebar");
     </script>
 </body>
 </html>
