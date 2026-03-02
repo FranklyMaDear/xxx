@@ -114,7 +114,7 @@
             color: #ffb3c6;
         }
 
-        /* === IFRAME STYLES === */
+        /* === IFRAME STYLES — FILL CONTAINER FULLY === */
         .jasmin-iframe {
             width: 100%;
             height: auto;
@@ -122,6 +122,32 @@
             border: none;
             display: block;
             background: #000;
+        }
+
+        /* Ensure iframe fills the card and respects dimensions */
+        .embed-card .jasmin-iframe {
+            width: 100%;
+            height: 100%;      /* fill the container's height */
+            aspect-ratio: auto; /* remove forced ratio so it stretches inside card */
+            min-height: 600px;  /* keep minimum height as original design */
+            max-height: 600px;  /* optional: restrict to iframe natural height, but fill width */
+            object-fit: fill;   /* stretch content to fill (iframe behaves differently, but style ensures container fills) */
+        }
+
+        /* Force the iframe container to have consistent height */
+        .embed-card {
+            display: flex;
+            flex-direction: column;
+        }
+        .embed-card .embed-header {
+            flex-shrink: 0;
+        }
+        .embed-card .jasmin-iframe {
+            flex-grow: 1;        /* take remaining space */
+            width: 100%;
+            height: 600px;       /* fixed height based on iframe content */
+            max-width: 100%;
+            aspect-ratio: unset; /* remove any ratio lock */
         }
 
         /* === CONTAINERS === */
@@ -154,6 +180,25 @@
             border-radius: 8px;
             overflow: hidden;
             margin: 0 auto;
+        }
+
+        /* === NEW BANNER (CUSTOM CTOW) === */
+        .custom-banner-wrapper {
+            margin: 25px 0 20px;
+            background: #0c0c12;
+            border-radius: 16px;
+            border: 1px solid #3a2a3a;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(255, 100, 150, 0.2);
+        }
+
+        .ctow-banner-container {
+            width: 100%;
+            min-height: 100px; /* ensure visibility */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0f0f14;
         }
 
         /* === MORE VIDEOS BANNER === */
@@ -263,6 +308,9 @@
                 height: auto;
                 aspect-ratio: 4 / 3;
             }
+            .embed-card .jasmin-iframe {
+                height: 550px; /* slightly smaller on mobile */
+            }
         }
     </style>
 </head>
@@ -283,22 +331,22 @@
             <span class="arrow">👇</span>
         </div>
 
-        <!-- === 1. FIRST IFRAME (template1001) === -->
+        <!-- === 1. FIRST IFRAME (template1001) — FILLS FRAME === -->
         <section class="content-section">
             <h2 class="section-title">🔥 Live Girls Gallery</h2>
             <div class="embed-card">
                 <div class="embed-header">
                     <span class="logo">✨ LiveJasmin</span> · <span>Featured Models</span>
                 </div>
-                <iframe class="jasmin-iframe frame" 
+                <iframe class="jasmin-iframe" 
                         src="https://atwmcd.com/iframes/?t_id=template1001&psid=franklymadear&psprogram=revs&pstool=203_2&site=jasmin&cobrandId=&flags=&column=2&row=5&campaign_id=&categoryName=girl&subAffId=" 
                         scrolling="no" 
                         align="MIDDLE" 
-                        width="320px" 
-                        height="600px" 
+                        width="100%" 
+                        height="600" 
                         frameborder="No" 
                         allowtransparency="true" 
-                        background-color="transparent" 
+                        style="background-color:transparent;" 
                         marginHeight="0" 
                         marginWidth="0">
                 </iframe>
@@ -314,23 +362,32 @@
             </div>
         </section>
 
+        <!-- === 3. NEW CUSTOM BANNER (CTOW) — inserted here as requested === -->
+        <section class="content-section">
+            <h2 class="section-title">⚡ Hot Categories</h2>
+            <div class="custom-banner-wrapper">
+                <div class="ctow-banner-container">
+                    <script src="https://atwmcd.com/ctow?psid=franklymadear&psprogram=revs&pstool=426_2&site=jasmin&cobrandId=&campaign_id=&category=girl&preferredPerformers=&backgroundColor=A60000&wColor1=F69191&wColor2=FFFFFF&wTagClBgColor=640000&wTagClTextColor=FFFFFF&wTagClBorderColor=640000&wTagClBorderRadius=5&btnBgColor=FDBB01&btnTextColor=000000&btnBorderColor=FDBB01&btnBorderRadius=5&cams=girls,boys,couple,tranny&subaffid=&ms_notrack=1"></script>
+                </div>
+            </div>
+        </section>
 
-        <!-- === 4. SECOND IFRAME (template1002 - SAME CHARACTERISTICS) === -->
+        <!-- === 4. SECOND IFRAME (template1002) — FILLS FRAME === -->
         <section class="content-section">
             <h2 class="section-title">✨ More Live Models</h2>
             <div class="embed-card">
                 <div class="embed-header">
                     <span class="logo">✨ LiveJasmin</span> · <span>New & Trending</span>
                 </div>
-                <iframe class="jasmin-iframe frame" 
+                <iframe class="jasmin-iframe" 
                         src="https://atwmcd.com/iframes/?t_id=template1002&psid=franklymadear&psprogram=revs&pstool=203_3&site=jasmin&cobrandId=&flags=&column=2&row=5&campaign_id=&categoryName=girl&subAffId=" 
                         scrolling="yes" 
                         align="MIDDLE" 
-                        width="400px" 
-                        height="600px" 
+                        width="100%" 
+                        height="600" 
                         frameborder="No" 
                         allowtransparency="true" 
-                        background-color="transparent" 
+                        style="background-color:transparent;" 
                         marginHeight="0" 
                         marginWidth="0">
                 </iframe>
@@ -341,12 +398,28 @@
         <section class="content-section">
             <h2 class="section-title">📺 Live Preview</h2>
             <div class="banner-container">
-                <div id="object_container" style="width:400px;height:300px; max-width:100%;"></div>
-                <script src="https://ecdwm.com/embed/lf?c=object_container&site=jasmin&cobrandId=&psid=franklymadear&pstool=202_1&psprogram=revs&campaign_id=&category=girl&forcedPerformers[]=&vp[showChat]=&vp[chatAutoHide]=&vp[showCallToAction]=&vp[showPerformerName]=&vp[showPerformerStatus]=&ms_notrack=1&subAffId="></script>
+                <div id="object_container_400" style="width:400px;height:300px; max-width:100%;"></div>
+                <script src="https://ecdwm.com/embed/lf?c=object_container_400&site=jasmin&cobrandId=&psid=franklymadear&pstool=202_1&psprogram=revs&campaign_id=&category=girl&forcedPerformers[]=&vp[showChat]=&vp[chatAutoHide]=&vp[showCallToAction]=&vp[showPerformerName]=&vp[showPerformerStatus]=&ms_notrack=1&subAffId="></script>
             </div>
         </section>
 
-        <!-- === 6. SLIDEBAR SCRIPT (Overlay) === -->
+        <!-- === 6. EXTERNAL SCRIPT (postexralifkhd) placed as new banner/section === -->
+        <section class="content-section">
+            <h2 class="section-title">🎥 Exclusive Content</h2>
+            <div class="embed-card" style="padding: 16px; background: #0f0f14; text-align: center;">
+                <script src="https://ecdwm.com/embed/postexralifkhd?psid=franklymadear&pstool=400_370&psprogram=revs&campaign_id=&categoryName=girl&cobrandId=&site=jasmin&ms_notrack=1&subAffId="></script>
+                <p style="color:#b0b0d0; margin-top: 8px;">✨ Special performer highlights</p>
+            </div>
+        </section>
+
+        <!-- === 7. MORE VIDEOS BANNER === -->
+        <div class="more-videos-banner">
+            <a href="#">
+                ▶️ MORE VIDEOS <span>LIVE</span>
+            </a>
+        </div>
+
+        <!-- === 8. SLIDEBAR SCRIPT (Overlay) === -->
         <script>
         var _aweslidebar = _aweslidebar || {};
         _aweslidebar.category = 'girl';
@@ -387,9 +460,11 @@
     <!-- Console log -->
     <script>
         console.log("✅ English LiveJasmin page loaded with all components:");
-        console.log("📦 2 iframes (320x600) - same characteristics");
+        console.log("📦 2 iframes (fill container, fixed height 600px)");
         console.log("📦 2 ad containers (300x250 & 400x300)");
         console.log("📦 1 More Videos banner");
+        console.log("📦 1 CTOW banner (atwmcd.com/ctow)");
+        console.log("📦 1 postexralifkhd script banner");
         console.log("📦 1 Slidebar overlay script");
     </script>
 </body>
